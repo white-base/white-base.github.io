@@ -1,12 +1,65 @@
 # main links
 main:
   - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+    url: /docs/quick-start/
+  - title: "About"
+    url: https://mmistakes.github.io/minimal-mistakes/about/
+  - title: "Sample Posts"
+    url: /year-archive/
+  - title: "Sample Collections"
+    url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+docs:
+  - title: Getting Started
+    children:
+      - title: "시작하기"
+        url: /docs/quick-start/
+      - title: "주요 특징"
+        url: /docs/feature/
+      - title: "기본 사용법"
+        url: /docs/basic/
+
+  - title: Essentials
+    children:
+      - title: "핵심 개념"
+        url: /docs/core/
+      - title: "바인드 모델 구성"
+        url: /docs/bind-model-config/
+      - title: "바인드 커멘드 구성"
+        url: /docs/bind-commnad-config/
+      - title: "서비스 객체 구성"
+        url: /docs/service-config/
+      - title: "객체 생성 방식"
+        url: /docs/create-method/
+      - title: "단계별 제작 과정"
+        url: /docs/step-by-step/
+
+  - title: advanced
+    children:
+      - title: "콜백 라이프사이클"
+        url: /docs/callback-lifecycle/
+      - title: "멀티 테이블"
+        url: /docs/multi-table/        
+      - title: "멀티 뷰"
+        url: /docs/multi-view/
+      - title: "동기화"
+        url: /docs/synchronization/
+      - title: "CRUD + L 예제"
+        url: /docs/crudl-example/
+
+  - title: Reference
+    children:
+      - title: "BindModelAjax 클래스"
+        url: /docs/api-bind-model-ajax/
+      - title: "BindCommandAjax 클래스"
+        url: /docs/api-bind-command-ajax/
+      - title: "HTMLColumn 클래스"
+        url: /docs/api-html-column/
+      - title: "MetaTable 클래스"
+        url: /docs/api-meta-table/
+      - title: "MetaView 클래스"
+        url: /docs/api-meta-view/
+      - title: "PropertyCollection 클래스"
+        url: /docs/api-property-collection/
