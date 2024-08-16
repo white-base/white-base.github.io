@@ -40,7 +40,7 @@ bm._tables.add('second');
 // bm._tables.count == 2
 ```
 
----
+
 ## 기본 테이블 변경
 
 추가한 MetaTable을 기본 테이블로 설정하면, 이후에 addColumn() 또는 addCommand()를 사용할 때 기본 테이블이 변경된 테이블로 설정됩니다.
@@ -64,7 +64,7 @@ bm.addColumnValue('aa', 10);
 
 이와 같이 BindModelAjax 객체에서 MetaTable을 추가하고 활용할 수 있습니다.
 
----
+
 # 여러 메소드에서 추가한 테이블 지정
 
 여러 메소드에서 추가한 테이블을 지정할 수 있습니다. \_tables 컬렉션 외부에 테이블을 지정할 경우, 객체 직렬화 기능을 사용할 수 없습니다.
@@ -81,7 +81,7 @@ var bm = new BindModelAjax();
 bm.addTable('second');
 
 bm.addCommand('read', 3, 'second');
-bm.addCommand('list', 3, bm.second);
+bm.addCommand('list', 3, bm.second);
 
 // bm.command['read']._baseTable == bm.second
 // bm.command['list']._baseTable == bm.second
@@ -98,8 +98,8 @@ var bm = new BindModelAjax();
 bm.addTable('second');
 bm.addCommand('read');
 
-bm.addColumn('aa', 'read', 'valid', 'second');
-bm.addColumn('bb', 'read', '$all', bm.second);
+bm.addColumn('aa', 'read', 'valid', 'second');
+bm.addColumn('bb', 'read', '$all', bm.second);
 ```
 - 'aa' 컬럼은 'second' 테이블에 등록되고 read 명령의 valid 에 참조가 등록됩니다.
 - 'bb' 컬럼은 'second' 테이블에 등록되고 read 명령의 전체 MetaView 에 참조가 등록됩니다.
@@ -114,8 +114,8 @@ var bm = new BindModelAjax();
 bm.addTable('second');
 bm.addCommand('read');
 
-bm.addColumn('aa', 'AA', 'read', 'valid', 'second');
-bm.addColumn('bb', 'BB', 'read', '$all', bm.second);
+bm.addColumn('aa', 'AA', 'read', 'valid', 'second');
+bm.addColumn('bb', 'BB', 'read', '$all', bm.second);
 ```
 - ‘aa’ 컬럼의 초기값은 ‘AA’로 ‘second’ 테이블에 등록되고 read 명령의 valid에 참조가 등록됩니다.
 - ‘bb’ 컬럼의 초기값은 ‘BB’로 ‘second’ 테이블에 등록되고 read 명령의 전체 MetaView에 참조가 등록됩니다.
@@ -166,9 +166,9 @@ var bm1 = new BindModelAjax({
 ```
 - 'aa' 아이템은 기본 테이블(first)에 등록되고 대상 command 에 매핑됩니다.
 - 'bb' 아이템은 추가 테이블(second)에 등록되고 대상 command 에 매핑됩니다.
-- 'cc' 아이템은 추가 테이블(three)에 등록되고 대상 command 에 매핑됩니다.
+- 'cc' 아이템은 추가 테이블(three)에 등록되고 대상 command 에 매핑됩니다.
 
----
+
 ## BindCommand 영역
 
 ### addColumn() : 컬럼 추가
@@ -181,8 +181,8 @@ var bm = new BindModelAjax();
 bm.addTable('second');
 bm.addCommand('read');
 
-bm.cmd['read'].addColumn('aa', 'valid', 'second');
-bm.cmd['read'].addColumn('bb', '$all', bm.second);
+bm.cmd['read'].addColumn('aa', 'valid', 'second');
+bm.cmd['read'].addColumn('bb', '$all', bm.second);
 ```
 - 'aa' 컬럼은 'second' 테이블에 등록되고 read 명령의 valid 에 참조가 등록됩니다.
 - 'bb' 컬럼은 'second' 테이블에 등록되고 read 명령의 전체 MetaView 에 참조가 등록됩니다.
@@ -197,8 +197,8 @@ var bm = new BindModelAjax();
 bm.addTable('second');
 bm.addCommand('read');
 
-bm.cmd['read'].addColumn('aa', 'AA', 'read', 'valid', 'second');
-bm.cmd['read'].addColumn('bb', 'BB', 'read', '$all', bm.second);
+bm.cmd['read'].addColumn('aa', 'AA', 'read', 'valid', 'second');
+bm.cmd['read'].addColumn('bb', 'BB', 'read', '$all', bm.second);
 ```
 - 'aa' 컬럼은 초기값은 'AA' 로  'second' 테이블에 등록되고 read 명령의 valid 에 참조가 등록됩니다.
 - 'bb' 컬럼은 초기값은 'AA' 로 'second' 테이블에 등록되고 read 명령의 전체 MetaView 에 참조가 등록됩니다.
@@ -223,4 +223,3 @@ bm.command['read'].setColumn(['bb', 'second.cc'], 'bind');
 - 기본 테이블에 등록된 'bb' 컬럼은 read 명령의 bind 에 참조가 등록됩니다.
 - 'second' 테이블에 등록된 'cc' 컬럼은 read 명령의 bind 에 참조가 등록됩니다.
 
----

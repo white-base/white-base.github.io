@@ -15,94 +15,16 @@ sidebar:
 MetaView 는 MetaTable 과 동일하게 작동됩니다.  
 차이점은  *_baseEntity* 가 지정될 경우 *add(name)* 컬럼을 추가하면, `columns` 에는 참조가 등록되고, 
 baseEntity 의 `columns` 에  `MetaColumn` 이 등록됩니다.
-*add(name, collection?)* 컬럼 추가시 `collection` 을 지정하면, `columns` 에참조가 등록되고,
+*add(name, collection?)* 컬럼 추가시 `collection` 을 지정하면, `columns` 에 참조가 등록되고,
 지정한 `collecton` 에 `MetaColumn` 이 등록됩니다.
 
 클래스 다이어그램
-```mermaid
-classDiagram
-	MetaViewColumnCollection <--o MetaView : columns
-	MetaViewColumnCollection ..> MetaColumn : [컬럼명]
-	MetaColumn <|-- HTMLColumn : 상속
-	MetaView o--> MetaRowCollection : rows
-	MetaRow <.. MetaRowCollection : [index]
+![image-center](/assets/images/view-rel-diagram-2024-08-16-002546.png){: .align-center}
 
-	class MetaView {
-		+ columns
-		+ rows
-		# _baseEntity: BaseEntity
-		+ constructor(name, baseEntity?)
-    }
-	class MetaViewColumnCollection {
-		+컬럼명...
-		+add(name, collection?)
-		+addValue(name, value, collection?)
-    }
-	class MetaColumn {
-		+required: boolean = false
-		+value: string, number, boolean
-		+setter: function
-		+getter: function
-		+constraints: object | function
-		+constructor(name)
-		+valid(value)
-		+addConstraint(regex, msg)
-	}
-	class MetaRowCollection {
-		+add(row)
-		+insertAt(pos, row)
-    }
-	class MetaRow {
-		+컬럼명...
-	}
-	class HTMLColumn {
-		+getFilter: Function
-		+setFilter: Function
-		+value: any
-		+selector: object
-		+constructor(name)
-	}
-```
-
----
 ## 상속 관계
 
 클래스 다이어그램
-```mermaid
-classDiagram
-	MetaObject  <|-- MetaElement : 상속
-	MetaElement  <|-- BaseEntity : 상속
-	BaseEntity  <|-- MetaView : 상속
-
-class MetaObject {
-	+ _guid: string
-	+ constructor()
-	+ equal(target): boolean
-	+ instanceOf(target): boolean
-	+ getTypes(): Function[]
-}
-class MetaElement {
-	+ _name : string
-	+ constructor(name)
-	+ clone(entity)
-}
-class BaseEntity {
-	+ rows
-	+ constructor(name)
-	+ newRow(): MetaRow
-	+ getValue(): MetaRow
-	+ setValue(row)
-	+ read(obj, option)
-	+ write(vOpt)
-}
-class MetaView {
-	+ columns
-	# _baseEntity: BaseEntity
-	+ constructor(name)
-}
-```
-
----
+![image-center](/assets/images/view-diagram-2024-08-16-004628.png){: .align-center}
 
 # 주요 요소
 
@@ -121,7 +43,6 @@ class MetaView {
 |             |                                      |
 
 
----
 
 ## 메소드
 
@@ -151,14 +72,6 @@ class MetaView {
 | getTypes()                       | 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.             |
 | instanceOf(target)               | 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)             |
 
----
-%% ## 이벤트
-
-| 항목  | 설명  |
-| --- | --- |
-|     |     |
-
---- %%
 
 # 세부 설명
 
@@ -220,7 +133,7 @@ type _guid: string;
 type _type: Function;
 ```
 
----
+
 ## 주요 메소드
 
 ### clone()
@@ -228,7 +141,7 @@ type _type: Function;
 > 현재 객체의 깊은 복사본을 생성하여 반환합니다.
 
 ```ts
-type clone() => MetaTable;
+type clone() => MetaTable;
 ```
 - return : 현재 객체의 복제본입니다.
 
@@ -246,7 +159,8 @@ type copy = (
 	- Function  타입이면 컬럼을 선택하는 콜백함수를 입니다.
 	-  string[]   타입이면 복사할 컬럼명입니다.
 -   cols : 복사할 컬럼명입니다. filter 가 Function 타입일 때만 유효합니다.
-#### 예제 : filter, cols 을 사용하는 경우
+
+예제 : filter, cols 을 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
@@ -258,7 +172,8 @@ var temp = table.copy(
 );
 ```
 - temp 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
-#### 예제 : cols 만 사용하는 경우
+
+예제 : cols 만 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
@@ -346,7 +261,8 @@ type select = (
 	- Function  타입이면 컬럼을 선택하는 콜백함수를 입니다.
 	-  string[]   타입이면 복사할 컬럼명입니다.
 -   cols : 복사할 컬럼명입니다. filter 가 Function 타입일 때만 유효합니다.
-#### 예제 : filter, cols 을 사용하는 경우
+
+예제 : filter, cols 을 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
@@ -358,7 +274,8 @@ var temp = table.copy(
 );
 ```
 - temp 뷰 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
-#### 예제 : cols 만 사용하는 경우
+
+예제 : cols 만 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
@@ -528,4 +445,3 @@ type instanceOf = (target: object | string) => boolean;
 - return : 지정된 타입의 인스턴스인지 여부를 반환합니다.
 
 
----

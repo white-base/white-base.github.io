@@ -19,75 +19,16 @@ newOutput(name?) 메소드를 통해서 view 추가할 수 있습니다. `_outpu
 이름으로 컬렉션이 추가됩니다.
 
 클래스 다이어그램
-```mermaid
-classDiagram
-	BindCommandAjax --> MetaView : valid
-	BindCommandAjax --> MetaView : bind
-	BindCommandAjax --> MetaViewCollection: _outputs
-	MetaViewCollection --> MetaView: output = output1
-	
-	class BindCommandAjax {
-		+_outputs: MetaViewCollection
-		+valid: MetaView
-		+bind: MetaView
-		+output: MetaView
-		+constructor(bindModel, outOpt?)
-		+execute()
-		addColumn(column, views?)
-    }
-	class MetaView {
-		#_baseEntity: BaseEntity
-		+constructor(name, baseEntity?)
-		+columns: MetaViewColumnCollection
-		+rows: MetaRowCollection
-	}
-	class MetaViewCollection {
-		+output1: MetaView
-		...
-		+add(viewName)
-	}
-```
 
----
+![image-center](/assets/images/cmd-rel-diagram-2024-08-16-002011.png){: .align-center}
+
 ## 상속 관계
 
 BindCommandAjax 을 상속하여 확장하거나 BindCommand 을 상속하여 재정의하여 사용자화 할 수 있습니다.
 
-클래스 다이어그램
-```mermaid
-classDiagram
-	MetaObject  <|-- BaseBind : 상속
-	BaseBind  <|-- BindCommand : 상속
-	BindCommand <|-- BindCommandAjax : 상속
+![image-center](/assets/images/cmd-diagram-2024-08-16-004352.png){: .align-center}
 
-class MetaObject {
-	+ _guid: string
-	+ constructor()
-	+ equal(target): boolean
-	+ instanceOf(target): boolean
-	+ getTypes(): Function[]
-}
-class BaseBind {
-	+ onExecute: Function
-	+ onExecuted: Function
-	+ constructor()
-}
-class BindCommand {
-	# _model: BindModel
-	+ outputOption: number
-	+ valid: MetaView
-	+ bind: MetaView
-	+ output: MetaView
-	+ constructor(bindModel, baseTable)
-	+ addColumn(column, views, bTable?)
-}
-class BindCommandAjax {
-	+ constructor(bindModel, outputOpt, baseTable)
-	+ execute(): Promise
-}
-```
 
----
 # 구성 요소
 
 ## 속성
@@ -106,12 +47,11 @@ class BindCommandAjax {
 | cbValid      | execute() valid 검사 전 콜백 입니다.<br>`callback(validView, bindComamnd)`                                                                                         |
 | cbBind       | execute() bind  전 콜백 입니다.<br>`callback(validView, bindComamnd, config)`                                                                                    |
 | cbResult     | execute() 회신  콜백 입니다.<br>`callback(data, bindComamnd, response)`                                                                                           |
-| cbOutput     | execute() output View 매칭 후  콜백 입니다.<br>`callback(views, bindComamnd, response)`                                                                           |
+| cbOutput     | execute() output View 매칭 후  콜백 입니다.<br>`callback(views, bindComamnd, response)`                                                                           |
 | cbEnd        | execute() 종료 콜백 입니다.<br>`callback(status, bindComamnd, response)`                                                                                          |
 | _guid        | 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.                                                                                                                         |
 | _type        | 객체의 생성자 함수. 객체가 생성될 때 사용된 함수입니다.                                                                                                                           |
 
----
 ## 메소드
 
 | 항목                                          | 설명                                                                                                            |
@@ -129,7 +69,6 @@ class BindCommandAjax {
 | getTypes()                                  | 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.                                                                      |
 | instanceOf(target)                          | 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)                                                                      |
 
----
 
 ## 이벤트
 
@@ -138,7 +77,6 @@ class BindCommandAjax {
 | onExecute  | execte() 실행 전 공통 이벤트 입니다. |
 | onExecuted | execte() 실행 후 공통 이벤트 입니다. |
 
----
 
 # 세부 설명 
 
@@ -195,7 +133,8 @@ type bind = MetaView;
 
 bind(MetaView) 는 서버에 전송하는 컬럼 목록입니다.
 bind.columns 컬렉션의 컬럼명과 컬럼값은 서버로 전송(요청)합니다.
-#### 예제 : 내부 작동 구조
+
+내부 작동 구조
 ```js
 var bm = new BindModelAjax();
 bm.url = '/user'
@@ -234,7 +173,7 @@ type output = MetaView;
 type outputOption = object;
 ```
 
-### outOpt
+### outOpt
 
 > outputOption 의 별칭입니다.
 
@@ -340,7 +279,6 @@ type _guid = string;
 type _type = Function;
 ```
 
----
 ## 주요 메소드
 
 ### execute()
@@ -353,7 +291,6 @@ type execute = () => Promise<void>;
 ```
 - return : 실행 결과를 나타내는 `Promise` 객체입니다.
 
-#### 예제
 ```js
 var bm = new BindModelAjax();
 
@@ -450,7 +387,7 @@ type getObject = (vOpt?: number, owned?: object | Array<object>) => object;
 - owned : 현재 객체를 소유하는 상위 객체들입니다. 기본값은 빈객체 입니다.
 - return : 직렬화된 객체를 반환합니다.
 
-#### 예제
+
 ```js
 a.getObject(2) == b.getObject(2)
 ```
@@ -484,7 +421,6 @@ type getTypes = () => Array<Function>;
 ```
 - return : 생성자 함수의 배열을 반환합니다.
 
-#### 예제
 ```js
 const types = obj.getTypes();
 console.log(types); // [Function: MetaObject]
@@ -500,7 +436,7 @@ type instanceOf = (target: object | string) => boolean;
 - target : 확인할 대상 타입 (객체 또는 문자열)입니다.
 - return : 지정된 타입의 인스턴스인지 여부를 반환합니다.
 
----
+
 ## 주요 이벤트
 
 ### onExecute
@@ -523,4 +459,3 @@ type onExecuted = (cmd: BindCommand, result: object) => void;
 - result : 명령 실행 결과 객체입니다.
 
 
----

@@ -20,54 +20,8 @@ HTMLColumn 은 바인딩의 핵심입니다
 ## 상속 관계
 
 클래스 다이어그램
-```mermaid
-classDiagram
-	MetaObject  <|-- MetaElement : 상속
-	MetaElement  <|-- BaseColumn : 상속
-	BaseColumn  <|-- MetaColumn : 상속
-	MetaColumn <|-- HTMLColumn : 상속
+![image-center](/assets/images/col-diagram-2024-08-16-002347.png){: .align-center}
 
-class MetaObject {
-	+ _guid: string
-	+ constructor()
-	+ equal(target): boolean
-	+ instanceOf(target): boolean
-	+ getTypes(): Function[]
-}
-class MetaElement {
-	+ _name : string
-	+ constructor(name)
-	+ clone()
-}
-class BaseColumn {
-	+ columnName: string
-	+ value: any
-	+ alias: string
-	+ default: any
-	+ constructor(name, entity)
-}
-class MetaColumn {
-	+ value: any
-	+ getter: Function
-	+ setter: Function
-	+ required: boolean
-	+ constructor(name, entity, prop)
-	+ valid(value): boolean
-}
-class HTMLColumn {
-	+ value: any
-	+ selector: object
-	+ getFilter: Function
-	+ getFilter: Function
-	+ constructor(name, entity, prop)
-
-}
-
-note for HTMLColumn "value override"
-note for MetaColumn "value override"
-```
-
----
 
 # 주요 요소
 
@@ -98,7 +52,7 @@ note for MetaColumn "value override"
 |             |                                                                     |
 
 
----
+
 
 ## 메소드
 
@@ -115,7 +69,7 @@ note for MetaColumn "value override"
 |                                            |                                                                 |
 
 
----
+
 ## 이벤트
 
 | 항목        | 위치         | 설명                       |
@@ -124,7 +78,7 @@ note for MetaColumn "value override"
 |           |            |                          |
 
 
----
+
 
 # 세부 설명
 
@@ -312,7 +266,7 @@ type _guid: string;
 type _type = Function;
 ```
 
----
+
 ## 주요 메소드
 
 ### clone()
@@ -415,7 +369,7 @@ type instanceOf = (target: object | string) => boolean;
 - target : 확인할 대상 타입 (객체 또는 문자열)입니다.
 - return : 지정된 타입의 인스턴스인지 여부를 반환합니다.
 
----
+
 ## 주요 이벤트
 
 ### 
@@ -429,7 +383,6 @@ type onChanged = (newVal: ValueType, oldVal: ValueType, _this: this) => void;
 - oldVal : 이전 값입니다.
 - \_this : 이벤트를 발생시킨 객체입니다.
 
-#### 예제
 ```js
 column.onChanged = function(newVal, oldVal, _this) {
 	console.log('Value changed');
@@ -437,67 +390,23 @@ column.onChanged = function(newVal, oldVal, _this) {
 ```
 
 
----
+
 ## column 의 value 얻기
 
 `우선순위` : 1. getter > 2. getFilter > 3. selector > 4. inner value > 5.default
 column value 을 얻을때 속성(getter, getFilter, selector) 설정의 우선순위에 따라 선택된 값을 회신합니다.
 ### getter 내부 구조
 
-```mermaid
-graph BT
-	BB("getter():val") --> |1.getter 있을 경우|AA[let title = column.value;]
-	CC{선택} --> AA
-	
-	DD --> |값 인자로 전달|EE("getFilter(selectorValue): val")
-	DOM -.-> DD
-	EE --> |2.getFilter 있을 경우|CC
-	DD[selector 조회\n type=value,text,html,prop,attr,css] --> |3.selector 있을 경우|CC
-	FF[[inner value]] --> |4.설정 없는 경우|AA
-	GG[[column.default]] --> |5.Empty 경우|AA
-style AA fill:navy,color:#fff
-style DOM fill:orange,color:#fff
-style BB fill:green,color:#fff
-style DD fill:green,color:#fff
-style EE fill:green,color:#fff
-style FF fill:green,color:#fff
-style GG fill:green,color:#fff
-```
-1. getter 가 있는 경우, getter 의 return 값을 회신합니다.
-2. getFilter 가 있는 경우, getFilter 의 return 값을 회신합니다.
-   selector 가  동시에 있으면 selector 값은 getFilter(selectorValue) 의 인자로 전달합니다.
-3. selector 가 있는 경우, type 에 따라 값을 회신합니다.
-   type : `value`, `text`, `html`, `prop`, `attr`, `css` (jquey사용)
-   (type = 'none' 제외)
-4. 내부값을 회신합니다.
-5. 내부값이 empty(undefined, null)일 경우, default 값을 회신합니다.
-   default 의 기본값은 ''(빈문자) 입니다.
-   
----
+![image-center](/assets/images/col-get-diagram-2024-08-16-010300.png){: .align-center}
+
+
 ## column 의 value 설정
 
 `설정 순서` : 1. setter > 2. inner value > 3. setFilter > 4. selector
 column value 을 설정 할 때 순차적으로 설정합니다.
-### setter 내부 구조
 
-```mermaid
-graph TD
-	A[title.value = '제목'] --> B("1.setter(val) : val?")
-	B --> |리턴 존재시|C[[2.inner value\n$value = '제목']]
-	A --> |setter 없는 경우| C
-	C --> |setFilter 있을 경우| D("3.setFilter(val) : val?")
-	D -->|return 값과 selector 있을 경우|E("4.selector 설정")
-	D -.-> |DOM Element 설정|DOM
-	C -->|selector 있는 경우|E
-	E -.->|type='none' 아닌 경우| DOM
-	
-style A fill:navy,color:#fff
-style B fill:green,color:#fff
-style C fill:green,color:#fff
-style D fill:green,color:#fff
-style E fill:green,color:#fff
-style DOM fill:orange,color:#fff	
-```
+### setter 내부 구조
+![image-center](/assets/images/col-set-diagram-2024-08-16-010359.png){: .align-center}
 
 1. setter 가 있는 경우, setter 함수를 호출합니다.
 2. setter 의 return 값을 inner value 에 저장합니다.
@@ -514,7 +423,7 @@ HTMLComun 설계시 사용빈도를 분석하여
 - 직관적이 코드 구조를
 고려하여 설계 하셨습니다.
 
-또한 `selector` 는 checkSelector() 메소드로 html 페이지에 대한 요소의 존재여부 확인에 사용됩니다.
+또한 `selector` 는 checkSelector() 메소드로 html 페이지에 대한 요소의 존재여부 확인에 사용됩니다.
 
 | 빈도  | setter | setFilter | selector | getFilter | getter | 설명                                                                     |
 | --- | ------ | --------- | -------- | --------- | ------ | ---------------------------------------------------------------------- |
@@ -573,8 +482,8 @@ c6.value; // "red"
 var PAGE_SIZE = 10;
 var c1 = new HTMLColumn('c1');  // 외부값 참조
 
-c1.getter = function(){ return PAGE_SIZE };
-c1.setter = function(){ PAGE_SIZE = newVal };
+c1.getter = function(){ return PAGE_SIZE };
+c1.setter = function(){ PAGE_SIZE = newVal };
 
 c1.value; // 10
 ```
@@ -610,7 +519,7 @@ PAGE_SIZE // 20
 
 setter/getter와의 차이점은 내부에 사용되는값과 html 표현이 다른 경우에 사용합니다.
 주로 여러개의 html 요소를 제어할 때 사용합니다.
-#### 예제
+
 ```html
 <input type="radio" name="gender" value="female" />
 <input type="radio" name="gender" value="male" />
@@ -636,7 +545,6 @@ c2.value; // 'female'
 
 ## 서비스 객체를 설정
 
-#### 예제
 ```js
 var bm = new BindModelAjax({
 	// selector 만 사용하는 경우

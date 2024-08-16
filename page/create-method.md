@@ -174,4 +174,4 @@ bm.command['read'].addColumn('bb', ['bind', 'output']);
 
 이렇게 다양한 객체 생성 방식을 통해 BindModelAjax를 유연하게 활용할 수 있으며, 각 방식의 장단점을 고려하여 적절한 방법을 선택하는 것이 중요합니다.
 
----
+

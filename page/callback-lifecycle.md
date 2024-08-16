@@ -11,42 +11,9 @@ sidebar:
 
 
 ### execute() 라이프 사이클
-```mermaid
-graph TD
-	E1("1.onExecute 이벤트") --> C1("2.cbBegin")
-	
-	subgraph client_area
-		C2("3.cbValid") --> V1("4.valid: MetaView\n유효성검사")
-	end
-	C1 --> C2
-	C1 --> |cbValid 없을경우| V1
-	V1 --> C3("6.cbBind")
-	client_area --> |논리적 실패| F1("5.cbFail")
-	subgraph callback_area
-		C3 --> V2("7.bind: MetaView\n요청")
-		V2 --> C4("8.cbResult")
-		C4 --> |outOpt > 0| V3("9.output: Metaview\n바인딩")
-		V3 --> C5("10.cbOutput")
-	end
-	callback_area --> |오류| F2("11.cbError")
-	C5 --> C6("12.cbEnd")
-	C4 --> |outOpt == 0| C6
-	F1 --> C6
-	F2 --> C6
-	C6 --> E2("13.onExecuted 이벤트")
-	
-	style C1 fill:gray,color:#fff	
-	style C2 fill:gray,color:#fff	
-	style C3 fill:gray,color:#fff	
-	style C4 fill:gray,color:#fff	
-	style C5 fill:gray,color:#fff	
-	style C6 fill:gray,color:#fff
-	style E1 fill:green,color:#fff
-	style E2 fill:green,color:#fff
-	style F1 fill:orange,color:#fff
-	style F2 fill:orange,color:#fff
 
-```
+![image-center](/assets/images/cb-diagram-2024-08-16-010115.png){: .align-center}
+
 
 1. `onExecute` 이벤트는 execute() 메소드 실행시 처음으로 호출되는 이벤트입니다.
 2. `cbBegin` 콜백은 처음으로 호출됩니다. 초기값 설정하는데 활용됩니다.

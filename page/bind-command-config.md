@@ -15,7 +15,7 @@ sidebar:
 
 - 흐름제어 : 단계별 콜백함수로 흐름 제어 할 수 있습니다.
 - 컬럼 추가 : `HTMLColumn` 객체의 추가합니다.(컬럼 참조값)
-- 응답 관리 : 서버 응답을 `MetaView` 로 바인딩 합니다.
+- 응답 관리 : 서버 응답을 `MetaView` 로 바인딩 합니다.
 - 유효성 검사 : 컬럼 제약조건 설정으로 유효성 검사를 합니다.
 ### 주요 속성
 
@@ -47,12 +47,11 @@ sidebar:
 - execute() : `BindCommand` 객체를 실행합니다.
 - addColumn() : `HTMLColumn` 객체를 추가합니다.
 - addColumnValue() : `HTMLColumn` 객체를 추가하고, 'value' 값을 설정합니다.
-- setColumn() : 지정한 컬럼을 `MetaView` 에 참조로 등록합니다.
+- setColumn() : 지정한 컬럼을 `MetaView` 에 참조로 등록합니다.
 - release() : 지정한 MetaView 에 참조를 해제합니다.
 - newOutput() : 응답 출력 `MetaView` 을 추가합니다. (\_outputs)
 - removeOptput() : 출력 `MetaView` 를 제거합니다. (\_outputs)
 
----
 ## 명령별 서버 요청 설정하기
 
 ### 명령별 요청 경로
@@ -86,7 +85,7 @@ bb.command['cmdB'].url = '/list';
 http 통신을 위한 axios 의 config 를 설정합니다.
 #TODO
 
----
+
 ## 명령별 이벤트 설정하기
 
 명령별 이벤트 설정은 execute() 메서드를 실행할 때 특정 이벤트를 호출하여 다양한 작업을 수행할 수 있도록 하는 기능입니다.
@@ -95,7 +94,7 @@ http 통신을 위한 axios 의 config 를 설정합니다.
 ```ts
 // 이벤트 타입
 type onExecute = (model: BindModel, cmd: BindCommand) => void; 
-type onExecuted = (model: BindModel, cmd: BindCommand) => void; 
+type onExecuted = (model: BindModel, cmd: BindCommand) => void; 
 ```
 - onExecute : 해당 execute() 메서드가 처음 실행될 때 호출됩니다.
 - onExecuted :  해당 execute() 메서드가 실행된 후 마지막으로 호출됩니다.
@@ -132,7 +131,7 @@ bm.command['read'].execute();
 
 전역 이벤트와 명령별 이벤트를 설정하면 execute() 메서드가 실행될 때 다양한 작업을 순차적으로 처리할 수 있습니다. 이는 특정 작업이 실행될 때 필요한 초기화 작업이나 후속 작업을 정의하는 데 유용합니다.
 
----
+
 ## 명령별 흐름 제어하기
 
 execute() 메서드를 실행할 때 순차적으로 콜백 함수가 호출되어 흐름을 제어할 수 있습니다. 
@@ -285,14 +284,14 @@ type cbEnd = (status: number, cmd: BindCommand, res: object) => void;
 - 다른 명령의 *execute()* 체인 연결에 활용합니다.
 
 ```js
-bm.command['list'].cbEnd = function(views) {
+bm.command['list'].cbEnd = function(views) {
 	alert('정상 처리 되었습니다.')
 }
 ```
 
 각 콜백 함수는 특정 상황에서 명령의 동작을 조정하거나, 데이터를 전처리 및 후처리하는 데 사용됩니다. 이를 통해 BindCommand의 실행 흐름을 세부적으로 제어할 수 있습니다.
 
----
+
 ## 출력 옵션 설정하기
 
 `BindCommandAjax` 에 제공되는 `output(MetaView)`외에 추가 `MetaView` 를 지정할 수 있습니다.
@@ -343,7 +342,7 @@ bm.command['view'].outputOption = { option: 3, index: 1 };
 - `bm.command['read'].outputOption` 값은 `{option:3, index: 0}` 입니다.
 - `bm.command['view'].outputOption` 값은 `{option:3, index: 1}` 입니다.
 
----
+
 ## 유효성 검사 대상 설정하기 (valid)
 
 유효성 검사하기 위해서는 `valid(MetaView)`을 구성해야 합니다.
@@ -408,20 +407,20 @@ bm.cmd['test'].execute();
 - user_id : 필수 조건이며, 첫 번째 함수 조건에서 성공하고, 두 번째 정규식 조건에서는 비매칭되어야 성공합니다.
 - email : 선택 조건입니다. 공백일 경우 성공하며, 값을 입력 시 정규식과 매칭되어야 성공합니다.
 
----
+
 ## 컬럼 추가하기
 
 컬럼을 추가하면 기본 테이블인 '\_baseTable'에 컬럼이 추가되고, 바인드 명령에 지정한 `MetaView` 에 참조가 등록됩니다. 컬럼을 추가하는 메소드로는 addColumn() 과 addColumnValue() 가 있습니다.
 
 타입 : addColumn(), addColumnValue()
 ```ts
-type addColumn = (
+type addColumn = (
 	colName: string, 
 	views?: string | string[], 
 	bTable?: string | MetaTable
 ) => BindCommand;
 
-type addColumnValue = (
+type addColumnValue = (
 	colName: string, 
 	value: any, 
 	views?: string | string[], 
@@ -441,7 +440,7 @@ var bm = new BindModelAjax();
 bm.addCommand('test');
 
 bm.command['test'].addColumn('aa', 'valid');
-bm.command['test'].addColumn('bb', ['bind', 'output']);
+bm.command['test'].addColumn('bb', ['bind', 'output']);
 bm.command['test'].addColumn('cc', '$all');
 bm.command['test'].addColumn('dd');
 
@@ -451,9 +450,9 @@ bm.command['test'].addColumn('dd');
 // bm.command['test'].bind.columns.count   == 3 ('bb', 'cc', 'dd')
 // bm.command['test'].output.columns.count == 3 ('bb', 'cc', 'dd')
 ```
-- addColumn() 메소드를 호출하면 빈 컬럼이 추가됩니다.
+- addColumn() 메소드를 호출하면 빈 컬럼이 추가됩니다.
 - addColumnValue() 메소드를 호출하면 컬럼 추가 후 'value' 값이 설정합니다.
-- 'aa' 컬럼은  지정한 `MetaView(valid)` 에 참조를 등록합니다.
+- 'aa' 컬럼은  지정한 `MetaView(valid)` 에 참조를 등록합니다.
 - 'bb' 컬럼은  지정한 `MetaView(bind, output)` 에 참조를 등록합니다.
 - 'cc' 컬럼은  전체 `MetaView(valid, bind, output)` 에 참조를 등록합니다.
 - 'dd' 컬럼 추가시 파라메터를 생략하면 전체 `MetaView` 에 참조를 등록합니다.
@@ -465,7 +464,7 @@ bm.command['test'].addColumn('dd');
 ```js
 var bm = new BindModelAjax();
 
-bm.addTable('second');
+bm.addTable('second');
 bm.addCommand('test');
 
 bm.command['test'].addColumn('aa', 'valid', bm.second);
@@ -483,7 +482,7 @@ bm.command['test'].addColumn('bb', '$all', 'second');
 
 위의 메소드를 활용하여 다양한 방식으로 테이블과 컬럼을 추가하고, 각 컬럼을 적절한 `MetaView`에 매핑할 수 있습니다. 이는 데이터의 유효성 검사, 바인딩, 출력 등 다양한 요구사항을 효율적으로 처리하는 데 유용합니다.
 
----
+
 ## 기존 컬럼 설정하기
 
 이미 등록된 컬럼을 `MetaView`에 참조로 등록하거나 해제할 수 있습니다. 이를 통해 데이터의 유효성 검사, 바인딩, 출력 등 다양한 요구사항에 맞춰 컬럼을 동적으로 관리할 수 있습니다.
@@ -555,13 +554,13 @@ bm.command['test'].release('dd', '$all');
 // bm.command['test'].output.columns.count == 0
 ```
 - 'aa' 컬럼을 추가하고 지정한 `MetaView(valid)` 에 참조를 등록합니다.
-- 'bb' 컬럼을 추가하고 지정한 `MetaView(bind)` 에 참조를 등록합니다.
-- 'cc' 컬럼을`MetaTable(second)` 추가하고 지정한 `MetaView(bind)`에 참조를 등록합니다.
-- 'dd' 컬럼을`MetaTable(second)` 추가하고 전체 `MetaView`에 참조를 등록합니다.
+- 'bb' 컬럼을 추가하고 지정한 `MetaView(bind)` 에 참조를 등록합니다.
+- 'cc' 컬럼을 `MetaTable(second)` 추가하고 지정한 `MetaView(bind)`에 참조를 등록합니다.
+- 'dd' 컬럼을 `MetaTable(second)` 추가하고 전체 `MetaView`에 참조를 등록합니다.
 
 위의 메소드를 사용하면 기존 컬럼을 동적으로 MetaView에 설정하거나 해제할 수 있어, 복잡한 데이터 처리 요구사항에 유연하게 대응할 수 있습니다.
 
----
+
 
 ## 출력옵션의 종류 (output)
 
@@ -582,7 +581,7 @@ bm.command['test'].release('dd', '$all');
 ```js
 var bm = new BindModelAjax();
 // 'create' 커멘더를 추가하고, 출력 옵션을 0으로 설정하여 데이터를 가져오지 않음
-bm.addCommand('create', 0);
+bm.addCommand('create', 0);
 // 'aa' 컬럼에 값을 설정
 bm.cmd['create'].addColumnValue('aa', -10);
 // 명령어 실행
@@ -598,7 +597,7 @@ bm.cmd['create'].execute();
 
 옵션 값 1은 모든 응답 데이터를 `output(MetaView)`에 불러오는 방식입니다. 이 옵션은 서버로부터 수신한 전체 데이터의 컬럼을 단순하게 출력하거나, 데이터 구조를 확인할 때 유용합니다. 
 
-```json
+```js
 {
 	"rows": [
 		{ "aa": 10, "bb", 20, "cc": 30 },
@@ -611,7 +610,7 @@ bm.cmd['create'].execute();
 var bm = new BindModelAjax();
 
 // 'list' 명령어를 추가하고, 출력 옵션을 1로 설정하여 모든 데이터를 가져옴
-bm.addCommand('list', 1);
+bm.addCommand('list', 1);
 
 bm.cmd['list'].execute();
 
@@ -630,9 +629,9 @@ bm.cmd['list'].execute();
 
 ### 지정한 컬럼의 데이터만 가져오기 : option = 2 
 
-응답 데이터에서`ouput(MetaView)` 에 존재하는 컬럼만 불러옵니다.
+응답 데이터에서 `ouput(MetaView)` 에 존재하는 컬럼만 불러옵니다.
 
-```json
+```js
 {
 	"rows": [
 		{ "aa": 10, "bb", 20, "cc": 30 },
@@ -658,7 +657,7 @@ bm.cmd['list'].execute();
 
 ### 데이터를 컬럼값에 설정하기 (지정한 컬럼) : option = 3
 
-응답 데이터에서`ouput(MetaView)` 에 존재하는 컬럼만 불러오고, 지정한 데이터를 컬럼 'value' 값으로 설정합니다.
+응답 데이터에서 `ouput(MetaView)` 에 존재하는 컬럼만 불러오고, 지정한 데이터를 컬럼 'value' 값으로 설정합니다.
 
 ```json
 {
@@ -746,5 +745,3 @@ bm.cmd['test'].execute();
 ```
 - 첫번째 응답 레코드의 index = 0 의 값이 컬럼 ('aa', 'bb') 값으로 설정되었습니다.
 - 두번째 응답 레코드의 index = 1 의 값이 컬럼('dd') 값으로 설정되었습니다. 
-
----

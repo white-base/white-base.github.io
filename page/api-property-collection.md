@@ -14,39 +14,7 @@ sidebar:
 ## 상속 관계
 
 클래스 다이어그램
-```mermaid
-classDiagram
-	MetaObject  <|-- BaseCollection : 상속
-	BaseCollection  <|-- PropertyCollecton : 상속
-
-class MetaObject {
-	+ _guid: string
-	+ constructor()
-	+ equal(target): boolean
-	+ instanceOf(target): boolean
-	+ getTypes(): Function[]
-}
-class BaseCollection {
-	+ onAdd: Function
-	+ onChanging: Function
-	+ onClear: Function
-	+ onRemove: Function
-	+ constructor()
-}
-class PropertyCollecton {
-	+ constructor()
-	+ add(key, elem, desc?): number
-	+ remove(elem): number
-	+ removeAt(pos): boolean
-	+ contains(elem): boolean
-	+ exist(key): boolean
-	+ indexOf(target, isKey?): number
-}
-```
-
-
-
----
+![image-center](/assets/images/coll-diagram-2024-08-16-002653.png){: .align-center}
 
 # 주요 요소
 
@@ -64,7 +32,7 @@ class PropertyCollecton {
 
 
 
----
+
 
 ## 메소드
 
@@ -86,7 +54,7 @@ class PropertyCollecton {
 |                          |                                          |
 
 
----
+
 ## 이벤트
 
 | 항목         | 설명                            |
@@ -103,7 +71,7 @@ class PropertyCollecton {
 
 
 
----
+
 
 # 세부 설명
 
@@ -157,7 +125,7 @@ type _guid = string;
 type _type = Function;
 ```
 
----
+
 ## 주요 메소드
 
 ### add()
@@ -181,7 +149,6 @@ type add = (key: string, elem: any, desc?: PropertyDescriptor) => number;
 type clear = () => void;
 ```
 
-#### 예제
 ```js
 myCollection.clear();
 console.log(myCollection.count); // 0
@@ -197,7 +164,6 @@ type keyOf = (idx: number) => string;
 - idx : 조회할 인덱스 값입니다.
 - return : 인덱스에 해당하는 키입니다. 인덱스가 범위를 벗어나면 `undefined`를 반환할 수 있습니다.
 
-#### 예제
 ```js
 const key = myCollection.keyOf(0);
 console.log(`인덱스 0의 키: ${key}`);
@@ -223,7 +189,6 @@ type remove = (elem: any) => number;
 - elem : 삭제할 요소입니다.
 - return : 삭제된 요소의 인덱스입니다.
 
-#### 예제
 ```js
 const removedIndex = myCollection.remove(someElement);
 console.log(`삭제된 요소의 인덱스: ${removedIndex}`);
@@ -239,7 +204,6 @@ type removeAt = (pos: number) => boolean;
 - pos : 삭제할 요소의 인덱스입니다.
 - return : 요소 삭제 성공 여부를 나타내는 불리언 값입니다.
 
-#### 예제
 ```js
 const success = myCollection.removeAt(0);
 console.log(`요소 삭제 성공: ${success}`);
@@ -254,7 +218,7 @@ type contains = (elem) => boolean;
 ```
 - elem : 확인할 요소입니다.
 - return : 요소의 존재 여부를 나타내는 불리언 값입니다.
-#### 예제
+
 ```js
 const exists = myCollection.contains(someElement);
 console.log(`요소 존재 여부: ${exists}`);
@@ -271,13 +235,12 @@ type indexOf = (target: any | string, isKey?: boolean) => number;
 - isKey : 키로 조회할지 여부를 결정하는 불리언 값입니다. 기본값은 `false`입니다.
 - return : 요소의 인덱스입니다. 요소가 존재하지 않을 경우 `-1`을 반환합니다.
 
-#### 예제
 ```js
 const index = myCollection.indexOf("key1", true);
 console.log(`키의 인덱스: ${index}`);
 ```
 
----
+
 ## 주요 이벤트
 
 ### onAdd
@@ -290,7 +253,7 @@ type onAdd = (idx: number, elem: any, _this: object) => void;
 - idx : 추가할 요소의 인덱스입니다.
 - elem : 추가할 요소입니다.
 - \_this : 현재 컬렉션 객체입니다.
-#### 예제
+
 ```js
 myCollection.onAdd = function(idx, elem, _this) {
 	console.log(`요소 추가 전: 인덱스 ${idx}, 요소 ${elem}`);
@@ -308,7 +271,6 @@ type onAdded = (idx: number, elem: any, _this: object) => void;
 - elem : 추가된 요소입니다.
 - \_this : 현재 컬렉션 객체입니다.
 
-#### 예제
 ```js
 myCollection.onAdded = function(idx, elem, _this) {
 	console.log(`요소 추가 후: 인덱스 ${idx}, 요소 ${elem}`);
@@ -325,7 +287,7 @@ type onRemove = (idx: number, elem: any, _this: object) => void;
 - idx : 삭제할 요소의 인덱스입니다.
 - elem : 삭제할 요소입니다.
 - \_this : 현재 컬렉션 객체입니다.
-#### 예제
+
 ```js
 myCollection.onRemove = function(idx, elem, _this) {
 	console.log(`요소 삭제 전: 인덱스 ${idx}, 요소 ${elem}`);
@@ -343,7 +305,6 @@ type onRemoved = (idx: number, elem: any, _this: object) => void;
 - elem : 삭제된 요소입니다.
 - \_this : 현재 컬렉션 객체입니다.
 
-#### 예제
 ```js
 myCollection.onRemoved = function(idx, elem, _this) {
 	console.log(`요소 삭제 후: 인덱스 ${idx}, 요소 ${elem}`);
@@ -359,7 +320,6 @@ type onClear = (_this: object) => {};
 ```
 - \_this : 현재 컬렉션 객체입니다.
 
-#### 예제
 ```js
 myCollection.onClear = function(_this) {
 	console.log('컬렉션 초기화 전');
@@ -375,7 +335,6 @@ type onCleared = (_this: object)=> {};
 ```
 - \_this : 현재 컬렉션 객체입니다.
 
-#### 예제
 ```js
 myCollection.onCleared = function(_this) {
 	console.log('컬렉션 초기화 후');
@@ -393,7 +352,6 @@ type onChanging = (idx: number, elem: any, _this: object) => void;
 - elem : 변경할 요소입니다.
 - \_this : 현재 컬렉션 객체입니다.
 
-#### 예제
 ```js
 myCollection.onChanging = function(idx, elem, _this) {
 	console.log(`요소 변경 전: 인덱스 ${idx}, 요소 ${elem}`);
@@ -411,11 +369,9 @@ type onChanged = (idx: number, elem: any, _this: object) => void;
 - elem : 변경된 요소입니다.
 - \_this : 현재 컬렉션 객체입니다.
 
-#### 예제
 ```js
 myCollection.onChanged = function(idx, elem, _this) {
 	console.log(`요소 변경 후: 인덱스 ${idx}, 요소 ${elem}`);
 };
 ```
 
----

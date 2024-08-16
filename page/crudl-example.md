@@ -32,7 +32,7 @@ bm.command['create'].execute();
 	- "user_name, tel" 컬럼값은 `/user` 로 전송합니다.
 - POST 요청을 전송할 경우, `bm.baseConfig.method = 'post'`를 설정합니다.
 
----
+
 ## 읽기 (Read)
 
 Read는 데이터베이스에서 특정 레코드를 조회하는 작업을 의미하며, REST API에서는 GET 요청에 해당합니다.
@@ -56,7 +56,7 @@ bm.command['read'].execute();
 	- "tel" 컬럼값은 `/user` 로 전송합니다.
 - RESTful 요청의 URL 수정은 cbBegin 콜백에서 설정할 수 있습니다.
 
----
+
 ## 수정 (Update)
 Update는 데이터베이스의 기존 레코드를 수정하는 작업을 의미하며, REST API에서는 PUT 또는 PATCH 요청에 해당합니다.
 
@@ -77,7 +77,7 @@ bm.command['update'].execute();
 	- "idx, tel" 컬럼값은 `/user` 로 전송합니다.
 - PATCH 요청을 전송할 경우, `bm.baseConfig.method = 'patch'`를 설정합니다.
 
----
+
 ## 삭제 (Delete)
 
 Delete는 데이터베이스의 특정 레코드를 삭제하는 작업을 의미하며, REST API에서는 DELETE 요청에 해당합니다.
@@ -98,7 +98,7 @@ bm.command['update'].execute();
 	- "idx" 컬럼값은 `/user` 로 전송합니다.
 - DELETE 요청을 전송할 경우, `bm.baseConfig.method = 'delete'`를 설정합니다.
 
----
+
 ## 조회 (List)
 
 List는 데이터베이스에서 여러 레코드를 조회하는 작업을 의미하며, REST API에서는 GET 또는 POST 요청에 해당합니다.
@@ -140,7 +140,7 @@ bm.command['list'].execute();
 
 이와 같이 CRUDL은 전통적인 CRUD 기능에 조회(List)를 추가하여 보다 유연하고 강력한 데이터 조작 기능을 제공합니다. BindModel을 사용하면 이러한 CRUDL 작업을 간편하게 수행할 수 있습니다.
 
----
+
 ## 등록 / 읽기 / 수정 / 삭제 / 조회 예제
 
 다음은 Create, Read, Update, Delete, List 전체 예제를 포함한 예제입니다.
@@ -277,4 +277,3 @@ bm.command['list'].execute();
 
 이 두 가지 예제는 CRUDL 작업을 효율적으로 수행하기 위한 방법을 보여줍니다. 메소드 호출 방식과 서비스 객체 주입 방식을 사용하여 각 명령어를 설정하고 실행하는 방법을 설명하고 있습니다.
 
----

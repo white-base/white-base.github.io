@@ -18,79 +18,16 @@ ajax 통신은 내부적으로 `axios` 모듈을 이용하고 있습니다.
 
 클래스 다이어그램
 
-```mermaid
-classDiagram
-	BindModelAjax o--> BindCommandAjax : command['별칭']
-	BindCommandAjax --> MetaView : valid
-	BindCommandAjax --> MetaView : bind
-	BindCommandAjax --> MetaView : output
-	
-	class BindModelAjax {
-		+command[...]
-		#_baseTable: MetaTable
-		+constructor(svc?)
-		+addCommand(name, outOpt?)
-		+addColumn(column, cmds?, views?)
-    }
-	class BindCommandAjax {
-		+valid: MetaView
-		+bind: MetaView
-		+output: MetaView
-		+constructor(bindModel, outOpt?)
-		+execute()
-		addColumn(column, views?)
-    }
-	class MetaView {
-		#_baseEntity: BaseEntity
-		+constructor(name, baseEntity?)
-		+columns: MetaViewColumnCollection
-		+rows: MetaRowCollection
-	}
-```
+![image-center](/assets/images/bind-rel-diagram-2024-08-16-002203.png){: .align-center}
 
----
 ## 상속 관계
 
 BindModelAjax 을 상속하여 확장하거나 BindModel 을 상속하여 재정의하여 사용자화 할 수 있습니다.
 
 클래스 다이어그램
 
-```mermaid
-classDiagram
-	MetaObject  <|-- BaseBind : 상속
-	BaseBind  <|-- BindModel : 상속
-	BindModel <|-- BindModelAjax : 상속
+![image-center](/assets/images/bind-diagram-2024-08-16-002302.png){: .align-center}
 
-class MetaObject {
-	+ _guid: string
-	+ constructor()
-	+ equal(target): boolean
-	+ instanceOf(target): boolean
-	+ getTypes(): Function[]
-}
-class BaseBind {
-	+ onExecute: Function
-	+ onExecuted: Function
-	+ constructor()
-}
-class BindModel {
-	+ first: MetaTable
-	+ columns: MetaTableColumnCollection
-	+ items: PropertyColleciton
-	+ fn: PropertyColleciton
-	+ command: PropertyColleciton
-	+ constructor()
-	+ addColumn(column, cmds?, views?, bTable?)
-}
-class BindModelAjax {
-	+ url
-	+ constructor(service?)
-	+ addCommand(name, opt?, baseTable?)
-	+ checkSelector(collection?)
-}
-```
-
----
 # 구성요소
 
 ## 속성
@@ -121,7 +58,7 @@ class BindModelAjax {
 | _guid                                                 | 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.                       |
 | _type                                                 | 객체의 생성자 함수. 객체가 생성될 때 사용된 함수입니다.                         |
 
----
+
 
 ## 메소드
 
@@ -145,14 +82,14 @@ class BindModelAjax {
 
 
 
----
+
 ## 이벤트
 | 항목         | 설명                     |
 | ---------- | ---------------------- |
 | onExecute  | execte() 실행 전 이벤트 입니다. |
 | onExecuted | execte() 실행 후 이벤트 입니다. |
 
----
+
 # 세부 설명
 
 ## 주요 속성
@@ -215,12 +152,12 @@ type fn = PropertyCollection;
 type command = PropertyCollection;
 ```
 
-### cmd
+### cmd
 
 > command 의 별칭입니다.
 
 ```ts
-type cmd = PropertyCollection;
+type cmd = PropertyCollection;
 ```
 
 ### columns
@@ -394,7 +331,7 @@ type _type = Function;
 ```
 
 
----
+
 ## 주요 메소드
 
 
@@ -560,7 +497,6 @@ type getTypes = () => Array<Function>;
 ```
 - return : 생성자 함수의 배열을 반환합니다.
 
-#### 예제
 ```js
 const types = obj.getTypes();
 console.log(types); // [Function: MetaObject]
@@ -576,7 +512,7 @@ type instanceOf = (target: object | string) => boolean;
 - target : 확인할 대상 타입 (객체 또는 문자열)입니다.
 - return : 지정된 타입의 인스턴스인지 여부를 반환합니다.
 
----
+
 ## 주요 이벤트
 
 ### onExecute
@@ -598,4 +534,3 @@ type onExecuted = (cmd: BindCommand, result: object) => void;
 - cmd : 실행한 명령 객체입니다.
 - result : 명령 실행 결과 객체입니다.
 
----

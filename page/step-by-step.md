@@ -75,8 +75,8 @@ bm.url = '/user';
 	- gender : 라디오 버튼을 설정 및 가져오는 필터를 사용합니다.
 	- tel: ID 가 'tel' 인 요소와 바인딩되며 전화번호 형식을 검사하는 유효성 검사를 포함합니다.
 - command는 서버와의 상호작용을 정의합니다.
-	- create: 등록관련 command 이며, 완료 시 알림을 표시하는 콜백 함수를 포함합니다.
-- mapping은 아이템과  명령 간의 매핑을 정의합니다.
+	- create: 등록 관련 command 이며, 완료 시 알림을 표시하는 콜백 함수를 포함합니다.
+- mapping은 아이템과  명령 간의 매핑을 정의합니다.
 	- user_name, gender, tel 필드가 create 명령에 어떻게 매핑되는지 설정합니다.
 
 ### 3. 이벤트 등록
@@ -86,7 +86,7 @@ $('#btn_create').click(() => bm.command['create'].execute());
 ```
 - 등록 버튼이 클릭되면 create 명령을 실행합니다.
 
----
+
 ## 고객정보 조회 하기
 
 서버 데이터 예시
@@ -132,7 +132,7 @@ var bm = new BindModelAjax({
 	}
 });
 ```
--  items에 idx 아이템을 추가하여 고객 ID를 저장합니다.
+-  items에 idx 아이템을 추가하여 고객 ID를 저장합니다.
 - command에 read 명령을 추가하여 조회 기능을 정의합니다.
 - mapping에서 idx, user_name, gender, tel 아이템을 read 명령에 매핑합니다.
 
@@ -151,7 +151,7 @@ $(document).ready(function () {
 ```
 - 페이지가 로드될 때 URL에서 idx 값을 가져와 idx 컬럼에 설정하고, read 명령을 실행하여 데이터를 조회합니다.
 
----
+
 ## 고객정보 수정 하기
 
 ### 1. 수정 버튼 추가
@@ -180,7 +180,7 @@ var bm = new BindModelAjax({
 });
 ```
 -  command에 update 명령을 추가하여 수정 기능을 정의합니다.
--  mapping에서 user_name, gender, tel 컬럼을 update 명령과 매핑합니다.
+-  mapping에서 user_name, gender, tel 컬럼을 update 명령과 매핑합니다.
 ### 3. 이벤트 등록
 
 ```js
@@ -188,7 +188,7 @@ $('#btn_update').click(() => bm.command['update'].execute());
 ```
 - 수정 버튼이 클릭되면 update 명령을 실행합니다.
 
----
+
 ## 전체 소스 (조회, 등록, 수정)
 
 ### 1. body  영역
@@ -295,4 +295,3 @@ $(document).ready(function () {
 
 이 코드는 BindModelAjax를 활용하여 간단하고 직관적으로 입력 필드와 명령 간의 바인딩 및 서버와의 상호작용을 설정하는 예시입니다. 고객 정보를 등록, 조회, 수정하는 기능을 구현하는 데 필요한 모든 요소를 포함하고 있으며, 사용자의 입력과 서버 간의 데이터 교환을 효율적으로 처리합니다.
 
----

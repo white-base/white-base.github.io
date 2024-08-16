@@ -94,7 +94,7 @@ type ServiceType = {
 };
 ```
 
-----
+
 # 서비스 객체
 
 ## 기본 영역 구성하기
@@ -141,7 +141,7 @@ var bm = new BindModelAjax({
 		return data;
 	},
 	cbBaseOutput: function(vidw, cmd, res) => { 
-		console.log('기본 응답 출력 콜백'); 
+		console.log('기본 응답 출력 콜백'); 
 	},
 	cbBaseEnd: function(status, cmd, res) => { 
 		console.log('기본 종료 콜백'); 
@@ -178,11 +178,11 @@ bm.cbBaseEnd: function(status, cmd, res) => {
 	console.log('기본 종료 콜백'); 
 };
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 
 기본 구성은 commnad 별로 설정이 가능하며, 기본 구성 보다  'command' 의 우선순위가 높습니다.
 
----
+
 ## 테이블 영역 구성하기
 
 서비스객체의 추가 테이블 정보를 구성합니다. 
@@ -223,9 +223,9 @@ var bm = new BindModelAjax();
 bm.addTable('second');
 bm.addTable('third');
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 
----
+
 ## 아이템 영역 구성하기
 
 서비스객체의 컬럼 원시값을 구성합니다.
@@ -288,7 +288,7 @@ var bm = new BindModelAjax({
 	tables: 'second',
 	
 	// 아이템 생성
-	items: {
+	items: {
 		aa: 'Cat',
 		'second.bb': 10,
 		'second.cc': true,
@@ -303,7 +303,7 @@ var bm = new BindModelAjax({
 			getFilter: () => { return '외부값'; },        // 컬럼의 getFilter 설정
 		},
 		ff: {
-			constraints: { reg: /abc/, msg: '매칭되지 실패!' } // 컬럼의 제약조건 설정
+			constraints: { reg: /abc/, msg: '매칭되지 실패!' } // 컬럼의 제약조건 설정
 		}
 	}
 });
@@ -320,30 +320,30 @@ var bm = new BindModelAjax();
 bm.addTable('second');
 
 // 아이템 생성
-bm.items.add('aa', 'Cat');
-bm.items.add('second.bb', 10);
-bm.items.add('second.cc', true);
-bm.items.add('dd', {
+bm.items.add('aa', 'Cat');
+bm.items.add('second.bb', 10);
+bm.items.add('second.cc', true);
+bm.items.add('dd', {
 	selector: { key: '#U_ID', type: 'value' },
 	setter: function(val) {/*외부에 설정 영역*/},
 	getter: function() { return '외부값'; }, 
 });
-bm.items.add('ee', {
+bm.items.add('ee', {
 	required: true,
 	setFilter: function(val) {/*외부에 설정영역*/},
 	getFilter: function() { return '외부값'; },
 });
-bm.items.add('ff', {
-	constraints: { reg: /abc/, msg: '매칭되지 실패!' }
+bm.items.add('ff', {
+	constraints: { reg: /abc/, msg: '매칭되지 실패!' }
 });
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 
 또한 items 은 여러 테이블에 동일한 컬럼을 등록할 때 유용하게 데이터를 관리할 수 있습니다.
 
 
 
----
+
 ## 명령 영역 구성하기
 
 서비스객체의 command 정보를 구성합니다.
@@ -436,9 +436,9 @@ bm.commmand['read'].cbEnd = {
 bm.commmand['update'].newOutput('two');
 bm.commmand['update'].url = '/user';
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 
----
+
 ## 매핑 영역 구성하기
 
 서비스객체에서 items 과 'command' 의 매핑을 구성합니다.
@@ -546,11 +546,11 @@ bm.setMapping({
 	'second.cc': { two: ['output'] }  // 'two' 명령의 'output' 뷰에 'cc' 등록
 })
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 
 각 명령의 특정 뷰에 필요한 컬럼들을 효율적으로 매핑할 수 있으며, 이를 통해 데이터 처리의 일관성을 유지하고 관리의 편의성을 높일 수 있습니다.
 
----
+
 ## 함수 영역 구성하기
 
 서비스객체의 사용자함수를 구성합니다.
@@ -624,11 +624,11 @@ $('#btn_create').click(function() {
 	bm.fn.execCreate();  // 외부에서 함수 접근
 });
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 
 각각 영역은 결합도를 높이고, 재사용성과 유지보수성을 높일 수 있습니다.
 
----
+
 
 ## 전처리 영역 구성하기
 
@@ -656,7 +656,7 @@ type preReady = (bindModel) => void;
 var bm = new BindModelAjax({
 	preRegister: function(bindModel) { 
 		// 전처리 : 검사전
-	},
+	},
 	preCheck: function(bindModel) {
 		// 전처리 : 검사
 		if (bm.checkSelector().length === 0) return true;
@@ -695,11 +695,11 @@ $(document).ready(function () {
 });
 
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 
 전처리 영역은 자동화가 필요할 경우 활용할 수 있습니다.
 
----
+
 # 기능
 
 ## 서비스 객체 주입하기
@@ -782,7 +782,7 @@ var bm = new BindModelAjax();  // 파라메터를 통한 주입
 bm2.setService(svcItems);
 bm2.setService(svcCommon);
 ```
-- 위의 구성한 서비스 객체와 동일합니다.
+- 위의 구성한 서비스 객체와 동일합니다.
 - 첫번째 setService() 메소드 호출에서는 items, fn 을 서비스를 설정합니다.
 - 두번째 setService() 메소드 호출에서는 command, mapping 등 서비스를 설정합니다.
 
@@ -791,7 +791,7 @@ bm2.setService(svcCommon);
 'items', 'fn' 영역 다른 영역에 대한 의존성이 낮습니다.
 서비스 객체를 통해 공통 설정을 관리하고, 재사용성을 높일 수 있습니다. 
 
----
+
 
 ## 서비스 클래스로 정의하기
 
@@ -878,9 +878,8 @@ member.html
 </script>
 ```
 - 페이지를 준비가 되면 init() 메소드 호출되어 preReady 에서  selector 유효성 검사를 합니다.
-- '추가' 버튼 클릭시 command.create.execute() 실행하여, 서버요청 결과를 화면에 바인딩합니다.
+- '추가' 버튼 클릭시 command.create.execute() 실행하여, 서버요청 결과를 화면에 바인딩합니다.
 
 화면의 paging 처리 같은 공통 부분을 관리하기에 용이합니다.
 
 
----

@@ -48,7 +48,7 @@ sidebar:
 - addCommand() : `BindCommand` 객체를 생성합니다.
 - addTable() : `MetaTable` 객체를 추가합니다.
 - setService() : 서비스 객체를 주입하여 `BindModel`  객체를 구성합니다.
-- checkSelector() :  'selector' 객체로 DOM 유효성검사합니다.
+- checkSelector() :  'selector' 객체로 DOM 유효성 검사합니다.
 - getSelector() : 'selector' 객체 목록을 가져옵니다.
 - addColumn() : `HTMLColumn` 객체를 추가합니다.
 - addColumnValue() : `HTMLColumn` 객체를 추가하고, 'value' 값을 설정합니다.
@@ -57,7 +57,7 @@ sidebar:
 
 `BindModelAjax` 는 다목적 프레임워크로, 다양한 명령과 테이블, 컬럼을 유연하게 추가하고 관리할 수 있는 기능을 제공합니다. 이 문서를 통해 이 클래스의 주요 기능과 콜백을 숙지하여 효과적으로 사용할 수 있습니다.
 
----
+
 
 ## 서버 요청 설정하기
 
@@ -99,7 +99,7 @@ bm.baseConfig.headers.post['Content-Type'] = 'application/json';
 - timeout : 요청의 최대 대기 시간을 설정합니다.
 - headers : 요청 시 사용할 기본 헤더를 설정합니다. 예를 들어, 인증 토큰을 설정하거나 콘텐츠 유형을 지정할 수 있습니다.
 
----
+
 ## 실행 이벤트 설정하기
 
 모든 명령의 execute() 실행 시 호출되는 전역 이벤트입니다.
@@ -129,7 +129,7 @@ bm.command['read'].execute();
 // model 에서 onExecuted 호출
 ```
 
----
+
 ## 오류 및 실패 처리하기
 
 ### 오류 처리
@@ -160,9 +160,9 @@ bm.cbError = function(msg, status, res) {
 type cbFail = (msg: string, valid: MetaView) => void;
 ```
 
-'cbFail' 발생 시점은 execute() 메소드 실행되어
+'cbFail' 발생 시점은 execute() 메소드 실행되어
 -  `valid(MetaView)` 유효성 검사가 실패한 경우 호출됩니다.
-- 'cbValid' / 'cbBaseValid' 콜백함수에서 false 반환한 경우 호출됩니다.
+- 'cbValid' / 'cbBaseValid' 콜백함수에서 false 반환한 경우 호출됩니다.
 
 ```js
 var bm = new BindModelAjax();
@@ -173,10 +173,10 @@ bm.cbFail = function(msg, valid) {
 ```
 - 'cbFail' 의 기본값을 객체생성시 제공됩니다.
 
----
+
 ## 흐름 제어하기 (hooking)
 
-execute() 실행시 순차적으로 콜백함수가 호출되어흐름을 제어할 수 있습니다. 
+execute() 실행시 순차적으로 콜백함수가 호출되어 흐름을 제어할 수 있습니다. 
 
 [[41. 콜백 라이프사이클-B| 참조 : 콜백 라이프사이클]]
 
@@ -204,7 +204,7 @@ bm.cbBaseBegin = function(cmd) {
 
 execute() 실행시 `valid(MetaView)` 에 대한 유효성 검사 전에 호출되는 콜백입니다.
 대상 'cbValid' 이 'cbBaseValid' 콜백보다 우선순위가 높습니다.
-리턴값이 false 이면 'cbFail' 콜백 호출되고 종료합니다.
+리턴값이 false 이면 'cbFail' 콜백 호출되고 종료합니다.
 타입 : cbBaseValid
 ```ts
 type cbBaseValid = (valid: MetaView, cmd: BindCommand) => boolean;
@@ -327,7 +327,7 @@ bm.cbBaseEnd = function(views) {
 };
 ```
 
----
+
 ## 명령 추가하기
 
 addCommand() 메소드를 호출해서 `BindCommand` 객체를 생성합니다.
@@ -337,13 +337,13 @@ addCommand() 메소드를 호출해서 `BindCommand` 객체를 생성합니다.
 ```ts
 function addCommand(cmdName: string, outOpt?: number = 0, bTable?: string | MetaTable): BindCommand;
 ```
-- 'cmdName' 의 `BindCommand` 의 별칭을 지정하고 출력옵션으로 추가합니다. (기본값 outOpt = 0)
+- 'cmdName' 의 `BindCommand` 의 별칭을 지정하고 출력옵션으로 추가합니다. (기본값 outOpt = 0)
 - bTable 을 지정하면, 추가한 `BindCommand` 의 '\_baseTable' 이 설정됩니다.
 
 ```js
 var bm = new BindModelAjax();
 
-bm.addCommand('create');
+bm.addCommand('create');
 bm.addCommand('read', 3);
 
 // bm.command['create'] instanceof BindCommand
@@ -361,29 +361,29 @@ var bm = new BindModelAjax();
 
 bm.addTable('second');
 
-bm.addCommand('list', 1, 'second');
-bm.addCommand('edit', 3, bm.second);
+bm.addCommand('list', 1, 'second');
+bm.addCommand('edit', 3, bm.second);
 
 // bm.command['list']._baseTable === bm.second
 // bm.command['edit']._baseTable === bm.second
 ```
 - `BindCommand` 추가시 `MetaTable` 을 지정하면 모든 `MetaView` 는 'baseTable' 이 설정됩니다.
 
----
+
 ## 컬럼 추가하기
 
 컬럼을 추가합니다.
 
 타입 : addColumn(), addColumnValue()
 ```ts
-type addColumn = (
+type addColumn = (
 	colName: string, 
 	cmds?: string | string[], 
 	views?: string | string[], 
 	bTable?: string | MetaTable
 ) => BindCommand;
 
-type addColumnValue = (
+type addColumnValue = (
 	colName: string, 
 	value: any, 
 	cmds?: string | string[], 
@@ -453,7 +453,7 @@ bm.addColumn('cc', '$all', 'output');
 ```js
 var bm = new BindModelAjax();
 // 테이블 및 명령 추가
-bm.addTable('second');
+bm.addTable('second');
 bm.addCommand('cmd1');
 // 컬럼 추가 및 매핑
 bm.addColumn('aa', 'cmd1', 'valid');
@@ -471,7 +471,7 @@ bm.addColumn('bb', 'cmd1', 'bind', 'second');
 - 'aa' 이름의 컬럼은 기본 테이블에 추가하고  지정한 `MetaView(valid)` 에 매핑됩니다.
 - 'bb' 이름의 컬럼은 `second(MetaTable)`에 추가하고  지정한 `MetaView(bind)`에 매핑됩니다.
 
----
+
 
 ## 테이블 추가하기
 
@@ -517,7 +517,7 @@ bm.command['cmd1'].addColumn('bb');
 - B : '\_baseTable' 을 지정하여 기본테이블을 `second(MetaTable)`로 변경하였습니다.
 - C : addCommand() 메소드에서  'cmd1' 의 '\_baseTable' 을 'three' 로 지정하였습니다.
 
----
+
 
 ## 전역 아이템 설정하기 (global column)
 
@@ -530,7 +530,7 @@ bm.command['cmd1'].addColumn('bb');
 
 ### 아이템 추가
 
-아이템의 추가하는 방법으로는 items 컬렉션에서 추가하는 방법과, 서비스객체에서 추가할 수 있습니다.
+아이템의 추가하는 방법으로는 items 컬렉션에서 추가하는 방법과, 서비스객체에서 추가할 수 있습니다.
 
 [[25. 서비스 객체 구성-C#아이템 영역 구성하기| 참조 : 서비스객체의 아이템 구성하기]]
 타입 : items.add()
@@ -557,7 +557,7 @@ type add = (itemName: string, iType: ValueType) => void;
 ```js
 var bm = new BindModelAjax();
 // 아이템 추가
-bm.items.add('col1', 1);
+bm.items.add('col1', 1);
 bm.items.add('col2', '');
 bm.items.add('col3', { columnName: 'newCol3'});
 bm.items.add('col4', {selector: { key:'#ID', type: 'value'}});
@@ -593,7 +593,7 @@ bm.items.add('item3', {selector: { key:'input[name=gender]', type: 'none'}});
 // 셀렉터 검사
 bm.checkSelector(); // 빈배열은 검사 성공
 ```
-- checkSelector() 메소드는'items' 의 'selector' 값이 유효한지 검사합니다.
+- checkSelector() 메소드는 'items' 의 'selector' 값이 유효한지 검사합니다.
 
 preCheck 콜백함수를 통해서 서비스객체 주입시 DOM 유효성 검사를 자동으로 처리할 수 있습니다.
 [[25. 서비스 객체 구성-C | 참조 : 서비스객체 구성]]
@@ -601,7 +601,7 @@ preCheck 콜백함수를 통해서 서비스객체 주입시 DOM 유효성 검�
 ```js
 var bm = new BindModelAjax();
 
-bm.columns.add('item1', {selector: { key:'#user_name', type: 'value'}});
+bm.columns.add('item1', {selector: { key:'#user_name', type: 'value'}});
 bm.columns.add('item2', {selector: { key:'.sub_name', type: 'text'}});
 bm.columns.add('item3', {selector: { key:'input[name=gender]', type: 'none'}});
 
@@ -610,7 +610,7 @@ bm.checkSelector(bm.columns, true);  // 실패한시 selector 객체 목록
 - DOM 에서 해당 요소가 존재하는지 검사합니다.
   `< ... id="user_name">, \< ... class="sub_name">, \<input name="gender"... >`
 
----
+
 ## 셀렉터 조회하기(selector)
 
 'items' 컬렉션의 'selector' 목록을 얻습니다.
@@ -628,12 +628,11 @@ type getSelector = (
 ```js
 var bm = new BindModelAjax();
 
-bm.columns.add('item1', {selector: {key:'#ID1', type: 'value'}});
+bm.columns.add('item1', {selector: {key:'#ID1', type: 'value'}});
 bm.columns.add('item2', {selector: {key:'#ID2', type: 'text'}});
 
 bm.getSelector();
-// [{key:'#ID1', type: 'value'}, {key:'#ID2', type: 'text'}]
+// [{key:'#ID1', type: 'value'}, {key:'#ID2', type: 'text'}]
 ```
 - 지정한 컬렉션의 'selector' 의 목록을 얻을 수 있습니다.
 
-----

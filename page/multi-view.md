@@ -28,7 +28,7 @@ bm.addCommand('test');
 ```
 - 여기서 output과 output1은 동일한 MetaView를 참조합니다.
 
----
+
 ## output (MetaView) 추가
 
 타입 : newOutput
@@ -79,7 +79,7 @@ bm.cmd['test'].addColumn('aa');
 ```
 - 추가된 'newOutput' 에 추가한 'aa' 컬럼이 추가됩니다.
 
----
+
 ## output (MetaView) 제거
 
 타입 : removeOutput
@@ -108,4 +108,3 @@ bm.cmd['test'].removeOutput('three');
 
 위의 예제와 설명을 통해 멀티뷰 기능을 사용하여 여러 개의 MetaView를 추가하거나 제거하는 방법을 이해할 수 있습니다. 이는 서버에서 수신한 여러 데이터를 관리하고 처리하는 데 유용합니다.
 
----

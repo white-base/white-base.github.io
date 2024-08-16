@@ -11,7 +11,7 @@ sidebar:
 
 BindModel의 핵심은 MetaTable과 MetaView의 조합으로 이루어져 있습니다. 이 두 가지 요소는 BindModel의 기능을 구성하는 중요한 기반이며, 실 프로젝트에서 중복을 최소화하고 다양한 사례를 수용할 수 있도록 설계되었습니다.
 
----
+
 ## MetaTable 클래스
 
 MetaTable 클래스는 데이터를 테이블 형식으로 쉽게 표현하고 다양한 기능을 제공합니다. 이 클래스는 .NET의 DataTable과 유사한 기능을 제공하여, .NET 경험자들이 익숙하게 사용할 수 있습니다. MetaTable은 컬럼과 행을 관리하는 두 가지 주요 속성(columns와 rows)을 통해 데이터를 효율적으로 처리할 수 있습니다.
@@ -59,7 +59,7 @@ table1.rows.add(row);
 ```
 - rows 컬렉션에 추가된 MetaRow는 연속된 인덱스를 제공합니다.
 
----
+
 
 ## MetaView 클래스
 
@@ -102,7 +102,7 @@ view1.columns.add('gender', table1);
 ```
 - '\_baseEntity' 대상이 `MetaView` 일 경우 순환규칙을 따르게됩니다.
 
----
+
 ## HTMLColumn 클래스
 
 HTMLColumn은 MetaColumn의 자식 클래스이며, HTML 요소와 데이터를 연동하는 기능을 제공합니다. 특히 value 속성을 통해 컬럼의 현재 값을 관리할 수 있으며, 다양한 프로퍼티를 통해 값의 설정과 조회를 유연하게 제어할 수 있습니다. HTMLColumn의 주요 프로퍼티로는 selector, setter/getter, setFilter/getFilter 등이 있습니다.
@@ -234,7 +234,7 @@ column.value = 2;
 // <input type="checkbox" name="action_yn" value="2"/>
 // column.$value == 2
 ```
-- setFilter 의 매개변수는 setter 가 반환값이 전달하고, 반환값이 없으면내부값을 전달합니다.
+- setFilter 의 매개변수는 setter 가 반환값이 전달하고, 반환값이 없으면내부값을 전달합니다.
 
 예제 : setter 와 selector 설정 시 
 ```js
@@ -264,7 +264,7 @@ column.value = 2;
 setter 와 setFilter 는 비슷한 역할을 하지만, 차이가 있습니다. setter는 단일 값을 설정하는 데 사용되고, setFilter는 내부 값(원시값)을 기반으로 여러 HTMLElement의 값을 설정하거나 가공하는 역할을 합니다.
 예를 들어, 통화 단위를 표현할 때, 내부 값이 1000 이라면 화면에는 ‘1,000’으로 출력하는 식입니다.
 
----
+
 ## BindModel 구조의 이해
 
 BindModel 은 하나의 MetaTable(이름: first)을 자동으로 생성하며, 이 구조 내에서 추가된 각 BindCommand 객체는 세 개의 MetaView(valid, bind, output)를 포함합니다.
@@ -305,4 +305,3 @@ cmd1.output.columns.add('bb');
 
 BindModelAjax에서 execute() 메소드를 실행하면, MetaTable과 MetaView의 구조에 따라 컬럼과 데이터가 설정됩니다. 이 과정을 통해 다양한 사용자 요구사항에 맞게 커스터마이징할 수 있습니다.
 
----

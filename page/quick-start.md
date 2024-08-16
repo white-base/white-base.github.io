@@ -27,7 +27,7 @@ BindModel은 웹과 Node.js 환경에서 작동하는 프론트엔드 프레임�
 
 ![image-left](/assets/images/image-alignment-150x150.jpg){: .align-left} The rest of this paragraph is filler for the sake of seeing the text wrap around the 150×150 image, which is **left aligned**. There should be plenty of room above, below, and to the right of the image. Just look at him there --- Hey guy! Way to rock that left side. I don't care what the right aligned image says, you look great. Don't let anyone else tell you differently.
 
----
+
 ## 설치
 
 ### npm 을 이용한 설치
@@ -47,7 +47,7 @@ npm install logic-bind-model
 ```
 
 
----
+
 ## 사용
 
 BindModelAjax 는 프레임워크의 핵심 객체입니다.
@@ -83,7 +83,7 @@ const bm = new BindModelAjax();
 </script>
 ```
 
----
+
 ## 패키징
 
 BindModelAjax는 axios 와 jQuery 모듈에 의존하여 서버와의 비동기 통신 및 DOM 조작을 수행합니다. 이러한 의존성을 반영하여 다양한 배포 패키지를 제공합니다.
@@ -108,6 +108,6 @@ BindModelAjax는 axios 와 jQuery 모듈에 의존하여 서버와의 비동기 
   {{ notice-text | markdownify }}
 </div>
 
----
+
 
 
