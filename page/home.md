@@ -32,11 +32,9 @@ feature_row:
     excerpt: "BindModel은 MVC 패턴의 Controller 역할을 수행하며, View와 완전히 분리되어 있어 화면의 교체와 관리가 매우 용이합니다."
     url: "/docs/api-html-column/#column-의-value-얻기"
     btn_class: "btn--primary"
-    btn_label: "Learn more"      
+    btn_label: "Learn more"         
 ---
 
 {% include feature_row %}
 
 ![image-left](/assets/images/image-alignment-150x150.jpg){: .align-left} The rest of this paragraph is filler for the sake of seeing the text wrap around the 150×150 image, which is **left aligned**. There should be plenty of room above, below, and to the right of the image. Just look at him there --- Hey guy! Way to rock that left side. I don't care what the right aligned image says, you look great. Don't let anyone else tell you differently.
-
-
