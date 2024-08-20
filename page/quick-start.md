@@ -43,7 +43,7 @@ npm install logic-bind-model
 브라우저 환경에서는 BindModel 을 CDN을 통해 사용할 수 있습니다.
 
 ```html
-<script src="https://cdn.example.com/bind-model.min.js"></script>
+<script src="https://unpkg.com/logic-bind-model/dist/bindmodel.pack.js"></script>
 ```
 
 
@@ -77,7 +77,7 @@ const bm = new BindModel();
 
 예제 : HTML 환경에서 사용
 ```html    
-<script src="https://unpkg.com/logic-bind-model@1.0.3/dist/bindmodel.min.js"></script>
+<script src="https://unpkg.com/logic-bind-model/dist/bindmodel.pack.js"></script>
 <script>
 	const bm = new _L.BindModel();
 </script>
@@ -88,11 +88,11 @@ const bm = new BindModel();
 
 BindModel는 axios 와 jQuery 모듈에 의존하여 서버와의 비동기 통신 및 DOM 조작을 수행합니다. 이러한 의존성을 반영하여 다양한 배포 패키지를 제공합니다.
 
-### bind-model.pack.js
+### bindmodel.pack.js
 
 이 패키지는 BindModel와 함께 axios와 jQuery 라이브러리를 포함하고 있습니다. 이 패키지는 외부에서 별도로 axios나 jQuery를 설치하지 않아도, bind-model.pack.js 하나만으로 모든 기능을 사용할 수 있습니다. 
 
-### bind-model.js
+### bindmodel.js
 
 이 패키지는 BindModel 만을 포함하고 있으며, axios와 jQuery는 포함되지 않습니다. 이 패키지를 사용할 경우, 외부에서 axios와 jQuery를 이미 포함하고 있거나, 별도로 관리하고 있을 때 유용합니다.
 
