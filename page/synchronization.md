@@ -20,7 +20,7 @@ type execute () => Promise<void>;
 
 다음 코드는 'read_member' 라는 명령을 실행하고, 해당 명령이 완료된 후에 알림을 표시합니다.
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('read_member', 3);
 // ... 컬럼 설정 생략
@@ -41,7 +41,7 @@ async function readView() {
 
 다음 코드는 read_meb와 read_corp라는 두 개의 명령을 순차적으로 실행합니다.
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('read_meb', 3);
 bm.addCommand('read_corp', 3);
@@ -66,7 +66,7 @@ async function readView() {
 명령을 순차적으로 실행하는 대신 동시에 실행해야 하는 경우, Promise.all을 사용할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('read_meb', 3);
 bm.addCommand('read_corp', 3);

@@ -1,5 +1,5 @@
 ---
-title: "BindCommandAjax 클래스"
+title: "BindCommand 클래스"
 layout: single
 permalink: /docs/api-bind-command-ajax/
 date: 2011-06-23T1
@@ -13,7 +13,7 @@ sidebar:
 
 ## 속성 관계
 
-BindCommandAjax 객체는 *valid, bind, output* 속성의 MetaView을 포함하고 있습니다.
+BindCommand 객체는 *valid, bind, output* 속성의 MetaView을 포함하고 있습니다.
 `output` 속성은 `_outputs`(MetaViewCollection)의 객체의 속성 `output1` 을 참조합니다.
 newOutput(name?) 메소드를 통해서 view 추가할 수 있습니다. `_outputs` 에  "output + 순번"
 이름으로 컬렉션이 추가됩니다.
@@ -24,7 +24,7 @@ newOutput(name?) 메소드를 통해서 view 추가할 수 있습니다. `_outpu
 
 ## 상속 관계
 
-BindCommandAjax 을 상속하여 확장하거나 BindCommand 을 상속하여 재정의하여 사용자화 할 수 있습니다.
+BindCommand 을 상속하여 확장하거나 BindCommand 을 상속하여 재정의하여 사용자화 할 수 있습니다.
 
 ![image-center](/assets/images/cmd-diagram-2024-08-16-004352.png){: .align-center}
 
@@ -136,7 +136,7 @@ bind.columns 컬렉션의 컬럼명과 컬럼값은 서버로 전송(요청)합�
 
 내부 작동 구조
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.url = '/user'
 bm.addCommand('test');
 bm.cmd['test'].addColumnValue('user_name', '홍길동');
@@ -292,7 +292,7 @@ type execute = () => Promise<void>;
 - return : 실행 결과를 나타내는 `Promise` 객체입니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test1');
 bm.addCommand('test2');

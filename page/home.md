@@ -24,7 +24,7 @@ feature_row:
     title: "generalization of entities"
     excerpt: "BindModel은 모든 데이터를 엔티티(MetaTable, MetaView)로 관리하여 구조화된 데이터 처리를 지원합니다. 이를 통해 데이터 관리를 일관되고 효율적으로 수행할 수 있습니다."
     url: "/docs/core/"
-    btn_class: "btn--primary"
+    btn_class: "btn--primary" 
     btn_label: "Learn more"
   - image_path: /assets/images/mm-free-feature.png
     alt: "MVC Patterns"

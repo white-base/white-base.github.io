@@ -16,7 +16,7 @@ CRUDL은 전통적인 데이터 처리 기능인 Create, Read, Update, Delete에
 Create는 데이터베이스에 새로운 레코드를 삽입하는 작업을 의미하며, REST API에서는 POST 요청에 해당합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // url 설정 및 command 생성
 bm.url = '/user'
 bm.addCommand('create');
@@ -38,7 +38,7 @@ bm.command['create'].execute();
 Read는 데이터베이스에서 특정 레코드를 조회하는 작업을 의미하며, REST API에서는 GET 요청에 해당합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // command 생성
 bm.addCommand('read', 3);
 // 컬럼 추가
@@ -61,7 +61,7 @@ bm.command['read'].execute();
 Update는 데이터베이스의 기존 레코드를 수정하는 작업을 의미하며, REST API에서는 PUT 또는 PATCH 요청에 해당합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // url 설정 및 command 생성
 bm.url = '/user'
 bm.addCommand('update');
@@ -83,7 +83,7 @@ bm.command['update'].execute();
 Delete는 데이터베이스의 특정 레코드를 삭제하는 작업을 의미하며, REST API에서는 DELETE 요청에 해당합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // url 설정 및 command 생성
 bm.url = '/user';
 bm.addCommand('delete');
@@ -113,7 +113,7 @@ List는 데이터베이스에서 여러 레코드를 조회하는 작업을 의�
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // url 설정 및 command 생성
 bm.url = '/user/list'
 bm.addCommand('list', 2);
@@ -159,7 +159,7 @@ bm.command['list'].execute();
 
 예제 : 메소드 호출 방식
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // url 설정
 bm.url = '/user'
@@ -217,7 +217,7 @@ bm.command['list'].execute();
 
 예제 : 서비스객체 주입 방식
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	url: '/user',
 	items: {
 		user_name: '',

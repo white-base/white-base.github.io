@@ -9,16 +9,16 @@ sidebar:
   nav: "docs"
 ---
 
-BindModelAjax 객체는 기본적으로 ‘first’라는 이름의 MetaTable을 자동 생성하여 사용합니다. 필요에 따라 다른 MetaTable을 추가할 수 있으며, 이는 컬럼명이 같지만 속성이 다르거나 특별한 경우에 유용합니다.
+BindModel 객체는 기본적으로 ‘first’라는 이름의 MetaTable을 자동 생성하여 사용합니다. 필요에 따라 다른 MetaTable을 추가할 수 있으며, 이는 컬럼명이 같지만 속성이 다르거나 특별한 경우에 유용합니다.
 
 ## MetaTable 추가
 
 ### addTable() 메소드로 추가
 
-addTable() 메소드를 통해 \_tables 컬렉션에 MetaTable을 추가할 수 있습니다. 이 메소드를 사용하면, BindModelAjax 객체에서 테이블에 접근하기 위한 참조 키를 자동으로 만듭니다.
+addTable() 메소드를 통해 \_tables 컬렉션에 MetaTable을 추가할 수 있습니다. 이 메소드를 사용하면, BindModel 객체에서 테이블에 접근하기 위한 참조 키를 자동으로 만듭니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 
@@ -32,7 +32,7 @@ bm.addTable('second');
 \_tables.add() 메소드를 통해 MetaTable을 추가할 수 있습니다. 이 방법도 유사하게 \_tables 컬렉션에 테이블을 추가하지만, addTable()과는 달리 테이블명 참조 키를 자동으로 생성하지 않습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm._tables.add('second');
 
@@ -46,7 +46,7 @@ bm._tables.add('second');
 추가한 MetaTable을 기본 테이블로 설정하면, 이후에 addColumn() 또는 addCommand()를 사용할 때 기본 테이블이 변경된 테이블로 설정됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm._tables.add('second');
 
@@ -62,7 +62,7 @@ bm.addColumnValue('aa', 10);
 ```
 - `columns` 속성은 `_baseTable`의 columns 을 참조합니다. (columns === \_tabeTable.columns)
 
-이와 같이 BindModelAjax 객체에서 MetaTable을 추가하고 활용할 수 있습니다.
+이와 같이 BindModel 객체에서 MetaTable을 추가하고 활용할 수 있습니다.
 
 
 # 여러 메소드에서 추가한 테이블 지정
@@ -76,7 +76,7 @@ bm.addColumnValue('aa', 10);
 command 추가시 테이블을 지정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 
@@ -93,7 +93,7 @@ bm.addCommand('list', 3, bm.second);
 컬럼 추가 시 테이블을 지정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 bm.addCommand('read');
@@ -109,7 +109,7 @@ bm.addColumn('bb', 'read', '$all', bm.second);
 column 추가 시 초기값을 지정하고 테이블을 설정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 bm.addCommand('read');
@@ -125,7 +125,7 @@ bm.addColumn('bb', 'BB', 'read', '$all', bm.second);
 매핑 시 기본 테이블을 지정할 수 있습니다
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.addTable('second');
 bm.addCommand('read');
 
@@ -147,7 +147,7 @@ bm.setMapping({
 items, mapping 영역에서 테이블명과 조합해서 사용할 수 있습니다.
 
 ```js
-var bm1 = new BindModelAjax({
+var bm1 = new BindModel({
 	tables: ['second', 'three'],
 	items: {
         'aa': '',
@@ -176,7 +176,7 @@ var bm1 = new BindModelAjax({
 컬럼 추가 시 테이블을 지정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 bm.addCommand('read');
@@ -192,7 +192,7 @@ bm.cmd['read'].addColumn('bb', '$all', bm.second);
 column 추가 시 초기값을 설정하고 테이블을 지정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 bm.addCommand('read');
@@ -207,7 +207,7 @@ bm.cmd['read'].addColumn('bb', 'BB', 'read', '$all', bm.second);
 column 설정 시 테이블을 지정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 bm.addCommand('read');

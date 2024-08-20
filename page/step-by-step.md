@@ -9,7 +9,7 @@ sidebar:
   nav: "docs"
 ---
 
-BindModelAjax를 활용하여 고객 정보 등록, 조회, 수정 기능을 처리하는 HTML 제작 과정입니다.
+BindModel를 활용하여 고객 정보 등록, 조회, 수정 기능을 처리하는 HTML 제작 과정입니다.
 
 ## 고객정보 등록 하기
 
@@ -34,7 +34,7 @@ BindModelAjax를 활용하여 고객 정보 등록, 조회, 수정 기능을 처
 ### 2. 아이템 및 명령 설정
 
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	items: {
 		user_name: {
 			selector: { key: '#user_name', type: 'value' },
@@ -113,7 +113,7 @@ $('#btn_create').click(() => bm.command['create'].execute());
 ### 2. items, command, mapping 추가
 
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	items: {
 		idx: {
 			selector: { key: '#idx', type: 'value' },
@@ -164,7 +164,7 @@ $(document).ready(function () {
 ### 2. command 및 mapping 추가
 
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	command: {
 		update: {
 			cbEnd: function() {
@@ -214,7 +214,7 @@ $('#btn_update').click(() => bm.command['update'].execute());
 
 ```html
 <script>
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	items: {
 		idx: {
 			selector: { key: '#idx', type: 'value' },
@@ -293,5 +293,5 @@ $(document).ready(function () {
 </script>
 ```
 
-이 코드는 BindModelAjax를 활용하여 간단하고 직관적으로 입력 필드와 명령 간의 바인딩 및 서버와의 상호작용을 설정하는 예시입니다. 고객 정보를 등록, 조회, 수정하는 기능을 구현하는 데 필요한 모든 요소를 포함하고 있으며, 사용자의 입력과 서버 간의 데이터 교환을 효율적으로 처리합니다.
+이 코드는 BindModel를 활용하여 간단하고 직관적으로 입력 필드와 명령 간의 바인딩 및 서버와의 상호작용을 설정하는 예시입니다. 고객 정보를 등록, 조회, 수정하는 기능을 구현하는 데 필요한 모든 요소를 포함하고 있으며, 사용자의 입력과 서버 간의 데이터 교환을 효율적으로 처리합니다.
 

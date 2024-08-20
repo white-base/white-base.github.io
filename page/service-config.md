@@ -9,9 +9,9 @@ sidebar:
   nav: "docs"
 ---
 
-서비스 객체를 사용하면 `BindModelAjax`객체를 쉽게 생성할 수 있으며, 상속으로 공통 영역을 분리하여 재사용성을 높일 수 있습니다.
+서비스 객체를 사용하면 `BindModel`객체를 쉽게 생성할 수 있으며, 상속으로 공통 영역을 분리하여 재사용성을 높일 수 있습니다.
 
-콜백 함수에서 this.bindModel 속성으로 `BindModelAjax` 객체에 접근할 수 있습니다.
+콜백 함수에서 this.bindModel 속성으로 `BindModel` 객체에 접근할 수 있습니다.
 
 타입 : ServiceType
 ```ts
@@ -121,7 +121,7 @@ type ServiceType = {
 
 예제 : 기본
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	// 기본 서버 요청
 	baseConfig: { method: 'GET' },
 	url: '/user',
@@ -151,7 +151,7 @@ var bm = new BindModelAjax({
 
 예제 : 메소드를 통한 기본 구성
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // 기본 서버 설정
 bm.baseConfig = { method: 'GET', url: '/user' };
@@ -195,11 +195,11 @@ type ServiceType = {
 };
 ```
 
-`BindModelAjax` 객체는 'first' 라는 이름의 `MetaTable`을 자동 생성하여 사용합니다. 추가 테이블을 'tables' 속성으로 설정합니다.
+`BindModel` 객체는 'first' 라는 이름의 `MetaTable`을 자동 생성하여 사용합니다. 추가 테이블을 'tables' 속성으로 설정합니다.
 
 
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
     tables: ['second', 'third']
 });
 
@@ -217,7 +217,7 @@ var bm = new BindModelAjax({
 
 예제 : 메소드를 통한 테이블 구성
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // 테이블 생성
 bm.addTable('second');
@@ -283,7 +283,7 @@ type ServiceType = {
 
 예제 : items
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	// 추가 테이블 생성
 	tables: 'second',
 	
@@ -314,7 +314,7 @@ var bm = new BindModelAjax({
 
 예제 : 메소드를 통한 아이템 구성
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // 추가 테이블 생성
 bm.addTable('second');
@@ -390,7 +390,7 @@ type ServiceType = {
 [[24. 바인드 커멘드 구성-C#콜백(속성)]]
 예제 : command
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	command: {
 		create: {},
 		read: {
@@ -418,7 +418,7 @@ var bm = new BindModelAjax({
 
 예제 : 메소드를 통한 명령 구성
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // 명령 생성
 bm.addCommand('create');
@@ -474,7 +474,7 @@ type ServiceType = {
 
 예제 : mapping
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.setService({
 	// 테이블 영역
 	tables: ['second'],
@@ -524,7 +524,7 @@ type setMapping(
 
 예제 : 메소드를 통한 매핑 구성
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // 추가 테이블 생성
 bm.addTable('second');
@@ -569,7 +569,7 @@ type ServiceType = {
 
 예제 : fn
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	cbBaseBegin: function(cmd) {
 		cmd._model.fn.execCreate();  // cmd 에서 파라메터로 접근
 		this.bindModel.fn.sum(1, 1); // this.bindModel로 접근
@@ -595,11 +595,11 @@ $('#btn_create').click(function() {
 });
 
 ```
-- 콜백함수에서 `파라메터` 또는 `this.bindModel` 속성으로 BindModelAjax 객체에 접근할 수 있습니다.
+- 콜백함수에서 `파라메터` 또는 `this.bindModel` 속성으로 BindModel 객체에 접근할 수 있습니다.
 
 예제 : 메소드를 함수 구성
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // 함수 구성
 bm.fn.add('sum', function(a, b) {return a + b});
@@ -653,7 +653,7 @@ type preReady = (bindModel) => void;
 
 예제 : 전처리
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	preRegister: function(bindModel) { 
 		// 전처리 : 검사전
 	},
@@ -675,8 +675,8 @@ $(document).ready(function () {
 
 예제 : 메소드를 전처리 구성
 ```js
-var bm = new BindModelAjax();
-// BindModelAjax 설정....
+var bm = new BindModel();
+// BindModel 설정....
 
 bm.preRegister = function(bindModel) { 
 	// 전처리 : 검사전
@@ -704,7 +704,7 @@ $(document).ready(function () {
 
 ## 서비스 객체 주입하기
 
-`BindModelAjax` 객체를 생성할 때 파라미터 전달하거나, setService() 메소드를 호출하여 서비스 객체를 주입할 수 있습니다. 
+`BindModel` 객체를 생성할 때 파라미터 전달하거나, setService() 메소드를 호출하여 서비스 객체를 주입할 수 있습니다. 
 
 타입 : setService()
 ```ts
@@ -717,7 +717,7 @@ setService() 메소드로 사용은 서비스객체 분리하여 코드의 가�
 
 예제 : 생성자를 통한 주입
 ```js
-var bm1 = new BindModelAjax({
+var bm1 = new BindModel({
 	items: {
         aa: 'Cat',
         bb: 10,
@@ -777,7 +777,7 @@ var svcCommon = {
     },
 };
 
-var bm = new BindModelAjax();  // 파라메터를 통한 주입
+var bm = new BindModel();  // 파라메터를 통한 주입
 
 bm2.setService(svcItems);
 bm2.setService(svcCommon);
@@ -859,12 +859,12 @@ member.html
 </div>
 <button id="btn_Create" type="button">추가</button>
 
-<script src="BindModelAjax.js"></script>
+<script src="BindModel.js"></script>
 <script src="common-svc"></script>
 <script src="member-svc"></script>
 <script>
 
-	var meb = new _L.BindModelAjax(new MemberService());
+	var meb = new _L.BindModel(new MemberService());
 	
 	meb.url = 'http://SEVER_URL';  // 요청경로를 설정합니다.
 	meb.preReady = function(bindModel) {

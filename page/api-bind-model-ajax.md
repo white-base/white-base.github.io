@@ -1,5 +1,5 @@
 ---
-title: "BindModelAjax 클래스"
+title: "BindModel 클래스"
 layout: single
 permalink: /docs/api-bind-model-ajax/
 date: 2024-08-14T1
@@ -12,7 +12,7 @@ sidebar:
 # 주요 구조
 ## 속성 관계
 
-BindModelAjax 객체를 생성하고 *addCommmand()* 메소드로 BindCommandAjax 객체를 생성합니다.
+BindModel 객체를 생성하고 *addCommmand()* 메소드로 BindCommand 객체를 생성합니다.
 생성된 `command['별칭']` 에는 *valid, bind, output* 속성값의  MetaView 가 있습니다.
 ajax 통신은 내부적으로 `axios` 모듈을 이용하고 있습니다.
 
@@ -22,7 +22,7 @@ ajax 통신은 내부적으로 `axios` 모듈을 이용하고 있습니다.
 
 ## 상속 관계
 
-BindModelAjax 을 상속하여 확장하거나 BindModel 을 상속하여 재정의하여 사용자화 할 수 있습니다.
+BindModel 을 상속하여 확장하거나 BindModel 을 상속하여 재정의하여 사용자화 할 수 있습니다.
 
 클래스 다이어그램
 
@@ -37,7 +37,7 @@ BindModelAjax 을 상속하여 확장하거나 BindModel 을 상속하여 재정
 | baseConfig                                            | 바인딩 기본 config을 설정합니다.                                    |
 | url                                                   | 바인딩 기본 config.url을 설정합니다.                                |
 | \_tables                                              | 메타 테이블 컬렉션입니다. 여러 메타 테이블을 관리합니다.                         |
-| [[52. BindModelAjax 클래스-B#_columnType\| _columnType]] | 아이템 타입을 설정합니다.                                           |
+| [[52. BindModel 클래스-B#_columnType\| _columnType]] | 아이템 타입을 설정합니다.                                           |
 | items                                                 | 아이템 컬렉션입니다.                                              |
 | fn                                                    | 바인드모델 함수 컬렉션입니다. (내부함수 + 노출함수)                           |
 | command                                               | 바인딩 명령 컬렉션입니다.                                           |

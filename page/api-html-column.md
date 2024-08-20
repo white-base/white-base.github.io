@@ -442,7 +442,7 @@ HTMLComun 설계시 사용빈도를 분석하여
 HTML 요소의 속성값을 value 로 선택할 사용합니다.
 selector 의 `type` 은 html, text, value, prop.\*, attr.\*, css.\* 이 있습니다.
 또한 selector 은 value 조회/설정 이외에 유효성 검사에 사용할 수 있습니다.
-BindModelAjax 객체의 checkSelector() 메소드를 통해서 DOM 에 유효성 검사 여부에 활용합니다.
+BindModel 객체의 checkSelector() 메소드를 통해서 DOM 에 유효성 검사 여부에 활용합니다.
 
 ```html
 <div id="p-nm"><p style="color:red;">10</p></div>
@@ -547,7 +547,7 @@ c2.value; // 'female'
 ## 서비스 객체를 설정
 
 ```js
-var bm = new BindModelAjax({
+var bm = new BindModel({
 	// selector 만 사용하는 경우
 	area_page:     { selector: { key: '#area-page',   type: 'html' } },
 	txt_sumCnt:    { selector: { key: '#sumCnt',      type: 'text' } },

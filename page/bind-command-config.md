@@ -59,7 +59,7 @@ sidebar:
 'url' 은 서버에 요청하는 url 경로 입니다. 값이 없으면 'baseUrl' 으로 대체됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('cmdA');
 bm.addCommand('cmdB');
@@ -71,7 +71,7 @@ bb.command['cmdB'].url = '/list';
 
 #### 동적 url 설정하기
 
-때로는 특정 작업(command)에 따라 요청 경로(url)를 동적으로 변경해야 할 때가 있습니다. BindModelAjax 객체의 콜백 함수를 통해서 쉽게 설정할 수 있습니다.
+때로는 특정 작업(command)에 따라 요청 경로(url)를 동적으로 변경해야 할 때가 있습니다. BindModel 객체의 콜백 함수를 통해서 쉽게 설정할 수 있습니다.
  ```js
  var idx = 1;
  bb.command['cmdA'].cbBegin = function(cmd) {
@@ -102,7 +102,7 @@ type onExecuted = (model: BindModel, cmd: BindCommand) => void;
 이 이벤트 타입들은 BindModel과 BindCommand 객체를 인자로 받아 다양한 작업을 수행할 수 있게 합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('read');
 // 전역 이벤트 설정
@@ -159,7 +159,7 @@ type cbBegin = (cmd: BindCommand) => void;
 - url 및 config 의 정보 설정에 활용됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 명령 추가
 bm.addCommand('list');
 // 콜백 설정
@@ -182,7 +182,7 @@ type cbValid = (valid: MetaView, cmd: BindCommand) => boolean;
 - 사용자에게 처리결과를 확인하는 용도로 활용됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 명령 추가
 bm.addCommand('list');
 // 콜백 설정
@@ -294,7 +294,7 @@ bm.command['list'].cbEnd = function(views) {
 
 ## 출력 옵션 설정하기
 
-`BindCommandAjax` 에 제공되는 `output(MetaView)`외에 추가 `MetaView` 를 지정할 수 있습니다.
+`BindCommand` 에 제공되는 `output(MetaView)`외에 추가 `MetaView` 를 지정할 수 있습니다.
 
 타입 : outputOption
 ```ts
@@ -310,20 +310,20 @@ type outputOption = { option: number, index: number }`;
 객체를 생성할 때 outputOption 파라미터를 전달하여 설정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
-var bc1 = new BindCommandAjax(bm, 1);
-var bc2 = new BindCommandAjax(bm, { option: 1, index: 1 });
+var bc1 = new BindCommand(bm, 1);
+var bc2 = new BindCommand(bm, { option: 1, index: 1 });
 ```
 - 'bc1.outputOption' 값은 `{option:1, index: 0}` 입니다.
 - 'bc2.outputOption' 값은 `{option:1, index: 1}` 입니다.
 
 ### addCommand() 에서 설정
 
-`BindModelAjax` 객체의 addCommand() 메소드를 통해 생성 시 파라미터로 'outputOption'을 전달할 수 있습니다.
+`BindModel` 객체의 addCommand() 메소드를 통해 생성 시 파라미터로 'outputOption'을 전달할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('read', 2);
 bm.addCommand('view', { option: 2, index: 1 });
@@ -333,7 +333,7 @@ bm.addCommand('view', { option: 2, index: 1 });
 
 ### 프로퍼티로 설정
 
-`BindCommandAjax` 객체의 'outputOption' 속성을 변경하여 설정할 수 있습니다.
+`BindCommand` 객체의 'outputOption' 속성을 변경하여 설정할 수 있습니다.
 
 ```js
 bm.command['read'].outputOption = 3;
@@ -376,7 +376,7 @@ const constraints: ConstrainstType[] | ConstrainstType;
  (쇼핑몰 table: 20ea 기준)
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test');
 
@@ -435,7 +435,7 @@ type addColumnValue = (
 기본 테이블에 컬럼을 추가하고, 지정한 `MetaView`에 참조를 등록합니다. addColumn() 메소드는 빈 컬럼을 추가하고, addColumnValue() 메소드는 컬럼 추가 후 'value' 값을 설정합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test');
 
@@ -462,7 +462,7 @@ bm.command['test'].addColumn('dd');
 지정한 `MetaTable` 에 컬럼을 추가하고 지정한 `MetaView` 에 참조를 등록합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 bm.addCommand('test');
@@ -516,7 +516,7 @@ type release = (
 컬럼을 설정할 때는 `테이블명 + . + 컬럼명` 표기법을 사용하여 특정 테이블의 컬럼을 지정할 수 있습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.addTable('second');
 
 // 기본 테이블인 first에 컬럼 추가
@@ -579,7 +579,7 @@ bm.command['test'].release('dd', '$all');
 이 옵션은 주로 데이터 변경 작업을 수행할 때 사용되며, 데이터 반환을 최소화하여 효율성을 높입니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 'create' 커멘더를 추가하고, 출력 옵션을 0으로 설정하여 데이터를 가져오지 않음
 bm.addCommand('create', 0);
 // 'aa' 컬럼에 값을 설정
@@ -607,7 +607,7 @@ bm.cmd['create'].execute();
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 // 'list' 명령어를 추가하고, 출력 옵션을 1로 설정하여 모든 데이터를 가져옴
 bm.addCommand('list', 1);
@@ -641,7 +641,7 @@ bm.cmd['list'].execute();
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.addCommand('list', 2);
 bm.cmd['list'].addColumnValue('aa', 0);
 bm.cmd['list'].addColumnValue('bb', 0);
@@ -666,7 +666,7 @@ bm.cmd['list'].execute();
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.addCommand('read', 3);
 bm.cmd['read'].addColumnValue('aa', 0);
 bm.cmd['read'].addColumnValue('bb', 0);
@@ -691,7 +691,7 @@ bm.cmd['read'].execute();
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.addCommand('test', 3);
 bc.outputOption.index = 1;   // index set
 bm.cmd['test'].addColumnValue('aa', 0);
@@ -727,7 +727,7 @@ bm.cmd['test'].execute();
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.addCommand('test', 3);
 bc.outputOption.index = [0, 1];   // index set
 bm.cmd['test'].newOutput('two');

@@ -51,9 +51,9 @@ docs:
 
   - title: Reference
     children:
-      - title: "BindModelAjax 클래스"
+      - title: "BindModel 클래스"
         url: /docs/api-bind-model-ajax/
-      - title: "BindCommandAjax 클래스"
+      - title: "BindCommand 클래스"
         url: /docs/api-bind-command-ajax/
       - title: "HTMLColumn 클래스"
         url: /docs/api-html-column/

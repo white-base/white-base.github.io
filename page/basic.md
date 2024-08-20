@@ -11,14 +11,14 @@ sidebar:
 
 ## BindModel 생성
 
-`BindModelAjax` 객체 생성은 데이터 바인딩과 서버 간 통신을 위한 첫 번째 단계입니다.
+`BindModel` 객체 생성은 데이터 바인딩과 서버 간 통신을 위한 첫 번째 단계입니다.
  이 객체는 서버와의 AJAX 통신을 관리하는 핵심 역할을 합니다.
  
-[[52. BindModelAjax 클래스-B| - 참조 : BindModel 구성]]
+[[52. BindModel 클래스-B| - 참조 : BindModel 구성]]
 [[25. 서비스 객체 구성-C| - 참조 : 서비스객체 구성]]
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.url = '/user';
 ```
@@ -28,14 +28,14 @@ bm.url = '/user';
 
 ## command 추가
 
-BindModelAjax 객체에 새로운 명령(command)을 추가하려면 addCommand() 메서드를 사용합니다. 이 메서드는 BindCommand 객체를 생성하고, 이를 BindModelAjax에 등록하여 서버와의 데이터 통신을 관리할 수 있도록 합니다.
+BindModel 객체에 새로운 명령(command)을 추가하려면 addCommand() 메서드를 사용합니다. 이 메서드는 BindCommand 객체를 생성하고, 이를 BindModel에 등록하여 서버와의 데이터 통신을 관리할 수 있도록 합니다.
 
 BindCommand 객체는 서버와의 데이터 통신을 위해 세 가지 주요 역할을 하는 MetaView 객체들을 포함하고 있습니다.
 - **valid** : 데이터의 유효성을 검사하는 역할을 합니다.
 - **bind** : 클라이언트의 데이터가 서버에 전달되기 전에 데이터를 바인딩하는 역할을 합니다. 
 - **output** : 서버로부터 수신된 데이터를 가져오는 역할을 합니다.
 
-[[53. BindCommandAjax 클래스-B| - 참조 : BindCommand 구성]]
+[[53. BindCommand 클래스-B| - 참조 : BindCommand 구성]]
 
 ```js
 bm.addCommand('newCmd', 3);
@@ -55,7 +55,7 @@ bm.addCommand('newCmd', 3);
 
 ## column 추가
 
-addColumn() 메서드는 BindModelAjax 객체에 컬럼을 추가하고, 지정된 BindCommand 객체의 MetaView에 컬럼을 설정하는 기능을 제공합니다. 추가적으로, addColumnValue() 메서드를 사용하여 컬럼의 초기값을 설정할 수 있습니다.
+addColumn() 메서드는 BindModel 객체에 컬럼을 추가하고, 지정된 BindCommand 객체의 MetaView에 컬럼을 설정하는 기능을 제공합니다. 추가적으로, addColumnValue() 메서드를 사용하여 컬럼의 초기값을 설정할 수 있습니다.
 
 예시 : 빈 컬럼 추가
 ```js

@@ -269,8 +269,8 @@ setter 와 setFilter 는 비슷한 역할을 하지만, 차이가 있습니다. 
 
 BindModel 은 하나의 MetaTable(이름: first)을 자동으로 생성하며, 이 구조 내에서 추가된 각 BindCommand 객체는 세 개의 MetaView(valid, bind, output)를 포함합니다.
 
-[[52. BindModelAjax 클래스-B#주요 구조| - 참조 : BindModel 의 주요 구조]]
-[[53. BindCommandAjax 클래스-B#주요 구조| - 참조 : BindComand 의 주요 구조]]
+[[52. BindModel 클래스-B#주요 구조| - 참조 : BindModel 의 주요 구조]]
+[[53. BindCommand 클래스-B#주요 구조| - 참조 : BindComand 의 주요 구조]]
 
 ### BindModel 의 엔티티의 구조 요약
 
@@ -303,5 +303,5 @@ cmd1.output.columns.add('bb');
 - MetaTable 에 직접 컬럼을 추가하면, 해당 컬럼은 독립적으로 추가됩니다. MetaView와는 달리 다른 뷰에서 참조하지 않습니다.
 - BindModel을 생성하면, 기본적으로 first라는 이름의 MetaTable이 자동으로 생성됩니다. 각 BindCommand 객체는 자동으로 valid, bind, output이라는 이름의 MetaView를 포함합니다.
 
-BindModelAjax에서 execute() 메소드를 실행하면, MetaTable과 MetaView의 구조에 따라 컬럼과 데이터가 설정됩니다. 이 과정을 통해 다양한 사용자 요구사항에 맞게 커스터마이징할 수 있습니다.
+BindModel에서 execute() 메소드를 실행하면, MetaTable과 MetaView의 구조에 따라 컬럼과 데이터가 설정됩니다. 이 과정을 통해 다양한 사용자 요구사항에 맞게 커스터마이징할 수 있습니다.
 

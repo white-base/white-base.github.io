@@ -10,16 +10,16 @@ sidebar:
 ---
 
 
-멀티뷰는 서버에서 수신한 데이터가 2개 이상의 자료일 경우에 사용됩니다. BindCommandAjax 객체는 기본적으로 output 속성의 MetaView를 포함하며, 이는 `_outputs['output1']`의 참조 속성입니다.
+멀티뷰는 서버에서 수신한 데이터가 2개 이상의 자료일 경우에 사용됩니다. BindCommand 객체는 기본적으로 output 속성의 MetaView를 포함하며, 이는 `_outputs['output1']`의 참조 속성입니다.
 
 이 기능을 통해 여러 개의 MetaView를 추가하거나 제거할 수 있으며, 각 MetaView는 서버에서 수신한 데이터를 저장하고 관리하는 데 사용됩니다.
 
 ## BindCommand 의 output 구조
 
-BindCommandAjax 객체를 생성하면 기본적으로 output 속성이 추가됩니다. 이 output 속성은 `_outputs['output1']`의 참조입니다.
+BindCommand 객체를 생성하면 기본적으로 output 속성이 추가됩니다. 이 output 속성은 `_outputs['output1']`의 참조입니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test');
 
@@ -42,7 +42,7 @@ newOutput() 메소드를 사용하여 새로운 MetaView를 추가할 수 있습
 
 예제 : output 추가
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test');
 // bm.command['test'].output == MetaView
@@ -65,7 +65,7 @@ ouput MetaView 을 추가후에 전체 command 에 컬럼을 추가하면 추가
 
 예제 : 전체 MetaView 에 컬럼 추가시
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test');
 
@@ -91,7 +91,7 @@ type newOutput = (outputName: string) => boolean;
 기본 프로퍼티 `ouput`, `output1` 는 제거할 수 없습니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test');
 

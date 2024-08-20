@@ -9,7 +9,7 @@ sidebar:
   nav: "docs"
 ---
 
-`BindModelAjax`는 프레임워크의 핵심 클래스이며, 주요 기능으로 명령 추가, 컬럼 추가, 테이블 추가, 서비스 객체 주입 등을 지원합니다.
+`BindModel`는 프레임워크의 핵심 클래스이며, 주요 기능으로 명령 추가, 컬럼 추가, 테이블 추가, 서비스 객체 주입 등을 지원합니다.
 
 ### 주요 기능
 
@@ -55,7 +55,7 @@ sidebar:
 - setMapping() : `HTMLColumn` 을 `BindCommand` 의 `MetaView` 객체에 매핑합니다.
 - init() : 'preRegister', 'preCheck', 'preRedy' 콜백함수를 순차적으로 실행합니다.
 
-`BindModelAjax` 는 다목적 프레임워크로, 다양한 명령과 테이블, 컬럼을 유연하게 추가하고 관리할 수 있는 기능을 제공합니다. 이 문서를 통해 이 클래스의 주요 기능과 콜백을 숙지하여 효과적으로 사용할 수 있습니다.
+`BindModel` 는 다목적 프레임워크로, 다양한 명령과 테이블, 컬럼을 유연하게 추가하고 관리할 수 있는 기능을 제공합니다. 이 문서를 통해 이 클래스의 주요 기능과 콜백을 숙지하여 효과적으로 사용할 수 있습니다.
 
 
 
@@ -66,14 +66,14 @@ sidebar:
 url 속성은 서버에 요청하는 기본 URL 경로를 설정합니다. BindCommand 객체에 url 경로를 설정하면, BindModel의 url 경로는 무시됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.url  = '/user';
 ```
 
 #### 동적 url 설정하기
 
-특정 작업(command)에 따라 요청 경로를 동적으로 변경해야 할 경우, BindModelAjax 객체의 콜백 함수를 활용하여 URL을 쉽게 설정할 수 있습니다.
+특정 작업(command)에 따라 요청 경로를 동적으로 변경해야 할 경우, BindModel 객체의 콜백 함수를 활용하여 URL을 쉽게 설정할 수 있습니다.
 
  ```js
  var idx = 1;
@@ -88,7 +88,7 @@ bm.url  = '/user';
 HTTP 통신을 위한 axios의 기본 설정을 통해 요청 환경을 구성할 수 있습니다. 
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // axios 기본 설정 예시
 bm.baseConfig.baseURL = 'https://api.example.com';
 bm.baseConfig.timeout = 10000; // 10초
@@ -112,7 +112,7 @@ type onExecuted = (model: BindModel, cmd: BindCommand) => void;
 - 'onExecuted' 이벤트는 모든 execute() 실행시 마지막으로 호출됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.addCommand('read');
 // 전역 이벤트 설정
 bm.onExecute = () => { 
@@ -145,7 +145,7 @@ cbError 발생 시점은
 - 모든 에러 및 예외 발생시 호출됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.cbError = function(msg, status, res) { 
 	console.error('오류가 발생 하였습니다. Err: '+ msg); 
@@ -165,7 +165,7 @@ type cbFail = (msg: string, valid: MetaView) => void;
 - 'cbValid' / 'cbBaseValid' 콜백함수에서 false 반환한 경우 호출됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.cbFail = function(msg, valid) { 
 	console.warn('실패하였습니다. Err:'+ msg); 
@@ -193,7 +193,7 @@ type cbBaseBegin = (cmd: BindCommand) => void;
 - url 및 config 의 공통 정보 설정에 활용됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.cbBaseBegin = function(cmd) {
 	cmd.url = '/member/1';
@@ -215,7 +215,7 @@ type cbBaseValid = (valid: MetaView, cmd: BindCommand) => boolean;
 - 사용자에게 처리결과를 확인하는 용도로 활용됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.cbBaseValid = function(view, cmd) { 
 	return view.colums.count <= 0;
@@ -253,7 +253,7 @@ type cbBaseResult = (data: object, cmd: BindCommand, res: object) => object;
 - 응답받은 data 를 `MetaView` 형식의 스키마로 변경하는 용도로 활용됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // data = { aa: 1, bb: 2 }
 bm.cbBaseResult = function(data) {
 	return {
@@ -289,7 +289,7 @@ type cbBaseOutput = (views: MetaViewColleciton, cmd: BindCommand, res: object) =
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.cbBaseOutput = function(views) {
 	// views[0] instanceof MetaView
@@ -320,7 +320,7 @@ type cbBaseEnd = (status: number, cmd: BindCommand, res: object) => void;
 - 다른 명령의 execute() 체인 연결에 활용합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.cbBaseEnd = function(views) {
 	alert('정상 처리 되었습니다.');
@@ -341,7 +341,7 @@ function addCommand(cmdName: string, outOpt?: number = 0, bTable?: string | Meta
 - bTable 을 지정하면, 추가한 `BindCommand` 의 '\_baseTable' 이 설정됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('create');
 bm.addCommand('read', 3);
@@ -357,7 +357,7 @@ bm.addCommand('read', 3);
 
 예제 : 기본테이블 지정
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addTable('second');
 
@@ -400,7 +400,7 @@ type addColumnValue = (
 기본테이블(\_baseTable)에 컬럼을 추가합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 컬럼 추가
 bm.addColumn('aa');
 bm.addColumnValue('bb', 'man');
@@ -417,7 +417,7 @@ bm.addColumnValue('bb', 'man');
 기본테이블에 컬럼을 추가하고 대상 `BindCommand` 에 매핑합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 명령 생성 
 bm.addCommand('cmd1');
 bm.addCommand('cmd2');
@@ -451,7 +451,7 @@ bm.addColumn('cc', '$all', 'output');
 지정한 `MetaTable` 에 컬럼을 추가하고 대상 `BindCommand` 에 매핑합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 테이블 및 명령 추가
 bm.addTable('second');
 bm.addCommand('cmd1');
@@ -488,7 +488,7 @@ type addTable (tableName: string) => MetaTable;
 - 'command' 의 `MetaView` 의 참조 테이블로 지정할 때 활용합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // step A
 bm.addTable('second');
 bm.addTable('three');
@@ -555,7 +555,7 @@ type add = (itemName: string, iType: ValueType) => void;
 ```
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 아이템 추가
 bm.items.add('col1', 1);
 bm.items.add('col2', '');
@@ -585,7 +585,7 @@ type checkSelector = (
 - isLog = true 을 설정하면, 실패한 'selector' 의 'key' 값이 콘솔창에 출력됩니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // 아이템 추가
 bm.items.add('item1', {selector: { key:'#user_name', type: 'value'}});
 bm.items.add('item2', {selector: { key:'.sub_name', type: 'text'}});
@@ -599,7 +599,7 @@ preCheck 콜백함수를 통해서 서비스객체 주입시 DOM 유효성 검�
 [[25. 서비스 객체 구성-C | 참조 : 서비스객체 구성]]
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.columns.add('item1', {selector: { key:'#user_name', type: 'value'}});
 bm.columns.add('item2', {selector: { key:'.sub_name', type: 'text'}});
@@ -626,7 +626,7 @@ type getSelector = (
 - 'collection' 파라메터의 기본값은 this.items 컬렉션입니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.columns.add('item1', {selector: {key:'#ID1', type: 'value'}});
 bm.columns.add('item2', {selector: {key:'#ID2', type: 'text'}});
