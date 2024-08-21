@@ -1,5 +1,5 @@
 ---
-layout: splash
+layout: default
 title: API Documentation
 permalink: /docs/api/
 hidden: true   
