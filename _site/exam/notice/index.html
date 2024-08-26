@@ -1,0 +1,935 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-US" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>멀티 뷰(출력) - Bind Model</title>
+<meta name="description" content="An amazing website.">
+
+
+  <meta name="author" content="Your Name">
+  
+  <meta property="article:author" content="Your Name">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bind Model">
+<meta property="og:title" content="멀티 뷰(출력)">
+<meta property="og:url" content="http://localhost:4000/exam/notice/">
+
+
+  <meta property="og:description" content="An amazing website.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2011-06-23T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/exam/notice/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bind Model Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--fullwidth" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Bind Model
+          <span class="site-subtitle">BindModel is a front-end framework</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/docs/quick-start/"
+                
+                
+              >Quick-Start Guide</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/exam/notice/"
+                
+                
+              >Example</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/docs/api/"
+                
+                
+              >API</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<style>
+.archive {
+    padding-right: 0px;
+}
+</style>
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      <nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <span class="nav__sub-title">공지사항 예제</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/docs/quick-start/">설명</a></li>
+            
+              <li><a href="/docs/feature/">base-svc.js</a></li>
+            
+              <li><a href="/docs/basic/">base-notice-svc.js</a></li>
+            
+          </ul>
+          
+        </li>
+      
+        <li>
+          
+            <span class="nav__sub-title">목록 예제</span>
+          
+
+          
+          <ul>
+            
+              <li><a href="/docs/quick-start/">설명</a></li>
+            
+              <li><a href="/docs/feature/">base-svc.js</a></li>
+            
+              <li><a href="/docs/basic/">base-notice-svc.js</a></li>
+            
+          </ul>
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">멀티 뷰(출력)</h1>
+    
+
+    <h2 id="공지-입니다">공지 입니다</h2>
+
+<p>요구사항은 관리자에서만 입력하고, 관리목은 구분, 제목, 내용</p>
+
+<p>단일 파이롤 만들어도 되지만, 공통파일을 관리할 수 있다.</p>
+
+<h2 id="파일-구조">파일 구조</h2>
+
+<p>파일구조</p>
+<ul>
+  <li>base-svc.js</li>
+  <li>base-notice-svc.js : 공지 기본 서비스 객체 입니다.</li>
+  <li>notice-front-svc.js : 사용자 공지 서비스 객체 입니다.</li>
+  <li>notice-admin-svc.js : 관리자 공지 서비스 객체 입니다.</li>
+  <li>admin_notice.asp : 관리자 페이지 입니다.</li>
+  <li>front_notice.html : 사용자 페이지 입니다.</li>
+</ul>
+
+<h3 id="최상위-서비스">최상위 서비스</h3>
+
+<p>서비스에 대한 최상위 입니다.</p>
+
+<p>실패와 오류 시 메세지를 정의합니다.
+모든 서비스 객체의 공통의 적용됩니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BaseService</span> <span class="p">{</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">cbFail</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p_result</span><span class="p">,</span> <span class="nx">p_item</span><span class="p">)</span> <span class="p">{</span>          <span class="c1">// 전역 실패 콜백</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">실패 :: Value=</span><span class="se">\"</span><span class="s2">%s</span><span class="se">\"</span><span class="s2">, Code=</span><span class="se">\"</span><span class="s2">%s</span><span class="se">\"</span><span class="s2">, Message=</span><span class="se">\"</span><span class="s2">%s</span><span class="se">\"</span><span class="s2"> </span><span class="dl">"</span><span class="p">,</span> <span class="nx">p_result</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">p_result</span><span class="p">.</span><span class="nx">code</span><span class="p">,</span> <span class="nx">p_result</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+        <span class="nc">Msg</span><span class="p">(</span><span class="dl">"</span><span class="s2">ALERT</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">실패</span><span class="dl">"</span><span class="p">,</span> <span class="nx">p_result</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cbError</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p_msg</span><span class="p">,</span> <span class="nx">p_status</span><span class="p">)</span> <span class="p">{</span>          <span class="c1">// 전역 오류 콜백</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">오류 :: Status=</span><span class="se">\"</span><span class="s2">%s</span><span class="se">\"</span><span class="s2"> , Message=</span><span class="se">\"</span><span class="s2">%s</span><span class="se">\"</span><span class="s2"> </span><span class="dl">"</span><span class="p">,</span> <span class="nx">p_status</span><span class="p">,</span> <span class="nx">p_msg</span><span class="p">);</span>
+        <span class="nc">Msg</span><span class="p">(</span><span class="dl">"</span><span class="s2">ALERT</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">오류</span><span class="dl">"</span><span class="p">,</span> <span class="nx">p_msg</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="공지-공통-서비스">공지 공통 서비스</h3>
+
+<p>공지사항에 대한 items 와 fn 에 대한 고통 속성을 설정합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BaseNoticeService</span> <span class="kd">extends</span> <span class="nc">BaseService</span> <span class="p">{</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1">// inner</span>
+        <span class="na">__isGetLoad</span><span class="p">:</span>    <span class="kc">true</span><span class="p">,</span>
+        <span class="na">__mode</span><span class="p">:</span>         <span class="dl">''</span><span class="p">,</span>
+        <span class="c1">// view</span>
+        <span class="na">_temp_list</span><span class="p">:</span>     <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#s-temp-list</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">html</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">_area_list</span><span class="p">:</span>     <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#s-area-list</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">html</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">_area_page</span><span class="p">:</span>     <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#s-area-page</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">html</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">_txt_sumCnt</span><span class="p">:</span>    <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#s-txt-sumCnt</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="c1">// bind</span>
+        <span class="na">cmd</span><span class="p">:</span>            <span class="dl">''</span><span class="p">,</span>
+        <span class="na">keyword</span><span class="p">:</span>        <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#m-keyword</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>         <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">page_size</span><span class="p">:</span>      <span class="p">{</span>
+            <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">select[name=m-page_size]</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>         <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span> <span class="p">},</span>
+            <span class="na">getter</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">page</span><span class="p">.</span><span class="nx">page_size</span><span class="p">;</span> <span class="p">},</span>
+            <span class="na">setter</span><span class="p">:</span> <span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">page</span><span class="p">.</span><span class="nx">page_size</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span> <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="na">page_count</span><span class="p">:</span>     <span class="p">{</span>   <span class="cm">/** 값을 외부에서 관리함! */</span>
+            <span class="na">getter</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">page</span><span class="p">.</span><span class="nx">page_count</span><span class="p">;</span> <span class="p">},</span>
+            <span class="na">setter</span><span class="p">:</span> <span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">page</span><span class="p">.</span><span class="nx">page_count</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">},</span>              
+        <span class="na">sort_cd</span><span class="p">:</span>        <span class="dl">''</span><span class="p">,</span>
+        <span class="na">evt_idx</span><span class="p">:</span>        <span class="dl">''</span><span class="p">,</span>
+        <span class="na">title</span><span class="p">:</span>          <span class="p">{</span> 
+            <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#m-title</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span> <span class="p">},</span>
+            <span class="na">isNotNull</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">writer</span><span class="p">:</span>         <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#m-writer</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">begin_dt</span><span class="p">:</span>       <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#m-begin_dt</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>     <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">close_dt</span><span class="p">:</span>       <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#m-close_dt</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>     <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">contents</span><span class="p">:</span>       <span class="p">{</span> <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#m-contents</span><span class="dl">'</span><span class="o">+</span> <span class="nx">_SUFF</span><span class="p">,</span>     <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="na">active_yn</span><span class="p">:</span>      <span class="p">{</span> 
+            <span class="na">selector</span><span class="p">:</span> <span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">input[name=m-active_yn</span><span class="dl">'</span><span class="o">+</span><span class="nx">_SUFF</span><span class="o">+</span><span class="dl">'</span><span class="s1">][type=radio]</span><span class="dl">'</span><span class="p">,</span>  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span> <span class="p">},</span>
+            <span class="nf">setFilter</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span> 
+                <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[name=m-active_yn</span><span class="dl">'</span><span class="o">+</span><span class="nx">_SUFF</span><span class="o">+</span><span class="dl">'</span><span class="s1">][value=</span><span class="dl">'</span><span class="o">+</span> <span class="nx">val</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">).</span><span class="nf">prop</span><span class="p">(</span><span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="p">},</span>
+            <span class="nf">getFilter</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[name=m-active_yn</span><span class="dl">'</span><span class="o">+</span><span class="nx">_SUFF</span><span class="o">+</span><span class="dl">'</span><span class="s1">]:checked</span><span class="dl">'</span><span class="p">).</span><span class="nf">val</span><span class="p">();</span>
+            <span class="p">},</span>
+            <span class="na">isNotNull</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nf">searchList</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">page_count</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nf">execute</span><span class="p">();</span>
+        <span class="p">},</span>
+        <span class="nf">changePagesize</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">page_size</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+            <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">page_count</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nf">execute</span><span class="p">();</span>
+        <span class="p">},</span>
+        <span class="nf">resetForm</span><span class="p">()</span> <span class="p">{</span> 
+            <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">form</span><span class="dl">'</span><span class="p">).</span><span class="nf">each</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nf">reset</span><span class="p">();</span>
+            <span class="p">});</span>
+        <span class="p">},</span>
+        <span class="c1">// moveList() {</span>
+        <span class="c1">//     var url = _this.bindModel.prop['__listUrl'];</span>
+        <span class="c1">//     location.href = url;</span>
+        <span class="c1">// },</span>
+        <span class="c1">// moveEdit(p_evt_idx) {</span>
+        <span class="c1">//     var url = _this.bindModel.prop['__formUrl'];</span>
+        <span class="c1">//     location.href = url +'?mode=EDIT&amp;evt_idx='+ p_evt_idx;</span>
+        <span class="c1">// },</span>
+        <span class="c1">// moveForm() {</span>
+        <span class="c1">//     var url = _this.bindModel.prop['__formUrl'];</span>
+        <span class="c1">//     location.href = url;</span>
+        <span class="c1">// },</span>
+        <span class="nf">procRead</span><span class="p">(</span><span class="nx">p_evt_idx</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">evt_idx</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="nc">ParamGet2JSON</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">).</span><span class="nx">evt_idx</span><span class="p">;</span>
+            <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">read</span><span class="p">.</span><span class="nf">execute</span><span class="p">();</span> 
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="c1">// 전처리</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">preRegister</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">bimdmodel</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 초기값 설정 : 서버측 &gt; 파라메터 &gt; 내부(기본값)</span>
+        <span class="nx">p_bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">keyword</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="nf">decodeURI</span><span class="p">(</span><span class="nf">getArgs</span><span class="p">(</span><span class="dl">''</span><span class="p">,</span> <span class="nf">getParamsToJSON</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">).</span><span class="nx">keyword</span> <span class="p">));</span>
+        <span class="nx">p_bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">page_count</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span>  <span class="o">=</span> <span class="nc">Number</span><span class="p">(</span> <span class="nf">getArgs</span><span class="p">(</span><span class="dl">''</span><span class="p">,</span> <span class="nf">getParamsToJSON</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">).</span><span class="nx">page_count</span><span class="p">,</span> <span class="nx">page</span><span class="p">.</span><span class="nx">page_count</span><span class="p">)</span> <span class="p">);</span>
+        
+        <span class="c1">// page 콜백 함수 설정 (방식)</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">p_bindModel</span><span class="p">.</span><span class="nx">prop</span><span class="p">[</span><span class="dl">'</span><span class="s1">__isGetLoad</span><span class="dl">'</span><span class="p">]</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">page</span><span class="p">.</span><span class="nx">callback</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goPage</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="nx">p_bindModel</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">bind</span><span class="p">);</span>            <span class="c1">// 2-1) GET 방식</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">page</span><span class="p">.</span><span class="nx">callback</span> <span class="o">=</span> <span class="nx">p_bindModel</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">execute</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="nx">p_bindModel</span><span class="p">.</span><span class="nx">list</span><span class="p">);</span>    <span class="c1">// 1) 콜백 방식</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="프론트-서비스">프론트 서비스</h3>
+
+<p>프론트 페이지에 대한 command, mapping 을 설정합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">NoticeFrontService</span> <span class="kd">extends</span> <span class="nc">BaseNoticeService</span> <span class="p">{</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">command</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">read</span><span class="p">:</span>       <span class="p">{</span>
+            <span class="na">outputOption</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="nf">cbBegin</span><span class="p">(</span><span class="nx">p_bindCommand</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">cmd</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">READ</span><span class="dl">'</span><span class="p">;</span> <span class="p">},</span>
+            <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">p_entity</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">조회 처리가 실패 하였습니다. Code : </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">list</span><span class="p">:</span>       <span class="p">{</span>
+            <span class="na">outputOption</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nf">cbBegin</span><span class="p">(</span><span class="nx">p_bindCommand</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">cmd</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">LIST</span><span class="dl">'</span><span class="p">;</span> <span class="p">},</span>
+            <span class="nf">cbOutput</span><span class="p">(</span><span class="nx">p_result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">isLog</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[Service] list.cbOutput() : 목록출력</span><span class="dl">"</span><span class="p">);</span>
+
+                <span class="kd">var</span> <span class="nx">entity</span> <span class="o">=</span> <span class="nx">p_result</span><span class="p">[</span><span class="dl">'</span><span class="s1">table</span><span class="dl">'</span><span class="p">];</span>
+                <span class="kd">var</span> <span class="nx">row_total</span>   <span class="o">=</span> <span class="nx">entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">row_total</span><span class="dl">'</span><span class="p">];</span>
+
+                <span class="k">if </span><span class="p">(</span><span class="nx">_template</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">_template</span> <span class="o">=</span> <span class="nx">Handlebars</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_temp_list</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="p">);</span> 
+                <span class="p">}</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_txt_sumCnt</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span>  <span class="o">=</span> <span class="nx">row_total</span><span class="p">;</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_area_list</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span>   <span class="o">=</span> <span class="nf">_template</span><span class="p">(</span><span class="nx">entity</span><span class="p">);</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_area_page</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span>   <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nf">parser</span><span class="p">(</span><span class="nx">row_total</span><span class="p">);</span>
+            <span class="p">},</span>
+            <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">p_result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">p_result</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">목록조회 처리가 실패 하였습니다. Code : </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">p_result</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">};</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">_temp_list</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">etc</span><span class="dl">'</span> <span class="p">},</span>    <span class="c1">// 묶음의 용도</span>
+        <span class="na">_area_list</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">etc</span><span class="dl">'</span> <span class="p">},</span>    <span class="c1">// 묶음의 용도</span>
+        <span class="na">_area_page</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">etc</span><span class="dl">'</span> <span class="p">},</span>    <span class="c1">// 묶음의 용도</span>
+        <span class="na">cmd</span><span class="p">:</span>            <span class="p">{</span> <span class="na">$all</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">keyword</span><span class="p">:</span>        <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">page_size</span><span class="p">:</span>      <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">page_count</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">sort_cd</span><span class="p">:</span>        <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">evt_idx</span><span class="p">:</span>        <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">title</span><span class="p">:</span>          <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">writer</span><span class="p">:</span>         <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">contents</span><span class="p">:</span>       <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">create_dt</span><span class="p">:</span>      <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="관리자-서비스">관리자 서비스</h3>
+
+<p>관리자 페이지에 대한 command, mapping 을 설정합니다.</p>
+
+<p>/admin/</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">NoticeAdminService</span> <span class="kd">extends</span> <span class="nc">BaseNoticeService</span> <span class="p">{</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">command</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">create</span><span class="p">:</span>     <span class="p">{</span>
+            <span class="nf">cbBegin</span><span class="p">(</span><span class="nx">p_bindCommand</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">cmd</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">CREATE</span><span class="dl">'</span><span class="p">;</span> <span class="p">},</span>
+            <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">p_entity</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">등록 처리가 실패 하였습니다. Code : </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]);</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nf">moveList</span><span class="p">();</span>  <span class="c1">// 개선함</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="na">read</span><span class="p">:</span>       <span class="p">{</span>
+            <span class="na">outputOption</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="nf">cbBegin</span><span class="p">(</span><span class="nx">p_bindCommand</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">cmd</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">READ</span><span class="dl">'</span><span class="p">;</span> <span class="p">},</span>
+            <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">p_entity</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">조회 처리가 실패 하였습니다. Code : </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">update</span><span class="p">:</span>     <span class="p">{</span>
+            <span class="nf">cbBegin</span><span class="p">(</span><span class="nx">p_bindCommand</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">cmd</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">UPDATE</span><span class="dl">'</span><span class="p">;</span> <span class="p">},</span>
+            <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">p_entity</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">수정 처리가 실패 하였습니다. Code : </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]);</span>
+                <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">수정 처리가 되었습니다.</span><span class="dl">'</span><span class="p">);</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">read</span><span class="p">.</span><span class="nf">execute</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">delete</span><span class="p">:</span>     <span class="p">{</span>
+            <span class="nf">cbBegin</span><span class="p">(</span><span class="nx">p_bindCommand</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">cmd</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">;</span> <span class="p">},</span>
+            <span class="nf">cbValid</span><span class="p">(</span><span class="nx">p_valid</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nf">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">삭제 하시겠습니까.?</span><span class="dl">'</span><span class="p">);</span> <span class="p">},</span>
+            <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">p_entity</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">삭제 처리가 실패 하였습니다. Result Code : </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">p_entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]);</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nf">moveList</span><span class="p">();</span>  <span class="c1">// 개선함</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">list</span><span class="p">:</span>       <span class="p">{</span>
+            <span class="na">outputOption</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nf">cbBegin</span><span class="p">(</span><span class="nx">p_bindCommand</span><span class="p">)</span> <span class="p">{</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">cmd</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">LIST</span><span class="dl">'</span><span class="p">;</span> <span class="p">},</span>
+            <span class="nf">cbOutput</span><span class="p">(</span><span class="nx">p_result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">isLog</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[Service] list.cbOutput() : 목록출력</span><span class="dl">"</span><span class="p">);</span>
+
+                <span class="kd">var</span> <span class="nx">entity</span> <span class="o">=</span> <span class="nx">p_result</span><span class="p">[</span><span class="dl">'</span><span class="s1">table</span><span class="dl">'</span><span class="p">];</span>
+                <span class="kd">var</span> <span class="nx">row_total</span>   <span class="o">=</span> <span class="nx">entity</span><span class="p">[</span><span class="dl">'</span><span class="s1">row_total</span><span class="dl">'</span><span class="p">];</span>
+
+                <span class="k">if </span><span class="p">(</span><span class="nx">_template</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">_template</span> <span class="o">=</span> <span class="nx">Handlebars</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_temp_list</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span> <span class="p">);</span> 
+                <span class="p">}</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_txt_sumCnt</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span>  <span class="o">=</span> <span class="nx">row_total</span><span class="p">;</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_area_list</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span>   <span class="o">=</span> <span class="nf">_template</span><span class="p">(</span><span class="nx">entity</span><span class="p">);</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="dl">'</span><span class="s1">_area_page</span><span class="dl">'</span><span class="p">].</span><span class="nx">value</span>   <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nf">parser</span><span class="p">(</span><span class="nx">row_total</span><span class="p">);</span>
+            <span class="p">},</span>
+            <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">p_result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">p_result</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">목록조회 처리가 실패 하였습니다. Code : </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">p_result</span><span class="p">[</span><span class="dl">'</span><span class="s1">return</span><span class="dl">'</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">_temp_list</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">etc</span><span class="dl">'</span> <span class="p">},</span>    <span class="c1">// 묶음의 용도</span>
+        <span class="na">_area_list</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">etc</span><span class="dl">'</span> <span class="p">},</span>    <span class="c1">// 묶음의 용도</span>
+        <span class="na">_area_page</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">etc</span><span class="dl">'</span> <span class="p">},</span>    <span class="c1">// 묶음의 용도</span>
+        <span class="na">_txt_sumCnt</span><span class="p">:</span>    <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">etc</span><span class="dl">'</span> <span class="p">},</span>    <span class="c1">// 묶음의 용도</span>
+        <span class="na">cmd</span><span class="p">:</span>            <span class="p">{</span> <span class="na">Array</span><span class="p">:</span>    <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">keyword</span><span class="p">:</span>        <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">page_size</span><span class="p">:</span>      <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">page_count</span><span class="p">:</span>     <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">sort_cd</span><span class="p">:</span>        <span class="p">{</span> <span class="na">list</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">evt_idx</span><span class="p">:</span>        <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span>     <span class="na">delete</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span>            <span class="na">update</span><span class="p">:</span>  <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">title</span><span class="p">:</span>          <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>   <span class="na">create</span><span class="p">:</span>     <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">],</span> <span class="na">update</span><span class="p">:</span>  <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">],</span> <span class="p">},</span>
+        <span class="na">writer</span><span class="p">:</span>         <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>   <span class="na">create</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span>            <span class="na">update</span><span class="p">:</span>  <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">begin_dt</span><span class="p">:</span>       <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>   <span class="na">create</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span>            <span class="na">update</span><span class="p">:</span>  <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">close_dt</span><span class="p">:</span>       <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>   <span class="na">create</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span>            <span class="na">update</span><span class="p">:</span>  <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">contents</span><span class="p">:</span>       <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>   <span class="na">create</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span>            <span class="na">update</span><span class="p">:</span>  <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">active_yn</span><span class="p">:</span>      <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>   <span class="na">create</span><span class="p">:</span>     <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">],</span> <span class="na">update</span><span class="p">:</span>  <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">],</span> <span class="p">},</span>
+    <span class="p">};</span>
+
+
+    
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="관리자-페이지">관리자 페이지</h3>
+
+<p>관리자 페이지는 asp 페이지로 작성하였습니다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 관리자 세션 검사 --&gt;</span>
+<span class="c">&lt;!--#include virtual="/Admin/adm_cmn/include/Admin_Global_Define.I.asp"--&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"copyright"</span> <span class="na">content=</span><span class="s">"Copyright(c) White Lab Inc. All Rights Reserved."</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Admin<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/css/suio.css"</span> <span class="na">media=</span><span class="s">"screen"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/css/layout.css"</span> <span class="na">media=</span><span class="s">"screen"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>		
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Common/js/jquery.xml2json.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Common/js/common.js?a"</span><span class="nt">&gt;&lt;/script&gt;</span>
+	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Admin/adm_cmn/js/admin_common.js?v2"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"width:1020px"</span><span class="nt">&gt;</span>   
+
+
+    <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"frm_default"</span> <span class="na">name=</span><span class="s">"frm_default"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+                
+	<span class="c">&lt;!--###############  검색 조건 Block ###############--&gt;</span>
+
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"section"</span> <span class="na">id=</span><span class="s">"QA_profile1"</span><span class="nt">&gt;</span>
+  		<span class="nt">&lt;div&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/div&gt;</span>                        
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"optionArea"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mOption"</span> <span class="na">style=</span><span class="s">"display: block;"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span> <span class="na">summary=</span><span class="s">""</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;caption&gt;</span>회원정보 조회<span class="nt">&lt;/caption&gt;</span>
+                <span class="nt">&lt;colgroup&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:154px;*width:135px;"</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:auto;"</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:154px;*width:135px;"</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:auto;"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/colgroup&gt;</span>
+                <span class="nt">&lt;tbody&gt;</span>
+                    <span class="c">&lt;!--
+                    &lt;tr&gt;
+                        &lt;th scope="row"&gt;상위공지 여부 &lt;/th&gt;
+                        &lt;td&gt;
+                            &lt;label class="gLabel"&gt;&lt;input type="radio" name="real_type" value="A" checked class="fChk" /&gt; 일반&lt;/label&gt;
+                            &lt;label class="gLabel"&gt;&lt;input type="radio" name="real_type" value="R" class="fChk" /&gt; 상위공지&lt;/label&gt;
+                        &lt;/td&gt;
+                        &lt;th scope="row"&gt;팝업 여부 &lt;/th&gt;
+                        &lt;td&gt;
+                            &lt;label class="gLabel"&gt;&lt;input type="radio" name="real_type2" value="A" checked class="fChk" /&gt; 팝업&lt;/label&gt;
+                            &lt;label class="gLabel"&gt;&lt;input type="radio" name="real_type2" value="R" class="fChk" /&gt; 상위공지&lt;/label&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    --&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;td</span>  <span class="na">colspan=</span><span class="s">"3"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"m-keyword"</span> <span class="na">name=</span><span class="s">"name_corp_tel_hp"</span> <span class="na">value=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"fText"</span> <span class="na">style=</span><span class="s">"width:200px;"</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;/tbody&gt;</span>
+                <span class="nt">&lt;/table&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+		<span class="c">&lt;!--###############  검색 버튼 Block ###############--&gt;</span>
+		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mButton gCenter"</span><span class="nt">&gt;</span>
+		    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#none"</span> <span class="na">id=</span><span class="s">"btn_Search"</span> <span class="na">class=</span><span class="s">"btnSearch"</span><span class="nt">&gt;&lt;span&gt;</span>검색<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+		    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#none"</span> <span class="na">id=</span><span class="s">"btn_Reset"</span> <span class="na">class=</span><span class="s">"btnSearch reset"</span><span class="nt">&gt;&lt;span&gt;</span>초기화<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+		<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+	<span class="c">&lt;!--###############  검색 결과 Block ###############--&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"section"</span> <span class="na">id=</span><span class="s">"QA_level2"</span><span class="nt">&gt;</span>
+	    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mState"</span><span class="nt">&gt;</span>
+	        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gLeft"</span><span class="nt">&gt;</span>
+	            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"total"</span><span class="nt">&gt;</span>검색결과 <span class="nt">&lt;strong</span> <span class="na">id=</span><span class="s">"s-txt-sumCnt"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/strong&gt;</span>건<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+	        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gRight"</span><span class="nt">&gt;</span>
+	            <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"sel_Pagesize"</span> <span class="na">name=</span><span class="s">"m-page_size"</span> <span class="na">class=</span><span class="s">"fSelect"</span><span class="nt">&gt;</span>
+	                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"10"</span> <span class="na">selected</span><span class="nt">&gt;</span>10개씩보기<span class="nt">&lt;/option&gt;</span>
+	                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"20"</span><span class="nt">&gt;</span>20개씩보기<span class="nt">&lt;/option&gt;</span>
+	                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"30"</span><span class="nt">&gt;</span>30개씩보기<span class="nt">&lt;/option&gt;</span>
+	                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"50"</span><span class="nt">&gt;</span>50개씩보기<span class="nt">&lt;/option&gt;</span>
+	                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"100"</span><span class="nt">&gt;</span>100개씩보기<span class="nt">&lt;/option&gt;</span>
+	            <span class="nt">&lt;/select&gt;</span>
+	        <span class="nt">&lt;/div&gt;</span>
+	    <span class="nt">&lt;/div&gt;</span>
+	    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mCtrl typeHeader"</span><span class="nt">&gt;</span>
+	        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gLeft"</span><span class="nt">&gt;</span>
+                
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#none"</span> <span class="na">id=</span><span class="s">"btn_Insert"</span> <span class="na">class=</span><span class="s">"btnNormal"</span><span class="nt">&gt;&lt;span&gt;</span> 등록<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+                
+	        <span class="nt">&lt;/div&gt;</span>
+	        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gRight"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#none"</span> <span class="na">id=</span><span class="s">"btn_Excel"</span> <span class="na">title=</span><span class="s">"새창 열림"</span> <span class="na">class=</span><span class="s">"btnNormal"</span><span class="nt">&gt;&lt;span&gt;&lt;em</span> <span class="na">class=</span><span class="s">"icoXls"</span><span class="nt">&gt;&lt;/em&gt;</span> 엑셀다운로드<span class="nt">&lt;em</span> <span class="na">class=</span><span class="s">"icoLink"</span><span class="nt">&gt;&lt;/em&gt;&lt;/span&gt;&lt;/a&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+	    <span class="nt">&lt;/div&gt;</span>
+	    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mBoard gCellNarrow"</span><span class="nt">&gt;</span>
+	        <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span> <span class="na">summary=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"eChkColor"</span><span class="nt">&gt;</span>
+		        <span class="nt">&lt;caption&gt;</span>목록<span class="nt">&lt;/caption&gt;</span>
+		        <span class="c">&lt;!--###############  제목 크기 Block ###############--&gt;</span>
+		        <span class="nt">&lt;colgroup&gt;</span>
+		            <span class="nt">&lt;col</span> <span class="na">class=</span><span class="s">"date"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:auto"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:auto"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:auto"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:auto"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:auto"</span><span class="nt">&gt;</span>
+		        <span class="nt">&lt;/colgroup&gt;</span>
+		        <span class="c">&lt;!--###############  검색 제목 Block ###############--&gt;</span>
+		        <span class="nt">&lt;thead&gt;</span>
+		            <span class="nt">&lt;tr&gt;</span>
+		                <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;&lt;strong&gt;</span>순번<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;&lt;strong&gt;</span>작성일자<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;&lt;strong&gt;</span>제목<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
+		                <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;&lt;strong&gt;</span>작성자<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;&lt;strong&gt;</span>활성유무<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;&lt;strong&gt;</span>처리<span class="nt">&lt;/strong&gt;&lt;/th&gt;</span>
+		            <span class="nt">&lt;/tr&gt;</span>
+		        <span class="nt">&lt;/thead&gt;</span>
+				
+				<span class="c">&lt;!--###############  검색 본문 Block ###############--&gt;</span>
+				<span class="nt">&lt;tbody</span> <span class="na">class=</span><span class="s">"center"</span> <span class="na">id=</span><span class="s">"s-area-list"</span><span class="nt">&gt;</span>
+    				<span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">colspan=</span><span class="s">'6'</span> <span class="na">align=</span><span class="s">'center'</span><span class="nt">&gt;</span>자료가 없습니다.<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
+				<span class="nt">&lt;/tbody&gt;</span>
+
+                <span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"s-temp-list"</span> <span class="na">type=</span><span class="s">"text/x-handlebars-template"</span><span class="nt">&gt;</span>
+                    
+                    <span class="o">&lt;</span><span class="nx">tr</span> <span class="kd">class</span><span class="o">=</span><span class="dl">""</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">javascript:evt.fn.moveEdit('');</span><span class="dl">"</span> <span class="kd">class</span><span class="o">=</span><span class="dl">'</span><span class="s1">btnNormal</span><span class="dl">'</span><span class="o">&gt;&lt;</span><span class="nx">span</span><span class="o">&gt;</span> <span class="nx">조회</span><span class="o">&lt;</span><span class="sr">/span&gt;&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
+</span>                     
+                <span class="nt">&lt;/script&gt;</span>           
+			<span class="nt">&lt;/table&gt;</span>
+	    <span class="nt">&lt;/div&gt;</span>
+	    
+	    <span class="c">&lt;!--###############  페이지 Block ###############--&gt;</span>
+	    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"s-area-page"</span> <span class="na">class=</span><span class="s">"mPaginate"</span><span class="nt">&gt;&lt;/div&gt;</span>
+	<span class="nt">&lt;/div&gt;</span>
+
+	<span class="c">&lt;!--###############  처리중 Block ###############--&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mLoading typeStatic"</span><span class="nt">&gt;</span>
+	    <span class="nt">&lt;p&gt;</span>처리중입니다. 잠시만 기다려 주세요.<span class="nt">&lt;/p&gt;</span>
+	    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://img.echosting.cafe24.com/suio/ico_loading.gif"</span> <span class="na">alt=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;/div&gt;</span>
+	
+	<span class="c">&lt;!--###############  페이지 Block ###############--&gt;</span>
+
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="c">&lt;!-- &lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;--&gt;</span>
+
+	<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"part_Overlay"</span> <span class="na">class=</span><span class="s">"w3-overlay w3-animate-opacity"</span> <span class="na">style=</span><span class="s">"cursor:pointer;z-index:90;"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>        
+
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/logic-bind-model/dist/bindmodel.pack.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Service/base-svc.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Service/base-notice-svc.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Admin/noitce-svc.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+	<span class="c1">// ##################################################</span>
+	<span class="kd">var</span> <span class="nx">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">_L</span><span class="p">.</span><span class="nc">BindModel</span><span class="p">(</span><span class="k">new</span> <span class="nc">AdminNoticeService</span><span class="p">());</span>
+	
+	<span class="c1">// 콜백 url 설정</span>
+    <span class="nx">evt</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/Admin/Notice.C.asp</span><span class="dl">'</span><span class="p">;</span>
+
+	<span class="c1">// 이벤트 바인딩</span>
+	<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#btn_Search</span><span class="dl">'</span><span class="p">).</span><span class="nf">click</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">searchList</span><span class="p">);</span>
+	<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#sel_Pagesize</span><span class="dl">'</span><span class="p">).</span><span class="nf">change</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">changePagesize</span><span class="p">);</span>
+	<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#btn_Reset</span><span class="dl">'</span><span class="p">).</span><span class="nf">click</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">resetForm</span><span class="p">);</span>
+	<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#btn_Insert</span><span class="dl">'</span><span class="p">).</span><span class="nf">click</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">moveForm</span><span class="p">);</span>
+
+	<span class="nf">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nf">ready</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">evt</span><span class="p">.</span><span class="nf">init</span><span class="p">();</span>
+		<span class="nx">evt</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nf">procList</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>   
+
+</code></pre></div></div>
+
+<h3 id="프론트-페이지">프론트 페이지</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="c">&lt;!--#include virtual="/Front/PC/include/HeadTag.I.asp"--&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/Front/PC/css/board.css?ts=&lt;%=g_iRandomID%&gt;"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"body-main body-index pc"</span>  <span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"warp"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"contents"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"sub_content"</span><span class="nt">&gt;</span>
+
+
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"board_zone_sec"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"board_zone_tit"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;h2&gt;</span>이벤트<span class="nt">&lt;/h2&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                        <span class="c">&lt;!--게시판 주소 --&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"esotitleline"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+
+                        <span class="c">&lt;!--게시판 주소 --&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"board_zone_cont"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"board_zone_list"</span> <span class="na">align=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"board_list_table"</span> <span class="na">style=</span><span class="s">"width:100%"</span> <span class="err">"=""</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;colgroup&gt;</span>
+                                        <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:6%"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:37%;"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:12%"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;col</span> <span class="na">style=</span><span class="s">"width:15%"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;/colgroup&gt;</span>
+                                    <span class="nt">&lt;thead&gt;</span>
+                                    <span class="nt">&lt;tr&gt;</span>
+                                        <span class="nt">&lt;th&gt;</span>번호<span class="nt">&lt;/th&gt;</span>
+                                        <span class="nt">&lt;th&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
+                                        <span class="nt">&lt;th&gt;</span>날짜<span class="nt">&lt;/th&gt;</span>
+                                        <span class="nt">&lt;th&gt;</span>작성자<span class="nt">&lt;/th&gt;</span>
+                                        <span class="c">&lt;!--&lt;th&gt;조회&lt;/th&gt;--&gt;</span>
+                                    <span class="nt">&lt;/tr&gt;</span>
+                                    <span class="nt">&lt;/thead&gt;</span>
+                                    <span class="nt">&lt;tbody</span> <span class="na">id=</span><span class="s">"s-area-list"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;/tbody&gt;</span>
+                                    <span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"s-temp-list"</span> <span class="na">type=</span><span class="s">"text/x-handlebars-template"</span><span class="nt">&gt;</span>
+                                         
+                                        <span class="o">&lt;</span><span class="nx">tr</span> <span class="nx">data</span><span class="o">-</span><span class="nx">sno</span><span class="o">=</span><span class="dl">"</span><span class="s2">3</span><span class="dl">"</span> <span class="nx">data</span><span class="o">-</span><span class="nx">auth</span><span class="o">=</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span> <span class="nx">style</span><span class="o">=</span><span class="dl">"</span><span class="s2">height:10px</span><span class="dl">"</span><span class="o">&gt;</span>
+                                            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span>
+                                                
+                                            <span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                                            <span class="o">&lt;</span><span class="nx">td</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">board_tit</span><span class="dl">"</span><span class="o">&gt;</span>
+                                                
+                                                <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">javascript:evt.fn.moveView()</span><span class="dl">"</span><span class="o">&gt;</span>
+                                                    
+                                                    <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">/Front/PC/img/icon_board_hot.png</span><span class="dl">"</span> <span class="nx">alt</span><span class="o">=</span><span class="dl">"</span><span class="s2">인기글</span><span class="dl">"</span><span class="o">&gt;</span>
+                                                <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>                                            <span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                                            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span>   <span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                                            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>                                            <span class="o">&lt;!--&lt;</span><span class="nx">td</span><span class="o">&gt;</span> <span class="mi">765</span> <span class="o">&lt;</span><span class="sr">/td&gt;--</span><span class="err">&gt;
+</span>                                        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
+</span>                                         
+                                    <span class="nt">&lt;/script&gt;</span>                                    
+
+                                <span class="nt">&lt;/table&gt;</span>
+
+                                <span class="c">&lt;!--&lt;div class="pagination" id="CPage"&gt;&lt;ul&gt;&lt;li class="on"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;--&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pagination"</span> <span class="na">id=</span><span class="s">"s-area-page"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                                <span class="c">&lt;!-- //pagination --&gt;</span>
+
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"board_search_box"</span><span class="nt">&gt;</span>
+
+                                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"bdId"</span> <span class="na">value=</span><span class="s">"notice"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"memNo"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"noheader"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
+
+                                        <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"chosen-select"</span> <span class="na">name=</span><span class="s">"searchField"</span> <span class="na">style=</span><span class="s">"display:;"</span><span class="nt">&gt;</span>
+                                            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"subject"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/option&gt;</span>
+                                            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"contents"</span><span class="nt">&gt;</span>내용<span class="nt">&lt;/option&gt;</span>
+                                            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"writerNm"</span><span class="nt">&gt;</span>작성자<span class="nt">&lt;/option&gt;</span>
+                                        <span class="nt">&lt;/select&gt;</span>
+
+                                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"m-keyword"</span> <span class="na">class=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"searchWord"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"btn_Search"</span> <span class="na">class=</span><span class="s">"btn_board_search"</span><span class="nt">&gt;&lt;em&gt;</span>검색<span class="nt">&lt;/em&gt;&lt;/button&gt;</span>
+
+                                <span class="nt">&lt;/div&gt;</span>
+                                <span class="c">&lt;!-- //board_search_box --&gt;</span>
+
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="c">&lt;!-- //board_zone_list --&gt;</span>
+
+
+                        <span class="nt">&lt;/div&gt;</span>
+                        <span class="c">&lt;!-- //board_zone_cont --&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="c">&lt;!-- //board_zone_sec --&gt;</span>
+
+                    <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"frmWritePassword"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"lyPassword"</span> <span class="na">class=</span><span class="s">"dn layer_wrap password_layer"</span> <span class="na">style=</span><span class="s">"height: 226px"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"layer_wrap_cont"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"ly_tit"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;h4&gt;</span>비밀번호 인증<span class="nt">&lt;/h4&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"ly_cont"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"scroll_box"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;p&gt;</span>비밀번호를 입력해 주세요.<span class="nt">&lt;/p&gt;</span>
+                                        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"writerPw"</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;/div&gt;</span>
+                                    <span class="c">&lt;!-- // --&gt;</span>
+                                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn_center_box"</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn_ly_password js_submit"</span><span class="nt">&gt;&lt;strong&gt;</span>확인<span class="nt">&lt;/strong&gt;&lt;/button&gt;</span>
+                                    <span class="nt">&lt;/div&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                                <span class="c">&lt;!-- //ly_cont --&gt;</span>
+                                <span class="c">&lt;!--&lt;a href="#close" class="ly_close layer_close"&gt;&lt;img src="/data/skin/front/lady2019_C/img/common/layer/btn_layer_close.png" alt="닫기"&gt;&lt;/a&gt; --&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="c">&lt;!-- //layer_wrap_cont --&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                        <span class="c">&lt;!-- //layer_wrap --&gt;</span>
+                    <span class="nt">&lt;/form&gt;</span>
+
+                    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"layerDim"</span> <span class="na">class=</span><span class="s">"dn"</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/div&gt;</span>
+                    <span class="c">&lt;!-- &lt;script type="text/javascript" src="/data/skin/front/lady2019_C/js/gd_board_list.js" charset="utf-8"&gt;&lt;/script&gt; --&gt;</span>
+                    <span class="nt">&lt;script&gt;</span>
+                        <span class="nf">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nf">ready</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+                            <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">img.js_image_load</span><span class="dl">'</span><span class="p">).</span><span class="nf">error</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+                                        <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">background</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">url("/data/skin/front/lady2019_C/board/skin/default/img/etc/noimg.png") no-repeat center center</span><span class="dl">'</span><span class="p">);</span>
+                                        <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">src</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/data/skin/front/lady2019_C/img/etc/blank.gif</span><span class="dl">'</span><span class="p">);</span>
+                                    <span class="p">})</span>
+                                    <span class="p">.</span><span class="nf">each</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+                                        <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">src</span><span class="dl">"</span><span class="p">,</span> <span class="nf">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">src</span><span class="dl">"</span><span class="p">));</span>
+                                    <span class="p">})</span>
+                        <span class="p">});</span>
+                    <span class="nt">&lt;/script&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="c">&lt;!-- //sub_content --&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+         <span class="c">&lt;!-- //container --&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer_wrap"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!--#include virtual="/Front/PC/include/Footer.I.asp"--&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- //footer_wrap --&gt;</span> 
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Common/js/handlebars.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Common/js/_w-meta-1.6.1.js?&lt;%=g_iRandomID%&gt;"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Front/frt_cmn/Service/base-page-svc.js?&lt;%=g_iRandomID%&gt;"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/Front/frt_mod/BOD/Service/board-event-svc.js?&lt;%=g_iRandomID%&gt;"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+	<span class="c1">// #######################################################################################################</span>
+	<span class="kd">var</span> <span class="nx">evt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">_W</span><span class="p">.</span><span class="nc">BindModelAjax</span><span class="p">(</span><span class="k">new</span> <span class="nc">BoardEventService</span><span class="p">());</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">isLog</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>  <span class="c1">// 디버깅 모드</span>
+	
+	<span class="c1">// 속성 설정</span>
+	<span class="nx">evt</span><span class="p">.</span><span class="nx">prop</span><span class="p">[</span><span class="dl">"</span><span class="s2">__viewUrl</span><span class="dl">"</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">event_Viw.asp</span><span class="dl">"</span><span class="p">;</span>
+	<span class="nx">evt</span><span class="p">.</span><span class="nx">prop</span><span class="p">[</span><span class="dl">'</span><span class="s1">__isGetLoad</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+	<span class="c1">// 이벤트 바인딩</span>
+	<span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#btn_Search</span><span class="dl">'</span><span class="p">).</span><span class="nf">click</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">searchList</span><span class="p">);</span>
+    <span class="c1">//--------------------------------------------------------------</span>
+	<span class="nf">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nf">ready</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">evt</span><span class="p">.</span><span class="nf">init</span><span class="p">();</span>
+		<span class="nx">evt</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nf">procList</span><span class="p">();</span>
+    <span class="p">});</span>
+	<span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isLog</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">______________ $.ready()</span><span class="dl">"</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</code></pre></div></div>
+
+<input type="text" id="search" class="search-input" placeholder="Enter your search term..." />
+        <div id="results" class="results"></div></div>
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 <a href="http://localhost:4000">Bind Model</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

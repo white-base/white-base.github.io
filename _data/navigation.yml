@@ -6,12 +6,30 @@ main:
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
   #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+  - title: "Example"
+    url:  /exam/notice/
   - title: "API"
     url: /docs/api/   
   # - title: "Sitemap"
   #   url: /sitemap/
+
+exam:
+  - title: 공지사항 예제
+    children:
+      - title: "설명"
+        url: /docs/quick-start/
+      - title: "base-svc.js"
+        url: /docs/feature/
+      - title: base-notice-svc.js
+        url: /docs/basic/
+  - title: 목록 예제
+    children:
+      - title: "설명"
+        url: /docs/quick-start/
+      - title: "base-svc.js"
+        url: /docs/feature/
+      - title: base-notice-svc.js
+        url: /docs/basic/          
 
 docs:
   - title: Getting Started

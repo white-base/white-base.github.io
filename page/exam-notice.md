@@ -1,3 +1,14 @@
+---
+title: "멀티 뷰(출력)"
+layout: fullwidth
+permalink: /exam/notice/
+date: 2011-06-23T1
+# toc: true
+# toc_sticky: true
+sidebar:
+  nav: "exam"
+---
+
 
 ## 공지 입니다
 
@@ -14,8 +25,8 @@
 - base-notice-svc.js : 공지 기본 서비스 객체 입니다.
 - notice-front-svc.js : 사용자 공지 서비스 객체 입니다.
 - notice-admin-svc.js : 관리자 공지 서비스 객체 입니다.
-- /admin/notice.asp : 관리자 페이지 입니다.
-- /front/notice.html : 사용자 페이지 입니다.
+- admin_notice.asp : 관리자 페이지 입니다.
+- front_notice.html : 사용자 페이지 입니다.
 
 
 ### 최상위 서비스
@@ -149,14 +160,14 @@ class NoticeFrontService extends BaseNoticeService {
     this.command = {
         read:       {
             outputOption: 3,
-            onExecute(p_bindCommand) { _this.bindModel.items['cmd'].value = 'READ'; },
+            cbBegin(p_bindCommand) { _this.bindModel.items['cmd'].value = 'READ'; },
             cbEnd(p_entity) {
                 if (p_entity['return'] < 0) return alert('조회 처리가 실패 하였습니다. Code : ' + p_entity['return']);
             }
         },
         list:       {
             outputOption: 1,
-            onExecute(p_bindCommand) { _this.bindModel.items['cmd'].value = 'LIST'; },
+            cbBegin(p_bindCommand) { _this.bindModel.items['cmd'].value = 'LIST'; },
             cbOutput(p_result) {
                 if (global.isLog) console.log("[Service] list.cbOutput() : 목록출력");
 
@@ -206,7 +217,7 @@ class NoticeAdminService extends BaseNoticeService {
 
     this.command = {
         create:     {
-            onExecute(p_bindCommand) { _this.bindModel.items['cmd'].value = 'CREATE'; },
+            cbBegin(p_bindCommand) { _this.bindModel.items['cmd'].value = 'CREATE'; },
             cbEnd(p_entity) {
                 if (p_entity['return'] < 0) return alert('등록 처리가 실패 하였습니다. Code : ' + p_entity['return']);
                 _this.bindModel.fn.moveList();  // 개선함
@@ -214,13 +225,13 @@ class NoticeAdminService extends BaseNoticeService {
         },
         read:       {
             outputOption: 3,
-            onExecute(p_bindCommand) { _this.bindModel.items['cmd'].value = 'READ'; },
+            cbBegin(p_bindCommand) { _this.bindModel.items['cmd'].value = 'READ'; },
             cbEnd(p_entity) {
                 if (p_entity['return'] < 0) return alert('조회 처리가 실패 하였습니다. Code : ' + p_entity['return']);
             }
         },
         update:     {
-            onExecute(p_bindCommand) { _this.bindModel.items['cmd'].value = 'UPDATE'; },
+            cbBegin(p_bindCommand) { _this.bindModel.items['cmd'].value = 'UPDATE'; },
             cbEnd(p_entity) {
                 if (p_entity['return'] < 0) return alert('수정 처리가 실패 하였습니다. Code : ' + p_entity['return']);
                 alert('수정 처리가 되었습니다.');
@@ -228,7 +239,7 @@ class NoticeAdminService extends BaseNoticeService {
             }
         },
         delete:     {
-            onExecute(p_bindCommand) { _this.bindModel.items['cmd'].value = 'DELETE'; },
+            cbBegin(p_bindCommand) { _this.bindModel.items['cmd'].value = 'DELETE'; },
             cbValid(p_valid) { return confirm('삭제 하시겠습니까.?'); },
             cbEnd(p_entity) {
                 if (p_entity['return'] < 0) return alert('삭제 처리가 실패 하였습니다. Result Code : ' + p_entity['return']);
@@ -237,7 +248,7 @@ class NoticeAdminService extends BaseNoticeService {
         },
         list:       {
             outputOption: 1,
-            onExecute(p_bindCommand) { _this.bindModel.items['cmd'].value = 'LIST'; },
+            cbBegin(p_bindCommand) { _this.bindModel.items['cmd'].value = 'LIST'; },
             cbOutput(p_result) {
                 if (global.isLog) console.log("[Service] list.cbOutput() : 목록출력");
 
