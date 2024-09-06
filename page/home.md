@@ -32,7 +32,14 @@ feature_row:
     excerpt: "BindModel은 MVC 패턴의 Controller 역할을 수행하며, View와 완전히 분리되어 있어 화면의 교체와 관리가 매우 용이합니다."
     url: "/docs/api-html-column/#column-의-value-얻기"
     btn_class: "btn--primary"
-    btn_label: "Learn more"         
+    btn_label: "Learn more"
+  - image_path: /assets/images/ezgif-7-e14b3a5e87.gif
+    alt: "Simplicity Productivity"
+    title: "Simplicity Productivity"
+    excerpt: "React와 Vue로 손쉽게 확장하는 BindModel 구현 코드, 다양한 프레임워크와 유연하게 결합되는 BindModel 활용"
+    url: "/docs/feature/#단순함과-생산성"
+    btn_class: "btn--primary"
+    btn_label: "Sample more"         
 ---
 
 {% include feature_row %}

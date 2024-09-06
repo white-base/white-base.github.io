@@ -6,30 +6,32 @@ main:
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
   #   url: /year-archive/
-  # - title: "Example"
-  #   url:  /exam/notice/
+  - title: "Example"
+    url:  /exam/notice/
   - title: "API"
     url: /docs/api/   
   # - title: "Sitemap"
   #   url: /sitemap/
 
 exam:
-  - title: 공지사항 예제
+  - title: notice Example
     children:
-      - title: "설명"
-        url: /docs/quick-start/
-      - title: "base-svc.js"
-        url: /docs/feature/
-      - title: base-notice-svc.js
-        url: /docs/basic/
-  - title: 목록 예제
-    children:
-      - title: "설명"
-        url: /docs/quick-start/
-      - title: "base-svc.js"
-        url: /docs/feature/
-      - title: base-notice-svc.js
-        url: /docs/basic/          
+      - title: "시작하기"
+        url: /exam/notice/
+      - title: "BindModel"
+        url: /exam/notice-bindmodel/
+      - title: "React with Mix"
+        url: /exam/notice-mix-react/
+      - title: "Vue with Mix"
+        url: /exam/notice-mix-vue/
+      - title: "React Mix compare"
+        url: /exam/notice-compare-react/
+      - title: "Vue Mix compare"
+        url: /exam/notice-compare-vue/
+  # - title: ETC
+  #   children:
+  #     - title: "React Mix compare"
+  #       url: /docs/quick-start/
 
 docs:
   - title: Getting Started

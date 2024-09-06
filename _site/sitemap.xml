@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/exam/notice/</loc>
-</url>
-<url>
 <loc>http://localhost:4000/docs/api-bind-command-ajax/</loc>
 </url>
 <url>
@@ -56,6 +53,24 @@
 </url>
 <url>
 <loc>http://localhost:4000/docs/multi-view/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/exam/notice-bindmodel/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/exam/notice-compare-react/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/exam/notice-compare-vue/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/exam/notice-mix-react/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/exam/notice-mix-vue/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/exam/notice/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/docs/quick-start/</loc>
