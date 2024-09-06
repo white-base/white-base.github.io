@@ -207,7 +207,259 @@
       <h1 id="page-title" class="page__title">notice React Mix 비교</h1>
     
 
+    <h2 id="설명">설명</h2>
+
+<h2 id="react-폴더-구조">React 폴더 구조</h2>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">react</span><span class="o">-</span><span class="nx">mix1</span><span class="o">/</span>
+<span class="err">├──</span> <span class="nx">componets</span><span class="o">/</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="nx">NoticeAdminPage</span><span class="p">.</span><span class="nx">js</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="nx">NoticeForm</span><span class="p">.</span><span class="nx">js</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="nx">NoticeList</span><span class="p">.</span><span class="nx">js</span>
+<span class="err">├──</span> <span class="nx">app</span><span class="p">.</span><span class="nx">js</span>
+<span class="err">└──</span> <span class="nx">admin</span><span class="p">.</span><span class="nx">html</span>
+</code></pre></div></div>
+
+<h3 id="noticeadminpagejs--react">NoticeAdminPage.js : React</h3>
+<hr />
+<p>공지사항에서 비즈니스로직과 핵심이 구현된 코드입니다.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">https://esm.sh/react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">NoticeList</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./NoticeList.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">NoticeForm</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./NoticeForm.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nf">NoticeAdminPage</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">notices</span><span class="p">,</span> <span class="nx">setNotices</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">([]);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">selectedNotice</span><span class="p">,</span> <span class="nx">setSelectedNotice</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">formData</span><span class="p">,</span> <span class="nx">setFormData</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">contents</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">active_cd</span><span class="p">:</span> <span class="dl">'</span><span class="s1">D</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">top_yn</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">});</span>
+
+  <span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">fetchNotices</span><span class="p">();</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="kd">const</span> <span class="nx">fetchNotices</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/notice/data/list.json</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nf">setNotices</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">rows</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Failed to fetch notices:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">handleRead</span> <span class="o">=</span> <span class="p">(</span><span class="nx">notice</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">setSelectedNotice</span><span class="p">(</span><span class="nx">notice</span><span class="p">);</span>
+    <span class="nf">setFormData</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span> <span class="nx">notice</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+      <span class="na">contents</span><span class="p">:</span> <span class="nx">notice</span><span class="p">.</span><span class="nx">contents</span> <span class="o">||</span> <span class="dl">''</span><span class="p">,</span>
+      <span class="na">active_cd</span><span class="p">:</span> <span class="nx">notice</span><span class="p">.</span><span class="nx">active_cd</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">D</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">top_yn</span><span class="p">:</span> <span class="nx">notice</span><span class="p">.</span><span class="nx">top_yn</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Y</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">handleList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">setSelectedNotice</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">handleChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">checked</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+    <span class="nf">setFormData</span><span class="p">((</span><span class="nx">prevFormData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="p">...</span><span class="nx">prevFormData</span><span class="p">,</span>
+      <span class="p">[</span><span class="nx">name</span><span class="p">]:</span> <span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span> <span class="p">?</span> <span class="nx">checked</span> <span class="p">:</span> <span class="nx">value</span><span class="p">,</span>
+    <span class="p">}));</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">handleUpdate</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">formData</span><span class="p">.</span><span class="nx">title</span><span class="p">.</span><span class="nf">trim</span><span class="p">())</span> <span class="p">{</span>
+      <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Title is required.</span><span class="dl">'</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">put</span><span class="p">(</span><span class="s2">`data/list/</span><span class="p">${</span><span class="nx">selectedNotice</span><span class="p">.</span><span class="nx">ntc_idx</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">formData</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Notice updated successfully:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+      <span class="nf">fetchNotices</span><span class="p">();</span>
+      <span class="nf">setSelectedNotice</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Failed to update notice:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">handleDelete</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s2">`data/list/</span><span class="p">${</span><span class="nx">selectedNotice</span><span class="p">.</span><span class="nx">ntc_idx</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Notice deleted successfully:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+      <span class="nf">fetchNotices</span><span class="p">();</span>
+      <span class="nf">setSelectedNotice</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Failed to delete notice:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="k">return </span><span class="p">(</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">className</span><span class="p">:</span> <span class="dl">'</span><span class="s1">container mt-3</span><span class="dl">'</span> <span class="p">},</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">h2</span><span class="dl">'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Notice Admin Page</span><span class="dl">'</span><span class="p">),</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">h5</span><span class="dl">'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Key Features: List inquiry/modification/deletion</span><span class="dl">'</span><span class="p">),</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">p</span><span class="dl">'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Data is transmitted when modified or deleted from the test page, but it is not actually processed.</span><span class="dl">'</span><span class="p">),</span>
+      
+      <span class="o">!</span><span class="nx">selectedNotice</span> <span class="p">?</span> <span class="p">(</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="nx">NoticeList</span><span class="p">,</span> <span class="p">{</span> <span class="nx">notices</span><span class="p">,</span> <span class="nx">handleRead</span> <span class="p">})</span>
+      <span class="p">)</span> <span class="p">:</span> <span class="p">(</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="nx">NoticeForm</span><span class="p">,</span> <span class="p">{</span>
+          <span class="nx">selectedNotice</span><span class="p">,</span>
+          <span class="nx">formData</span><span class="p">,</span>
+          <span class="nx">handleChange</span><span class="p">,</span>
+          <span class="nx">handleUpdate</span><span class="p">,</span>
+          <span class="nx">handleDelete</span><span class="p">,</span>
+          <span class="nx">handleList</span>
+        <span class="p">})</span>
+      <span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="noticeadminpagejs--mix-react-and-bindmodel">NoticeAdminPage.js : Mix React and BindModel</h3>
+<hr />
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">https://esm.sh/react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">NoticeList</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./NoticeList.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">NoticeForm</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./NoticeForm.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">NoticeAdminService</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../service/notice-admin-svc.js</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nc">NoticeAdminPage</span> <span class="kd">extends</span> <span class="nc">Component</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
     
+    <span class="k">this</span><span class="p">.</span><span class="nx">bm</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">_L</span><span class="p">.</span><span class="nc">BindModel</span><span class="p">(</span><span class="k">new</span> <span class="nc">NoticeAdminService</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">bm</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/notice/data/list.json</span><span class="dl">'</span><span class="p">;</span>
+      
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">selectedNotice</span><span class="p">:</span> <span class="kc">null</span> <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nf">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bm</span><span class="p">.</span><span class="nx">cmd</span><span class="p">[</span><span class="dl">'</span><span class="s1">list</span><span class="dl">'</span><span class="p">].</span><span class="nf">execute</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">setState</span><span class="p">({</span> <span class="na">selectedNotice</span><span class="p">:</span> <span class="kc">null</span> <span class="p">});</span>
+  <span class="p">};</span>
+
+  <span class="nx">handleChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">checked</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span><span class="p">)</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">checked</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">Y</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">N</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bm</span><span class="p">.</span><span class="nx">cols</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>  <span class="c1">//  column value setting</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">forceUpdate</span><span class="p">();</span>           <span class="c1">//  Forced screen rendering</span>
+  <span class="p">};</span>
+
+  <span class="nf">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">selectedNotice</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+
+    <span class="k">return </span><span class="p">(</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">className</span><span class="p">:</span> <span class="dl">'</span><span class="s1">container mt-3</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">h2</span><span class="dl">'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Notice Admin Page</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">h5</span><span class="dl">'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Key Features: List inquiry/modification/deletion</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">p</span><span class="dl">'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Data is transmitted when modified or deleted from the test page, but it is not actually processed.</span><span class="dl">'</span><span class="p">),</span>
+        
+        <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="nx">NoticeList</span><span class="p">,</span> <span class="p">{</span> <span class="na">bindModel</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">bm</span> <span class="p">}),</span>
+        <span class="o">!</span><span class="nx">selectedNotice</span> <span class="o">||</span> <span class="p">(</span>
+          <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="nx">NoticeForm</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">handleChange</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleChange</span><span class="p">,</span>
+            <span class="na">bindModel</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">bm</span>
+          <span class="p">})</span>
+        <span class="p">)</span>
+      <span class="p">)</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="notice-admin-svcjs--mix-vue-and-bindmodel">notice-admin-svc.js : Mix Vue and BindModel</h3>
+<hr />
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nc">NoticeAdminService</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">reactThis</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">title</span><span class="p">:</span> <span class="p">{</span> <span class="na">required</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">command</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">create</span><span class="p">:</span>     <span class="p">{</span>
+            <span class="p">},</span>
+            <span class="na">read</span><span class="p">:</span>       <span class="p">{</span>
+                <span class="na">outputOption</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="na">update</span><span class="p">:</span>     <span class="p">{</span>
+                <span class="nf">cbBind</span><span class="p">(</span><span class="nx">bind</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">setup</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">Caution: Send to the test server, but the data is not reflected.</span><span class="dl">'</span><span class="p">,</span> <span class="nx">setup</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+                <span class="p">},</span>
+                <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>  <span class="p">{</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+                      <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">The post has been modified.</span><span class="dl">'</span><span class="p">);</span>
+                      <span class="nx">reactThis</span><span class="p">.</span><span class="nf">handleList</span><span class="p">();</span>
+                    <span class="p">}</span>
+                  <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="na">delete</span><span class="p">:</span>     <span class="p">{</span>
+                <span class="nf">cbValid</span><span class="p">(</span><span class="nx">valid</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">)</span> <span class="p">{</span> 
+                    <span class="k">if </span><span class="p">(</span><span class="nf">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">Are you sure you want to delete it?</span><span class="dl">'</span><span class="p">))</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="p">},</span>
+                <span class="nf">cbBind</span><span class="p">(</span><span class="nx">bind</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">setup</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">Caution: Send to the test server, but the data is not reflected.</span><span class="dl">'</span><span class="p">,</span> <span class="nx">setup</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+                <span class="p">},</span>
+                <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+                      <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">The post has been deleted.</span><span class="dl">'</span><span class="p">);</span>
+                      <span class="nx">reactThis</span><span class="p">.</span><span class="nf">handleList</span><span class="p">();</span>
+                    <span class="p">}</span>
+                  <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="na">list</span><span class="p">:</span>       <span class="p">{</span>
+                <span class="na">outputOption</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="nf">cbEnd</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">reactThis</span><span class="p">.</span><span class="nf">setState</span><span class="p">({</span> <span class="na">selectedNotice</span><span class="p">:</span> <span class="kc">null</span> <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">ntc_idx</span><span class="p">:</span>    <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="p">[</span><span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">],</span>     <span class="na">update</span><span class="p">:</span>  <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">,</span>               <span class="na">delete</span><span class="p">:</span>     <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">]</span> <span class="p">},</span>
+            <span class="na">title</span><span class="p">:</span>      <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>               <span class="na">update</span><span class="p">:</span>  <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">],</span> <span class="p">},</span>
+            <span class="na">contents</span><span class="p">:</span>   <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>               <span class="na">update</span><span class="p">:</span>  <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span> <span class="p">},</span>
+            <span class="na">top_yn</span><span class="p">:</span>     <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>               <span class="na">update</span><span class="p">:</span>  <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">],</span> <span class="p">},</span>
+            <span class="na">active_cd</span><span class="p">:</span>  <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span><span class="p">,</span>               <span class="na">update</span><span class="p">:</span>  <span class="p">[</span><span class="dl">'</span><span class="s1">valid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bind</span><span class="dl">'</span><span class="p">],</span> <span class="p">},</span>
+            <span class="na">create_dt</span><span class="p">:</span>  <span class="p">{</span> <span class="na">read</span><span class="p">:</span>     <span class="dl">'</span><span class="s1">output</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="p">};</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">handleRead</span><span class="p">:</span> <span class="k">async </span><span class="p">(</span><span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">cmd</span><span class="p">[</span><span class="dl">'</span><span class="s1">read</span><span class="dl">'</span><span class="p">].</span><span class="nx">outputOption</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="nc">Number</span><span class="p">(</span><span class="nx">idx</span><span class="p">);</span>
+                <span class="k">await</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">bindModel</span><span class="p">.</span><span class="nx">cmd</span><span class="p">[</span><span class="dl">'</span><span class="s1">read</span><span class="dl">'</span><span class="p">].</span><span class="nf">execute</span><span class="p">();</span>
+                <span class="nx">reactThis</span><span class="p">.</span><span class="nf">setState</span><span class="p">({</span> <span class="na">selectedNotice</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+            <span class="p">},</span>
+        <span class="p">};</span>
+    <span class="p">}</span>    
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="비교">비교</h2>
+
+<blockquote>
+  <p>Mix된 코드에서 클래스 컴포넌트와 BindModel을 활용하는 방식은 React의 상태 관리와 비즈니스 로직을 더욱 명확하게 분리하여 관리할 수 있는 장점을 제공합니다. 이 방식의 주요 장점은 다음과 같습니다.</p>
+</blockquote>
+
+<ol>
+  <li>비즈니스 로직의 재사용성과 유지보수성 향상: BindModel을 통해 비즈니스 로직을 컴포넌트에서 분리하여 관리할 수 있습니다. 데이터 바인딩과 API 호출 등의 로직을 BindModel 내부에 정의하면, 다른 컴포넌트에서 동일한 로직을 재사용할 수 있으며, 추후 로직 변경 시 유지보수도 용이합니다. 첫 번째 코드처럼 직접적으로 비즈니스 로직을 구현하는 것보다 구조적으로 더 깔끔한 관리가 가능합니다.</li>
+  <li>데이터 바인딩의 일관성: BindModel을 통해 명시적으로 데이터와 화면 요소를 연결함으로써 데이터 바인딩의 일관성을 보장할 수 있습니다. this.bm.cols[name].value와 같은 방식으로 컬럼 값을 관리하면, 사용자 입력과 데이터 변경 사항을 효율적으로 동기화할 수 있습니다.</li>
+  <li>명확한 상태 관리: 클래스 컴포넌트는 상태를 명시적으로 관리하고, BindModel과의 상호작용을 통해 각 데이터의 상태 변화를 쉽게 추적할 수 있습니다. 이를 통해 컴포넌트 간의 상태 관리를 더욱 체계적으로 할 수 있습니다.</li>
+  <li>대규모 프로젝트에서의 유연성: 이 방식은 규모가 크고 복잡한 프로젝트에서 특히 유리합니다. BindModel은 여러 컴포넌트에서 비즈니스 로직을 일관되게 처리할 수 있도록 도와주며, 확장성과 유연성이 높습니다.</li>
+</ol>
+
+<p>결론적으로, Mix된 코드는 React의 상태 관리와 비즈니스 로직을 명확하게 분리하여 코드의 가독성, 유지보수성, 재사용성을 크게 개선할 수 있는 방식을 제시하며, 특히 대규모 프로젝트나 복잡한 데이터 처리에 적합합니다.</p>
 <input type="text" id="search" class="search-input" placeholder="Enter your search term..." />
         <div id="results" class="results"></div></div>
 </div>

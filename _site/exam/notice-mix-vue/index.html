@@ -207,7 +207,11 @@
       <h1 id="page-title" class="page__title">notice Vue Mix</h1>
     
 
-    <h2 id="폴더-구조">폴더 구조</h2>
+    <h2 id="설명">설명</h2>
+
+<p>“공지 사항” 예제로 페이지로 사용자 페이지는 제외하였습니다.</p>
+
+<h2 id="폴더-구조">폴더 구조</h2>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">vue</span><span class="o">-</span><span class="nx">mix</span><span class="o">/</span>
 <span class="err">├──</span> <span class="nx">componets</span><span class="o">/</span>
 <span class="err">│</span>   <span class="err">├──</span> <span class="nx">NoticeForm</span><span class="p">.</span><span class="nx">js</span>
@@ -219,6 +223,8 @@
 </code></pre></div></div>
 
 <h3 id="adminhtml">admin.html</h3>
+<hr />
+
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -252,6 +258,8 @@
 </code></pre></div></div>
 
 <h3 id="appjs">app.js</h3>
+<hr />
+
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">NoticeList</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./components/NoticeList.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">NoticeForm</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./components/NoticeForm.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">NoticeAdminService</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./service/notice-admin-svc.js</span><span class="dl">'</span>
@@ -292,6 +300,8 @@
 </code></pre></div></div>
 
 <h3 id="servicenotice-admin-svcjs">service/notice-admin-svc.js</h3>
+<hr />
+
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">NoticeAdminService</span> <span class="p">{</span>
     <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">_this</span>       <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
@@ -343,6 +353,8 @@
 </code></pre></div></div>
 
 <h3 id="componentsnoticeformjs">components/NoticeForm.js</h3>
+<hr />
+
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="na">props</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">statusOptions</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bindModel</span><span class="dl">'</span><span class="p">],</span>
     <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
@@ -418,6 +430,8 @@
 </code></pre></div></div>
 
 <h3 id="componentsnoticelistjs">components/NoticeList.js</h3>
+<hr />
+
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
     <span class="na">props</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">bindModel</span><span class="dl">'</span><span class="p">],</span>
     <span class="na">emits</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">select-notice</span><span class="dl">'</span><span class="p">],</span>

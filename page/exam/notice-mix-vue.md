@@ -9,7 +9,9 @@ sidebar:
   nav: "exam"
 ---
 
+## 설명
 
+"공지 사항" 예제로 페이지로 사용자 페이지는 제외하였습니다.
 
 ## 폴더 구조
 ```js
@@ -24,6 +26,8 @@ vue-mix/
 ```
 
 ### admin.html
+---
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +62,8 @@ vue-mix/
 ```
 
 ### app.js
+---
+
 ```js
 import NoticeList from './components/NoticeList.js';
 import NoticeForm from './components/NoticeForm.js';
@@ -99,6 +105,8 @@ app.mount('#app');
 ```
 
 ### service/notice-admin-svc.js
+---
+
 ```js
 class NoticeAdminService {
     constructor() {
@@ -151,6 +159,8 @@ export {
 ```
 
 ### components/NoticeForm.js
+---
+
 ```js
 export default {
     props: ['statusOptions', 'bindModel'],
@@ -227,6 +237,8 @@ export default {
 ```
 
 ### components/NoticeList.js
+---
+
 ```js
 export default {
     props: ['bindModel'],

@@ -9,6 +9,9 @@ sidebar:
   nav: "exam"
 ---
 
+## 설명
+
+"공지 사항" 예제로 페이지로 사용자 페이지는 제외하였습니다.
 
 ## 폴더 구조
 ```js
@@ -24,6 +27,8 @@ react-mix1/
 ```
 
 ### admin.html
+---
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +52,8 @@ react-mix1/
 ```
 
 ### app.js
+---
+
 ```js
 
 import React from 'https://esm.sh/react';
@@ -64,11 +71,12 @@ ReactDOM.render(
 ```
 
 ### service/notice-admin-svc.js
+---
+
 ```js
 class NoticeAdminService {
-    constructor() {
-        var _this       = this;
-        var _template   = null;     // Handlebars template
+    constructor(reactThis) {
+        const _this = this;
 
         this.items = {
             title: { required: true }
@@ -83,6 +91,12 @@ class NoticeAdminService {
                 cbBind(bind, cmd, setup) {
                     console.warn('Caution: Send to the test server, but the data is not reflected.', setup.data);
                 },
+                cbEnd(status, cmd, res)  {
+                    if (res) {
+                      alert('The post has been modified.');
+                      reactThis.handleList();
+                    }
+                  }
             },
             delete:     {
                 cbValid(valid, cmd) { 
@@ -91,19 +105,34 @@ class NoticeAdminService {
                 cbBind(bind, cmd, setup) {
                     console.warn('Caution: Send to the test server, but the data is not reflected.', setup.data);
                 },
+                cbEnd(status, cmd, res) {
+                    if (res) {
+                      alert('The post has been deleted.');
+                      reactThis.handleList();
+                    }
+                  }
             },
             list:       {
                 outputOption: 1,
+                cbEnd(status, cmd, res) {
+                    reactThis.setState({ selectedNotice: null });
+                }
             }
         };
-
         this.mapping = {
-            ntc_idx:    { read:     ['bind', 'output'],     update:  'bind',               delete:     'bind' },
+            ntc_idx:    { read:     ['bind', 'output'],     update:  'bind',               delete:     ['valid', 'bind'] },
             title:      { read:     'output',               update:  ['valid', 'bind'], },
             contents:   { read:     'output',               update:  'bind' },
             top_yn:     { read:     'output',               update:  ['valid', 'bind'], },
             active_cd:  { read:     'output',               update:  ['valid', 'bind'], },
             create_dt:  { read:     'output' },
+        };
+        this.fn = {
+            handleRead: async (idx) => {
+                _this.bindModel.cmd['read'].outputOption.index = Number(idx);
+                await _this.bindModel.cmd['read'].execute();
+                reactThis.setState({ selectedNotice: true });
+            },
         };
     }    
 }
@@ -116,37 +145,27 @@ export {
 
 
 ### components/NoticeAdminPage.js
+---
+
 ```js
 import React, { Component } from 'https://esm.sh/react';
 import NoticeList from './NoticeList.js';
 import NoticeForm from './NoticeForm.js';
 import NoticeAdminService from '../service/notice-admin-svc.js'
 
-const bm = new _L.BindModel(new NoticeAdminService());  
-
 export default class NoticeAdminPage extends Component {
   constructor(props) {
     super(props);
-
-    bm.url = '/notice/data/list.json';
-
+    
+    this.bm = new _L.BindModel(new NoticeAdminService(this));  
+    this.bm.url = '/notice/data/list.json';
+      
     this.state = { selectedNotice: null };
   }
 
   componentDidMount() {
-    this.fetchNotices();
+    this.bm.cmd['list'].execute();
   }
-
-  fetchNotices = async () => {
-    await bm.cmd['list'].execute();
-    this.forceUpdate();
-  };
-
-  handleRead = async (idx) => {
-    bm.cmd['read'].outputOption.index = Number(idx);
-    await bm.command['read'].execute();
-    this.setState({ selectedNotice: true });
-  };
 
   handleList = () => {
     this.setState({ selectedNotice: null });
@@ -155,32 +174,8 @@ export default class NoticeAdminPage extends Component {
   handleChange = (e) => {
     let { name, value, type, checked } = e.target;
     if (type === 'checkbox') value = checked ? 'Y' : 'N';
-    bm.cols[name].value = value;  //  column value 설정
-    this.forceUpdate();           //  강제 화면 렌더링
-  };
-
-  handleUpdate = async () => {
-    const _this = this;
-
-    bm.cmd['update'].cbEnd = function(status, cmd, res) {
-      if (res) {
-        alert('The post has been modified.');
-        _this.handleList();
-      }
-    }
-    await bm.cmd['update'].execute();
-  };
-
-  handleDelete = async () => {
-    const _this = this;
-
-    bm.cmd['delete'].cbEnd = function(status, cmd, res) {
-      if (res) {
-        alert('The post has been deleted.');
-        _this.handleList();
-      }
-    }
-    await bm.cmd['delete'].execute();
+    this.bm.cols[name].value = value;  //  column value setting
+    this.forceUpdate();           //  Forced screen rendering
   };
 
   render() {
@@ -192,15 +187,11 @@ export default class NoticeAdminPage extends Component {
         React.createElement('h5', null, 'Key Features: List inquiry/modification/deletion'),
         React.createElement('p', null, 'Data is transmitted when modified or deleted from the test page, but it is not actually processed.'),
         
-        React.createElement(NoticeList, { handleRead: this.handleRead, bindModel: bm }),
+        React.createElement(NoticeList, { bindModel: this.bm }),
         !selectedNotice || (
           React.createElement(NoticeForm, {
-            selectedNotice,
             handleChange: this.handleChange,
-            handleUpdate: this.handleUpdate,
-            handleDelete: this.handleDelete,
-            handleList: this.handleList,
-            bindModel: bm
+            bindModel: this.bm
           })
         )
       )
@@ -211,12 +202,14 @@ export default class NoticeAdminPage extends Component {
 
 
 ### components/NoticeForm.js
+---
+
 ```js
 import React, { Component } from 'https://esm.sh/react';
 
 export default class NoticeForm extends Component {
   render() {
-    const { selectedNotice, handleChange, handleUpdate, handleDelete, handleList, bindModel } = this.props;
+    const { handleChange, bindModel } = this.props;
 
     return (
       React.createElement('div', { id: 'class-form' },
@@ -281,9 +274,9 @@ export default class NoticeForm extends Component {
             )
           )
         ),
-        React.createElement('button', { type: 'button', className: 'btn btn-primary mt-3', onClick: handleUpdate }, 'Update'),
-        React.createElement('button', { type: 'button', className: 'btn btn-primary mt-3', onClick: handleDelete }, 'Delete'),
-        React.createElement('button', { type: 'button', className: 'btn btn-primary mt-3', onClick: handleList }, 'List')
+        React.createElement('button', { type: 'button', className: 'btn btn-primary mt-3', onClick: ()=> bindModel.cmd['update'].execute() }, 'Update'),
+        React.createElement('button', { type: 'button', className: 'btn btn-primary mt-3', onClick: ()=> bindModel.cmd['delete'].execute() }, 'Delete'),
+        React.createElement('button', { type: 'button', className: 'btn btn-primary mt-3', onClick: ()=> bindModel.cmd['list'].execute() }, 'List')
       )
     );
   }
@@ -292,12 +285,14 @@ export default class NoticeForm extends Component {
 
 
 ### components/NoticeList.js
+---
+
 ```js
 import React, { Component } from 'https://esm.sh/react';
 
 export default class NoticeList extends Component {
   render() {
-    const { handleRead, bindModel } = this.props;
+    const { bindModel } = this.props;
     const rows = bindModel.cmd.list.output.rows;
 
     return (
@@ -314,7 +309,7 @@ export default class NoticeList extends Component {
             rows.map((notice, i) => (
               React.createElement('tr', { key: notice.ntc_idx },
                 React.createElement('td', null,
-                  React.createElement('a', { href: '#', onClick: () => handleRead(i), className: 'btnNormal' },
+                  React.createElement('a', { href: '#', onClick: () => bindModel.fn.handleRead(i), className: 'btnNormal' },
                     notice.title
                   )
                 ),
