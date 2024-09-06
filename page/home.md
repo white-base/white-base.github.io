@@ -37,7 +37,7 @@ feature_row:
     alt: "Simplicity Productivity"
     title: "Simplicity Productivity"
     excerpt: "React와 Vue로 손쉽게 확장하는 BindModel 구현 코드, 다양한 프레임워크와 유연하게 결합되는 BindModel 활용"
-    url: "/docs/feature/#단순함과-생산성"
+    url: "/exam/notice/"
     btn_class: "btn--primary"
     btn_label: "Sample more"         
 ---

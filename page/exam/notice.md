@@ -1,5 +1,5 @@
 ---
-title: "멀티 뷰(출력)"
+title: "example 시작하기"
 layout: fullwidth
 permalink: /exam/notice/
 date: 2011-06-23T1
