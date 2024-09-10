@@ -16,7 +16,7 @@ breadcrumbs: true #
 BindModel은 웹과 Node.js 환경에서 작동하는 프론트엔드 프레임워크입니다. 명령과 엔티티(Table, View)를 기반으로 하여 단순함과 생산성을 목표로 설계되었습니다. HTML, CSS, JavaScript의 기초를 숙지한 상태에서 BindModel을 사용하여 손쉽게 웹사이트를 제작할 수 있습니다.
 
 - 모든 데이터를 엔티티(MetaTable, MetaView)로 관리합니다.
-- MVC 패턴에서 Controller의 역할을 수행하며, View(화면)와 완전히 분리있습니다.
+- MVC 패턴에서 Controller의 역할을 수행하며, View(화면)와 완전히 분리되어 있습니다.
 - 명령(BindCommand) 기반의 프로세서를 제공하여, 일관된 개발 패턴을 제공합니다.
 - 라우팅, 폼 관리, 클라이언트-서버 통신 등 웹 개발에 필요한 라이브러리를 조화롭게 통합한 모음집입니다.
 - 다른 프레임워크의 연동하여 사용할 수 있습니다.
