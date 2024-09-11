@@ -16,7 +16,7 @@ main:
 exam:
   - title: notice Example
     children:
-      - title: "시작하기"
+      - title: "start"
         url: /exam/notice/
       - title: "BindModel"
         url: /exam/notice-bindmodel/
@@ -36,52 +36,52 @@ exam:
 docs:
   - title: Getting Started
     children:
-      - title: "시작하기"
+      - Title: "Get Started"
         url: /docs/quick-start/
-      - title: "주요 특징"
+      - Title: "Main Features"
         url: /docs/feature/
-      - title: "기본 사용법"
+      - Title: "Basic usage"
         url: /docs/basic/
 
   - title: Essentials
     children:
-      - title: "핵심 개념"
+      - Title: "Core concept"
         url: /docs/core/
-      - title: "바인드 모델 구성"
+      - Title: "Configure Bind Model"
         url: /docs/bind-model-config/
-      - title: "바인드 커멘드 구성"
+      - Title: "Configure the bind command"
         url: /docs/bind-commnad-config/
-      - title: "서비스 객체 구성"
+      - Title: "Configure service objects"
         url: /docs/service-config/
-      - title: "객체 생성 방식"
+      - Title: "How to create objects"
         url: /docs/create-method/
-      - title: "단계별 제작 과정"
+      - Title: "Step-by-step production process"
         url: /docs/step-by-step/
 
   - title: advanced
     children:
-      - title: "콜백 라이프사이클"
+      - Title: "Callback Lifecycle"
         url: /docs/callback-lifecycle/
-      - title: "멀티 테이블"
+      - Title: "Multi-Table"
         url: /docs/multi-table/        
-      - title: "멀티 뷰"
+      - Title: "Multi-View"
         url: /docs/multi-view/
-      - title: "동기화"
+      - Title: "Sync"
         url: /docs/synchronization/
-      - title: "CRUD + L 예제"
+      - Title: "CRUD + L Example"
         url: /docs/crudl-example/
 
   - title: Reference
     children:
-      - title: "BindModel 클래스"
+      - Title: "BindModel Classes"
         url: /docs/api-bind-model-ajax/
-      - title: "BindCommand 클래스"
+      - Title: "Bindcommand class"
         url: /docs/api-bind-command-ajax/
-      - title: "HTMLColumn 클래스"
+      - Title: "HTML Column Class"
         url: /docs/api-html-column/
-      - title: "MetaTable 클래스"
+      - Title: "MetaTable Class"
         url: /docs/api-meta-table/
-      - title: "MetaView 클래스"
+      - Title: "MetaView Class"
         url: /docs/api-meta-view/
       - title: "PropertyCollection 클래스"
         url: /docs/api-property-collection/
