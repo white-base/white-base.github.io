@@ -32,6 +32,7 @@ exam:
   #   children:
   #     - title: "React Mix compare"
   #       url: /docs/quick-start/
+
 docs:
   - title: Getting Started
     children:
@@ -46,15 +47,15 @@ docs:
     children:
       - title: "Core concept"
         url: /docs/core/
-      - title: "Configure Bind Model"
+      - title: "Configure BindModel"
         url: /docs/bind-model-config/
-      - title: "Configure the bind command"
+      - title: "Configure Command"
         url: /docs/bind-commnad-config/
-      - title: "Configure service objects"
+      - title: "Configure Service objects"
         url: /docs/service-config/
       - title: "How to create objects"
         url: /docs/create-method/
-      - title: "Step-by-step production process"
+      - title: Step-by-step process"
         url: /docs/step-by-step/
 
   - title: advanced
@@ -72,15 +73,15 @@ docs:
 
   - title: Reference
     children:
-      - title: "BindModel Classes"
+      - title: "BindModel class"
         url: /docs/api-bind-model-ajax/
-      - title: "Bindcommand class"
+      - title: "BindCommand class"
         url: /docs/api-bind-command-ajax/
-      - title: "HTML Column Class"
+      - title: "HTMLColumn class"
         url: /docs/api-html-column/
-      - title: "MetaTable Class"
+      - title: "MetaTable class"
         url: /docs/api-meta-table/
-      - title: "MetaView Class"
+      - title: "MetaView class"
         url: /docs/api-meta-view/
-      - title: "PropertyCollection 클래스"
+      - title: "PropertyCollection class"
         url: /docs/api-property-collection/
