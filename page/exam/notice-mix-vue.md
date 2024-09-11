@@ -8,12 +8,11 @@ date: 2011-06-23T1
 sidebar:
   nav: "exam"
 ---
+## Description
 
-## 설명
+As an example of "Notice", we excluded the user page as a page.
 
-"공지 사항" 예제로 페이지로 사용자 페이지는 제외하였습니다.
-
-## 폴더 구조
+## folder structure
 ```js
 vue-mix/
 ├── componets/

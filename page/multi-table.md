@@ -9,13 +9,13 @@ sidebar:
   nav: "docs"
 ---
 
-BindModel 객체는 기본적으로 ‘first’라는 이름의 MetaTable을 자동 생성하여 사용합니다. 필요에 따라 다른 MetaTable을 추가할 수 있으며, 이는 컬럼명이 같지만 속성이 다르거나 특별한 경우에 유용합니다.
+By default, the BindModel object automatically generates and uses a MetaTable named 'first', which is useful if you have the same column name but different properties or special cases.
 
-## MetaTable 추가
+## Add MetaTable
 
-### addTable() 메소드로 추가
+### Add as addTable() Method
 
-addTable() 메소드를 통해 \_tables 컬렉션에 MetaTable을 추가할 수 있습니다. 이 메소드를 사용하면, BindModel 객체에서 테이블에 접근하기 위한 참조 키를 자동으로 만듭니다.
+The addTable() method allows you to add MetaTable to the \_tables collection, which automatically creates a reference key to access the table from the BindModel object.
 
 ```js
 var bm = new BindModel();
@@ -26,10 +26,10 @@ bm.addTable('second');
 // bm._tables[1] === bm._tables['second'] == bm.second
 // bm._tables.count == 2
 ```
-- bm.second 로 추가한 테이블의 접근할 수 있습니다.
-### \_tables 컬렉션으로 추가
+- Access to tables added as bm.second.
+### \_Add as a collection of tables
 
-\_tables.add() 메소드를 통해 MetaTable을 추가할 수 있습니다. 이 방법도 유사하게 \_tables 컬렉션에 테이블을 추가하지만, addTable()과는 달리 테이블명 참조 키를 자동으로 생성하지 않습니다.
+You can add MetaTable through the \_tables.add() method, which adds tables to the \_tables collection similarly, but does not automatically generate a table name reference key, unlike addTable().
 
 ```js
 var bm = new BindModel();
@@ -41,39 +41,39 @@ bm._tables.add('second');
 ```
 
 
-## 기본 테이블 변경
+## Change the default table
 
-추가한 MetaTable을 기본 테이블로 설정하면, 이후에 addColumn() 또는 addCommand()를 사용할 때 기본 테이블이 변경된 테이블로 설정됩니다.
+If you set the added MetaTable to the default table, the default table is set to the changed table when you use addColumn() or addcommand() later.
 
 ```js
 var bm = new BindModel();
 
 bm._tables.add('second');
 
-// 기본테이블 설정
+// Default Table Settings
 bm._baseTable = bm['second'];  
 
-// 컬럼 추가
+// Add Column
 bm.addColumnValue('aa', 10);
 
 // bm.columns['aa'].value == 10
 // bm._tables['first'].columns.count == 0
 // bm._tables['second'].columns.count == 1
 ```
-- `columns` 속성은 `_baseTable`의 columns 을 참조합니다. (columns === \_tabeTable.columns)
+- For the 'column' property, refer to columns of '_baseTable' (column === \_tabeTable.column)
 
-이와 같이 BindModel 객체에서 MetaTable을 추가하고 활용할 수 있습니다.
+As such, MetaTable can be added and utilized in the BindModel object.
 
 
-# 여러 메소드에서 추가한 테이블 지정
+# Specify tables added by multiple methods
 
-여러 메소드에서 추가한 테이블을 지정할 수 있습니다. \_tables 컬렉션 외부에 테이블을 지정할 경우, 객체 직렬화 기능을 사용할 수 없습니다.
+You can specify tables added by multiple methods. If you specify tables outside the \_tables collection, the object serialization feature is not available.
 
-## BindModel 영역
+## BindModel Area
 
-### addCommand() : 명령 추가
+### addcommand(): add command
 
-command 추가시 테이블을 지정할 수 있습니다.
+You can specify a table when adding a command.
 
 ```js
 var bm = new BindModel();
@@ -86,11 +86,11 @@ bm.addCommand('list', 3, bm.second);
 // bm.command['read']._baseTable == bm.second
 // bm.command['list']._baseTable == bm.second
 ```
-- read 명령의 기본 테이블은 'second'로 지정됩니다.
-- list 명령의 기본 테이블은 'second'로 지정됩니다.
-### addColumn() : 컬럼 추가
+- The default table for the read command is specified as 'second'.
+- The default table for the list command is specified as 'second'.
+### addColumn(): add column
 
-컬럼 추가 시 테이블을 지정할 수 있습니다.
+You can specify a table when adding columns.
 
 ```js
 var bm = new BindModel();
@@ -101,12 +101,12 @@ bm.addCommand('read');
 bm.addColumn('aa', 'read', 'valid', 'second');
 bm.addColumn('bb', 'read', '$all', bm.second);
 ```
-- 'aa' 컬럼은 'second' 테이블에 등록되고 read 명령의 valid 에 참조가 등록됩니다.
-- 'bb' 컬럼은 'second' 테이블에 등록되고 read 명령의 전체 MetaView 에 참조가 등록됩니다.
+- The 'aa' column is registered in the 'second' table and a reference is registered in the valid of the read command.
+- The 'bb' column is registered in the 'second' table and a reference is registered in the entire MetaView of the read command.
 
-### addColumnValue() : 컬럼 추가
+### addColumnValue(): add column
 
-column 추가 시 초기값을 지정하고 테이블을 설정할 수 있습니다.
+You can specify an initial value and set the table when adding columns.
 
 ```js
 var bm = new BindModel();
@@ -117,12 +117,12 @@ bm.addCommand('read');
 bm.addColumn('aa', 'AA', 'read', 'valid', 'second');
 bm.addColumn('bb', 'BB', 'read', '$all', bm.second);
 ```
-- ‘aa’ 컬럼의 초기값은 ‘AA’로 ‘second’ 테이블에 등록되고 read 명령의 valid에 참조가 등록됩니다.
-- ‘bb’ 컬럼의 초기값은 ‘BB’로 ‘second’ 테이블에 등록되고 read 명령의 전체 MetaView에 참조가 등록됩니다.
+- The initial value of the 'aa' column is 'AA' and is registered in the 'second' table and a reference is registered in the valid of the read command.
+- The initial value of the 'bb' column is 'BBB' and is registered in the 'second' table and a reference is registered in the entire MetaView of the read command.
 
-### setMapping() : 컬럼 매핑
+### setMapping():column mapping
 
-매핑 시 기본 테이블을 지정할 수 있습니다
+You can specify a default table when mapping
 
 ```js
 var bm = new BindModel();
@@ -140,11 +140,11 @@ bm.setMapping({
 // bm.second.columns.count == 2
 // bm.first.columns.count == 0
 ```
-- 아이템들은 ‘second’ 테이블에 등록되고, read 명령의 MetaView에 참조값이 등록됩니다.
+- Items are registered in the 'second' table and the reference value is registered in the MetaView of the read command.
 
-### 서비스 객체
+### Service Object
 
-items, mapping 영역에서 테이블명과 조합해서 사용할 수 있습니다.
+You can use it in combination with the table name in the items, mapping area.
 
 ```js
 var bm1 = new BindModel({
@@ -164,16 +164,16 @@ var bm1 = new BindModel({
     },
 });
 ```
-- 'aa' 아이템은 기본 테이블(first)에 등록되고 대상 command 에 매핑됩니다.
-- 'bb' 아이템은 추가 테이블(second)에 등록되고 대상 command 에 매핑됩니다.
-- 'cc' 아이템은 추가 테이블(three)에 등록되고 대상 command 에 매핑됩니다.
+- Items 'aa' are registered in the default table (first) and mapped to the target command.
+- The 'bbb' item is registered in the extra table (second) and mapped to the target command.
+- The 'cc' item is registered in the additional table and mapped to the target command.
 
 
-## BindCommand 영역
+## Bind Command Area
 
-### addColumn() : 컬럼 추가
+### addColumn(): add column
 
-컬럼 추가 시 테이블을 지정할 수 있습니다.
+You can specify a table when adding columns.
 
 ```js
 var bm = new BindModel();
@@ -184,12 +184,12 @@ bm.addCommand('read');
 bm.cmd['read'].addColumn('aa', 'valid', 'second');
 bm.cmd['read'].addColumn('bb', '$all', bm.second);
 ```
-- 'aa' 컬럼은 'second' 테이블에 등록되고 read 명령의 valid 에 참조가 등록됩니다.
-- 'bb' 컬럼은 'second' 테이블에 등록되고 read 명령의 전체 MetaView 에 참조가 등록됩니다.
+- The 'aa' column is registered in the 'second' table and a reference is registered in the valid of the read command.
+- The 'bb' column is registered in the 'second' table and a reference is registered in the entire MetaView of the read command.
 
-### addColumnValue() : 컬럼 추가
+### addColumnValue(): add column
 
-column 추가 시 초기값을 설정하고 테이블을 지정할 수 있습니다.
+When adding columns, you can set initial values and specify tables.
 
 ```js
 var bm = new BindModel();
@@ -200,11 +200,11 @@ bm.addCommand('read');
 bm.cmd['read'].addColumn('aa', 'AA', 'read', 'valid', 'second');
 bm.cmd['read'].addColumn('bb', 'BB', 'read', '$all', bm.second);
 ```
-- 'aa' 컬럼은 초기값은 'AA' 로  'second' 테이블에 등록되고 read 명령의 valid 에 참조가 등록됩니다.
-- 'bb' 컬럼은 초기값은 'AA' 로 'second' 테이블에 등록되고 read 명령의 전체 MetaView 에 참조가 등록됩니다.
-### setColumn() : 컬럼 설정
+- The 'aa' column is registered in the 'second' table with an initial value of 'AA' and a reference is registered in the valid of the read command.
+- The 'bb' column is registered in the 'second' table with an initial value of 'AA' and a reference is registered in the entire MetaView of the read command.
+### setColumn(): column settings
 
-column 설정 시 테이블을 지정할 수 있습니다.
+You can specify a table when setting the column.
 
 ```js
 var bm = new BindModel();
@@ -219,7 +219,6 @@ bb.seoncd.columns.add('cc');
 bm.command['read'].setColumn('aa', 'valid');
 bm.command['read'].setColumn(['bb', 'second.cc'], 'bind');
 ```
-- 기본 테이블에 등록된 'aa' 컬럼은 read 명령의 valid 에 참조가 등록됩니다.
-- 기본 테이블에 등록된 'bb' 컬럼은 read 명령의 bind 에 참조가 등록됩니다.
-- 'second' 테이블에 등록된 'cc' 컬럼은 read 명령의 bind 에 참조가 등록됩니다.
-
+- The 'aa' column registered in the default table registers a reference in the valid of the read command.
+- The 'bbb' column registered in the default table is referenced in the bind of the read command.
+- The 'cc' column registered in the 'second' table is referenced in the bind of the read command.

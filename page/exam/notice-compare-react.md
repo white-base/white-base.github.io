@@ -8,11 +8,10 @@ date: 2011-06-23T1
 sidebar:
   nav: "exam"
 ---
+## Description
 
-## 설명
 
-
-## React 폴더 구조
+## React folder structure
 ```js
 react-mix1/
 ├── componets/
@@ -25,7 +24,8 @@ react-mix1/
 
 ### NoticeAdminPage.js : React
 ---
-공지사항에서 비즈니스로직과 핵심이 구현된 코드입니다.
+It is a code that implements business logic and core in the announcement.
+
 ```js
 import React from 'https://esm.sh/react';
 
@@ -253,15 +253,14 @@ export default class NoticeAdminService {
     }    
 }
 ```
+## Comparison
 
-## 비교
 
+> The use of class components and BindModel in the mixed code provides the benefits of providing a clearer separation of React's health management and business logic, including.
 
-> Mix된 코드에서 클래스 컴포넌트와 BindModel을 활용하는 방식은 React의 상태 관리와 비즈니스 로직을 더욱 명확하게 분리하여 관리할 수 있는 장점을 제공합니다. 이 방식의 주요 장점은 다음과 같습니다.
+1. Improved Reusability and Maintenance of Business Logic: BindModel lets you separate and manage business logic from components. By defining logic such as data binding and API calls inside BindModel, the same logic can be reused by other components, and maintenance is easy in the event of future logic changes. Structurally cleaner management is possible than implementing business logic directly like the first code.
+2. Data Binding Consistency: You can ensure data binding consistency by explicitly connecting data with screen elements via BindModel.Managing column values in the same way as this.bm .cols[name].value allows you to efficiently synchronize user input with data changes.
+3. Clear health management: Class components explicitly manage health conditions, and interaction with BindModel makes it easier to track changes in the state of each data. This allows for more systematic health management between components.
+4. Flexibility in large-scale projects: This approach is particularly advantageous for large and complex projects. BindModel helps ensure consistent handling of business logic across multiple components, and is highly scalable and flexible.
 
-1.	비즈니스 로직의 재사용성과 유지보수성 향상: BindModel을 통해 비즈니스 로직을 컴포넌트에서 분리하여 관리할 수 있습니다. 데이터 바인딩과 API 호출 등의 로직을 BindModel 내부에 정의하면, 다른 컴포넌트에서 동일한 로직을 재사용할 수 있으며, 추후 로직 변경 시 유지보수도 용이합니다. 첫 번째 코드처럼 직접적으로 비즈니스 로직을 구현하는 것보다 구조적으로 더 깔끔한 관리가 가능합니다.
-2.	데이터 바인딩의 일관성: BindModel을 통해 명시적으로 데이터와 화면 요소를 연결함으로써 데이터 바인딩의 일관성을 보장할 수 있습니다. this.bm.cols[name].value와 같은 방식으로 컬럼 값을 관리하면, 사용자 입력과 데이터 변경 사항을 효율적으로 동기화할 수 있습니다.
-3.	명확한 상태 관리: 클래스 컴포넌트는 상태를 명시적으로 관리하고, BindModel과의 상호작용을 통해 각 데이터의 상태 변화를 쉽게 추적할 수 있습니다. 이를 통해 컴포넌트 간의 상태 관리를 더욱 체계적으로 할 수 있습니다.
-4.	대규모 프로젝트에서의 유연성: 이 방식은 규모가 크고 복잡한 프로젝트에서 특히 유리합니다. BindModel은 여러 컴포넌트에서 비즈니스 로직을 일관되게 처리할 수 있도록 도와주며, 확장성과 유연성이 높습니다.
-
-결론적으로, Mix된 코드는 React의 상태 관리와 비즈니스 로직을 명확하게 분리하여 코드의 가독성, 유지보수성, 재사용성을 크게 개선할 수 있는 방식을 제시하며, 특히 대규모 프로젝트나 복잡한 데이터 처리에 적합합니다.
+In conclusion, the mixed code provides a clear separation between React's state management and business logic to significantly improve the readability, maintenance, and reusability of the code, especially for large-scale projects or complex data processing.

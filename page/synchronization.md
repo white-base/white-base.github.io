@@ -9,81 +9,80 @@ sidebar:
   nav: "docs"
 ---
 
-BindCommand 객체의 execute() 메소드는 Promise를 반환합니다. 따라서 async 및 await 키워드를 사용하여 비동기적으로 명령을 실행하고 필요한 경우 동기화 코드를 작성할 수 있습니다. 
+The execute() method of the Bindcommand object returns Promise, so you can use the async and wait keywords to execute commands asynchronously and write synchronization codes if necessary. 
 
-타입 : execute()
+Type: execute()
 ```ts
 type execute () => Promise<void>;
 ```
 
-## 단일 명멸어 동기화 예제
+## Example of synchronizing single-flawed fish
 
-다음 코드는 'read_member' 라는 명령을 실행하고, 해당 명령이 완료된 후에 알림을 표시합니다.
+The following code executes a command called 'read_member' and displays a notification after that command is complete.
 ```js
 var bm = new BindModel();
 
 bm.addCommand('read_member', 3);
-// ... 컬럼 설정 생략
+// ... omit column settings
 
 async function readView() {
     try {
         await bm.cmd['read_member'].execute();
-        alert('회원정보를 불러왔습니다.');
+        alert( 'Called membership information');
     } catch (error) {
-        console.error('명령 실행 중 오류가 발생했습니다:', error);
+        console.error ('Error encountered during command execution:', error);
     }
 }
 ```
-- 이 코드에서 execute() 메소드는 Promise를 반환하므로 await 키워드를 사용하여 명령이 완료될 때까지 대기합니다. 명령이 성공적으로 완료되면 알림 메시지를 표시합니다. 또한, try...catch 블록을 사용하여 명령 실행 중 발생할 수 있는 오류를 처리할 수 있습니다.
+- In this code, the execute() method returns Promise, so use the wait keyword to wait for the command to complete. If the command completes successfully, a notification message is displayed. You can also use the try...catch block to handle errors that may occur during the execution of the command.
 
 
-## 다중 명령어 동기화 예제
+## Multiple Command Synchronization Example
 
-다음 코드는 read_meb와 read_corp라는 두 개의 명령을 순차적으로 실행합니다.
+The following code executes two commands in sequence: read_meb and read_corp.
 ```js
 var bm = new BindModel();
 
 bm.addCommand('read_meb', 3);
 bm.addCommand('read_corp', 3);
-// ... 컬럼 설정 생략
+// ... omit column settings
 
 async function readView() {
     try {
         await bm.cmd['read_meb'].execute();
-        console.log('개인 회원 정보를 불러왔습니다.');
+        console.log ('calling private membership information');
         
         await bm.cmd['read_corp'].execute();
-        console.log('법인 정보를 불러왔습니다.');
+        console.log ('could get corporation information');
     } catch (error) {
-        console.error('명령 실행 중 오류가 발생했습니다:', error);
+        console.error ('Error encountered during command execution:', error);
     }
 }
 ```
-- 이 코드에서는 두 개의 명령을 순차적으로 실행하며, 각 명령이 완료될 때마다 로그 메시지를 출력합니다. try...catch 블록을 사용하여 두 명령 실행 중 발생할 수 있는 오류를 처리합니다.
+- The code executes two commands in sequence, and outputs a log message each time they complete. Use the try...catch block to handle errors that may occur during the execution of both commands.
 
-## 동시 실행 예제
+## Example of a Simultaneous Run
 
-명령을 순차적으로 실행하는 대신 동시에 실행해야 하는 경우, Promise.all을 사용할 수 있습니다.
+Promise.all is available if you need to run commands simultaneously instead of sequentially.
 
 ```js
 var bm = new BindModel();
 
 bm.addCommand('read_meb', 3);
 bm.addCommand('read_corp', 3);
-// ... 컬럼 설정
+// ... Column Settings
 async function readView() {
     try {
         await Promise.all([
             bm.cmd['read_meb'].execute(),
             bm.cmd['read_corp'].execute()
         ]);
-        console.log('모든 정보를 불러왔습니다.');
+        console.log ('Called all information');
     } catch (error) {
-        console.error('명령 실행 중 오류가 발생했습니다:', error);
+        console.error ('Error encountered during command execution:', error);
     }
 }
 ```
-- 이 코드에서는 Promise.all을 사용하여 두 명령을 동시에 실행하고, 모든 명령이 완료될 때까지 기다립니다. 모든 명령이 성공적으로 완료되면 로그 메시지를 출력합니다. 오류가 발생하면 catch 블록에서 처리합니다.
+- In this code, use Promise.all to run both commands at the same time, and wait for all commands to complete. Once all commands have completed successfully, a log message will be output. If an error occurs, the catch block will handle it.
 
-이와 같이 async 및 await 키워드를 사용하면 Promise 기반의 비동기 코드를 쉽게 동기화할 수 있습니다. 이를 통해 명령 실행 순서를 제어하고 오류를 처리할 수 있습니다.
-
+This makes it easy to synchronize promise-based asynchronous code using the async and wait keywords, allowing you to control the order of command execution and handle errors.

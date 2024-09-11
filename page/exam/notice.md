@@ -9,11 +9,11 @@ sidebar:
   nav: "exam"
 ---
 
-## 예제 화면
+## Example screen
 
 ![image-left](/assets/images/notice-800.gif){: .align-center} 
 
-## 환경 구성
+## Configuring the Environment
 
 ```sh
 git clone https://github.com/white-base/exam-bind-model.git

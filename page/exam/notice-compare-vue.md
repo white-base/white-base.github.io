@@ -9,10 +9,10 @@ sidebar:
   nav: "exam"
 ---
 
-## 설명
+## Description
 
 
-## 폴더 구조
+## folder structure
 ```js
 vue-mix/
 ├── componets/
@@ -22,10 +22,9 @@ vue-mix/
 └── admin.html
 ```
 
-
 ### app.js : Vue
 ---
-공지사항에서 비즈니스로직과 핵심이 구현된 코드입니다.
+It is a code that implements business logic and core in the announcement.
 ```js
 import NoticeList from './components/NoticeList.js';
 import NoticeForm from './components/NoticeForm.js';
@@ -234,14 +233,14 @@ export default class NoticeAdminService {
 }
 ```
 
-## 비교 
-1.	비즈니스 로직의 분리 및 재사용성:
-두 번째 코드에서는 BindModel과 NoticeAdminService를 통해 비즈니스 로직을 별도의 클래스로 분리했습니다. 이를 통해 비즈니스 로직을 Vue 컴포넌트와 분리하고 재사용 가능하게 만듭니다. 이 구조는 동일한 비즈니스 로직을 다른 Vue 컴포넌트나 프로젝트에서 재활용할 수 있게 도와, 유지보수성과 확장성을 크게 향상시킵니다.
-2.	데이터 바인딩의 간결성:
-BindModel을 사용하여 데이터를 가져오는 작업과 같은 로직을 캡슐화함으로써, Vue 컴포넌트의 메소드 수를 줄일 수 있습니다. 첫 번째 코드에서는 직접 axios 호출을 사용하지만, 두 번째 코드는 BindModel에서 이 책임을 담당하므로 코드가 훨씬 간결해집니다.
-3.	유지보수성 및 확장성:
-비즈니스 로직이 Vue 컴포넌트에 직접적으로 의존하지 않으므로, 나중에 API 변경이나 서비스 로직이 바뀌어도 이를 NoticeAdminService에서만 수정하면 됩니다. 이는 코드의 유지보수를 단순하게 만듭니다. 반면, 첫 번째 코드에서는 비즈니스 로직이 Vue 컴포넌트 내부에 포함되어 있어, 로직 변경 시 여러 컴포넌트를 수정해야 할 수 있습니다.
-4.	테스트 가능성 향상:
-두 번째 방식에서는 비즈니스 로직을 별도의 클래스로 분리했기 때문에, 해당 클래스에 대한 유닛 테스트를 독립적으로 작성할 수 있습니다. Vue 컴포넌트 내부에 있는 비즈니스 로직은 테스트가 더 복잡하지만, BindModel 방식은 테스트 가능한 코드 구조를 제공합니다.
+## Comparison 
+1. Isolation and Reusability of Business Logic:
+The second code separated business logic into separate classes using BindModel and NoticeAdminService. This makes business logic separate from Vue components and reusable. This structure allows the same business logic to be recycled from other Vue components or projects, greatly improving maintenance and scalability.
+2. Simplicity of data binding:
+By encapsulating logic, such as importing data using BindModel, you can reduce the number of methods for Vue components. The first code uses direct axios calls, but the second code is responsible for this at BindModel, which makes the code much simpler.
+3. Maintenance and scalability:
+Because business logic is not directly dependent on Vue components, future API changes or service logic changes can only be modified by the NoticeAdminService. This simplifies the maintenance of the code. On the other hand, the first code contains business logic inside the Vue component, which may require modifying several components when changing logic.
+4. Improved testability:
+The second method separated the business logic into separate classes, so unit tests can be written independently for that class. The business logic inside the Vue component is more complex to test, but the BindModel method provides a testable code structure.
 
-> 결론적으로, 두 번째 코드의 장점은 비즈니스 로직을 분리하여 코드의 재사용성, 유지보수성 및 테스트 가능성을 높이는 점에 있습니다.
+> In conclusion, the advantage of the second code is to separate the business logic, increasing the reusability, maintenance, and testability of the code.

@@ -8,95 +8,89 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 ---
+# the main structure
+## Property Relationships
 
-# 주요 구조
-## 속성 관계
+Create a BindModel object and create a Bind Command object in the *addCommmand()* method.
+The generated 'command['identifier']' has MetaView with *valid, bind, and output* attribute values.
+Ajax communication uses the 'axios' module internally.
 
-BindModel 객체를 생성하고 *addCommmand()* 메소드로 BindCommand 객체를 생성합니다.
-생성된 `command['별칭']` 에는 *valid, bind, output* 속성값의  MetaView 가 있습니다.
-ajax 통신은 내부적으로 `axios` 모듈을 이용하고 있습니다.
-
-클래스 다이어그램
+Class diagram
 
 ![image-center](/assets/images/bind-rel-diagram-2024-08-16-002203.png){: .align-center}
 
-## 상속 관계
+## an inheritance relationship
 
-BindModel 을 상속하여 확장하거나 BindModel 을 상속하여 재정의하여 사용자화 할 수 있습니다.
+You can either inherit and extend the BindModel or override the BindModel to customize it.
 
-클래스 다이어그램
+Class diagram
 
 ![image-center](/assets/images/bind-diagram-2024-08-16-002302.png){: .align-center}
 
-# 구성요소
+# Components
 
-## 속성
+## Properties
 
-| 항목                                                    | 설명                                                       |
+| Item | Description |
 | ----------------------------------------------------- | -------------------------------------------------------- |
-| baseConfig                                            | 바인딩 기본 config을 설정합니다.                                    |
-| url                                                   | 바인딩 기본 config.url을 설정합니다.                                |
-| \_tables                                              | 메타 테이블 컬렉션입니다. 여러 메타 테이블을 관리합니다.                         |
-| [[52. BindModel 클래스-B#_columnType\| _columnType]] | 아이템 타입을 설정합니다.                                           |
-| items                                                 | 아이템 컬렉션입니다.                                              |
-| fn                                                    | 바인드모델 함수 컬렉션입니다. (내부함수 + 노출함수)                           |
-| command                                               | 바인딩 명령 컬렉션입니다.                                           |
-| columns                                               | 컬럼 컬렉션입니다. _baseTable의 컬럼을 나타냅니다.                        |
-| first                                                 | 동적으로 생성된 첫 번째 메타 테이블입니다.                                 |
-| cbFail                                                | 검사(valid)에서 실패 시 호출되는 콜백 함수입니다.                          |
-| cbError                                               | 오류 발생 시 호출되는 콜백 함수입니다.                                   |
-| cbBaseBegin                                           | 시작 전 기본 콜백 함수입니다. <br>(cbBegin 콜백 함수가 없을 경우 사용됨)         |
-| cbBaseValid                                           | 검사(valid) 시 기본 콜백 함수입니다. <br>(cbValid 콜백 함수가 없을 경우 사용됨)  |
-| cbBaseBind                                            | 바인드 시 기본 콜백 함수입니다. <br>(cbBind 콜백 함수가 없을 경우 사용됨)         |
-| cbBaseResult                                          | 바인드 결과 수신 시 기본 콜백 함수입니다. <br>(cbResult 콜백 함수가 없을 경우 사용됨) |
-| cbBaseOutput                                          | 출력 기본 콜백 함수입니다.<br>(cbOutput 콜백 함수가 없을 경우 사용됨)           |
-| cbBaseEnd                                             | 실행 완료 시 기본 콜백 함수입니다. <br>(cbEnd 콜백 함수가 없을 경우 사용됨)        |
-| preRegister                                           | init() 호출시 처음에 호출되는 콜백 함수입니다.                            |
-| preCheck                                              | init() 호출시 boolean 을 리턴하는 콜백 함수입니다.                      |
-| preReady                                              | init() 호출시 preCheck 콜백 함수 결과가 true 일때 호출되는 콜백 함수입니다.     |
-| _baseTable                                            | 기본 엔티티를 정의합니다.                                           |
-| _guid                                                 | 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.                       |
-| _type                                                 | 객체의 생성자 함수. 객체가 생성될 때 사용된 함수입니다.                         |
+| baseConfig | Set binding default config |
+| url | Set binding default config.url |
+| \_tables | Meta-table collection. Manage multiple meta-tables. |
+| [[52. BindModel Class-B#_columnType\|_columnType] | Set item type. |
+| items | Item collection
+| fn | collection of bound model functions. (Internal function + Exposure function) |
+| command | collection of binding commands
+| columns | Collection of columns. Represents the columns of the _baseTable. |
+| first | The first dynamically generated meta table
+| cbFail | Callback function called upon failure in inspection (valid) |
+| cbError | Callback function called in case of error |
+| cbBaseBegin | Default callback function before startup. <br> (used without cbBegin callback function) |
+| cbBaseValid | Default callback function at inspection (valid) <br> (used without cbValid callback function) |
+| cbBaseBind | Default callback function when bound. <br> (used without cbBind callback function) |
+| cbBaseResult | Default callback function on the receipt of bind results. <br> (used without cbResult callback function) |
+| cbBaseOutput | Output Default callback function.<br> (used without cbOutput callback function) |
+| cbBaseEnd | Default callback function at execution completion. <br> (used without cbEnd callback function) |
+| preRegister | callback function initially called upon init() call
+| PreCheck | callback function that returns boolean on init() call.
 
 
+## Method
 
-## 메소드
-
-| 항목                                                  | 설명                                                                                   |
+| Item | Description |
 | --------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| checkSelector(collection?)                          | 셀렉터를 검사합니다.                                                                          |
-| getSelector()                                       | 대상 셀렐터 목록을 얻습니다.                                                                     |
-| addCommand(name, opt?, baseTable?)                  | 명령을 추가합니다.                                                                           |
-| setService(svc, chkType)                            | 서비스를 설정합니다.                                                                          |
-| init()                                              | 초기화 작업을 수행합니다. 내부적으로 `preRegister()` -> `preCheck()` -> `preReady()` 순서로 호출합니다.      |
-| addTable(name)                                      | 테이블을 등록합니다.                                                                          |
-| addColumn(column, cmds?, views?, bTable?)           | 컬럼을 추가하고 명령과 매핑합니다.                                                                  |
-| addColumnValue(name, value, cmds?, views?, bTable?) | 컬럼과 값을 추가하고 지정된 테이블에 추가하며, 컬럼의 참조를 BindCommand의 valid, bind, output MetaView에 등록합니다. |
-| setMapping(mapping: collection \| object, bTable?)  | 컬럼을 매핑합니다.                                                                           |
-| getObject(): object                                 | 현재 객체를 직렬화(guid 타입) 객체로 얻습니다. (순환참조는 $ref 값으로 대체됩니다.)                                |
-| setObject(obj, origin)                              | 직렬화(guid 타입) 객체를 현재 객체에 설정합니다. (객체는 초기화 됩니다.)                                        |
-| equal(target)                                       | 현재 객체와 지정된 객체가 동일한지 비교합니다.                                                           |
-| getTypes()                                          | 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.                                             |
-| instanceOf(target)                                  | 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)                                             |
+| Check Selector (collection?) | Examine the selector
+| getSelector() | Get a list of destination selectors |
+| addcommand (name, opt? , baseTable?) | add command
+| setService(svc, chkType) | Set up a service
+| Init() | Perform the initialization operation. Internally call 'preRegister()' -> 'preCheck()' -> 'preReady()'
+| addTable(name) | Register the table
+| addColumn (column, cmds? , views? , bTable?) | Add columns and map them with commands
+| addColumnValue (name, value, cmds? , views? , bTable?) | Add columns and values, add them to the specified table, and register the reference to the column in the value, bind, output MetaView in Bindcommand. |
+| setMapping (mapping: collection \ | object, bTable?) | Map columns
+| getObject(): object | Gets the current object as a guid type object. (Circular reference is replaced by $ref value.) |
+| setObject(obj, origin) | Set the serialization (guid type) object to the current object. (The object is initialized.) |
+| equal(target) | Compare the current object with the specified object. |
+| getTypes() | Returns the constructors of the current object and all the constructors of the prototype chain to the array. |
+| instanceOf(target) | Verify that the current object is an instance of the specified type (with _UNION) |
 
 
 
 
 
-## 이벤트
-| 항목         | 설명                     |
+## Events
+| Item | Description |
 | ---------- | ---------------------- |
-| onExecute  | execte() 실행 전 이벤트 입니다. |
-| onExecuted | execte() 실행 후 이벤트 입니다. |
+| OnExecute | expecte() pre-execution event
+| OnExecuted | expecte() post-execution event
 
 
-# 세부 설명
+# Detailed description
 
-## 주요 속성
+## Key Properties
 
 ### baseConfig
 
-> 바인딩 기본 config을 설정합니다.
+> Set the binding default config.
 
 ```ts
 type baseConfig = object;
@@ -105,7 +99,7 @@ type baseConfig = object;
 
 ### url
 
-> 바인딩 기본 config.url을 설정합니다.
+> Set the binding default config.url.
 
 ```ts
 type url = string;
@@ -113,8 +107,8 @@ type url = string;
 
 ### \_tables
 
-> 메타 테이블 컬렉션입니다.
-> 여러 메타 테이블을 관리합니다.
+> This is the meta table collection.
+> Manage multiple meta tables.
 
 ```ts
 type _tables = MetaTableCollection;
@@ -122,7 +116,7 @@ type _tables = MetaTableCollection;
 
 ### \_columnType
 
-> 컬럼 타입을 설정합니다.
+> Set the column type.
 
 ```ts
 type _columnType = MetaColumn;
@@ -130,15 +124,14 @@ type _columnType = MetaColumn;
 
 ### items
 
-> 아이템 컬렉션입니다.
+>It's an item collection.
 
 ```ts
 type items = PropertyCollection;
 ```
-
 ### fn
 
-> 바인드모델 함수 컬렉션입니다. (내부함수 + 노출함수)
+> A collection of bound model functions. (Internal function + Exposure function)
 
 ```ts
 type fn = PropertyCollection;
@@ -146,7 +139,7 @@ type fn = PropertyCollection;
 
 ### command
 
-> 바인딩 명령 컬렉션입니다.
+> A collection of binding commands.
 
 ```ts
 type command = PropertyCollection;
@@ -154,7 +147,7 @@ type command = PropertyCollection;
 
 ### cmd
 
-> command 의 별칭입니다.
+> It's an alias for command.
 
 ```ts
 type cmd = PropertyCollection;
@@ -162,8 +155,8 @@ type cmd = PropertyCollection;
 
 ### columns
 
-> 컬럼 컬렉션입니다.
-> \_baseTable의 컬럼을 나타냅니다.
+> It's a column collection.
+Indicates the column in > \_baseTable.
 
 ```ts
 type columns = MetaTableColumnCollection;
@@ -171,8 +164,8 @@ type columns = MetaTableColumnCollection;
 
 ### first
 
-> 동적으로 생성된 첫 번째 메타 테이블입니다.
-> \_tables[0] 의 참조값입니다.
+> This is the first dynamically generated meta table.
+Reference value for > \_tables[0].
 
 ```ts
 type first = MetaTable;
@@ -180,45 +173,44 @@ type first = MetaTable;
 
 ### cbFail
 
-> 검사(valid)에서 실패 시 호출되는 콜백 함수입니다.
+> This is the callback function that is called upon failure by valid.
 
 ```ts
 type cbFail = (result: object, column: MetaColumn) => void;
 ```
-- result : 검사 결과를 담은 객체입니다.
-- column : 검사에 사용된 `MetaColumn` 객체입니다.
+- result : The object containing the result of the examination.
+- column : 'MetaColumn' object used in the inspection.
 ### cbError
 
-> 오류 발생 시 호출되는 콜백 함수입니다.
+> This is the callback function that is called when an error occurs.
 
 ```ts
 type cbError = (msg: string, status: object, response: object) => void;
 ```
-- msg : 오류 메시지입니다.
-- status : 상태 정보를 담은 객체입니다.
-- response : 응답 객체입니다.
+- msg : Error message.
+- status : The object containing status information.
+- response —Response object.
 ### cbBaseBegin
-
-> 시작 전 기본 콜백 함수입니다. (cbBegin 콜백 함수가 없을 경우 사용됨)
+> Default callback function before startup (used when cbBegin callback function is not present)
 
 ```ts
 type cbBaseBegin = (command: BindCommand) => void;
 ```
-- command : 현재 바인드 명령 객체입니다.
+- command : The current bind command object.
 ### cbBaseValid
 
-> 검사(valid) 시 기본 콜백 함수입니다. (cbValid 콜백 함수가 없을 경우 사용됨)
+> Default callback function at valid (used without cbValid callback function)
 
 ```ts
 type cbBaseValid = (valid: MetaView, command: BindCommand) => boolean;
 ```
-- valid : 검사할 `MetaView` 객체입니다.
-- command : 현재 바인드 명령 객체입니다.
-- return : 검사 결과를 나타내는 boolean 값입니다.
+- valid : object 'MetaView' to be inspected.
+- command : The current bind command object.
+- return : A boolean value representing the result of the examination.
 
 ### cbBaseBind
 
-> 바인드 시 기본 콜백 함수입니다. (cbBind 콜백 함수가 없을 경우 사용됨)
+> Default callback function when bound (used without cbBind callback function)
 
 ```ts
 type cbBaseBind = (
@@ -227,13 +219,13 @@ type cbBaseBind = (
 	config: object
 ) => void;
 ```
-- bind : 바인드할 `MetaView` 객체입니다.
-- command : 현재 바인드 명령 객체입니다.
-- config : 설정 객체입니다.
+- bind : object 'MetaView' to bind.
+- command : The current bind command object.
+- config : This is the setting object.
 
 ### cbBaseResult
 
-> 바인드 결과 수신 시 기본 콜백 함수입니다. (cbResult 콜백 함수가 없을 경우 사용됨)
+> Default callback function when receiving bind results. (Used when cbResult callback function is not available)
 
 ```ts
 type cbBaseResult = (
@@ -242,14 +234,14 @@ type cbBaseResult = (
 	response: object
 ) => object;
 ```
-- data : 바인드 결과 데이터 객체입니다.
-- command : 현재 바인드 명령 객체입니다.
-- response : 응답 객체입니다.
-- return : 처리된 결과 객체를 반환합니다.
+- data : Bind result data object.
+- command : The current bind command object.
+- response —Response object.
+- return —Returns the processed result object.
 
 ### cbBaseOutput
 
-> 출력 기본 콜백 함수입니다. (cbOutput 콜백 함수가 없을 경우 사용됨)
+> Output default callback function (used when cbOutput callback function is not present)
 
 ```ts
 type cbBaseOutput = (
@@ -258,14 +250,14 @@ type cbBaseOutput = (
 	response: object
 ) => object;
 ```
-- outputs : 메타 뷰 컬렉션입니다.
-- command : 현재 바인드 명령 객체입니다.
-- response : 응답 객체입니다.
-- return : 처리된 결과 객체를 반환합니다.
+- outputs : Metabiew collection.
+- command : The current bind command object.
+- response —Response object.
+- return —Returns the processed result object.
 
 ### cbBaseEnd
 
-> 실행 완료 시 기본 콜백 함수입니다. (cbEnd 콜백 함수가 없을 경우 사용됨)
+> Default callback function at execution completion (used when cbEnd callback function is not present)
 
 ```ts
 type cbBaseEnd = (
@@ -274,41 +266,41 @@ type cbBaseEnd = (
 	response: object
 ) => void;
 ```
-- status : 상태 정보를 담은 객체입니다.
-- command : 현재 바인드 명령 객체입니다.
-- response : 응답 객체입니다.
+- status : The object containing status information.
+- command : The current bind command object.
+- response —Response object.
 
 ### preRegister
 
-> init() 호출시 처음에 호출되는 콜백 함수입니다.
+> This is the callback function that is initially called upon init().
 
 ```ts
 type preRegister = (model: BindModel) => void;
 ```
-- model : 현재 바인드 모델 객체입니다.
+- model : The current bound model object.
 
 ### preCheck
 
-> init() 호출시 boolean 을 리턴하는 콜백 함수입니다.
+> Callback function that returns boolean on init() call.
 
 ```ts
 type (model: BindModel)=>boolean;
 ```
-- model : 현재 바인드 모델 객체입니다.
-- return : 검사 결과를 나타내는 boolean 값입니다.
+- model : The current bound model object.
+- return : A boolean value representing the result of the examination.
 
 ### preReady
 
-> init() 호출시 preCheck 콜백 함수 결과가 true 일때 호출되는 콜백 함수입니다.
+> Callback function called when preCheck callback function result is true when invoking > init().
 
 ```ts
 type preReady = (model: BindModel) => void;
 ```
-- model : 현재 바인드 모델 객체입니다.
+- model : The current bound model object.
 
 ### \_baseTable
 
-> 기본 엔티티를 정의합니다.
+> Define the default entity.
 
 ```ts
 type _baseTable = MetaTable;
@@ -316,7 +308,7 @@ type _baseTable = MetaTable;
 
 ### \_guid
 
-> 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.
+> Unique identifier of the object (GUID). Uniquely identifies the object.
 
 ```ts
 type _guid = string;
@@ -324,40 +316,38 @@ type _guid = string;
 
 ### \_type
 
-> 객체의 생성자 함수입니다. 객체가 생성될 때 사용된 함수입니다.
+> The generator function of the object, which was used when the object was created.
 
 ```ts
 type _type = Function;
 ```
 
-
-
-## 주요 메소드
+## Key Methods
 
 
 ### checkSelector()
 
-> 셀렉터를 검사합니다.
+> Examine the selector.
 
 ```ts
 type checkSelector = (collection: BaseColumnCollection) => boolean;
 ```
-- collection : 검사할 컬럼 컬렉션입니다.
-- return : 검사 결과를 나타내는 boolean 값입니다.
+- collection —Column collection to examine.
+- return : A boolean value representing the result of the examination.
 
 ### getSelector()
 
-> 대상 셀렐터 목록을 얻습니다.
+> Obtain a list of destination selectors.
 
 ```ts
 type getSelector = (collection: PropertyCollection) => object[];
 ```
-- collection : 검사할 속성 컬렉션입니다. 기본값은 items 입니다.
-- return : 셀렉터 목록을 나타내는 객체 배열입니다.
+- collection : A collection of properties to be examined; the default is items.
+- return : An object array representing a list of selectors.
 
 ### addCommand()
 
-> 명령을 추가합니다.
+> Add a command.
 
 ```ts
 type addCommand = (
@@ -366,25 +356,25 @@ type addCommand = (
 	baseTable: MetaTable
 ) => BindCommand;
 ```
-- name : 명령 이름입니다.
-- option : 출력옵션입니다.
-- baseTable : (선택적) 기본 테이블 객체입니다.
-- return : 추가된 바인드 명령 객체입니다.
+- name : The name of the command.
+- option : Output option.
+- baseTable : (Optional) Default table object.
+- return —Added bind command object.
 
 ### setService()
 
-> 서비스를 설정합니다.
+> Set up the service.
 
 ```ts
 type setService = (service: IServiceAjax, passTypeChk: boolean) => void;
 ```
-- service : 서비스 객체입니다.
-- passTypeChk : 서비스객체 type 검사 통과 유무입니다. (기본값: false)
+- service : service object.
+- PassTypeChk : Whether the service object type inspection has passed or not. (Default: false)
 
 ### init()
 
-> 초기화 작업을 수행합니다.
-> 내부적으로 `preRegister()` -> `preCheck()` -> `preReady()` 순서로 호출합니다.
+> Perform the initialization operation.
+> Internally, call 'preRegister()' -> 'preCheck()' -> 'preReady()'.
 
 ```ts
 type init = () => void;
@@ -392,17 +382,17 @@ type init = () => void;
 
 ### addTable()
 
-> 테이블을 등록합니다.
+> Register the table.
 
 ```ts
 type addTable = (name: string) => MetaTable;
 ```
-- name : 등록할 테이블의 이름입니다.
-- return : 등록된 메타 테이블 객체를 반환합니다.
+- name : The name of the table to be registered.
+- return : Returns the registered meta table object.
 
 ### addColumn()
 
-> 컬럼을 추가하고 명령과 매핑합니다.
+> Add columns and map them to commands.
 
 ```ts
 type addColumn = (
@@ -412,14 +402,14 @@ type addColumn = (
 	bTable?: string | MetaTable
 ) => void;
 ```
-- column: 등록할 컬럼 객체입니다. 문자열 또는 `MetaColumn` 객체일 수 있습니다.
-- cmds : (선택적) 뷰의 위치를 지정하는 명령입니다. 문자열 또는 문자열 배열일 수 있습니다.
-- views : (선택적) 추가할 뷰 엔티티 이름입니다. 문자열 또는 문자열 배열일 수 있습니다.
-- bTable : (선택적) 매핑할 기본 테이블 객체 또는 테이블 이름입니다.
+- column: column object to be registered. It could be a string or 'MetaColumn' object.
+- cmds : (Optional) Command to specify the location of the view; it can be a string or an array of strings.
+- views —(Optional) Name of the view entity to be added; it can be a string or an array of strings.
+- bTable : (Optional) Default table object or table name to be mapped.
 
 ### addColumnValue()
 
-> 컬럼과 값을 추가하고 지정된 테이블에 추가하며, 컬럼의 참조를 BindCommand의 valid, bind, output MetaView에 등록합니다.
+> Add columns and values, add them to the specified table, and register the reference to the column in the value, bind, and output MetaView in the Bindcommand.
 
 ```ts
 type addColumnValue = (
@@ -430,15 +420,15 @@ type addColumnValue = (
 	bTable?: string | MetaTable
 ) => void;
 ```
-- name : 컬럼 이름입니다.
-- value : 컬럼 값입니다.
-- cmds : 뷰의 위치를 지정하는 명령입니다. 문자열 또는 문자열 배열일 수 있습니다.
-- views : 추가할 뷰 엔티티 이름입니다. 문자열 또는 문자열 배열일 수 있습니다.
-- bTable : (선택적) 매핑할 기본 테이블 객체 또는 테이블 이름입니다.
+- name : The name of the column.
+- value : The value of the column.
+- cmds : Command to specify the location of the view; it can be a string or an array of strings.
+- views : The name of the view entity to be added; it can be a string or array of strings.
+- bTable : (Optional) Default table object or table name to be mapped.
 
 ### setMapping()
 
-> 컬럼을 매핑합니다.
+> Map columns.
 
 ```ts
 type setMapping = (
@@ -446,23 +436,23 @@ type setMapping = (
 	baseTable?: string | MetaTable
 ) => void;
 ```
-- mapping : MetaColumn에 매핑할 객체 또는 컬렉션
-- baseTable : (선택적) 매핑할 기본 테이블 객체 또는 테이블 이름입니다.
+- mapping —Object or collection to map to MetaColumn
+- baseTable —(Optional) Default table object or table name to be mapped.
 
 ### getObject()
 
-> 현재 객체를 직렬화(guid 타입) 객체로 얻습니다.
-> (순환참조는 $ref 값으로 대체됩니다.)
+> Obtain the current object as a guide type object.
+> (Circular references are replaced by $ref values.)
 
 ```ts
 type getObject = (vOpt?: number, owned?: object | Array<object>) => object;
 ```
-- vOpt :  가져오기 옵션입니다. 기본값은 0 입니다.
-	- opt=0 : 참조 구조(_guid:Yes, $ref:Yes)
-	* opt=1 : 중복 구조(_guid:Yes, $ref:Yes)
-	* opt=2 : 비참조 구조(_guid:No, $ref:No)
-- owned : 현재 객체를 소유하는 상위 객체들입니다. 기본값은 빈객체 입니다.
-- return : 직렬화된 객체를 반환합니다.
+- vOpt : Import option; default is 0.
+	- opt=0: Reference structure (_guid:Yes, $ref:Yes)
+	* opt=1: Redundant structure (_guid:Yes, $ref:Yes)
+	* opt=2 : Non-tidal structure (_guid: No, $ref: No)
+- aged : The parent objects that currently own the object. The default is an empty object.
+- return —Returns serialized objects.
 
 ```js
 a.getObject(2) == b.getObject(2)
@@ -470,67 +460,66 @@ a.getObject(2) == b.getObject(2)
 
 ### setObject()
 
-> 직렬화(guid 타입) 객체를 현재 객체에 설정합니다.
-> (객체는 초기화 됩니다.)
+> Set the Guid type object to the current object.
+> (The object will be reset.)
 
 ```ts
 type setObject = (oGuid: object, origin?: object) => void;
 ```
-- oGuid : 직렬화할 guid 타입의 객체입니다.
-- origin : 현재 객체를 설정하는 원본 객체입니다. 기본값은 oGuid 입니다.
+- oGuid : Object of the guid type to serialize.
+- origin : This is the original object that sets the current object. The default is oGuid.
 
 ### equal()
 
-> 현재 객체와 지정된 객체가 동일한지 비교합니다.
+> Compare the current object with the specified object.
 
 ```ts
 type equal = (target: object) => boolean;
 ```
-- return : 두 객체가 동일한지 여부를 반환합니다.
+- return —Returns whether the two objects are identical.
 
 ### getTypes()
 
-> 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.
+> Returns the creators of the current object and all the creators of the prototype chain to the array.
 
 ```ts
 type getTypes = () => Array<Function>;
 ```
-- return : 생성자 함수의 배열을 반환합니다.
+- return : Returns the array of generator functions.
 
 ```js
 const types = obj.getTypes();
 console.log(types); // [Function: MetaObject]
 ```
-
 ### instanceOf()
 
-> 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)
+> Verify that the current object is an instance of the specified type (including _UNION)
 
 ```ts
 type instanceOf = (target: object | string) => boolean;
 ```
-- target : 확인할 대상 타입 (객체 또는 문자열)입니다.
-- return : 지정된 타입의 인스턴스인지 여부를 반환합니다.
+- target : The type of object to be checked (object or string).
+- return —Returns whether this is an instance of the specified type.
 
 
-## 주요 이벤트
+## Key Events
 
 ### onExecute
 
-> 명령 실행 전 호출되는 이벤트입니다.
+> Events that are called before the command is executed.
 
 ```ts
 type onExecute = (cmd: BindCommand) => void;
 ```
-- cmd : 실행할 명령 객체입니다.
+- cmd : Command object to be executed.
 
 ### onExecuted
 
-> 명령 실행 후 호출되는 이벤트입니다.
+> An event that is called after the command is executed.
 
 ```ts
 type onExecuted = (cmd: BindCommand, result: object) => void;
 ```
-- cmd : 실행한 명령 객체입니다.
-- result : 명령 실행 결과 객체입니다.
+- cmd : Command object executed.
+- result : The result object of the command execution.
 

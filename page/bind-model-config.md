@@ -8,62 +8,59 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 ---
+'BindModel' is the core class of the framework, and its main functions include adding commands, adding columns, adding tables, and injecting service objects.
 
-`BindModel`는 프레임워크의 핵심 클래스이며, 주요 기능으로 명령 추가, 컬럼 추가, 테이블 추가, 서비스 객체 주입 등을 지원합니다.
+### Key Features
 
-### 주요 기능
+- Add command: Add 'Bindcommand' object.
+- Add Column: Add 'HTML Column' object.
+- Add Table: Add 'MetaTable' object.
+- Provides basic callback function—Provides a step-by-step basic callback function.
+- Inject service object: To construct 'BindModel' object by injecting service object.
 
-- 명령 추가 : `BindCommand` 객체를 추가합니다.
-- 컬럼 추가 : `HTMLColumn` 객체를 추가합니다.
-- 테이블 추가 : `MetaTable` 객체를 추가합니다.
-- 기본 콜백함수 제공 : 단계별 기본 콜백함수를 제공합니다.
-- 서비스객체 주입 : 서비스 객체를 주입하여 `BindModel` 객체를 구성합니다.
+### Key Properties
 
-### 주요 속성
+- 'baseConfig' : the config setting object of the default axios.
+- 'url' : Path to 'baseConfig.url'. 
+- 'column' : A collection that controls 'HTML Column'.
+- 'command' : This is a collection that controls 'Bindcommand' (aka cmd)
+- 'fn' : A collection that controls user functions.
+- 'items' : A collection that controls the items. (Primary properties of the column)
+- '\_tables' : A collection that controls 'MetaTable'.
+- '\_baseTable': Default table. ('column' = \_baseTable.column)
 
-- 'baseConfig' : 기본 axios 의 config 설정 객체입니다.
-- 'url' : `baseConfig.url` 경로입니다. 
-- 'columns' :  `HTMLColumn` 을 제어하는 컬렉션입니다.
-- 'command' : `BindCommand` 을 제어하는 컬렉션입니다. (별칭 : cmd)
-- 'fn' :  사용자 함수를 제어하는 컬렉션입니다.
-- 'items' : item 을 제어하는 컬렉션 입니다. (컬럼의 원시 속성)
-- '\_tables' : `MetaTable` 을 제어하는 컬렉션입니다.
-- '\_baseTable' : 기본 테이블 입니다. ('columns' = \_baseTable.columns)
+### Events
 
-### 이벤트
+- 'onExecute' : Commonly called when executing execute() for the first time.
+- 'onExecuted' : Commonly called last when executing execute().
 
-- `onExecute` :  공통으로  execute() 실행시 처음으로 호출합니다.
-- `onExecuted` : 공통으로 execute() 실행시 마지막으로 호출합니다.
+### Callback (Properties)
 
-### 콜백(속성)
+- 'cbBaseBegin' : This is the default pre-start callback function.
+- 'cbBaseValid' : This is the default validation callback function.
+- 'cbBaseBind' : This is the default server request callback function.
+- 'cbBaseResult' : This is the default server response callback function.
+- 'cbBaseOutput' : Default output callback function.
+- 'cbBaseEnd' : This is the callback function before the default termination.
+### Key Methods
 
-- 'cbBaseBegin' : 기본 시작 전 콜백함수 입니다.
-- 'cbBaseValid' : 기본 유효성 검사 콜백함수 입니다.
-- 'cbBaseBind' : 기본 서버 요청 콜백함수 입니다.
-- 'cbBaseResult' : 기본 서버 응답 콜백함수 입니다.
-- 'cbBaseOutput' : 기본 출력 콜백함수 입니다.
-- 'cbBaseEnd' : 기본 종료 전 콜백함수 입니다.
-### 주요 메소드
+- addcommand(): Create 'Bindcommand' object.
+- addTable(): Add 'MetaTable' object.
+- setService(): Construct the 'BindModel' object by injecting the service object.
+- checkSelector(): DOM validation with 'selector' object.
+- getSelector(): Gets the list of 'selector' objects.
+- addColumn(): Add 'HTMLColumn' object.
+- addColumnValue(): Add 'HTMLColumn' object and set 'value' value.
+- setMapping(): Map 'HTMLColumn' to 'MetaView' object in 'Bindcommand'
+- init(): Run 'preRegister', 'preCheck', and 'preRedy' callback functions sequentially.
 
-- addCommand() : `BindCommand` 객체를 생성합니다.
-- addTable() : `MetaTable` 객체를 추가합니다.
-- setService() : 서비스 객체를 주입하여 `BindModel`  객체를 구성합니다.
-- checkSelector() :  'selector' 객체로 DOM 유효성 검사합니다.
-- getSelector() : 'selector' 객체 목록을 가져옵니다.
-- addColumn() : `HTMLColumn` 객체를 추가합니다.
-- addColumnValue() : `HTMLColumn` 객체를 추가하고, 'value' 값을 설정합니다.
-- setMapping() : `HTMLColumn` 을 `BindCommand` 의 `MetaView` 객체에 매핑합니다.
-- init() : 'preRegister', 'preCheck', 'preRedy' 콜백함수를 순차적으로 실행합니다.
+'BindModel' is a multi-purpose framework that provides the flexibility to add and manage a variety of commands, tables, and columns. This document helps you understand the key features of this class and callbacks and use them effectively.
 
-`BindModel` 는 다목적 프레임워크로, 다양한 명령과 테이블, 컬럼을 유연하게 추가하고 관리할 수 있는 기능을 제공합니다. 이 문서를 통해 이 클래스의 주요 기능과 콜백을 숙지하여 효과적으로 사용할 수 있습니다.
+## Setting up a server request
 
+### Default Request Path
 
-
-## 서버 요청 설정하기
-
-### 기본 요청 경로
-
-url 속성은 서버에 요청하는 기본 URL 경로를 설정합니다. BindCommand 객체에 url 경로를 설정하면, BindModel의 url 경로는 무시됩니다.
+The url attribute sets the default URL path that requests from the server. If you set the url path for the Bindcommand object, the url path for the BindModel is ignored.
 
 ```js
 var bm = new BindModel();
@@ -71,9 +68,9 @@ var bm = new BindModel();
 bm.url  = '/user';
 ```
 
-#### 동적 url 설정하기
+#### Set dynamic url
 
-특정 작업(command)에 따라 요청 경로를 동적으로 변경해야 할 경우, BindModel 객체의 콜백 함수를 활용하여 URL을 쉽게 설정할 수 있습니다.
+If you need to dynamically change the request path according to a specific command, you can easily set up URLs using the callback function of the BindModel object.
 
  ```js
  var idx = 1;
@@ -81,116 +78,114 @@ bm.url  = '/user';
 	cmd._model.url = `/user/${idx}`;
  };
 ```
-- `cmd._model`은 BindCommand가 포함된 BindModel을 참조합니다.
+- 'cmd._model' refers to the BindModel with Bindcommand.
 
-### 기본 요청 환경 설정(axios)
+### Default Request Environment Settings (axios)
 
-HTTP 통신을 위한 axios의 기본 설정을 통해 요청 환경을 구성할 수 있습니다. 
+You can configure the request environment through the default settings in axios for HTTP communication. 
 
 ```js
 var bm = new BindModel();
-// axios 기본 설정 예시
+// Axios Preference Example
 bm.baseConfig.baseURL = 'https://api.example.com';
 bm.baseConfig.timeout = 10000; // 10초
 bm.baseConfig.headers.common['Authorization'] = 'Bearer YOUR_TOKEN';
 bm.baseConfig.headers.post['Content-Type'] = 'application/json';
 ```
-- baseURL : 모든 요청에 공통으로 적용될 기본 URL을 설정합니다.
-- timeout : 요청의 최대 대기 시간을 설정합니다.
-- headers : 요청 시 사용할 기본 헤더를 설정합니다. 예를 들어, 인증 토큰을 설정하거나 콘텐츠 유형을 지정할 수 있습니다.
+- baseURL —Set the default URL to be common to all requests.
+- timeout : Sets the maximum wait time for a request.
+- headers —Set the default header to use on request; for example, you can set the authentication token or specify the type of content.
 
 
-## 실행 이벤트 설정하기
+## Setting up the Run Event
 
-모든 명령의 execute() 실행 시 호출되는 전역 이벤트입니다.
+Global event that is called upon execution() of all commands.
 타입 : onExecute, onExecuted
 ```ts
 type onExecute = (model: BindModel, cmd: BindCommand) => void; 
 type onExecuted = (model: BindModel, cmd: BindCommand) => void; 
 ```
-- 'onExecute' 이벤트는 모든 execute() 실행시 처음으로 호출됩니다.
-- 'onExecuted' 이벤트는 모든 execute() 실행시 마지막으로 호출됩니다.
+- The 'onExecute' event is called for the first time on all exec() runs.
+- The 'onExecuted' event is last called at all exec() runs.
 
 ```js
 var bm = new BindModel();
 bm.addCommand('read');
-// 전역 이벤트 설정
+// Global Event Settings
 bm.onExecute = () => { 
 	console.log('model 에서 onExecute 호출')
 };
 bm.onExecuted = () => { 
 	console.log('model 에서 onExecuted 호출')
 };
-// 실행
+// Execute
 bm.command['read'].execute();
 
-// 출력 결과:
-// model 에서 onExecute 호출
-// model 에서 onExecuted 호출
+// Output results:
+// Call onExecute from model
+// Call onExecuted in model
 ```
+## Handling errors and failures
 
+### error handling
 
-## 오류 및 실패 처리하기
-
-### 오류 처리
-
-모든 오류 및 예외 발생 시 호출되는 콜백입니다.
-타입 : cbError
+Callback called upon all errors and exceptions.
+Type: cbError
 ```ts
 type cbError = (msg: string, status: number, response: object) => void;
 ```
 
-cbError 발생 시점은
-- 서버 요청 관련 axios error, ajax error 발생시 호출됩니다.
-- 모든 에러 및 예외 발생시 호출됩니다.
+The cbError occurrence time is
+- Called in case of an axios error or ajax error related to a server request.
+- Called in case of all errors and exceptions.
 
 ```js
 var bm = new BindModel();
 
 bm.cbError = function(msg, status, res) { 
-	console.error('오류가 발생 하였습니다. Err: '+ msg); 
+	console.error('Err: '+ msg); 
 };
 ```
-- 'cbError' 의 기본값을 객체생성시 제공됩니다.
-### 실패 처리
+- The default value of 'cbError' is provided at the time of object creation.
+### Dealing with Failure
 
-논리적 실패 메시지를 처리합니다. (주로 유효성 검사 실패시 사용합니다.)
-타입 : cbFail
+Processes logical failure messages (mainly used in the event of a validation failure)
+Type: cbFail
 ```ts
 type cbFail = (msg: string, valid: MetaView) => void;
 ```
 
-'cbFail' 발생 시점은 execute() 메소드 실행되어
--  `valid(MetaView)` 유효성 검사가 실패한 경우 호출됩니다.
-- 'cbValid' / 'cbBaseValid' 콜백함수에서 false 반환한 경우 호출됩니다.
+When "cbFail" occurred, the execute() method was executed
+-  Called when the 'valid(MetaView)' validation fails.
+- Called when a false return is made from the 'cbValid' / 'cbBaseValid' callback function.
 
 ```js
 var bm = new BindModel();
 
 bm.cbFail = function(msg, valid) { 
-	console.warn('실패하였습니다. Err:'+ msg); 
+	console.warn ('Failed. Err:'+ msg); 
 };
 ```
-- 'cbFail' 의 기본값을 객체생성시 제공됩니다.
+- The default value of 'cbFail' is provided at the time of object creation.
 
 
-## 흐름 제어하기 (hooking)
+## Flow control (hooking)
 
-execute() 실행시 순차적으로 콜백함수가 호출되어 흐름을 제어할 수 있습니다. 
+When execute(), the callback function can be called sequentially to control the flow. 
 
-[[41. 콜백 라이프사이클-B| 참조 : 콜백 라이프사이클]]
+[[41. Callback Lifecycle-B|Refer to: Callback Lifecycle]
 
-### 1. 기본 시작시 콜백
+### 1. Callback at base start
 
-execute() 호출시 처음으로 호출되는 콜백입니다.
-대상 'cbBegin' 이 'cbBaseBegin' 콜백보다 우선순위가 높습니다.
-타입 : cbBaseBegin
+The first callback to be called upon execution().
+Target 'cbBegin' has higher priority than callback 'cbBaseBegin'.
+Type: cbBase Begin
 ```ts
 type cbBaseBegin = (cmd: BindCommand) => void;
 ```
 
- 일반적인 활용방안은
-- url 및 config 의 공통 정보 설정에 활용됩니다.
+ The general application plan is
+- Utilized for setting common information in url and config.
 
 ```js
 var bm = new BindModel();
@@ -199,20 +194,19 @@ bm.cbBaseBegin = function(cmd) {
 	cmd.url = '/member/1';
 };
 ```
+### 2. Basic Validation Callback
 
-### 2. 기본 유효성 검사 콜백
-
-execute() 실행시 `valid(MetaView)` 에 대한 유효성 검사 전에 호출되는 콜백입니다.
-대상 'cbValid' 이 'cbBaseValid' 콜백보다 우선순위가 높습니다.
-리턴값이 false 이면 'cbFail' 콜백 호출되고 종료합니다.
-타입 : cbBaseValid
+Callback called before validation for 'valid(MetaView)' when executing execute().
+Destination 'cbValid' has higher priority than callback 'cbBaseValid'.
+If the return value is false, the callback 'cbFail' is called and terminated.
+Type: cbBaseValid
 ```ts
 type cbBaseValid = (valid: MetaView, cmd: BindCommand) => boolean;
 ```
 
-일반적인 활용방안은
-- 서버 요청전 검사에 활용됩니다.
-- 사용자에게 처리결과를 확인하는 용도로 활용됩니다.
+The general application plan is
+- Used for inspection before requesting a server.
+- It is used to check the processing results from the user.
 
 ```js
 var bm = new BindModel();
@@ -221,36 +215,36 @@ bm.cbBaseValid = function(view, cmd) {
 	return view.colums.count <= 0;
 };
 bm.cbBaseValid = function(view, cmd) {
-	return confirm('삭제하시겠습니까?');
+	return confirm ('Do you want to delete?');
 };
 ```
 
-### 3. 기본 서버 요청 콜백
+### 3. Default Server Request Callback
 
-execute() 실행시 `bind(MetaView)` 컬럼값을 전송하기 전에 호출되는 콜백입니다.
-대상 'cbBind' 이 'cbBaseBind' 콜백보다 우선순위가 높습니다.
+Callback called before sending the 'bind(MetaView)' column value when executing execute().
+Target 'cbBind' has higher priority than callback 'cbBaseBind'.
 
-타입 : cbBaseBind
+Type: cbBaseBind
 ```ts
 type cbBaseBind = (view: MetaView, cmd: BindCommand, config: object) => void;
 ```
 
-일반적인 활용방안은
-- 전송타입의 설정에 활용됩니다. (enctype)
-- 통합 로그인 관련 설정에 활용됩니다.
-- 비밀번호 암호화에 활용됩니다.
+The general application plan is
+- Used to set the transport type. (encttype)
+- Utilized for integrated login-related settings.
+- Used for password encryption.
 
-### 4. 기본 서버 응답 콜백
+### 4. Default Server Response Callback
 
-execute() 실행시 서버에서 응답을 받은 후에 호출되는 콜백입니다.
-대상 'cbResult' 이 'cbBaseResult' 콜백보다 우선순위가 높습니다.
+Callback called after receiving a response from the server when executing execute().
+Destination 'cbResult' has higher priority than callback 'cbBaseResult'.
 타입 : cbBaseResult
 ```ts
 type cbBaseResult = (data: object, cmd: BindCommand, res: object) => object;
 ```
 
-일반적인 활용방안은
-- 응답받은 data 를 `MetaView` 형식의 스키마로 변경하는 용도로 활용됩니다.
+The general application plan is
+- It is used to change the responded data to a schema in the form of 'MetaView'.
 
 ```js
 var bm = new BindModel();
@@ -261,29 +255,29 @@ bm.cbBaseResult = function(data) {
 	};
 };
 ```
-- 리턴값 : `{ rows: {aa: 1, bb: 2 }} `
+- Return value: '{aa: 1, bb:2}'
 
-### 5. 기본 출력 콜백
+### 5. Default Output Callback
 
-응답을 \_outputs 컬렉션으로 읽어들인 후에 호출되는 콜백입니다.
-대상 'cbOutput' 이 'cbBaseOutput' 콜백보다 우선순위가 높습니다.
-`BindCommand` 출력옵션에 따라서 data와 '\_outputs' 컬렉션에 가져오는 방식이 달라집니다.
+Callback called after the response is read into the \_outputs collection.
+Destination 'cbOutput' has higher priority than callback 'cbBaseOutput'.
+Depending on the 'Bindcommand' output option, the data and the '\_outputs' collection are imported differently.
 
-[[24. 바인드 커멘드 구성-C#출력옵션의 종류 (output)| 참조 : 출력옵션의 종류]]
+[24. Bind Command Configuration - C# Type of Output Option (output) | Reference: Type of Output Option]
 
 타입 : cbBaseOutput
 ```ts
 type cbBaseOutput = (views: MetaViewColleciton, cmd: BindCommand, res: object) => void; 
 ```
 
-일반적인 활용방안은
-- 응답받은 `output(MetaView)`을 사용하여 화면(html) 바인딩에 활용됩니다.
+The general application plan is
+- It is utilized for screen (html) binding using the 'output(MetaView)' responded.
 
 ```json
 {
 	"rows": [
-		{ "u_name": "홍길동", "gender", "M" },
-		{ "u_name": "성춘향", "gender", "W" },
+		{ "u_name": "Hong Gildong", "gender", "M" },
+		{ "u_name": "Sungchunhyang", "gender", "W" },
 	]
 }
 ```
@@ -298,47 +292,46 @@ bm.cbBaseOutput = function(views) {
 		console.log(i, row['u_name'], row['gender']);
 	}
 }
-// 0  홍길동  M
-// 1  성춘향  W
+// 0 Hong Gil-dong M
+// 1. Sung Chunhyang W
 ```
-- `views[0]` 은 `BindCommand` 의 'output' 과 동일합니다.
 
-[[42. 멀티 뷰(output)-C | 참조: 멀티 뷰(output)]]
-### 6. 기본 종료시 콜백
+[[42. Multi-view (output)-C | Reference: Multi-view (output)]
+### 6. Callback at Default Termination
 
-execute() 실행시 마지막으로 호출되는 콜백입니다.
-대상 'cbEnd' 이 'cbBaseEnd' 콜백보다 우선순위가 높습니다.
+The last callback to be called when execute().
+Target 'cbEnd' has higher priority than callback 'cbBaseEnd'.
 
-타입 : cbBaseEnd
+Type: cbBaseEnd
 ```ts
 type cbBaseEnd = (status: number, cmd: BindCommand, res: object) => void; 
 ```
 
-일반적인 활용방안은
-- 성공 메세지 전달에 활용합니다.
-- 경로 리다이렉트에 활용합니다.
-- 다른 명령의 execute() 체인 연결에 활용합니다.
+The general application plan is
+- Use it to deliver success messages.
+- Utilizes for path redirection.
+- Use to link the execute() chain of other commands.
 
 ```js
 var bm = new BindModel();
 
 bm.cbBaseEnd = function(views) {
-	alert('정상 처리 되었습니다.');
+	alert('Normal Processed');
 };
 ```
 
 
-## 명령 추가하기
+## To add a command
 
-addCommand() 메소드를 호출해서 `BindCommand` 객체를 생성합니다.
-`BindCommand` 객체는 바인드 모델의 처리 단위이며, 'valid', 'bind', 'output' 속성의 `MetaView` 를 포함하고 있습니다.
+Create a 'Bindcommand' object by invoking the addcommand() method.
+The 'Bindcommand' object is the processing unit of the bound model and contains the 'MetaView' of the 'valid', 'bind', and 'output' attributes.
 
-타입 : addCommand()
+Type: addcommand()
 ```ts
 function addCommand(cmdName: string, outOpt?: number = 0, bTable?: string | MetaTable): BindCommand;
 ```
-- 'cmdName' 의 `BindCommand` 의 별칭을 지정하고 출력옵션으로 추가합니다. (기본값 outOpt = 0)
-- bTable 을 지정하면, 추가한 `BindCommand` 의 '\_baseTable' 이 설정됩니다.
+- Specify the alias for 'Bindcommand' of 'cmdName' and add it as an output option. (Default outOpt = 0)
+- If bTable is specified, '\_baseTable' of the added 'Bindcommand' is set.
 
 ```js
 var bm = new BindModel();
@@ -351,11 +344,11 @@ bm.addCommand('read', 3);
 // bm.command['create'].outputOption == 0 
 // bm.command['read'].outputOption == 3 
 ```
-- outOpt 기본값은 '0' 입니다.
-- 추가한 `BindCommand` 객체는 'command' 컬렉션으로 접근할 수 있습니다.
-- 'command' 는 'cmd' 별칭을 제공합니다.
+- The default value for outOpt is '0'.
+- The 'Bindcommand' object you added can be accessed by the 'command' collection.
+- 'command' provides a 'cmd' alias.
 
-예제 : 기본테이블 지정
+Example: Specify the Default Table
 ```js
 var bm = new BindModel();
 
@@ -367,12 +360,12 @@ bm.addCommand('edit', 3, bm.second);
 // bm.command['list']._baseTable === bm.second
 // bm.command['edit']._baseTable === bm.second
 ```
-- `BindCommand` 추가시 `MetaTable` 을 지정하면 모든 `MetaView` 는 'baseTable' 이 설정됩니다.
+- If 'MetaTable' is specified when 'Bind Command' is added, 'baseTable' is set for all 'MetaView'.
 
 
-## 컬럼 추가하기
+## To add a column
 
-컬럼을 추가합니다.
+Add a column.
 
 타입 : addColumn(), addColumnValue()
 ```ts
@@ -391,17 +384,18 @@ type addColumnValue = (
 	bTable?: string | MetaTable
 ) => BindCommand;
 ```
-- cmds, views을 생략하면 기본테이블에 컬럼이 추가됩니다.
-- cmds 와 views 을 지정하면 'command' 의 MetaView 에 참조가 등록됩니다.
-- cmds 파라메터에 '$all' 지시자를 사용하면, 모든 'command' 에 추가됩니다.
+- omitting cmds, views adds columns to the base table.
+- If you specify cmds and views, the reference is registered in MetaView in 'command'.
+- If you use the '$all' indicator in the cmds parameter, it is added to all 'command'.
+- 'views[0]' is the same as 'output' of 'Bindcommand'.
 
-### 컬럼 추가
+### Add Column
 
-기본테이블(\_baseTable)에 컬럼을 추가합니다.
+Add a column to the main table (\_baseTable).
 
 ```js
 var bm = new BindModel();
-// 컬럼 추가
+// Add Column
 bm.addColumn('aa');
 bm.addColumnValue('bb', 'man');
 
@@ -409,20 +403,20 @@ bm.addColumnValue('bb', 'man');
 // bm.columns['bb'].value  == 'man'
 // bm._baseTable === bm._tables['first'] === bm._tables[0] === bm.first
 ```
-- addColumn() 메소드를 호출하여 'aa' 이름의 컬럼이 추가됩니다.
-- addColumnValue() 메소드를 호출하여 'bb' 이름의 컬럼이 추가되고 'man' 값이 설정됩니다.
-- 'bTable' 을 지정하여 지정된 `MetaTable` 에 컬럼에 추가할 수 있습니다.  (기본값 : '\_baseTable')
-### 컬럼 추가 및 매핑
+- A column named 'aaa' is added by invoking the addColumn() method.
+- The addColumnValue() method is called to add a column named 'bbb' and the value 'man' is set.
+- You can add 'bTable' to the specified 'MetaTable' column. (Default: '\_baseTable')
+### Adding and mapping columns
 
-기본테이블에 컬럼을 추가하고 대상 `BindCommand` 에 매핑합니다.
+Add a column to the base table and map it to the target 'Bindcommand'.
 
 ```js
 var bm = new BindModel();
-// 명령 생성 
+// command generation 
 bm.addCommand('cmd1');
 bm.addCommand('cmd2');
 bm.addCommand('cmd3');
-// 컬럼 추가
+// Add Column
 bm.addColumn('aa', 'cmd1');
 bm.addColumn('bb', ['cmd2', 'cmd3'], ['valid', 'bind']);
 bm.addColumn('cc', '$all', 'output');
@@ -441,21 +435,21 @@ bm.addColumn('cc', '$all', 'output');
 // bm.command['cmd3'].bind.columns.count   == 1 ('bb')
 // bm.command['cmd3'].output.columns.count == 1 ('cc')
 ```
-- addCommand() 메소드로 지정한 이름의 `BindCommand` 를 추가합니다.
-- 'aa' 이름의 컬럼은 지정한(cmd1) 의 모든 `MetaView` 에 매핑됩니다.
-- 'bb' 이름의 컬럼은 지정한(cmd2, cmd3) 의 `MetaView(valid, bind)` 에 매핑됩니다.
-- 'cc' 이름의 컬럼은 전체(cmd1, cmd2, cmd3) 의  `MetaView(output)` 에 매핑됩니다.
+- Add 'Bindcommand' with the name specified by the addcommand() method.
+- The column named 'aaa' is mapped to all 'MetaView' in the specified (cmd1).
+- The column named 'bbb' maps to the specified (cmd2, cmd3) 'MetaView (valid, bind'
+- Columns named 'cc' are mapped to the 'MetaView (output)' of the whole (cmd1, cmd2, cmd3).
 
-### 추가한 테이블에 컬럼 추가 및 매핑
+### Adding and mapping columns to tables you have added
 
-지정한 `MetaTable` 에 컬럼을 추가하고 대상 `BindCommand` 에 매핑합니다.
+Add a column to the specified 'MetaTable' and map it to the target 'Bind Command'.
 
 ```js
 var bm = new BindModel();
-// 테이블 및 명령 추가
+// Adding Tables and Commands
 bm.addTable('second');
 bm.addCommand('cmd1');
-// 컬럼 추가 및 매핑
+// Adding and mapping columns
 bm.addColumn('aa', 'cmd1', 'valid');
 bm.addColumn('bb', 'cmd1', 'bind', 'second');
 
@@ -466,26 +460,99 @@ bm.addColumn('bb', 'cmd1', 'bind', 'second');
 // bm.command['cmd1'].bind.columns.count   == 1 ('bb')
 // bm.command['cmd1'].output.columns.count == 0
 ```
-- addTable() 메소드로는 `MetaTable` 을 '\_tables' 컬렉션에 추가합니다.
-- addCommand() 메소드로 지정한 이름의 `BindCommand` 를 추가합니다.
-- 'aa' 이름의 컬럼은 기본 테이블에 추가하고  지정한 `MetaView(valid)` 에 매핑됩니다.
-- 'bb' 이름의 컬럼은 `second(MetaTable)`에 추가하고  지정한 `MetaView(bind)`에 매핑됩니다.
+- As an addTable() method, add 'MetaTable' to the '\_tables' collection.
+- Add 'Bindcommand' with the name specified by the addcommand() method.
+- Columns named 'aaa' are added to the base table and mapped to the specified 'MetaView (valid).
+- The column named 'bbb' is added to 'second(MetaTable)' and mapped to the specified 'MetaView(bind).
+### Add Column
 
+Add a column to the main table (\_baseTable).
 
+```js
+var bm = new BindModel();
+// Add Column
+bm.addColumn('aa');
+bm.addColumnValue('bb', 'man');
 
-## 테이블 추가하기
+// bm.columns['aa'].value  == ''
+// bm.columns['bb'].value  == 'man'
+// bm._baseTable === bm._tables['first'] === bm._tables[0] === bm.first
+```
+- A column named 'aaa' is added by invoking the addColumn() method.
+- The addColumnValue() method is called to add a column named 'bbb' and the value 'man' is set.
+- You can add 'bTable' to the specified 'MetaTable' column. (Default: '\_baseTable')
+### Adding and mapping columns
 
-addTable() 메소드로 `MetaTable` 을 추가합니다.
+Add a column to the base table and map it to the target 'Bindcommand'.
 
-타입 : addTable()
+```js
+var bm = new BindModel();
+// command generation 
+bm.addCommand('cmd1');
+bm.addCommand('cmd2');
+bm.addCommand('cmd3');
+// Add Column
+bm.addColumn('aa', 'cmd1');
+bm.addColumn('bb', ['cmd2', 'cmd3'], ['valid', 'bind']);
+bm.addColumn('cc', '$all', 'output');
+
+// bm['first'].columns.count  == 3 ('aa', 'bb', 'cc')
+
+// bm.command['cmd1'].valid.columns.count  == 1 ('aa')
+// bm.command['cmd1'].bind.columns.count   == 1 ('aa')
+// bm.command['cmd1'].output.columns.count == 2 ('aa', 'cc')
+
+// bm.command['cmd2'].valid.columns.count  == 1 ('bb')
+// bm.command['cmd2'].bind.columns.count   == 1 ('bb')
+// bm.command['cmd2'].output.columns.count == 1 ('cc')
+
+// bm.command['cmd3'].valid.columns.count  == 1 ('bb')
+// bm.command['cmd3'].bind.columns.count   == 1 ('bb')
+// bm.command['cmd3'].output.columns.count == 1 ('cc')
+```
+- Add 'Bindcommand' with the name specified by the addcommand() method.
+- The column named 'aaa' is mapped to all 'MetaView' in the specified (cmd1).
+- The column named 'bbb' maps to the specified (cmd2, cmd3) 'MetaView (valid, bind'
+- Columns named 'cc' are mapped to the 'MetaView (output)' of the whole (cmd1, cmd2, cmd3).
+
+### Adding and mapping columns to tables you have added
+
+Add a column to the specified 'MetaTable' and map it to the target 'Bind Command'.
+
+```js
+var bm = new BindModel();
+// Adding Tables and Commands
+bm.addTable('second');
+bm.addCommand('cmd1');
+// Adding and mapping columns
+bm.addColumn('aa', 'cmd1', 'valid');
+bm.addColumn('bb', 'cmd1', 'bind', 'second');
+
+// bm['first'].columns.count  == 1 ('aa')
+// bm['second'].columns.count == 1 ('bb')
+
+// bm.command['cmd1'].valid.columns.count  == 1 ('aa')
+// bm.command['cmd1'].bind.columns.count   == 1 ('bb')
+// bm.command['cmd1'].output.columns.count == 0
+```
+- As an addTable() method, add 'MetaTable' to the '\_tables' collection.
+- Add 'Bindcommand' with the name specified by the addcommand() method.
+- Columns named 'aa' are added to the base table and mapped to the specified 'MetaView (valid).
+- The column named 'bb' is added to 'second(MetaTable)' and mapped to the specified 'MetaView(bind).
+
+## To add a table
+
+Add 'MetaTable' as an addTable() method.
+
+Type: addTable()
 ```ts
 type addTable (tableName: string) => MetaTable;
 ```
 
-일반적인 활용방안은
-- 기본테이블을 변경할 활용합니다.
-- \_baseTable 을 변경하기 위한 테이블을 생성할 때 활용합니다.
-- 'command' 의 `MetaView` 의 참조 테이블로 지정할 때 활용합니다.
+The general application plan is
+- Utilizes changes to the default table.
+- Use to create tables to change \_baseTable.
+- Use when designating as a reference table for 'MetaView' in 'command'.
 
 ```js
 var bm = new BindModel();
@@ -513,27 +580,25 @@ bm.command['cmd1'].addColumn('bb');
 // bm.command['cmd1'].bind.columns.count   == 1 ('bb')
 // bm.command['cmd1'].output.columns.count == 1 ('bb')
 ```
-- A : addTable() 메소드로 `MetaTable` 이 '\_tables' 컬렉션과 `BindModel` 객체에 추가됩니다.
-- B : '\_baseTable' 을 지정하여 기본테이블을 `second(MetaTable)`로 변경하였습니다.
-- C : addCommand() 메소드에서  'cmd1' 의 '\_baseTable' 을 'three' 로 지정하였습니다.
+- A: 'MetaTable' is added to the '\_tables' collection and 'BindModel' objects in the addTable() method.
+- B: We changed the base table to 'second(MetaTable)' by specifying '\_baseTable'.
+- C: The addcommand() method designated '\_baseTable' of 'cmd1' as 'three'.
 
+## Setting global items (global column)
 
+'items' has raw information from the column.
 
-## 전역 아이템 설정하기 (global column)
+The general application plan is
+- When injecting service objects into 'BindModel', it is used to manage the global information of the column.
+- Utilizes a column when it is shared across multiple tables.
+- It is a 'selector' attribute and is used for DOM validation.
 
-'items' 는 컬럼의 원시 정보를 가지고 있습니다.
+### Add Item
 
-일반적인 활용방안은
-- `BindModel` 에 서비스객체를 주입할때 컬럼의 전역정보를 관리하는데 활용합니다.
-- 하나의 컬럼을 여러 테이블에 공유될때 활용합니다.
-- 'selector' 속성으로 DOM 유효성 검사에 활용합니다.
+As a way to add items, you can add them from the items collection and from the service object.
 
-### 아이템 추가
-
-아이템의 추가하는 방법으로는 items 컬렉션에서 추가하는 방법과, 서비스객체에서 추가할 수 있습니다.
-
-[[25. 서비스 객체 구성-C#아이템 영역 구성하기| 참조 : 서비스객체의 아이템 구성하기]]
-타입 : items.add()
+[25. Service Object Configuration - C# Item Area Configuration | Refer to: Service Object Configuration]
+Type: items.add()
 ```ts
 type ColumnType = {
 	selector: SelectorType,
@@ -546,7 +611,7 @@ type ColumnType = {
 	alias: string,
 	caption: string,
 	constraints: ConstrainstType,  // 제약조건
-	required: boolean | false,     // 필수 여부
+	required: boolean | false, // required
 };
 type ValueType = string | number | boolean | ColumnType;
 
@@ -556,23 +621,23 @@ type add = (itemName: string, iType: ValueType) => void;
 
 ```js
 var bm = new BindModel();
-// 아이템 추가
+// Add Item
 bm.items.add('col1', 1);
 bm.items.add('col2', '');
 bm.items.add('col3', { columnName: 'newCol3'});
 bm.items.add('col4', {selector: { key:'#ID', type: 'value'}});
-// 아이템 컬럼으로 생성
+// Create as item column
 bm._readItem();
 ```
-- 'col1' 이름의 아이템에 추가하고 `{value: 1}` 값을 설정합니다.
-- col2' 이름의 아이템에  추가하고 `{value: ''}` 값을 설정합니다.
-- 'col3' 이름의 아이템에 추가하고 `{columnName: 'newCol3'}` 값을 설정합니다..
-- 'col4' 이름의 아이템에 추가하고 `{selector: { key:'#ID', type: 'value'}}` 값을 설정합니다.
-- \_readItem() 메소드를 호출하면 아이템이 기본테이블에 컬럼으로 생성됩니다.
+- Add to the item named 'col1' and set the value '{value:1}'.
+- Add to the item named 'col2' and set the value '{value: '}'.
+- Add to the item named 'col3' and set the value '{columnName: 'newCol3'}..
+- Add to the item named 'col4' and set the value '{selector: {key:'#ID', type: 'value'}'
+- Calling the \_readItem() method creates an item as a column in the default table.
 
-### 아이템 유효성 검사
+### Item Validation
 
- checkSelector() 메소드로 items 컬렉션의 selector 속성의 DOM 에서 유효한지 검사할 수 있습니다.
+ The checkSelector() method allows you to check whether the DOM of the selector property in the items collection is valid.
 타입 : checkSelector()
 ```ts
 type checkSelector = (
@@ -580,23 +645,23 @@ type checkSelector = (
 	isLog: boolean = false
 ) => string[];
 ```
-- 'collection'  파라메터의 기본값은 `this.items` 의 컬렉션입니다.
-- 'collection' 으로 items, columns, `['테이블명'].columns`, `valid.columns`, `bind.columns`, `output.columns` 으로 지정할 수 있습니다.
-- isLog = true 을 설정하면, 실패한 'selector' 의 'key' 값이 콘솔창에 출력됩니다.
+- The default value of the 'collection' parameter is the collection of 'this.items'.
+- 'collection' can be designated as items, columns, '[table name]'.column, 'valid.column', 'bind.column', and 'output.column'.
+- If you set isLog = true, the 'key' value of the failed 'selector' is displayed in the console window.
 
 ```js
 var bm = new BindModel();
-// 아이템 추가
+// Add Item
 bm.items.add('item1', {selector: { key:'#user_name', type: 'value'}});
 bm.items.add('item2', {selector: { key:'.sub_name', type: 'text'}});
 bm.items.add('item3', {selector: { key:'input[name=gender]', type: 'none'}});
-// 셀렉터 검사
-bm.checkSelector(); // 빈배열은 검사 성공
+// Selector Examination
+bm.checkSelector(); // Empty Array Check Successful
 ```
-- checkSelector() 메소드는 'items' 의 'selector' 값이 유효한지 검사합니다.
+- The checkSelector() method checks whether the 'selector' value of 'items' is valid.
 
-preCheck 콜백함수를 통해서 서비스객체 주입시 DOM 유효성 검사를 자동으로 처리할 수 있습니다.
-[[25. 서비스 객체 구성-C | 참조 : 서비스객체 구성]]
+The preCheck callback function automatically handles DOM validation when injecting service objects.
+[25. Service Object Configuration-C | Reference: Service Object Configuration]
 
 ```js
 var bm = new BindModel();
@@ -605,16 +670,16 @@ bm.columns.add('item1', {selector: { key:'#user_name', type: 'value'}});
 bm.columns.add('item2', {selector: { key:'.sub_name', type: 'text'}});
 bm.columns.add('item3', {selector: { key:'input[name=gender]', type: 'none'}});
 
-bm.checkSelector(bm.columns, true);  // 실패한시 selector 객체 목록
+bm.checkSelector (bm.column, true); // List of failed selector objects
 ```
-- DOM 에서 해당 요소가 존재하는지 검사합니다.
+- Examine the DOM for the presence of the element.
   `< ... id="user_name">, \< ... class="sub_name">, \<input name="gender"... >`
 
 
-## 셀렉터 조회하기(selector)
+## To look up the selector (selector)
 
-'items' 컬렉션의 'selector' 목록을 얻습니다.
-타입 : getSelector()
+Obtain a list of 'selectors' in the 'items' collection.
+Type: getSelector()
 ```ts
 type KeyType = 'none' | 'value' | 'text' | 'html' | 'prop' | 'attr' | 'css';
 type SelectorType = { key: string, type: KeyType };
@@ -623,7 +688,7 @@ type getSelector = (
 	collection?: PropertyCollection = this.items
 ) => SelectorType[];
 ```
-- 'collection' 파라메터의 기본값은 this.items 컬렉션입니다.
+- The default for the 'collection' parameter is this.items collection.
 
 ```js
 var bm = new BindModel();
@@ -634,5 +699,6 @@ bm.columns.add('item2', {selector: {key:'#ID2', type: 'text'}});
 bm.getSelector();
 // [{key:'#ID1', type: 'value'}, {key:'#ID2', type: 'text'}]
 ```
-- 지정한 컬렉션의 'selector' 의 목록을 얻을 수 있습니다.
+- You can obtain a list of 'selectors' for the specified collection.
+
 

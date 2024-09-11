@@ -23,7 +23,7 @@ feature_row:
     alt: "Simplicity Productivity"
     title: "Simplicity Productivity"
     excerpt: "BindModel increases the intuitive nature of code by minimizing certain grammar and indicators and eliminating unnecessary components. Designed based on frequency in the project, it delivers simplicity and high productivity to users."
-    url: "/docs/feature/#단순함과-생산성"
+    url: "/docs/feature/#Simplicity and Productivity"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/web-design-3411373_1280.webp

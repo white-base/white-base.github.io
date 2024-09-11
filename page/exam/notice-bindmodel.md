@@ -8,28 +8,26 @@ date: 2011-06-23T1
 sidebar:
   nav: "exam"
 ---
+## Description
+- As an example of "Notice", the administrator and user pages.
+- You can use html, css, and js files produced by web designers right away without modification.
+- By separating and managing common service objects, it provides an efficient structure so that repetitive code writing is not required, increasing maintenance and scalability.
 
-## 설명
-- "공지 사항" 예제로 페이지로 관리자와 사용자 페이지입니다.
-- 웹디자이너가 제작한 html, css, js 파일을 수정없이 바로 사용할 수 있습니다.
-- 공통 서비스 객체를 분리하여 관리하여 반복되는 코드 작성이 필요 없도록 효율적인 구조를 제공하여, 유지보수와 확장성을 높였습니다.
-
-## 폴더 구조
+## folder structure
 ```js
 vue-mix/
 ├── service/
 │   ├── base-notice-svc.js
 │   ├── notice-admin-svc.js 
-│   └── notice-front-svc.js : ** 사용자 페이지 **
-├── front.html              : ** 사용자 페이지 **
+│   └--notice-front-svc.js : ** User Page **
+├-- front.html : ** User Page **
 └── admin.html
 ```
 
-
 ### admin.html
 ---
-notice 목록과 폼을 html, css, js 로 구성한 페이지입니다. 
-실제 구현시 관리자 페이지에 권한 설정을 추가해야 합니다.
+A page that consists of html, css, and js of notice lists and forms. 
+You must add permission settings to the Administrators page during a physical implementation.
 
 ```html
 <!DOCTYPE html>
@@ -139,16 +137,16 @@ notice 목록과 폼을 html, css, js 로 구성한 페이지입니다.
 </body>
 </html>
 ```
-#### 코드 설명
-- 'bm' BindModel 객체를 생성할 때 서비스 객체를 주입합니다.
-- 서비스 객체(NoticeAdminService)의 공통 요소를 분리하기 위해서 내부에서 class 문을 사용하였습니다.
-- Jquery 사용해서 버튼에 execute() 메소드를 등록하였습니다.
-- 화면 로딩 후 bm.cmd['list'].execute() 를 실행하여 목록을 가져오는 command 를 실행하였습니다.
-- 록록을 출력하기 위해서 handlebars 템플릿을 사용하였습니다. 
+#### Code Description
+- Inject service objects when creating a 'bm' BindModel object.
+- A class statement was used internally to separate common elements of the service object (NoticeAdminService).
+- You have registered the execute() method on the button using Jquery.
+- After loading the screen, you ran the command to get the list by running bm.cmd['list'].execute().
+- The handlebars template was used to output the lock.
 
 ### front.html
 ---
-공지사항의 사용자 페이지 입니다.
+This is the user page of the announcement.
 
 ```html
 <!DOCTYPE html>
@@ -228,16 +226,16 @@ notice 목록과 폼을 html, css, js 로 구성한 페이지입니다.
 </body>
 </html>
 ```
-#### 코드 설명
-- 'bm' BindModel 객체를 생성할 때 서비스 객체를 주입합니다.
-- 서비스 객체(NoticeFrontService)의 공통 요소를 분리하기 위해서 내부에서 class 문을 사용하였습니다.
-- Jquery 사용해서 버튼에 execute() 메소드를 등록하였습니다.
-- 화면 로딩 후 bm.cmd['list'].execute() 를 실행하여 목록을 가져오는 command 를 실행하였습니다.
-- 록록을 출력하기 위해서 handlebars 템플릿을 사용하였습니다. 
+#### Code Description
+- Inject service objects when creating a 'bm' BindModel object.
+- A class statement was used inside to separate common elements of the service object (NoticeFrontService).
+- You have registered the execute() method on the button using Jquery.
+- After loading the screen, you ran the command to get the list by running bm.cmd['list'].execute().
+- The handlebars template was used to output the lock. 
 
 ### service/base-notice-svc.js
 ---
-BaseNoticeService 클래스는 공지사항의 공통 객체를 구성하였습니다.
+The BaseNoticeService class has configured the common object of the notice.
 
 ```js
 class BaseNoticeService {
@@ -287,22 +285,22 @@ class BaseNoticeService {
     }
 }
 ```
-#### 코드 설명
-- _SUFF 매개변수는 서비스객체의 id, name 의 중복을 방지에 활용하였습니다.
-- var _this 는 콜백함수에서 bindModel 객체에 접근하기 위해서 정의하였습니다.
-- 'items' 영역은 HTMLColumn 으로 등록할 공통속성입니다.
-    - selector 속성은 DOM 을 가르키는 속성입니다.
-        - key 속성은 요소를 가르키는 셀렉터 값입니다.
-        - type 속성의 value, none, text, html, prop.속성명, attr.속성명 이 있습니다.
-    - setter/getter 는 주로 외부에서 값을 가져옵니다.
-    - setFiter/getFiter 는 여러개의 DOM 요소에서 값을 구하거나, 가공할 때 설정합니다.
-    required 속성은 valid 검사시 필수값으로 의미합니다.
-- 'fn' 영역은 사용자 함수 영역입니다.
+#### Code Description
+- The _SUFF parameter was used to prevent duplication of id and name of service object.
+- var_this is defined to access bindModel objects in the callback function.
+- The 'items' area is a common property to register as an HTML Column.
+    - Selector properties are properties that point to DOM.
+        - The key property is the selector value that points to the element.
+        - Value, none, text, html, prop.synonyms, and attr.synonyms of type properties.
+    - setter/getter usually gets values from outside.
+    - The setFiter/getFiter obtains values from multiple DOM elements or sets them when processing.
+    The required property is a required value for valid inspection.
+- The 'fn' area is the user function area.
 
 
 ### service/notice-admin-svc.js
 ---
-NoticeAdminService 클래스는 공지사항의 관리자 서비스 객체 입니다.
+The NoticeAdminService class is an administrator service object for a notice.
 
 ```js
 class NoticeAdminService extends BaseNoticeService {
@@ -373,18 +371,18 @@ class NoticeAdminService extends BaseNoticeService {
     }    
 }
 ```
-#### 코드 설명
-- command 영역은 BindCommand 의 속성을 설정합니다.
-    - outputOption 은 서버로 전송받은 자료를 가져오는 방식입니다.
-    - 콜백함수는 execute() 실행시 단계별로 호출합니다.
+#### Code Description
+- The command area sets the properties of the Bindcommand.
+    - The output option is a method of importing data sent to the server.
+    - The callback function is called step by step when executing execute().
         - **cbBegin**() >> **cbValid**() >> **cbBind**() >> **cbResult**() >> **cbOutput**() >> **cbEnd**()
-- mapping 영역은 컬럼에 대해 BindCommand 객체 매핑 정보입니다.
+- The mapping area is the Bindcommand object mapping information for the column.
     - title:          { read:     'output',   update:  ['valid', 'bind'], }
-        - title 컬럼을 생성하여 **read** 커멘드의 output 에, **valid** 커멘드에는 valid, bind 에 매핑딥니다.
+        - Create a Title column and map it to the output of the **read** command and the **valid** command to valid, bind.
 
 ### service/notice-front-svc.js
 ---
-NoticeFrontService 클래스는 공지사항의 사용자 서비스 객체 입니다.
+The NoticeFrontService class is a user service object of a notice.
 
 ```js
 class NoticeFrontService extends BaseNoticeService {

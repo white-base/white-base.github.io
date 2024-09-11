@@ -9,11 +9,11 @@ sidebar:
   nav: "exam"
 ---
 
-## 설명
+## Description
 
-"공지 사항" 예제로 페이지로 사용자 페이지는 제외하였습니다.
+As an example of "Notice", we excluded the user page as a page.
 
-## 폴더 구조
+## folder structure
 ```js
 react-mix1/
 ├── componets/

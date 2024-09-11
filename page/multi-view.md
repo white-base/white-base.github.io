@@ -8,15 +8,13 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 ---
+Multi-view is used when data received from the server is more than one data. By default, the Bindcommand object contains the MetaView of the output property, which is a reference property for '_outputs['output1'].
 
+This feature allows you to add or remove multiple MetaViews, each of which is used to store and manage data received from the server.
 
-멀티뷰는 서버에서 수신한 데이터가 2개 이상의 자료일 경우에 사용됩니다. BindCommand 객체는 기본적으로 output 속성의 MetaView를 포함하며, 이는 `_outputs['output1']`의 참조 속성입니다.
+## output structure of Bindcommand
 
-이 기능을 통해 여러 개의 MetaView를 추가하거나 제거할 수 있으며, 각 MetaView는 서버에서 수신한 데이터를 저장하고 관리하는 데 사용됩니다.
-
-## BindCommand 의 output 구조
-
-BindCommand 객체를 생성하면 기본적으로 output 속성이 추가됩니다. 이 output 속성은 `_outputs['output1']`의 참조입니다.
+When you create a Bindcommand object, the output attribute is added by default, which is a reference to '_outputs['output1']'.
 
 ```js
 var bm = new BindModel();
@@ -26,21 +24,21 @@ bm.addCommand('test');
 // bm.command['test'].output == MetaView
 // bm.command['test'].output1 == MetaView
 ```
-- 여기서 output과 output1은 동일한 MetaView를 참조합니다.
+- Here, output and output1 refer to the same MetaView.
 
 
 ## output (MetaView) 추가
 
-타입 : newOutput
+Type: newOutput
 ```ts
 type newOutput = (outputName?: string) => void;
 ```
-- outputName: 추가하는 output 이름입니다.
+- outputName—The name of the output to be added.
 
-newOutput() 메소드를 사용하여 새로운 MetaView를 추가할 수 있습니다. 이 메소드는 선택적으로 outputName 을 인자로 받아 해당 이름으로 MetaView를 추가합니다. 
-인자가 없을 경우, 기본적으로 `output + 순서` 형태의 이름으로 추가됩니다.
+You can use the newOutput() method to add a new MetaView, which optionally takes outputName as a factor and adds MetaView to that name. 
+If there is no factor, it is added by default as a name in the form of 'output + order'.
 
-예제 : output 추가
+Example: Adding Output
 ```js
 var bm = new BindModel();
 
@@ -58,12 +56,12 @@ bm.cmd['test'].newOutput('three');
 // bm.command['test'].three == MetaView
 // bm.cmd['test']._outputs.count == 3
 ```
-- 첫번째 newOutput() 메소드에서 인자를 주지 않으면 'output2'로 추가되었습니다.
-- 두번째 newOutput() 메소드에서 'three' 과 'output3' 로 추가되었습니다.
+- If no factor is given in the first newOutput() method, it is added as 'output2'.
+- It was added as 'three' and 'output3' in the second newOutput() method.
 
-ouput MetaView 을 추가후에 전체 command 에 컬럼을 추가하면 추가된 view 에도 매핑이 됩니다.
+If you add an output MetaView and add a column to the entire command, it is also mapped to the added view.
 
-예제 : 전체 MetaView 에 컬럼 추가시
+Example: Adding a column to an entire MetaView
 ```js
 var bm = new BindModel();
 
@@ -77,7 +75,8 @@ bm.cmd['test'].addColumn('aa');
 // bm.cmd['test'].output.count == 1 ('aa')
 // bm.cmd['test'].newOutput.count == 1 ('aa')
 ```
-- 추가된 'newOutput' 에 추가한 'aa' 컬럼이 추가됩니다.
+- The 'aa' column added to the added 'newOutput' is added.
+
 
 
 ## output (MetaView) 제거
@@ -86,9 +85,9 @@ bm.cmd['test'].addColumn('aa');
 ```ts
 type newOutput = (outputName: string) => boolean;
 ```
-- outputName: 제거할려는 output 이름입니다.
+- outputName: The output name that you want to remove.
 
-기본 프로퍼티 `ouput`, `output1` 는 제거할 수 없습니다.
+Default properties 'output', 'output1' cannot be removed.
 
 ```js
 var bm = new BindModel();
@@ -98,13 +97,13 @@ bm.addCommand('test');
 bm.cmd['test'].newOutput();
 bm.cmd['test'].newOutput('three');
 
-// 제거
+// Remove
 bm.cmd['test'].removeOutput('output2');
 bm.cmd['test'].removeOutput('three');
 // bm.cmd['test'].removeOutput('output') : throw 발생
 // bm.cmd['test']._outputs.count == 1
 ```
-- 여기서 newOutput() 메소드로 으로 추가된 output2와 three를 제거할 수 있습니다.
+- Here, you can remove the newOutput() method and the added output2 and three.
 
-위의 예제와 설명을 통해 멀티뷰 기능을 사용하여 여러 개의 MetaView를 추가하거나 제거하는 방법을 이해할 수 있습니다. 이는 서버에서 수신한 여러 데이터를 관리하고 처리하는 데 유용합니다.
+The examples and descriptions above will help you understand how to add or remove multiple MetaViews using the multiview functionality, which is useful for managing and processing multiple data received from the server.
 

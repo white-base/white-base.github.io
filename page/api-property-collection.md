@@ -8,78 +8,73 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 ---
+# the main structure
 
-# 주요 구조
+## an inheritance relationship
 
-## 상속 관계
-
-클래스 다이어그램
+Class diagram
 ![image-center](/assets/images/coll-diagram-2024-08-16-002653.png){: .align-center}
 
-# 주요 요소
+# a key element
 
-## 속성
+## Properties
 
-| 항목         | 설명                                 |
+| Item | Description |
 | ---------- | ---------------------------------- |
-| count      | 컬렉션 요소의 갯수입니다.                     |
-| _owner     | 컬렉션 소유자입니다.                        |
-| _elemTypes | 컬렉션 요소의 타입 제약조건입니다.                |
-| _list      | 컬렉션 요소의 목록입니다.                     |
-| _guid      | 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다. |
-| _type      | 객체의 생성자 함수. 객체가 생성될 때 사용된 함수입니다.   |
+| count | Number of collection elements |
+| _owner | is the owner of the collection. |
+| _elemTypes | Type constraints for collection elements |
+| _list | List of collection elements. |
+| _guid | Unique identifier of the object (GUID). Uniquely identifies the object. |
+| _type | The generator function of the object. The function used when the object was created. |
 |            |                                    |
 
 
 
 
 
-## 메소드
+## Method
 
-| 항목                       |                                          |
+| Item ||
 | ------------------------ | ---------------------------------------- |
-| add(key, elem, desc)     | 프로퍼티 컬렉션에 요소를 추가합니다.                     |
-| clear()                  | 프로퍼티 컬렉션을 초기화합니다.                        |
-| keyOf(idx)               | 프로퍼티 컬렉션의 인덱스에 해당하는 키를 반환합니다.            |
-| exist(key)               | 프로퍼티 컬렉션에 지정된 키가 존재하는지 확인합니다.            |
-| remove(elem)             | 컬렉션에 요소를 삭제합니다.                          |
-| removeAt(pos)            | 컬렉션에서 지정된 위치의 요소를 삭제합니다.                 |
-| contains(elem)           | 요소가 컬렉션에 존재하는지 확인합니다.                    |
-| indexOf(target, isKey)   | 프로퍼티 컬렉션에서 지정된 키 또는 요소의 인덱스를 반환합니다.      |
-| getObject(vOpt, owned)   | 프로퍼티 컬렉션 객체를 직렬화된 객체로 반환합니다.             |
-| setObject(oGuid, origin) | 직렬화된 객체를 사용하여 프로퍼티 컬렉션 객체를 초기화합니다.       |
-| equal(target)            | 현재 객체와 지정된 객체가 동일한지 비교합니다.               |
-| getTypes()               | 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다. |
-| instanceOf(target)       | 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함) |
+| add(key, element, desc) | Add an element to the property collection
+| Clear() | Initializes the property collection
+| keyOf(idx) | Returns the key corresponding to the index of the property collection |
+| Exist(key) | Verify that the specified key exists in the property collection
+| remove(element) | Delete an element in the collection |
+| removeAt(pos) | Deletes elements in the specified location from the collection
+| contains(element) | Verify that the element exists in the collection
+| indexOf (target, isKey) | Returns the index of the key or element specified in the property collection. |
+| getObject(vOpt, up) | Returns properties collection objects as serialized objects |
+| setObject(oGuid, origin) | Initializes property collection objects using serialized objects |
+| equal(target) | Compare the current object with the specified object. |
+| getTypes() | Returns the constructors of the current object and all the constructors of the prototype chain to the array. |
+| instanceOf(target) | Verify that the current object is an instance of the specified type (with _UNION) |
 |                          |                                          |
 
 
 
-## 이벤트
+## Events
 
-| 항목         | 설명                            |
+| Item | Description |
 | ---------- | ----------------------------- |
-| onAdd      | 컬렉션 요소를 추가 전에 발생하는 이벤트 입니다.   |
-| onAdded    | 컬렉션 요소를 추가한 후에 발생하는 이벤트입니다.   |
-| onRemove   | 컬렉션 요소를 삭제하기 전에 발생하는 이벤트입니다.  |
-| onRemoved  | 컬렉션 요소를 삭제한 후에 발생하는 이벤트입니다.   |
-| onClear    | 컬렉션을 초기화하기 전에 발생하는 이벤트입니다.    |
-| onCleared  | 컬렉션을 초기화한 후에 발생하는 이벤트입니다.     |
-| onChanging | 컬렉션 요소를 변경하기 전에 발생하는 이벤트 입니다. |
-| onChanged  | 컬렉션 요소를 변경한 후에 발생하는 이벤트 입니다.  |
+| onAdd | Events that occur before adding collection elements |
+| OnAdded | Events that occur after adding collection elements |
+| onRemove | Events that occur before deleting collection elements |
+| OnRemoved | Events that occur after the collection element is deleted |
+| onClear | Events that occur before the collection is initialized
+| OnCleared | Events that occur after the collection is initialized
+| onChanging | Events that occur before changing collection elements |
+| OnChanged | Events that occur after changing the collection element |
 |            |                               |
 
+# Detailed description
 
-
-
-
-# 세부 설명
-
-## 주요 속성
+## Key Properties
 
 ### count
 
-> 현재 컬렉션의 요소 수를 반환합니다.
+> Returns the number of elements in the current collection.
 
 ```ts
 readonly type count = number;
@@ -87,7 +82,7 @@ readonly type count = number;
 
 ### \_owner
 
-> 컬렉션의 소유 객체입니다.
+> This is the object owned by the collection.
 
 ```ts
 type _owner = object;
@@ -95,7 +90,7 @@ type _owner = object;
 
 ### \_elemTypes
 
-> 컬렉션 요소의 타입 제약조건을 정의합니다.
+> Define the type constraints for the collection element.
 
 ```ts
 type _elemTypes = any[];
@@ -103,7 +98,7 @@ type _elemTypes = any[];
 
 ### \_list
 
-> 컬렉션의 요소 목록을 저장하는 배열입니다. 이 배열은 컬렉션의 실제 데이터를 포함합니다.
+> Array that stores the list of elements in the collection, which contains the actual data of the collection.
 
 ```ts
 readonly type _list = any[];
@@ -111,7 +106,7 @@ readonly type _list = any[];
 
 ### \_guid
 
-> 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.
+> Unique identifier of the object (GUID). Uniquely identifies the object.
 
 ```ts
 type _guid = string;
@@ -119,31 +114,31 @@ type _guid = string;
 
 ### \_type
 
-> 객체의 생성자 함수입니다. 객체가 생성될 때 사용된 함수입니다.
+> The generator function of the object, which was used when the object was created.
 
 ```ts
 type _type = Function;
 ```
 
 
-## 주요 메소드
+## Key Methods
 
 ### add()
 
-> 프로퍼티 컬렉션에 요소를 추가합니다.
+> Add an element to the property collection.
 
 ```ts
 type add = (key: string, elem: any, desc?: PropertyDescriptor) => number;
 ```
-- key : key 요소의 키입니다.
-- elem : 추가할 요소입니다.
-- desc : 요소에 대한 프로퍼티 기술자 객체입니다. 선택값입니다.
-- return : 추가된 요소의 인덱스입니다.
+- key : The key of the key element.
+- element : The element to be added.
+- desc : Property descriptor object for element. Select value.
+- return : Index of the added element.
 ### clear()
 
-> 프로퍼티 컬렉션을 초기화합니다.
-> 이 메서드는 `$elements`, `$descriptors`, `$keys` 배열을 초기화합니다.
-> 이벤트는 초기화되지 않습니다.
+> Initialize the property collection.
+> This method initializes the array '$elements', '$descriptors', and '$keys'.
+> Events are not initialized.
 
 ```ts
 type clear = () => void;
@@ -153,225 +148,220 @@ type clear = () => void;
 myCollection.clear();
 console.log(myCollection.count); // 0
 ```
-
 ### keyOf()
 
-> 프로퍼티 컬렉션의 인덱스에 해당하는 키를 반환합니다.
+> Returns the key corresponding to the index of the property collection.
 
 ```ts
 type keyOf = (idx: number) => string;
 ```
-- idx : 조회할 인덱스 값입니다.
-- return : 인덱스에 해당하는 키입니다. 인덱스가 범위를 벗어나면 `undefined`를 반환할 수 있습니다.
+- idx : Index value to look up.
+- return : The key corresponding to the index. If the index is out of range, it can return 'undefined'.
 
 ```js
 const key = myCollection.keyOf(0);
-console.log(`인덱스 0의 키: ${key}`);
+console.log(key for index 0: ${key}');
 ```
 
 ### exist()
 
-> 프로퍼티 컬렉션에 지정된 키가 존재하는지 확인합니다.
+> Verify that the specified key exists in the property collection.
 
 ```ts
 type exist = (key: string) => boolean;
 ```
-- key - 확인할 키입니다.
-- return : 키의 존재 여부를 나타내는 불리언 값입니다.
+- key - This is the key to check.
+- return —Bulian value indicating the presence or absence of a key.
 
 ### remove()
 
-> 컬렉션에 요소를 삭제합니다.
+> Delete an element in the collection.
 
 ```ts
 type remove = (elem: any) => number;
 ```
-- elem : 삭제할 요소입니다.
-- return : 삭제된 요소의 인덱스입니다.
+- element : The element to be deleted.
+- return : Index of the deleted element.
 
 ```js
 const removedIndex = myCollection.remove(someElement);
-console.log(`삭제된 요소의 인덱스: ${removedIndex}`);
+console.log(`Index of deleted element: ${removedIndex}`);
 ```
 
 ### removeAt()
 
-> 컬렉션에서 지정된 위치의 요소를 삭제합니다.
+> Deletes elements in the specified location from the collection.
 
 ```ts
 type removeAt = (pos: number) => boolean;
 ```
-- pos : 삭제할 요소의 인덱스입니다.
-- return : 요소 삭제 성공 여부를 나타내는 불리언 값입니다.
+- pos : Index of the element to be deleted.
+- return : Bullion value that indicates whether element deletion is successful.
 
 ```js
 const success = myCollection.removeAt(0);
-console.log(`요소 삭제 성공: ${success}`);
+console.log(`Delete element successful: ${success}`);
 ```
 
 ### contains()
 
-> 요소가 컬렉션에 존재하는지 확인합니다.
+> Verify that the element exists in the collection.
 
 ```ts
 type contains = (elem) => boolean;
 ```
-- elem : 확인할 요소입니다.
-- return : 요소의 존재 여부를 나타내는 불리언 값입니다.
+- element : The element to be checked.
+- return : A Boolean value indicating the presence or absence of an element.
 
 ```js
 const exists = myCollection.contains(someElement);
-console.log(`요소 존재 여부: ${exists}`);
+console.log(`element exists: ${exists}`);
 ```
 
 ### indexOf()
 
-> 프로퍼티 컬렉션에서 지정된 키 또는 요소의 인덱스를 반환합니다.
+> Returns the index of the key or element specified in the property collection.
 
 ```ts
 type indexOf = (target: any | string, isKey?: boolean) => number;
 ```
-- target : target 조회할 키 또는 요소입니다. 키로 조회할 경우 문자열을 전달할 수 있습니다.
-- isKey : 키로 조회할지 여부를 결정하는 불리언 값입니다. 기본값은 `false`입니다.
-- return : 요소의 인덱스입니다. 요소가 존재하지 않을 경우 `-1`을 반환합니다.
+- target : A key or element to look up the target. A string can be passed when viewed with a key.
+- isKey : A bullion value that determines whether to look up with a key. Default is 'false'.
+- return : Index of the element. Returns '-1' if the element does not exist.
 
 ```js
 const index = myCollection.indexOf("key1", true);
-console.log(`키의 인덱스: ${index}`);
+console.log(`Index of key: ${index}`);
 ```
-
-
-## 주요 이벤트
+## Key Events
 
 ### onAdd
 
-> 컬렉션에 요소를 추가하기 전에 발생하는 이벤트입니다.
+> Events that occur before adding an element to a collection.
 
 ```ts
 type onAdd = (idx: number, elem: any, _this: object) => void;
 ```
-- idx : 추가할 요소의 인덱스입니다.
-- elem : 추가할 요소입니다.
-- \_this : 현재 컬렉션 객체입니다.
+- idx : Index of the element to be added.
+- element : The element to be added.
+- \_this : current collection object.
 
 ```js
 myCollection.onAdd = function(idx, elem, _this) {
-	console.log(`요소 추가 전: 인덱스 ${idx}, 요소 ${elem}`);
+	console.log(`Before adding elements: index ${idx}, element ${elem}`);
 };
 ```
 
 ### onAdded
 
-> 컬렉션에 요소를 추가한 후에 발생하는 이벤트입니다.
+> Events that occur after adding an element to a collection.
 
 ```ts
 type onAdded = (idx: number, elem: any, _this: object) => void;
 ```
-- idx : 추가된 요소의 인덱스입니다.
-- elem : 추가된 요소입니다.
-- \_this : 현재 컬렉션 객체입니다.
+- idx : Index of the added element.
+- element : Added element.
+- \_this : current collection object.
 
 ```js
 myCollection.onAdded = function(idx, elem, _this) {
-	console.log(`요소 추가 후: 인덱스 ${idx}, 요소 ${elem}`);
+	console.log ('After adding elements: index ${idx}, element ${elem}');
 };
 ```
 
 ### onRemove
 
-> 컬렉션에서 요소를 삭제하기 전에 발생하는 이벤트입니다.
+> An event that occurs before an element is deleted from the collection.
 
 ```ts
 type onRemove = (idx: number, elem: any, _this: object) => void;
 ```
-- idx : 삭제할 요소의 인덱스입니다.
-- elem : 삭제할 요소입니다.
-- \_this : 현재 컬렉션 객체입니다.
+- idx : Index of the element to be deleted.
+- element : The element to be deleted.
+- \_this : current collection object.
 
 ```js
 myCollection.onRemove = function(idx, elem, _this) {
-	console.log(`요소 삭제 전: 인덱스 ${idx}, 요소 ${elem}`);
+	console.log(`Before element deletion: index ${idx}, element ${elem}`);
 };
 ```
 
 ### onRemoved
 
-> 컬렉션에서 요소를 삭제한 후에 발생하는 이벤트입니다.
+> Events that occur after you delete an element from the collection.
 
 ```ts
 type onRemoved = (idx: number, elem: any, _this: object) => void;
 ```
-- idx : 삭제된 요소의 인덱스입니다.
-- elem : 삭제된 요소입니다.
-- \_this : 현재 컬렉션 객체입니다.
+- idx : Index of deleted elements.
+- element : Deleted element.
+- \_this : current collection object.
 
 ```js
 myCollection.onRemoved = function(idx, elem, _this) {
-	console.log(`요소 삭제 후: 인덱스 ${idx}, 요소 ${elem}`);
+	console.log(`After element deletion: index ${idx}, element ${elem}`);
 };
 ```
 
 ### onClear
 
-> 컬렉션을 초기화하기 전에 발생하는 이벤트입니다.
+> Events that occur before the collection is initialized.
 
 ```ts
 type onClear = (_this: object) => {};
 ```
-- \_this : 현재 컬렉션 객체입니다.
+- \_this : current collection object.
 
 ```js
 myCollection.onClear = function(_this) {
-	console.log('컬렉션 초기화 전');
+	console.log ('Before collection initialization);
 };
 ```
-
 ### onCleared
 
-> 컬렉션을 초기화한 후에 발생하는 이벤트입니다.
+> Events that occur after the collection is initialized.
 
 ```ts
 type onCleared = (_this: object)=> {};
 ```
-- \_this : 현재 컬렉션 객체입니다.
+- \_this : current collection object.
 
 ```js
 myCollection.onCleared = function(_this) {
-	console.log('컬렉션 초기화 후');
+	console.log ('After collection initialization');
 };
 ```
 
 ### onChanging
 
-> 컬렉션의 요소를 변경하기 전에 발생하는 이벤트입니다.
+> Events that occur before you change the elements in the collection.
 
 ```ts
 type onChanging = (idx: number, elem: any, _this: object) => void;
 ```
-- idx : 변경할 요소의 인덱스입니다.
-- elem : 변경할 요소입니다.
-- \_this : 현재 컬렉션 객체입니다.
+- idx : Index of the element to be changed.
+- element : The element to be changed.
+- \_this : current collection object.
 
 ```js
 myCollection.onChanging = function(idx, elem, _this) {
-	console.log(`요소 변경 전: 인덱스 ${idx}, 요소 ${elem}`);
+	console.log(`Before element change: index ${idx}, element ${elem}`);
 };
 ```
 
 ### onChanged
 
-> 컬렉션의 요소를 변경한 후에 발생하는 이벤트입니다.
+> Events that occur after you change the elements of the collection.
 
 ```ts
 type onChanged = (idx: number, elem: any, _this: object) => void;
 ```
-- idx : 변경된 요소의 인덱스입니다.
-- elem : 변경된 요소입니다.
-- \_this : 현재 컬렉션 객체입니다.
+- idx : Index of the changed element.
+- element : Changed element.
+- \_this : current collection object.
 
 ```js
 myCollection.onChanged = function(idx, elem, _this) {
-	console.log(`요소 변경 후: 인덱스 ${idx}, 요소 ${elem}`);
+	console.log ('After element change: index ${idx}, element ${elem}');
 };
 ```
-
