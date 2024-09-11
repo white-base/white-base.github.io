@@ -32,56 +32,55 @@ exam:
   #   children:
   #     - title: "React Mix compare"
   #       url: /docs/quick-start/
-
 docs:
   - title: Getting Started
     children:
-      - Title: "Get Started"
+      - title: "Get Started"
         url: /docs/quick-start/
-      - Title: "Main Features"
+      - title: "Main Features"
         url: /docs/feature/
-      - Title: "Basic usage"
+      - title: "Basic usage"
         url: /docs/basic/
 
   - title: Essentials
     children:
-      - Title: "Core concept"
+      - title: "Core concept"
         url: /docs/core/
-      - Title: "Configure Bind Model"
+      - title: "Configure Bind Model"
         url: /docs/bind-model-config/
-      - Title: "Configure the bind command"
+      - title: "Configure the bind command"
         url: /docs/bind-commnad-config/
-      - Title: "Configure service objects"
+      - title: "Configure service objects"
         url: /docs/service-config/
-      - Title: "How to create objects"
+      - title: "How to create objects"
         url: /docs/create-method/
-      - Title: "Step-by-step production process"
+      - title: "Step-by-step production process"
         url: /docs/step-by-step/
 
   - title: advanced
     children:
-      - Title: "Callback Lifecycle"
+      - title: "Callback Lifecycle"
         url: /docs/callback-lifecycle/
-      - Title: "Multi-Table"
+      - title: "Multi-Table"
         url: /docs/multi-table/        
-      - Title: "Multi-View"
+      - title: "Multi-View"
         url: /docs/multi-view/
-      - Title: "Sync"
+      - title: "Sync"
         url: /docs/synchronization/
-      - Title: "CRUD + L Example"
+      - title: "CRUD + L Example"
         url: /docs/crudl-example/
 
   - title: Reference
     children:
-      - Title: "BindModel Classes"
+      - title: "BindModel Classes"
         url: /docs/api-bind-model-ajax/
-      - Title: "Bindcommand class"
+      - title: "Bindcommand class"
         url: /docs/api-bind-command-ajax/
-      - Title: "HTML Column Class"
+      - title: "HTML Column Class"
         url: /docs/api-html-column/
-      - Title: "MetaTable Class"
+      - title: "MetaTable Class"
         url: /docs/api-meta-table/
-      - Title: "MetaView Class"
+      - title: "MetaView Class"
         url: /docs/api-meta-view/
       - title: "PropertyCollection 클래스"
         url: /docs/api-property-collection/

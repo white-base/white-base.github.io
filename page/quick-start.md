@@ -1,5 +1,5 @@
 ---
-title: "시작하기"
+title: "Start"
 layout: single
 permalink: /docs/quick-start/
 date: 2024-08-14T1
