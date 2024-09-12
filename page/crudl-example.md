@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+
+breadcrumbs: true
 ---
 
 CRUDL is a concept that adds List to the traditional data processing capabilities of Create, Read, Update, and Delete. It is useful for simplifying and efficiently managing database interactions. BindModel is a useful tool for interacting with databases, aiming to design from a CRUDL perspective.

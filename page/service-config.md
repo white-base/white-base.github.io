@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+
+breadcrumbs: true
 ---
 
 Service objects make it easy to create 'BindModel' objects, and inheritance can separate common areas for increased reuse.

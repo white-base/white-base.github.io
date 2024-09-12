@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+
+breadcrumbs: true
 ---
 
 The core of BindModel is a combination of MetaTable and MetaView, which are important components of BindModel's functionality and are designed to minimize duplication and accommodate different cases in real-world projects.

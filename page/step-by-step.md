@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+
+breadcrumbs: true
 ---
 
 It is an HTML production process that uses BindModel to process customer information registration, inquiry, and correction functions.

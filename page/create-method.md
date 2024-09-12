@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+
+breadcrumbs: true
 ---
 
 'BindModel' offers a number of creation methods to suit the needs of the user, understand the pros and cons of each method and choose the appropriate method as needed.

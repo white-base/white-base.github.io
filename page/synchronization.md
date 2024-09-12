@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+
+breadcrumbs: true
 ---
 
 The execute() method of the Bindcommand object returns Promise, so you can use the async and wait keywords to execute commands asynchronously and write synchronization codes if necessary. 

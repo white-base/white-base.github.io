@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+  
+breadcrumbs: true
 ---
 
 BindModel is both a framework and a library feature. It uses commands and entities that are not based on trendy UI components for higher productivity. Client-to-server communication can be easily implemented through the BindModel class.

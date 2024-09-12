@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
+
+breadcrumbs: true
 ---
 Multi-view is used when data received from the server is more than one data. By default, the Bindcommand object contains the MetaView of the output property, which is a reference property for '_outputs['output1'].
 
