@@ -3,3 +3,9 @@ node_modules/
 .DS_Store
 docs/
 test/
+_site/
+.sass-cache/
+.jekyll-metadata
+.jekyll
+Gemfile
+Gemfile.lock
