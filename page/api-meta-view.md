@@ -1,5 +1,5 @@
 ---
-title: "MetaView 클래스"
+title: "MetaView Class"
 layout: single
 permalink: /docs/api-meta-view/
 date: 2011-06-23T1

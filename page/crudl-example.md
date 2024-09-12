@@ -1,5 +1,5 @@
 ---
-title: "CRUD + L 예제"
+title: "CRUD + List Example"
 layout: single
 permalink: /docs/crudl-example/
 date: 2011-06-23T1

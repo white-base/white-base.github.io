@@ -1,5 +1,5 @@
 ---
-title: "notice BindModel 구현"
+title: "Implement notice in BindModel"
 layout: fullwidth
 permalink: /exam/notice-bindmodel/
 date: 2011-06-23T1

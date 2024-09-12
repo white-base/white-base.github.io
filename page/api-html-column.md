@@ -1,5 +1,5 @@
 ---
-title: "HTMLColum 클래스"
+title: "HTMLColum Class"
 layout: single
 permalink: /docs/api-html-column/
 date: 2011-06-23T1

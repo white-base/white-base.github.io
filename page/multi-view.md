@@ -1,5 +1,5 @@
 ---
-title: "멀티 뷰(출력)"
+title: "Multi-View(output)"
 layout: single
 permalink: /docs/multi-view/
 date: 2011-06-23T1

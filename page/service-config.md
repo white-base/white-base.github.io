@@ -1,5 +1,5 @@
 ---
-title: "서비스 객체 구성"
+title: "Configure Service objects"
 layout: single
 permalink: /docs/service-config/
 date: 2011-06-23T1

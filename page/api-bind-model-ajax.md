@@ -1,5 +1,5 @@
 ---
-title: "BindModel 클래스"
+title: "BindModel Class"
 layout: single
 permalink: /docs/api-bind-model-ajax/
 date: 2024-08-14T1

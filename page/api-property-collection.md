@@ -1,5 +1,5 @@
 ---
-title: "PropertyCollection 클래스"
+title: "PropertyCollection Class"
 layout: single
 permalink: /docs/api-property-collection/
 date: 2011-06-23T1

@@ -1,5 +1,5 @@
 ---
-title: "핵심 개념"
+title: "Core concept"
 layout: single
 permalink: /docs/core/
 date: 2011-06-23T1

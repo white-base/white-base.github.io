@@ -1,5 +1,5 @@
 ---
-title: "콜백 라이프사이클"
+title: "Callback Lifecycle"
 layout: single
 permalink: /docs/callback-lifecycle/
 date: 2011-06-23T1

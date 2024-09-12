@@ -1,5 +1,5 @@
 ---
-title: "notice React Mix 비교"
+title: "notice React Mix compare"
 layout: fullwidth
 permalink: /exam/notice-compare-react/
 date: 2011-06-23T1

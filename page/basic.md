@@ -1,5 +1,5 @@
 ---
-title: "기본 사용법"
+title: "Basic usage"
 layout: single
 permalink: /docs/basic/
 date: 2024-08-14T1

@@ -1,5 +1,5 @@
 ---
-title: "BindCommand 클래스"
+title: "BindCommand Class"
 layout: single
 permalink: /docs/api-bind-command-ajax/
 date: 2011-06-23T1

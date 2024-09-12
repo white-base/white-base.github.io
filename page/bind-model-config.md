@@ -1,5 +1,5 @@
 ---
-title: "Bind Model 구성"
+title: "Configure BindModel"
 layout: single
 permalink: /docs/bind-model-config/
 date: 2011-06-23T1

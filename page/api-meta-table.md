@@ -1,5 +1,5 @@
 ---
-title: "MetaTable 클래스"
+title: "MetaTable Class"
 layout: single
 permalink: /docs/api-meta-table/
 date: 2011-06-23T1

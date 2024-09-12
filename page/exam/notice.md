@@ -1,5 +1,5 @@
 ---
-title: "example"
+title: "Notice example"
 layout: fullwidth
 permalink: /exam/notice/
 date: 2011-06-23T1

@@ -55,7 +55,7 @@ docs:
         url: /docs/service-config/
       - title: "How to create objects"
         url: /docs/create-method/
-      - title: Step-by-step process"
+      - title: "Step-by-step process"
         url: /docs/step-by-step/
 
   - title: advanced
@@ -66,22 +66,22 @@ docs:
         url: /docs/multi-table/        
       - title: "Multi-View"
         url: /docs/multi-view/
-      - title: "Sync"
+      - title: "Synchronization"
         url: /docs/synchronization/
       - title: "CRUD + L Example"
         url: /docs/crudl-example/
 
   - title: Reference
     children:
-      - title: "BindModel class"
+      - title: "BindModel Class"
         url: /docs/api-bind-model-ajax/
-      - title: "BindCommand class"
+      - title: "BindCommand Class"
         url: /docs/api-bind-command-ajax/
-      - title: "HTMLColumn class"
+      - title: "HTMLColumn Class"
         url: /docs/api-html-column/
-      - title: "MetaTable class"
+      - title: "MetaTable Class"
         url: /docs/api-meta-table/
-      - title: "MetaView class"
+      - title: "MetaView Class"
         url: /docs/api-meta-view/
-      - title: "PropertyCollection class"
+      - title: "PropertyCollection Class"
         url: /docs/api-property-collection/

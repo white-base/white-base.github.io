@@ -1,5 +1,5 @@
 ---
-title: "단계별 제작 과정"
+title: "Step-by-step process"
 layout: single
 permalink: /docs/step-by-step/
 date: 2011-06-23T1

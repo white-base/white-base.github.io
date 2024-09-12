@@ -1,5 +1,5 @@
 ---
-title: "동기화"
+title: "Synchronization"
 layout: single
 permalink: /docs/synchronization/
 date: 2011-06-23T1

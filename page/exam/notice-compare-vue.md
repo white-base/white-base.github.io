@@ -1,5 +1,5 @@
 ---
-title: "notice Vue Mix 비교"
+title: "notice Vue Mix compare"
 layout: fullwidth
 permalink: /exam/notice-compare-vue/
 date: 2011-06-23T1

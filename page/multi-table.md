@@ -1,5 +1,5 @@
 ---
-title: "멀티 테이블"
+title: "Multi-Table"
 layout: single
 permalink: /docs/multi-table/
 date: 2011-06-23T1

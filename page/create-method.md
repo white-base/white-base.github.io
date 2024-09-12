@@ -1,5 +1,5 @@
 ---
-title: "객체 생성 방식"
+title: "How to create objects"
 layout: single
 permalink: /docs/create-method/
 date: 2011-06-23T1

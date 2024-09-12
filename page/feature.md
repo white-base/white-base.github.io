@@ -1,5 +1,5 @@
 ---
-title: "주요 특징"
+title: "Main Features"
 layout: single
 permalink: /docs/feature/
 date: 2024-08-14T1

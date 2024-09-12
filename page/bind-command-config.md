@@ -1,5 +1,5 @@
 ---
-title: "BindCommand 구성"
+title: "Configure Command"
 layout: single
 permalink: /docs/bind-commnad-config/
 date: 2011-06-23T1
