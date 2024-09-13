@@ -63,6 +63,16 @@ feature_row:
 ![image-left](/assets/images/image-alignment-150x150.jpg){: .align-left} The rest of this paragraph is filler for the sake of seeing the text wrap around the 150×150 image, which is **left aligned**. There should be plenty of room above, below, and to the right of the image. Just look at him there --- Hey guy! Way to rock that left side. I don't care what the right aligned image says, you look great. Don't let anyone else tell you differently. -->
 
 
-> Please understand the lack of documents.
-Documentation is currently in progress, and we will provide you with a more faithful documentation in the future.<br/>
-(2024-09-10)
+## Feedback & Suggestions
+
+We'd love to hear from you! Your feedback is incredibly valuable as we work to make this project better. Whether you spot an issue, have suggestions for improvement, or just want to share your experience, feel free to reach out!
+
+1. 💡 **Notice something off or think of a way to improve?**  
+   We're constantly growing and improving, and your input helps us get there faster! Drop us a line at **logicfeel@gmail.com** 😊
+
+2. 🚀 **"Something's broken!"**  
+   If you run into any issues or errors, don't hesitate to let us know! Your feedback is our lifeline and can help us fix things pronto. Send us a message at **logicfeel@gmail.com** 😎
+
+3. 😊 **How was your experience?**  
+   First impressions are important, and we're eager to know how things went for you. Any thoughts, feedback, or suggestions are warmly welcomed. Email us at **logicfeel@gmail.com** 🙏
+   
