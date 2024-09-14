@@ -75,4 +75,3 @@ We'd love to hear from you! Your feedback is incredibly valuable as we work to m
 
 3. 😊 **How was your experience?**  
    First impressions are important, and we're eager to know how things went for you. Any thoughts, feedback, or suggestions are warmly welcomed. Email us at **bindmodel@gmail.com** 🙏
-   
