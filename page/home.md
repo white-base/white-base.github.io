@@ -4,13 +4,13 @@ permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/mm-home-page-feature.jpg
+  overlay_image: /assets/images/title1600.png
   actions:
     - label: "<i class='fas fa-download'></i> Install now"
       url: "/docs/quick-start/#설치"
 excerpt: >
   BindModel is a front-end framework that operates in web and Node.js environments.<br />
-  <small><a href="https://github.com/white-base/bind-model">Latest release v1.0.19</a></small>
+  <small><a href="https://www.npmjs.com/package/logic-bind-model">Latest release v1.0.27</a></small>
 feature_row:
   - image_path: /assets/images/ezgif-3-f344f043ae.gif
     alt: "mix React, Vue"
