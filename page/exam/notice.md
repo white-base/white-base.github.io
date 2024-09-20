@@ -22,4 +22,9 @@ cd exam-bind-model
 npx serve
 ```
 
+## props drilling issue
+
+The problem of Props drilling with React, Vue, and Angular can be solved all at once by BindModel, which manages data centrally and clearly separates business logic to significantly improve maintenance and reusability.
+
+BindModel's components, MetaTable and MetaView, are defined as standard interfaces, making screen configurations more flexible. React and Vue only manage screen-related responsibilities and delegate business logic to BindModel, allowing business logic to be reused on a variety of screens.
 
