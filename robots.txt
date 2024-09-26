@@ -1,0 +1,11 @@
+# robots.txt for bindmodel.com
+
+User-agent: *
+Allow: /
+
+Disallow: /private/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /signup/
+
+Sitemap: https://bindmodel.com/sitemap.xml

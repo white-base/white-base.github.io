@@ -4,6 +4,7 @@ node_modules/
 docs/
 test/
 _site/
+_site
 .sass-cache/
 .jekyll-metadata
 .jekyll
