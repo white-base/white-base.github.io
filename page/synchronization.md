@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Synchronization"
 layout: single
 permalink: /docs/synchronization/

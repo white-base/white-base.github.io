@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "PropertyCollection Class"
 layout: single
 permalink: /docs/api-property-collection/

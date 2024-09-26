@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Multi-View(output)"
 layout: single
 permalink: /docs/multi-view/

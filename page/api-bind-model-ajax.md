@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "BindModel Class"
 layout: single
 permalink: /docs/api-bind-model-ajax/

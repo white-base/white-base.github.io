@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Configure Command"
 layout: single
 permalink: /docs/bind-commnad-config/

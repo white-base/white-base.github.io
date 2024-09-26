@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Implement notice in BindModel"
 layout: fullwidth
 permalink: /exam/notice-bindmodel/

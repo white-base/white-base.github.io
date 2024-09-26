@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Multi-Table"
 layout: single
 permalink: /docs/multi-table/

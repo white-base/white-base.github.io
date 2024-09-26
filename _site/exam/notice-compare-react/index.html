@@ -122,6 +122,12 @@
               >Quick-Start Guide</a>
             </li><li class="masthead__menu-item">
               <a
+                href="/year-archive/"
+                
+                
+              >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a
                 href="/exam/notice/"
                 
                 
@@ -132,10 +138,80 @@
                 
                 
               >API</a>
-            </li><li><a href="https://twitter.com/bindModel" target="_blank">
+            </li><!-- 트위터 메뉴 -->
+          <!-- <li><a href="https://twitter.com/bindModel" target="_blank">
             <i class="fab fa-twitter"></i> Twitter
-          </a></li>
+          </a></li> -->
+          
+          <!-- <ul> -->
+            
+            
+            <!-- <li><a href="/en">English</a></li>
+            <li><a href="/ko">Korean</a></li> -->
+
+            <!-- 현재 페이지 언어 기반 메뉴 출력 ''fullwidth, /en  -->
+    <!-- 
+    <li><a href="/ko/exam/notice-compare-react/">한국어</a></li>
+   -->
+
+          <!-- </ul> -->
         </ul>
+
+        <!-- 언어 선택 드롭다운 -->
+        <style>
+/* _sass/main.scss 또는 main.css */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+<div class="dropdown">
+    <button class="dropbtn">Language</button>
+    <div class="dropdown-content">
+      <a href="/en/">English</a>
+      <a href="/ko/">한국어</a>
+    </div>
+</div>
+
+        <!-- fullwidth, notice React Mix compare, en, -->
+        
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>

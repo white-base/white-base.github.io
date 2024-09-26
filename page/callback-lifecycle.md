@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Callback Lifecycle"
 layout: single
 permalink: /docs/callback-lifecycle/

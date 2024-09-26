@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "MetaTable Class"
 layout: single
 permalink: /docs/api-meta-table/

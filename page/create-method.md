@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "How to create objects"
 layout: single
 permalink: /docs/create-method/

@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Main Features"
 layout: single
 permalink: /docs/feature/

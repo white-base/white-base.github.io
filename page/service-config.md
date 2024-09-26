@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Configure Service objects"
 layout: single
 permalink: /docs/service-config/

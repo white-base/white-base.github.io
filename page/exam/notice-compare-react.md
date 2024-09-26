@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "notice React Mix compare"
 layout: fullwidth
 permalink: /exam/notice-compare-react/

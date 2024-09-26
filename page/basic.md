@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Basic usage"
 layout: single
 permalink: /docs/basic/

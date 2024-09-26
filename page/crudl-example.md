@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "CRUD + List Example"
 layout: single
 permalink: /docs/crudl-example/

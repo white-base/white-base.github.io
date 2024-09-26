@@ -309,6 +309,18 @@ compress_html:
   ignore:
     envs: development
 
+# 다국어 설정
+languages:
+  en:
+    label: "English"
+    path: "/en"
+    permalink: /en/:path/
+  ko:
+    label: "Korean"
+    path: "/ko"
+    permalink: /ko/:path/
+
+default_lang: "en"
 
 # Defaults
 defaults:

@@ -1,7 +1,7 @@
 ---
-lang: en
+lang: ko
 layout: splash
-permalink: /en
+permalink: /ko
 hidden: true
 header:
   overlay_color: "#5e616c"
@@ -64,15 +64,15 @@ feature_row:
 ![image-left](/assets/images/image-alignment-150x150.jpg){: .align-left} The rest of this paragraph is filler for the sake of seeing the text wrap around the 150×150 image, which is **left aligned**. There should be plenty of room above, below, and to the right of the image. Just look at him there --- Hey guy! Way to rock that left side. I don't care what the right aligned image says, you look great. Don't let anyone else tell you differently. -->
 
 
-## Feedback & Suggestions
+## 피드백 및 제안
 
-We'd love to hear from you! Your feedback is incredibly valuable as we work to make this project better. Whether you spot an issue, have suggestions for improvement, or just want to share your experience, feel free to reach out!
+여러분의 의견을 듣고 싶습니다! 이 프로젝트를 개선하기 위해 노력하는 동안 여러분의 피드백은 매우 귀중합니다. 문제를 발견했거나 개선할 사항이 있거나 경험을 공유하고 싶으시다면 언제든지 연락해 주세요!
 
-1. 💡 **Notice something off or think of a way to improve?**  
-   We're constantly growing and improving, and your input helps us get there faster! Drop us a line at **bindmodel@gmail.com** 😊
+1. 💡 **약간 이상한 점을 발견하거나 개선할 방법을 생각하시나요?**  
+   저희는 지속적으로 성장하고 개선하고 있으며, 여러분의 의견은 더 빠르게 도달하는 데 도움이 됩니다! **bindmodel@gmail.com ** 😊로 연락주세요
 
-2. 🚀 **"Something's broken!"**  
-   If you run into any issues or errors, don't hesitate to let us know! Your feedback is our lifeline and can help us fix things pronto. Send us a message at **bindmodel@gmail.com** 😎
+2. 🚀 **"무언가 고장 났어요!"**  
+   문제나 오류가 발생하면 주저하지 말고 알려주세요! 피드백은 우리의 생명줄이며 문제를 해결하는 데 도움이 될 수 있습니다. **bindmodel@gmail.com ** 😎로 메시지를 보내주세요
 
-3. 😊 **How was your experience?**  
-   First impressions are important, and we're eager to know how things went for you. Any thoughts, feedback, or suggestions are warmly welcomed. Email us at **bindmodel@gmail.com** 🙏
+3. 😊 **경험은 어땠나요?**  
+   첫인상은 중요하며, 상황이 어떻게 진행되었는지 알고 싶습니다. 모든 생각, 피드백 또는 제안은 따뜻하게 환영합니다. 이메일(**bindmodel@gmail.com ** 🙏)

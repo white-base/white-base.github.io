@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "BindCommand Class"
 layout: single
 permalink: /docs/api-bind-command-ajax/

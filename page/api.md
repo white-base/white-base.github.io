@@ -1,4 +1,5 @@
 ---
+lang: en
 layout: default
 title: API Documentation
 permalink: /docs/api/

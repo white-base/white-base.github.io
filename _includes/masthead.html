@@ -21,11 +21,35 @@
               >{{ link.title }}</a>
             </li>
           {%- endfor -%}
-          <li><a href="https://twitter.com/bindModel" target="_blank">
+          
+          
+          <!-- 트위터 메뉴 -->
+          <!-- <li><a href="https://twitter.com/bindModel" target="_blank">
             <i class="fab fa-twitter"></i> Twitter
-          </a></li>
+          </a></li> -->
+          
+          <!-- <ul> -->
+            
+            
+            <!-- <li><a href="{{ site.languages.en.path }}">English</a></li>
+            <li><a href="{{ site.languages.ko.path }}">Korean</a></li> -->
+
+            <!-- 현재 페이지 언어 기반 메뉴 출력 ''{{page.layout}}, {{site.languages.en.path}}  -->
+    <!-- {% if page.lang == "en" %}
+    <li><a href="/ko{{ page.url | remove: '/en' }}">한국어</a></li>
+  {% elsif page.lang == "ko" %}
+    <li><a href="/en{{ page.url | remove: '/ko' }}">English</a></li>
+  {% endif %} -->
+
+          <!-- </ul> -->
         </ul>
-        {% if site.search == true %}
+
+        <!-- 언어 선택 드롭다운 -->
+        {% include language-switcher.html %}
+
+        <!-- {{ page.layout }}, {{ page.title }}, {{ page.lang }}, -->
+        
+        {% if site.search == true %} 
         <button class="search__toggle" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}</span>
           <i class="fas fa-search"></i>

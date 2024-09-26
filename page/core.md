@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Core concept"
 layout: single
 permalink: /docs/core/

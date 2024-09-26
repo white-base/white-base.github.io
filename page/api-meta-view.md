@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "MetaView Class"
 layout: single
 permalink: /docs/api-meta-view/

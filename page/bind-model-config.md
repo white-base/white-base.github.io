@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Configure BindModel"
 layout: single
 permalink: /docs/bind-model-config/

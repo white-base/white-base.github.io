@@ -1,14 +1,15 @@
 ---
+lang: en
 title: "Start"
 layout: single
-permalink: /docs/quick-start/
+permalink: /en/docs/quick-start/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
 ## What is BindModel?

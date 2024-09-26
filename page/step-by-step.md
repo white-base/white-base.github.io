@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Step-by-step process"
 layout: single
 permalink: /docs/step-by-step/

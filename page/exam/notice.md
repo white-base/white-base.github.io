@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Notice example"
 layout: fullwidth
 permalink: /exam/notice/

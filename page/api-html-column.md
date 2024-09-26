@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "HTMLColum Class"
 layout: single
 permalink: /docs/api-html-column/

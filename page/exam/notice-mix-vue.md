@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "notice Vue Mix"
 layout: fullwidth
 permalink: /exam/notice-mix-vue/
