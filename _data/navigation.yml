@@ -5,10 +5,10 @@ main:
     url: /docs/quick-start/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  - title: "Posts"
-    url: /year-archive/
   - title: "Example"
     url:  /exam/notice/
+  - title: "Posts"
+    url: /categories/
   - title: "API"
     url: /docs/api/   
   # - title: "Sitemap"

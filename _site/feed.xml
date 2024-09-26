@@ -1,1 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-26T11:17:45+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bind Model</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-26T18:55:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Bind Model</title><subtitle>An amazing website.</subtitle><author><name>Logic</name></author><entry xml:lang="ko"><title type="html">Markup: Image Alignment</title><link href="http://localhost:4000/markup/markup-image-alignment/" rel="alternate" type="text/html" title="Markup: Image Alignment" /><published>2013-01-10T00:00:00+09:00</published><updated>2013-01-10T00:00:00+09:00</updated><id>http://localhost:4000/markup/markup-image-alignment</id><content type="html" xml:base="http://localhost:4000/markup/markup-image-alignment/"><![CDATA[<p>한글 포스트</p>]]></content><author><name>Logic</name></author><category term="Markup" /><category term="alignment" /><category term="captions" /><category term="content" /><category term="css" /><category term="image" /><category term="markup" /><summary type="html"><![CDATA[한글 포스트]]></summary></entry><entry xml:lang="en"><title type="html">Edge Case: No Body Content</title><link href="http://localhost:4000/edge%20case/edge-case-no-body-content/" rel="alternate" type="text/html" title="Edge Case: No Body Content" /><published>2009-08-06T00:00:00+09:00</published><updated>2009-08-06T00:00:00+09:00</updated><id>http://localhost:4000/edge%20case/edge-case-no-body-content</id><content type="html" xml:base="http://localhost:4000/edge%20case/edge-case-no-body-content/"><![CDATA[]]></content><author><name>Logic</name></author><category term="Edge Case" /><category term="content" /><category term="edge case" /><category term="layout" /><summary type="html"><![CDATA[]]></summary></entry><entry xml:lang="en"><title type="html">Edge Case: Many Categories</title><link href="http://localhost:4000/aciform/antiquarianism/arrangement/asmodeus/broder/buying/championship/chastening/disinclination/disinfection/dispatch/echappee/enphagy/edge-case-many-categories/" rel="alternate" type="text/html" title="Edge Case: Many Categories" /><published>2009-07-02T00:00:00+09:00</published><updated>2009-07-02T00:00:00+09:00</updated><id>http://localhost:4000/aciform/antiquarianism/arrangement/asmodeus/broder/buying/championship/chastening/disinclination/disinfection/dispatch/echappee/enphagy/edge-case-many-categories</id><content type="html" xml:base="http://localhost:4000/aciform/antiquarianism/arrangement/asmodeus/broder/buying/championship/chastening/disinclination/disinfection/dispatch/echappee/enphagy/edge-case-many-categories/"><![CDATA[<p>This post has many categories.</p>]]></content><author><name>Logic</name></author><category term="aciform" /><category term="antiquarianism" /><category term="arrangement" /><category term="asmodeus" /><category term="broder" /><category term="buying" /><category term="championship" /><category term="chastening" /><category term="disinclination" /><category term="disinfection" /><category term="dispatch" /><category term="echappee" /><category term="enphagy" /><category term="categories" /><category term="edge case" /><summary type="html"><![CDATA[This post has many categories.]]></summary></entry><entry xml:lang="en"><title type="html">Edge Case: Many Tags</title><link href="http://localhost:4000/edge%20case/edge-case-many-tags/" rel="alternate" type="text/html" title="Edge Case: Many Tags" /><published>2009-06-01T00:00:00+09:00</published><updated>2009-06-01T00:00:00+09:00</updated><id>http://localhost:4000/edge%20case/edge-case-many-tags</id><content type="html" xml:base="http://localhost:4000/edge%20case/edge-case-many-tags/"><![CDATA[<p>This post has many tags.</p>]]></content><author><name>Logic</name></author><category term="Edge Case" /><category term="8BIT" /><category term="alignment" /><category term="Articles" /><category term="captions" /><category term="categories" /><category term="chat" /><category term="comments" /><category term="content" /><category term="css" /><category term="dowork" /><category term="edge case" /><category term="embeds" /><category term="excerpt" /><category term="Fail" /><category term="featured image" /><category term="FTW" /><category term="Fun" /><category term="gallery" /><category term="html" /><category term="image" /><category term="Jekyll" /><category term="layout" /><category term="link" /><category term="Love" /><category term="markup" /><category term="Mothership" /><category term="Must Read" /><category term="Nailed It" /><category term="Pictures" /><category term="Post Formats" /><category term="quote" /><category term="standard" /><category term="Success" /><category term="Swagger" /><category term="Tags" /><category term="template" /><category term="title" /><category term="twitter" /><category term="Unseen" /><category term="video" /><category term="YouTube" /><category term="U:R:COOL" /><category term="C#" /><summary type="html"><![CDATA[This post has many tags.]]></summary></entry><entry xml:lang="en"><title type="html">Edge Case: Nested and Mixed Lists</title><link href="http://localhost:4000/edge%20case/edge-case-nested-and-mixed-lists/" rel="alternate" type="text/html" title="Edge Case: Nested and Mixed Lists" /><published>2009-05-15T00:00:00+09:00</published><updated>2009-05-15T00:00:00+09:00</updated><id>http://localhost:4000/edge%20case/edge-case-nested-and-mixed-lists</id><content type="html" xml:base="http://localhost:4000/edge%20case/edge-case-nested-and-mixed-lists/"><![CDATA[<p>Nested and mixed lists are an interesting beast. It’s a corner case to make sure that</p>
+
+<ul>
+  <li>Lists within lists do not break the ordered list numbering order</li>
+  <li>Your list styles go deep enough.</li>
+</ul>
+
+<h3 id="ordered--unordered--ordered">Ordered – Unordered – Ordered</h3>
+
+<ol>
+  <li>ordered item</li>
+  <li>ordered item
+    <ul>
+      <li><strong>unordered</strong></li>
+      <li><strong>unordered</strong></li>
+    </ul>
+    <ol>
+      <li>ordered item</li>
+      <li>ordered item</li>
+    </ol>
+  </li>
+  <li>ordered item</li>
+  <li>ordered item</li>
+</ol>
+
+<h3 id="ordered--unordered--unordered">Ordered – Unordered – Unordered</h3>
+
+<ol>
+  <li>ordered item</li>
+  <li>ordered item
+    <ul>
+      <li><strong>unordered</strong></li>
+      <li><strong>unordered</strong></li>
+    </ul>
+    <ul>
+      <li>unordered item</li>
+      <li>unordered item</li>
+    </ul>
+  </li>
+  <li>ordered item</li>
+  <li>ordered item</li>
+</ol>
+
+<h3 id="unordered--ordered--unordered">Unordered – Ordered – Unordered</h3>
+
+<ul>
+  <li>unordered item</li>
+  <li>unordered item
+    <ol>
+      <li>ordered</li>
+      <li>ordered
+        <ul>
+          <li>unordered item</li>
+          <li>unordered item</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>unordered item</li>
+  <li>unordered item</li>
+</ul>
+
+<h3 id="unordered--unordered--ordered">Unordered – Unordered – Ordered</h3>
+
+<ul>
+  <li>unordered item</li>
+  <li>unordered item
+    <ul>
+      <li>unordered</li>
+      <li>unordered
+        <ol>
+          <li><strong>ordered item</strong></li>
+          <li><strong>ordered item</strong></li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>unordered item</li>
+  <li>unordered item</li>
+</ul>
+
+<h3 id="task-lists">Task Lists</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Finish my changes</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Push my commits to GitHub</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Open a pull request
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Follow discussions</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Push new commits</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Logic</name></author><category term="Edge Case" /><category term="content" /><category term="css" /><category term="edge case" /><category term="lists" /><category term="markup" /><summary type="html"><![CDATA[Nested and mixed lists are an interesting beast. It’s a corner case to make sure that]]></summary></entry></feed>

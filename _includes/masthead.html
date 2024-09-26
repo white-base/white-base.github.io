@@ -46,9 +46,7 @@
 
         <!-- 언어 선택 드롭다운 -->
         {% include language-switcher.html %}
-
         <!-- {{ page.layout }}, {{ page.title }}, {{ page.lang }}, -->
-        
         {% if site.search == true %} 
         <button class="search__toggle" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "Toggle search" }}</span>
