@@ -315,10 +315,12 @@ languages:
     label: "English"
     path: "/en"
     permalink: /en/:path/
+    post_url: _post/en
   ko:
     label: "Korean"
     path: "/ko"
     permalink: /ko/:path/
+    post_url: _post/ko
 
 # default_lang: "en"
 
@@ -326,7 +328,7 @@ languages:
 defaults:
   # _posts
   - scope:
-      path: ""
+      path: "_post/ko"
       type: posts
     values:
       search: true

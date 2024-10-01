@@ -2,6 +2,7 @@
 lang: en
 title: "Edge Case: Many Tags"
 categories:
+  - en
   - Edge Case
 tags:
   - 8BIT
@@ -47,6 +48,10 @@ tags:
   - YouTube
   - U:R:COOL
   - C#
+
+author_profile: true
+layout: archive
+hidden: true
 ---
 
 This post has many tags.

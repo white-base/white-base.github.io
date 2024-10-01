@@ -1,0 +1,90 @@
+# main links
+
+main:
+  - title: "빠른 가이드"
+    url: /ko/docs/quick-start/
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  # - title: "Sample Posts"
+  #   url: /year-archive/
+  - title: "예제"
+    url:  /ko/exam/notice/
+  - title: "Posts"
+    url: /ko/year-archive/   
+  - title: "API"
+    url: /ko/docs/api/   
+  # - title: "Sitemap"
+  #   url: /sitemap/
+
+exam:
+  - title: notice Example
+    children:
+      - title: "시작하기"
+        url: /ko/exam/notice/
+      - title: "BindModel 예제"
+        url: /ko/exam/notice-bindmodel/
+      - title: "React Mix 예제"
+        url: /ko/exam/notice-mix-react/
+      - title: "Vue Mix 예제"
+        url: /ko/exam/notice-mix-vue/
+      - title: "BindModel 과 React Mix 비교"
+        url: /ko/exam/notice-compare-react/
+      - title: "BindModel 과 Vue Mix 비교"
+        url: /ko/exam/notice-compare-vue/
+  # - title: ETC
+  #   children:
+  #     - title: "React Mix compare"
+  #       url: /docs/quick-start/
+
+docs:
+  - title: Getting Started
+    children:
+      - title: "시작하기"
+        url: /ko/docs/quick-start/
+      - title: "주요 특징"
+        url: /ko/docs/feature/
+      - title: "기본 사용법"
+        url: /ko/docs/basic/
+
+  - title: Essentials
+    children:
+      - title: "핵심 개념"
+        url: /ko/docs/core/
+      - title: "BindModel 구성"
+        url: /ko/docs/bind-model-config/
+      - title: "BindCommand 구성"
+        url: /ko/docs/bind-commnad-config/
+      - title: "서비스객체 구성"
+        url: /ko/docs/service-config/
+      - title: "객체 생성 방식"
+        url: /ko/docs/create-method/
+      - title: "단계별 제작 과정"
+        url: /ko/docs/step-by-step/
+
+  - title: advanced
+    children:
+      - title: "콜백 라이프사이클"
+        url: /ko/docs/callback-lifecycle/
+      - title: "멀티 테이블"
+        url: /ko/docs/multi-table/        
+      - title: "멀티 뷰"
+        url: /ko/docs/multi-view/
+      - title: "execute() 동기화"
+        url: /ko/docs/synchronization/
+      - title: "CRUD + L 예제"
+        url: /ko/docs/crudl-example/
+
+  - title: Reference
+    children:
+      - title: "BindModel 클래스"
+        url: /ko/docs/api-bind-model-ajax/
+      - title: "BindCommand 클래스"
+        url: /ko/docs/api-bind-command-ajax/
+      - title: "HTMLColumn 클래스"
+        url: /ko/docs/api-html-column/
+      - title: "MetaTable 클래스"
+        url: /ko/docs/api-meta-table/
+      - title: "MetaView 클래스"
+        url: /ko/docs/api-meta-view/
+      - title: "PropertyCollection 클래스"
+        url: /ko/docs/api-property-collection/

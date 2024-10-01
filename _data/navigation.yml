@@ -8,7 +8,7 @@ main:
   - title: "Example"
     url:  /exam/notice/
   - title: "Posts"
-    url: /categories/
+    url: /year-archive/
   - title: "API"
     url: /docs/api/   
   # - title: "Sitemap"
