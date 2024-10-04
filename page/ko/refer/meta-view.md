@@ -1,6 +1,6 @@
 ---
 lang: ko
-title: "MetaView Class"
+title: "MetaView 클래스"
 layout: single
 permalink: /ko/docs/api-meta-view/
 date: 2011-06-23T1
@@ -12,72 +12,80 @@ sidebar:
 breadcrumbs: true
 ---
 
-# the main structure
+# 주요 구조
 
-## Property Relationships
+## 속성 관계
 
-MetaView operates the same as MetaTable.  
-The difference is that if *_baseEntity* is specified, if *add(name)* column is added, the 'column' registers a reference, 
-'MetaColumn' is registered in 'column' of baseEntity.
-*Add(name, collection?)* If you specify 'collection' when adding a column, the reference is registered in 'columns',
-'MetaColumn' is registered in the specified 'collecton'.
+MetaView 는 MetaTable 과 동일하게 작동됩니다.  
+차이점은  *_baseEntity* 가 지정될 경우 *add(name)* 컬럼을 추가하면, `columns` 에는 참조가 등록되고, 
+baseEntity 의 `columns` 에  `MetaColumn` 이 등록됩니다.
+*add(name, collection?)* 컬럼 추가시 `collection` 을 지정하면, `columns` 에참조가 등록되고,
+지정한 `collecton` 에 `MetaColumn` 이 등록됩니다.
 
 Class diagram
 ![image-center](/assets/images/view-rel-diagram-2024-08-16-002546.png){: .align-center}
 
-## an inheritance relationship
+## 상속 관계
 
 Class diagram
 ![image-center](/assets/images/view-diagram-2024-08-16-004628.png){: .align-center}
 
-# a key element
+# 주요 요소
 
-## Properties
+## 속성
 
-| Item | Description |
+| 항목          | 설명                                   |
 | ----------- | ------------------------------------ |
-| viewName | This is the name of the meta view
-| Columns | Collection of columns in the view
-| rows | Data (low) collection of entities
-| _baseEntity | Default entity
-| _metaSet | Metaset to which the entity belongs. |
-| _name | Name of the element, which acts as a unique identifier for the MetaElement
-| _guid | Unique identifier of the object (GUID). Uniquely identifies the object. |
-| _type | The generator function of the object. The function used when the object was created. |
+| viewName    | 메타 뷰 이름 입니다.                         |
+| columns     | 뷰의 컬럼 컬렉션 입니다.                       |
+| rows        | 엔티티의 데이터(로우) 컬렉션 입니다.                |
+| _baseEntity | 기본 엔티티 입니다.                          |
+| _metaSet    | 엔티티가 소속되어 있는 메타셋 입니다.                |
+| _name       | 요소의 이름. MetaElement의 고유 식별자 역할을 합니다. |
+| _guid       | 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.   |
+| _type       | 객체의 생성자 함수. 객체가 생성될 때 사용된 함수입니다.     |
 |             |                                      |
 
 
+---
 
-## Method
+## 메소드
 
-| Item | Description |
+| 항목                               | 설명                                                   |
 | -------------------------------- | ---------------------------------------------------- |
-| clone() | Create and return a deep copy of the current meta view |
-| copy(filter, args) | Copy the destination column
-| transformSchema() | Converts a given serialization object to a schema object
-| Clear() | Initializes all data in the entity
-| reset() | Initializes the entity's columns and data
-| NewRow() | Returns a new row that matches the column structure
-| getValue() | Returns the value of the column as a MetaRow type object |
-| setValue(row) | Set the MetaRow value to the value of the column
-| merge (target, optoin, matchType) | merge the given entity with the current entity |
-| select(filter, args) | query the row according to the given callback function |
-| load(obj, path) | Gets the given object into the current entity. Initializes the existing data and loads the new data
-| output (vOpt, stringify, space) | Outputs the current entity as a serialized string
-| read(obj, option) | Reads the given object as an entity. Follow JSON schema rules. |
-| readSchema (obj, createRow) | Reads the given schema object as the current entity
-| readData(obj) | Reads only rows that exist on a given object |
-| write(vOpt) | Returns the current entity by converting it to an object of schema type |
-| writeSchema(vOpt) | Returns the schema of the current entity by converting it to an object of schema type |
-| writeData(vOpt) | Returns data from the current entity by converting it into schema-type objects.
+| clone()                          | 현재 메타 뷰의 깊은 복사본을 생성하여 반환합니다.                         |
+| copy(filter, args)               | 대상 컬럼을 복사한다.                                         |
+| transformSchema()                | 주어진 직렬화 객체를 스키마 객체로 변환합니다.                           |
+| clear()                          | 엔티티의 모든 데이터를 초기화합니다.                                 |
+| reset()                          | 엔티티의 컬럼 및 데이터를 초기화합니다.                               |
+| newRow()                         | 컬럼 구조에 맞는 새로운 로우를 생성하여 반환합니다.                        |
+| getValue()                       | 컬럼의 value 값을 MetaRow 타입 객체로 반환합니다.                   |
+| setValue(row)                    | MetaRow 값을 컬럼의 value에 설정합니다.                         |
+| merge(target, optoin, matchType) | 주어진 엔티티와 현재 엔티티를 병합합니다.                              |
+| select(filter, args)             | 주어진 콜백 함수에 따라 로우를 조회합니다.                             |
+| load(obj, parse)                 | 주어진 객체를 현재 엔티티로 불러옵니다. 기존 데이터를 초기화하고 새로운 데이터를 로드합니다. |
+| output(vOpt, stringify, space)   | 현재 엔티티를 직렬화된 문자열로 출력합니다.                             |
+| read(obj, option)                | 주어진 객체를 엔티티로 읽어옵니다. JSON 스키마 규칙을 따릅니다.               |
+| readSchema(obj, createRow)       | 주어진 스키마 객체를 현재 엔티티로 읽어옵니다.                           |
+| readData(obj)                    | 주어진 객체에서 존재하는 로우만 읽어옵니다.                             |
+| write(vOpt)                      | 현재 엔티티를 스키마 타입의 객체로 변환하여 반환합니다.                      |
+| writeSchema(vOpt)                | 현재 엔티티의 스키마를 스키마 타입의 객체로 변환하여 반환합니다.                 |
+| writeData(vOpt)                  | 현재 엔티티의 데이터를 스키마 타입의 객체로 변환하여 반환합니다.                 |
+| getObject(vOpt, owned)           | 객체를 특정 옵션에 따라 직렬화된 형태로 반환합니다. 순환 참조는 $ref 값으로 대체됩니다. |
+| setObject(oGuid, origin)         | 주어진 직렬화 객체를 현재 객체로 설정합니다. 설정 시 기존 객체는 초기화됩니다.        |
+| equal(target)                    | 현재 객체와 지정된 객체가 동일한지 비교합니다.                           |
+| getTypes()                       | 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.             |
+| instanceOf(target)               | 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)             |
 
-# Detailed description
 
-## Key Properties
+
+# 세부 설명
+
+## 주요 속성
 
 ### viewName
 
-> This is the name of the meta view.
+> 메타 뷰 이름 입니다.
 
 ```ts
 type viewName = string;
@@ -85,7 +93,7 @@ type viewName = string;
 
 ### columns
 
-> Collection of columns in the view.
+> 뷰의 컬럼 컬렉션 입니다.
 
 ```ts
 type columns = MetaTableColumnCollection;
@@ -93,7 +101,7 @@ type columns = MetaTableColumnCollection;
 
 ### rows
 
-> Data (low) collection of tables.
+> 테이블의  데이터(로우) 컬렉션 입니다.
 
 ```ts
 type rows = MetaRowCollection;
@@ -101,7 +109,7 @@ type rows = MetaRowCollection;
 
 ### \_baseEntity
 
-> Default entity.
+> 기본 엔티티 입니다.
 
 ```ts
 type _baseEntity = BaseEntity;
@@ -109,7 +117,7 @@ type _baseEntity = BaseEntity;
 
 ### \_metaSet
 
-> This is the meta set to which the table belongs.
+> 테이블이 소속되어 있는 메타셋 입니다.
 
 ```ts
 type _metaSet = MetaSet;
@@ -117,7 +125,7 @@ type _metaSet = MetaSet;
 
 ### \_guid
 
-> Unique identifier of the object (GUID). Uniquely identifies the object.
+> 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.
 
 ```ts
 type _guid: string;
@@ -125,27 +133,27 @@ type _guid: string;
 
 ### \_type
 
-> The generator function of the object, which was used when the object was created.
+> 객체의 생성자 함수입니다. 객체가 생성될 때 사용된 함수입니다.
 
 ```ts
 type _type: Function;
 ```
 
-
-## Key Methods
+---
+## 주요 메소드
 
 ### clone()
 
-> Create and return a deep copy of the current object.
+> 현재 객체의 깊은 복사본을 생성하여 반환합니다.
 
 ```ts
-type clone() => MetaTable;
+type clone() => MetaTable;
 ```
-- return : This is a replica of the current object.
+- return : 현재 객체의 복제본입니다.
 
 ### copy()
 
-> Copy the target column.
+> 대상 컬럼을 복사한다.
 
 ```ts
 type copy = (
@@ -154,46 +162,45 @@ type copy = (
 ) => MetaView;
 ```
 - filter :   
-	- Function type is the callback function that selects the column.
-	-  Type string[] is the name of the column to copy.
--   cols : The name of the column to copy, valid only if the filter is a Function type.
-
-Example: Using filter, cols
+	- Function  타입이면 컬럼을 선택하는 콜백함수를 입니다.
+	-  string[]   타입이면 복사할 컬럼명입니다.
+-   cols : 복사할 컬럼명입니다. filter 가 Function 타입일 때만 유효합니다.
+#### 예제 : filter, cols 을 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
-// ... Add columns, aa, bb, cc, e, and rows
+// ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
+
 var temp = table.copy(
 	(row, idx, entity) => { return (idx % 2) > 0; },
 	['aa', 'bb']
 );
 ```
-- Temp is copied only if the row indexes of the columns 'aa' and 'bbb' are odd.
-
-Example: Using cols only
+- temp 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
+#### 예제 : cols 만 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
-// ... Add columns, aa, bb, cc, e, and rows 
+// ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
 	['aa', 'bb']
 );
 ```
-- Temp copies the entire row of columns 'aa' and 'bbb'.
+- temp 에는 'aa', 'bb' 컬럼의 전체 로우가 복사됩니다.
 
 ### transformSchema()
 
-> Converts a given serialization object to a schema object.
+> 주어진 직렬화 객체를 스키마 객체로 변환합니다.
 
 ```ts
 type transformSchema = (oGuid: object) => object; // static
 ```
-- oGuid : object obtained by getObject().
+- oGuid : getObject()로 얻은 객체입니다.
 
 ### clear()
 
-> Initializes all data in the entity.
+> 엔티티의 모든 데이터를 초기화합니다.
 
 ```ts
 type clear = () => void;
@@ -201,7 +208,7 @@ type clear = () => void;
 
 ### reset()
 
-> Initializes the entity's columns and data.
+> 엔티티의 컬럼 및 데이터를 초기화합니다.
 
 ```ts
 type reset = () => void;
@@ -209,44 +216,44 @@ type reset = () => void;
 
 ### newRow()
 
-> Create and return a new row that matches the column structure.
+> 컬럼 구조에 맞는 새로운 로우를 생성하여 반환합니다.
 
 ```ts
 type newRow = () => MetaRow;
 ```
-- return : This is the MetaRow object created.
+- return : 생성된 MetaRow 객체입니다.
 ### getValue()
 
-Returns the value of the > column as a MetaRow type object.
+> 컬럼의 value 값을 MetaRow 타입 객체로 반환합니다.
 
 ```ts
 type getValue = () => MetaRow;
 ```
-- return : MetaRow object with the value of the column set.
+- return : 컬럼의 값이 설정된 MetaRow 객체입니다.
 
 ### setValue()
 
-> Set the MetaRow value to the value in the column.
+> MetaRow 값을 컬럼의 value에 설정합니다.
 
 ```ts
 type setValue = (row: MetaRow) => void;
 ```
-- row : MetaRow object to be set.
+- row : 설정할 MetaRow 객체입니다.
 
 ### merge()
 
-> Merges the given entity with the current entity.
+> 주어진 엔티티와 현재 엔티티를 병합합니다.
 
 ```ts
 type merge = (target: BaseEntity, option: number, matchType?: boolean) => void;
 ```
-- target : The target entity to merge.
-- option : Merge option.
-- matchType : Whether or not a row validation exists. (Default: false)
+- target : 병합할 대상 엔티티입니다.
+- option : 병합 옵션입니다.
+- matchType : 로우 유효성 검사 유무입니다. (기본값: false)
 
 ### select()
 
-> Look up the row according to the given callback function.
+> 주어진 콜백 함수에 따라 로우를 조회합니다.
 
 ```ts
 type select = (
@@ -255,65 +262,63 @@ type select = (
 ) => MetaView;
 ```
 - filter :   
-	- Function type is the callback function that selects the column.
-	-  Type string[] is the name of the column to copy.
--   cols : The name of the column to copy, valid only if the filter is a Function type.
-
-Example: Using filter, cols
+	- Function  타입이면 컬럼을 선택하는 콜백함수를 입니다.
+	-  string[]   타입이면 복사할 컬럼명입니다.
+-   cols : 복사할 컬럼명입니다. filter 가 Function 타입일 때만 유효합니다.
+#### 예제 : filter, cols 을 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
-// ... Add columns, aa, bb, cc, e, and rows 
+// ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
 	(row, idx, entity) => { return (idx % 2) > 0; },
 	['aa', 'bb']
 );
 ```
-- The temp view is copied only if the row indexes of the columns 'aa', 'bbb' are odd.
-
-Example: Using cols only
+- temp 뷰 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
+#### 예제 : cols 만 사용하는 경우
 ```js
 var table = new MetaTable('t1');
 
-// ... Add columns, aa, bb, cc, e, and rows 
+// ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
 	['aa', 'bb']
 );
 ```
-- The temp view copies the entire row of columns 'aa' and 'bbb'.
+- temp 뷰 에는 'aa', 'bb' 컬럼의 전체 로우가 복사됩니다.
 
 ### load()
 
-> Imports the given object to the current entity, initializes the existing data and loads the new data.
+> 주어진 객체를 현재 엔티티로 불러옵니다. 기존 데이터를 초기화하고 새로운 데이터를 로드합니다.
 
 ```ts
 type load = (obj: object | string, parse?: Function) => void;
 ```
-- obj : The object to be called.
-- pas : parser function. (Optional)
+- obj : 불러올 대상 객체입니다.
+- parse : 파서 함수입니다. (선택)
 
 ### output()
 
-> Outputs the current entity as a serialized string.
+> 현재 엔티티를 직렬화된 문자열로 출력합니다.
 
 ```ts
 type output = (vOpt: number, stringify?: Function, space?: string) => string;
 ```
-- vOpt : Optional (0, 1, 2)
-- stringify : This is a user-defined parser function. (Optional)
-- space : A blank string to be used in the output. (Optional)
+- vOpt : 옵션입니다. (0, 1, 2)
+- stringify : 사용자 정의 파서 함수입니다. (옵션)
+- space : 출력 시 사용할 공백 문자열입니다. (옵션)
 
 ### read()
 
-> Reads the given object as an entity. Follow JSON schema rules.
+> 주어진 객체를 엔티티로 읽어옵니다. JSON 스키마 규칙을 따릅니다.
 
 ```ts
 type read = (obj: object, option: number) => void;
 ```
-- obj : object to be read.
-- option : Read option (default: 3)
+- obj : 읽어올 대상 객체입니다.
+- option : 읽기 옵션입니다. (기본값: 3)
 
 ```js
 var schema1 = { 
@@ -331,67 +336,67 @@ var schema1 = {
 
 ### readSchema()
 
-> Reads the given schema object as the current entity.
+> 주어진 스키마 객체를 현재 엔티티로 읽어옵니다.
 
 ```ts
 type readSchema = (obj: object, createRow?: boolean) => void;
 ```
-- obj : Schema object to be read.
-- createRow : If true, add the column by row[0] (default: false)
+- obj : 읽어올 스키마 객체입니다.
+- createRow : true일 경우, row[0] 기준으로 컬럼을 추가합니다. (기본값: false)
 
 ### readData()
 
-> Reads only rows that exist on a given object.
+> 주어진 객체에서 존재하는 로우만 읽어옵니다.
 
 ```ts
 type readData = (obj: object) => void;
 ```
-- obj : The object to be read.
+- obj : 읽어올 객체입니다.
 
 ### write()
 
-> Returns the current entity after converting it to an object of schema type.
+> 현재 엔티티를 스키마 타입의 객체로 변환하여 반환합니다.
 
 ```ts
 type write = (vOpt?: number) => object;
 ```
-- vOpt : Optional (default: 0)
-- return : Object of schema type.
+- vOpt : 옵션입니다. (기본값: 0)
+- return : 스키마 타입의 객체입니다.
 
 ### writeSchema()
 
-> Returns the schema of the current entity by converting it to an object of schema type.
+> 현재 엔티티의 스키마를 스키마 타입의 객체로 변환하여 반환합니다.
 
 ```ts
 type writeData = (vOpt?: number): object;
 ```
-- vOpt : Optional (default: 0)
-- return : Object of schema type.
+- vOpt : 옵션입니다. (기본값: 0)
+- return : 스키마 타입의 객체입니다.
 
 ### writeData()
 
-> Returns the data of the current entity by converting it into an object of schema type.
+> 현재 엔티티의 데이터를 스키마 타입의 객체로 변환하여 반환합니다.
 
 ```ts
 type writeData = (vOpt?: number) => object;
 ```
-- vOpt : Optional (default: 0)
-- return : Object of schema type.
+- vOpt : 옵션입니다. (기본값: 0)
+- return : 스키마 타입의 객체입니다.
 
 ### getObject()
 
-> Obtain the current object as a guide type object.
-> (Circular references are replaced by $ref values.)
+> 현재 객체를 직렬화(guid 타입) 객체로 얻습니다.
+> (순환참조는 $ref 값으로 대체됩니다.)
 
 ```ts
 type getObject = (vOpt?: number, owned?: object | Array<object>) => object;
 ```
-- vOpt : Import option; default is 0.
-	- opt=0: Reference structure (_guid:Yes, $ref:Yes)
-	* opt=1: Redundant structure (_guid:Yes, $ref:Yes)
-	* opt=2 : Non-tidal structure (_guid: No, $ref: No)
-- aged : The parent objects that currently own the object. The default is an empty object.
-- return —Returns serialized objects.
+- vOpt :  가져오기 옵션입니다. 기본값은 0 입니다.
+	- opt=0 : 참조 구조(_guid:Yes, $ref:Yes)
+	* opt=1 : 중복 구조(_guid:Yes, $ref:Yes)
+	* opt=2 : 비참조 구조(_guid:No, $ref:No)
+- owned : 현재 객체를 소유하는 상위 객체들입니다. 기본값은 빈객체 입니다.
+- return : 직렬화된 객체를 반환합니다.
 
 ```js
 a.getObject(2) == b.getObject(2)
@@ -399,32 +404,32 @@ a.getObject(2) == b.getObject(2)
 
 ### setObject()
 
-> Set the Guid type object to the current object.
-> (The object will be reset.)
+> 직렬화(guid 타입) 객체를 현재 객체에 설정합니다.
+> (객체는 초기화 됩니다.)
 
 ```ts
 type setObject = (oGuid: object, origin?: object) => void;
 ```
-- oGuid : Object of the guid type to serialize.
-- origin : This is the original object that sets the current object. The default is oGuid.
+- oGuid : 직렬화할 guid 타입의 객체입니다.
+- origin : 현재 객체를 설정하는 원본 객체입니다. 기본값은 oGuid 입니다.
 
 ### equal()
 
-> Compare the current object with the specified object.
+> 현재 객체와 지정된 객체가 동일한지 비교합니다.
 
 ```ts
 type equal (target: object) => boolean;
 ```
-- return —Returns whether the two objects are identical.
+- return : 두 객체가 동일한지 여부를 반환합니다.
 
 ### getTypes()
 
-> Returns the creators of the current object and all the creators of the prototype chain to the array.
+> 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.
 
 ```ts
 type getTypes = () => Array<Function>;
 ```
-- return : Returns the array of generator functions.
+- return : 생성자 함수의 배열을 반환합니다.
 
 ```js
 const types = obj.getTypes();
@@ -433,12 +438,11 @@ console.log(types); // [Function: MetaObject]
 
 ### instanceOf()
 
-> Verify that the current object is an instance of the specified type (including _UNION)
+> 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)
 
 ```ts
 type instanceOf = (target: object | string) => boolean;
 ```
-- target : The type of object to be checked (object or string).
-- return —Returns whether this is an instance of the specified type.
-
+- target : 확인할 대상 타입 (객체 또는 문자열)입니다.
+- return : 지정된 타입의 인스턴스인지 여부를 반환합니다.
 

@@ -1,6 +1,6 @@
 ---
 lang: ko
-title: "BindCommand Class"
+title: "BindCommand 클래스"
 layout: single
 permalink: /ko/docs/api-bind-command-ajax/
 date: 2011-06-23T1
@@ -12,82 +12,87 @@ sidebar:
 breadcrumbs: true
 ---
 
-# the main structure
 
-## Property Relationships
+# 주요 구조
 
-The Bindcommand object contains MetaView with *valid, bind, and output* properties.
-The 'output' property refers to the property 'output1' of the object in '_outputs' (MetaViewCollection).
-You can add a view through the newOutput(name?) method, "output + sequential" to "_outputs"
-The collection is added as a name.
+## 속성 관계
+
+BindCommand 객체는 *valid, bind, output* 속성의 MetaView을 포함하고 있습니다.
+`output` 속성은 `_outputs`(MetaViewCollection)의 객체의 속성 `output1` 을 참조합니다.
+newOutput(name?) 메소드를 통해서 view 추가할 수 있습니다. `_outputs` 에  "output + 순번"
+이름으로 컬렉션이 추가됩니다.
 
 Class diagram
-
 ![image-center](/assets/images/cmd-rel-diagram-2024-08-16-002011.png){: .align-center}
 
-## an inheritance relationship
+## 상속 관계
 
-You can either inherit and extend Bindcommand or override Bindcommand to customize it.
+BindCommandAjax 을 상속하여 확장하거나 BindCommand 을 상속하여 재정의하여 사용자화 할 수 있습니다.
 
+Class diagram
 ![image-center](/assets/images/cmd-diagram-2024-08-16-004352.png){: .align-center}
 
 
-# Components
 
-## Properties
+# 구성 요소
 
-| Item | Description |
+## 속성
+
+| 항목           | 설명                                                                                                                                                         |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| config | same as axios config |
-| url | url path |
-| \_outputs | '_outputs' MetaView collection property |
-| \_model | '_model' BindModel object |
-| valid | MetaView for inspection |
-| bind | bind MetaView
-| output | default output MetaView.See <br>\_outputs[0] object |
-| Output Option | Output option. (Default = 0)<br>- 0: No view<br>-1: Import all columns and rows<br>- 2: Import the rows of existing columns<br>- 3: Import the rows of existing columns, set to value in the nth letter |
-| cbBegin | execute() start callback.<br>'callback(bindComand)' |
+| config       | axios config 와 동일                                                                                                                                          |
+| url          | url 경로                                                                                                                                                     |
+| \_outputs    | `_outputs` MetaView 컬켁션 속성입니다.                                                                                                                             |
+| \_model      | `_model` BindModel 객체 입니다.                                                                                                                                 |
+| valid        | 검사대상 MetaView 입니다.                                                                                                                                         |
+| bind         | 바인드 MetaView 입니다.                                                                                                                                          |
+| output       | 기본 출력 MetaView 입니다.<br>\_ouputs[0] 객체를 참조합니다.                                                                                                              |
+| outputOption | 출력 옵션입니다. (기본값 = 0)<br>- 0 : view 안함<br>- 1 : 모든 column 및 rows 가져오기<br>- 2 : 존재하는 column 의 rows 가져오기 <br>- 3 : 존재하는 column 의 rows 가져오기,  n번째 자로 value 에 설정 |
+| cbBegin      | execute() 시작 콜백 입니다.<br>`callback(bindComamnd)`                                                                                                            |
 | cbValid      | execute() valid 검사 전 콜백 입니다.<br>`callback(validView, bindComamnd)`                                                                                         |
 | cbBind       | execute() bind  전 콜백 입니다.<br>`callback(validView, bindComamnd, config)`                                                                                    |
 | cbResult     | execute() 회신  콜백 입니다.<br>`callback(data, bindComamnd, response)`                                                                                           |
-| cbOutput     | execute() output View 매칭 후  콜백 입니다.<br>`callback(views, bindComamnd, response)`                                                                           |
+| cbOutput     | execute() output View 매칭 후  콜백 입니다.<br>`callback(views, bindComamnd, response)`                                                                           |
 | cbEnd        | execute() 종료 콜백 입니다.<br>`callback(status, bindComamnd, response)`                                                                                          |
-| _guid | Unique identifier of the object (GUID). Uniquely identifies the object.
+| _guid        | 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.                                                                                                                         |
+| _type        | 객체의 생성자 함수. 객체가 생성될 때 사용된 함수입니다.                                                                                                                           |
 
+---
+## 메소드
 
-## Method
-
-| Item | Description |
+| 항목                                          | 설명                                                                                                            |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | execute(): Promise                          | 순서 :  `_execBegin()` >> `_execValid()` >> `_execBind()` >> `_execResult()` >> `_execOutput()` >> `_execEnd()` |
-| addColumn(column, views, bTable?) | Add a column, add it to the specified table, and register the reference of the column to the valid, bind, output MetaView in Bindcommand. |
-| addColumnValue (name, value, views, bTable?) | Add a column and value with the specified name, and register the reference of the column with the value, bind, output MetaView in Bindcommand. |
-| setColumn (names, views, bTable?) | Sets the column of the meta table to the specified MetaView |
-| release(names) | Remove the specified column from the destination MetView |
-| add MetaView to the newOutput(name?) | '_output' MetaViewCollection.<br>* - default name = 'output' + _out.count |
+| addColumn(column, views, bTable?)           | 컬럼을 추가하고 지정 테이블에 추가하고, 컬럼의 참조를 BindCommand 의 valid, bind, output MetaView 에 등록합니다.                            |
+| addColumnValue(name, value, views, bTable?) | 지정한 이름으로 컬럼과 값을 추가하고, 컬럼의 참조를 BindCommand 의 valid, bind, output MetaView 에 등록합니다.                             |
+| setColumn(names, views, bTable?)            | 메타테이블의 컬럼을 지정한 MetaView 에 설정합니다.                                                                              |
+| release(names)                              | 지정한 컬럼을 대상 MeteView 에서 제거합니다.                                                                                 |
+| newOutput(name?)                            | `_output` MetaViewCollection 에 MetaView 을 추가합니다.<br>* - 기본 이름 = 'output' + _outout.count                      |
 | removeOutput(name)                          | `_output` MetaViewCollection 에 MetaView 을 제거합니다.                                                              |
-| getObject(): object | Get object of the guid type of the current object |
-| setObject(obj, origin) | Initialize the current object, and set it using the object of the specified guid type |
-| equal(target) | Compare the current object with the specified object. |
-| getTypes() | Returns the constructors of the current object and all the constructors of the prototype chain to the array. |
-| instanceOf(target) | Verify that the current object is an instance of the specified type (with _UNION) |
+| getObject(): object                         | 현재 객체의 guid 타입의 객체를 가져옵니다.                                                                                    |
+| setObject(obj, origin)                      | 현재 객체를 초기화 후, 지정한 guid 타입의 객체를 사용하여 설정합니다.                                                                    |
+| equal(target)                               | 현재 객체와 지정된 객체가 동일한지 비교합니다.                                                                                    |
+| getTypes()                                  | 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.                                                                      |
+| instanceOf(target)                          | 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)                                                                      |
 
+---
 
-## Events
+## 이벤트
 
-| Item | Description |
+| 항목         | 설명                        |
 | ---------- | ------------------------- |
-| onExecute | common event before execution |
-| OnExecuted | common event after execution | inspect()
+| onExecute  | execte() 실행 전 공통 이벤트 입니다. |
+| onExecuted | execte() 실행 후 공통 이벤트 입니다. |
 
-# Detailed description 
 
-## Key Properties
+# 세부 설명 
+
+## 주요 속성
 
 ### config
 
-> This is the setting for the AJAX request.
-> Same format as 'config' in axios.
+> AJAX 요청에 대한 설정값입니다.
+> axios 의 `config`와 동일한 형식입니다.
 
 ```ts
 type config = object;
@@ -95,7 +100,7 @@ type config = object;
 
 ### url
 
-> Set the URL for the AJAX request.
+> AJAX 요청의 URL을 설정합니다.
 
 ```ts
 type url = string;
@@ -103,7 +108,7 @@ type url = string;
 
 ### \_outputs
 
-> Collection that stores output results.
+> 출력 결과를 저장하는 컬렉션입니다.
 
 ```ts
 type _outputs = MetaViewCollection;
@@ -111,7 +116,7 @@ type _outputs = MetaViewCollection;
 
 ### \_model
 
-> Bind model object.
+> 바인드 모델 객체입니다.
 
 ```ts
 type _model = BindModel;
@@ -119,7 +124,7 @@ type _model = BindModel;
 
 ### valid
 
-> MetaView object to be inspected.
+> 검사 대상 MetaView 객체입니다.
 
 ```ts
 type valid = MetaView;
@@ -127,56 +132,56 @@ type valid = MetaView;
 
 ### bind
 
-> Bind target MetaView object.
+> 바인드 대상 MetaView 객체입니다.
 
 ```ts
 type bind = MetaView;
 ```
 
-bind (MetaView) is a list of columns that are sent to the server.
-The column name and column value in the bind.column collection are sent (requested) to the server.
-
-Internal operating structure
+bind(MetaView) 는 서버에 전송하는 컬럼 목록입니다.
+bind.columns 컬렉션의 컬럼명과 컬럼값은 서버로 전송(요청)합니다.
+#### 예제 : 내부 작동 구조
 ```js
-var bm = new BindModel();
+var bm = new BindModelAjax();
 bm.url = '/user'
 bm.addCommand('test');
-bm.cmd['test'].addColumnValue('user_name', 'Neo');
+bm.cmd['test'].addColumnValue('user_name', '홍길동');
 bm.cmd['test'].addColumnValue('passwd', '1234');
 bm.cmd['test'].execute();
 
-///// Send to internal
+///// 내부적오로 전송
 var axiosConfig = {
 	url: '/user',
 	data: {
-		user_name: 'Neo',
+		user_name: '홍길동',
 		passwd: '1234'
 	}
 }
 ```
 
 ### output
-> Dynamic added output MetaView object.
 
+> 동적으로 추가된 출력 MetaView 객체입니다.
 
 ```ts
 type output = MetaView;
 ```
 
 ### outputOption
-> Output attribute options.
-> - 0: Except
-> - 1: Import rows of all columns
-> - 2: Import only rows of existing columns
-> - 3: Import only rows of existing curums, set value
+
+> 출력 특성 옵션입니다.
+> - 0: 제외
+> - 1: 모든 컬럼의 로우 가져옴
+> - 2: 존재하는 컬럼의 로우만 가져옴
+> - 3: 존재하는 커럼의 로우만 가져오고, value 설정
 
 ```ts
 type outputOption = object;
 ```
 
-### outOpt
+### outOpt
 
-Alias for > outputOptions.
+> outputOption 의 별칭입니다.
 
 ```ts
 type outOpt = object;
@@ -184,27 +189,27 @@ type outOpt = object;
 
 ### cbBegin
 
-> This is the callback function that is called at the start of execution.
+> 실행 시작 시 호출되는 콜백 함수입니다.
 
 ```ts
 type cbBegin = (cmd: BindCommand) => void;
 ```
-- cmd - This is the current bind command object.
+- cmd - 현재 바인드 명령 객체입니다.
 
 ### cbValid
 
-> Callback function called before valid.
+> 검사(valid) 전 호출되는 콜백 함수입니다.
 
 ```ts
 type cbValid = (valid: MetaView, command: BindCommand) => boolean;
 ```
-- valid : object 'MetaView' to be inspected.
-- command : The current bind command object.
-- return : A boolean value representing the result of the examination.
+- valid : 검사할 `MetaView` 객체입니다.
+- command : 현재 바인드 명령 객체입니다.
+- return : 검사 결과를 나타내는 boolean 값입니다.
 
 ### cbBind
 
-> This is the callback function that is called before bind.
+> 바인드(bind) 전 호출되는 콜백 함수입니다.
 
 ```ts
 type cbBaseBind = (
@@ -213,14 +218,14 @@ type cbBaseBind = (
 	config: object
 ) => void;
 ```
-- bind : object 'MetaView' to bind.
-- command : The current bind command object.
-- config : This is the setting object.
+- bind : 바인드할 `MetaView` 객체입니다.
+- command : 현재 바인드 명령 객체입니다.
+- config : 설정 객체입니다.
 
 ### cbResult
 
-> This is a callback function that handles binding results.
-> Mainly used for processing result data.
+> 바인드 결과를 처리하는 콜백 함수입니다.
+> 주로 결과 데이터 가공에 사용됩니다.
 
 ```ts
 type cbResult = (
@@ -229,14 +234,14 @@ type cbResult = (
 	response: object
 ) => object;
 ```
-- data : Bind result data object.
-- cmd : This is the current bind command object.
-- response —Response object.
-- return : Processed result data.
+- data : 바인드 결과 데이터 객체입니다.
+- cmd : 현재 바인드 명령 객체입니다.
+- response : 응답 객체입니다.
+- return : 처리된 결과 데이터입니다.
 ### cbOutput
 
-> This is a callback function that outputs binding results.
-> Mainly used for the output of lists.
+> 바인드 결과를 출력하는 콜백 함수입니다.
+> 주로 목록의 출력에 사용됩니다.
 
 ```ts
 type cbOutput = (
@@ -245,13 +250,13 @@ type cbOutput = (
 	response: object
 ) => object;
 ```
-- outputs : Metabiew collection.
-- command : The current bind command object.
-- response —Response object.
-- return —Returns the processed result object.
+- outputs : 메타 뷰 컬렉션입니다.
+- command : 현재 바인드 명령 객체입니다.
+- response : 응답 객체입니다.
+- return : 처리된 결과 객체를 반환합니다.
 ### cbEnd
 
-> This is a callback function that is called after processing is finished.
+> 처리 종료 후 호출되는 콜백 함수입니다.
 
 ```ts
 type cbBaseEnd = (
@@ -260,13 +265,13 @@ type cbBaseEnd = (
 	response: object
 ) => void;
 ```
-- status : The object containing status information.
-- command : The current bind command object.
-- response —Response object.
+- status : 상태 정보를 담은 객체입니다.
+- command : 현재 바인드 명령 객체입니다.
+- response : 응답 객체입니다.
 
 ### \_guid
 
-> Unique identifier of the object (GUID). Uniquely identifies the object.
+> 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.
 
 ```ts
 type _guid = string;
@@ -274,26 +279,28 @@ type _guid = string;
 
 ### \_type
 
-> The generator function of the object, which was used when the object was created.
+> 객체의 생성자 함수입니다. 객체가 생성될 때 사용된 함수입니다.
 
 ```ts
 type _type = Function;
 ```
 
-## Key Methods
+---
+## 주요 메소드
 
 ### execute()
 
-> Run the bind command.
-> Performs the entire execution process, including validation, binding, result processing, success, and error callback.
+> 바인드 명령을 실행합니다.
+> 유효성 검사, 바인딩, 결과 처리, 성공 및 오류 콜백을 포함한 전체 실행 프로세스를 수행합니다.
 
 ```ts
 type execute = () => Promise<void>;
 ```
-- return : This is the 'Promise' object representing the execution result.
+- return : 실행 결과를 나타내는 `Promise` 객체입니다.
 
+#### 예제
 ```js
-var bm = new BindModel();
+var bm = new BindModelAjax();
 
 bm.addCommand('test1');
 bm.addCommand('test2');
@@ -305,7 +312,7 @@ bm.cmd['test2'].execute();
 
 ### addColumn()
 
-> Add a column and map it to the specified view.
+> 컬럼을 추가하고 지정한 뷰와 매핑합니다.
 
 ```ts
 type addColumn = (
@@ -314,12 +321,12 @@ type addColumn = (
 	bTable: string | MetaTable
 ) => void;
 ```
-- column : column object to be registered; it could be a string or 'MetaColumn' object.
-- views : The name of the view entity to be added; it can be a string or array of strings.
-- bTable : (Optional) Default table object or table name to be mapped.
+- column : 등록할 컬럼 객체입니다. 문자열 또는 `MetaColumn` 객체일 수 있습니다.
+- views : 추가할 뷰 엔티티 이름입니다. 문자열 또는 문자열 배열일 수 있습니다.
+- bTable : (선택적) 매핑할 기본 테이블 객체 또는 테이블 이름입니다.
 ### addColumnValue()
 
-> Add columns and values and map them to the specified view.
+> 컬럼과 값을 추가하고 지정한 뷰와 매핑합니다.
 
 ```ts
 type addColumnValue = (
@@ -329,99 +336,100 @@ type addColumnValue = (
 	bTable?: string | MetaTable
 ) => void;
 ```
-- name : The name of the column.
-- value : The value of the column.
-- views —(Optional) Name of the view entity to be added.
-- bTable : (Optional) Default table object or table name to be mapped.
+- name : 컬럼 이름입니다.
+- value : 컬럼 값입니다.
+- views : (선택적) 추가할 뷰 엔티티 이름입니다.
+- bTable : (선택적) 매핑할 기본 테이블 객체 또는 테이블 이름입니다.
 
 ### setColumn()
 
-> Set the column.
+> 컬럼을 설정합니다.
 
 ```ts
 type setColumn = (name: string | string[], views: string | string[]) => void;
 ```
-- name —Column name or array of names.
-- views —The name or array of views to set.
+- name : 컬럼 이름 또는 이름 배열입니다.
+- views : 설정할 뷰 이름 또는 이름 배열입니다.
 
 ### release()
 
-> Release the column from the target entity.
+> 대상 엔티티에서 컬럼을 해제합니다.
 
 ```ts
 type release = (name: string | string[], views: string | string[]) => void;
 ```
-- name —Column name or array of names to release.
-- views —The name or array of view entities to be disabled.
+- name : 해제할 컬럼 이름 또는 이름 배열입니다.
+- views : 해제할 뷰 엔티티 이름 또는 이름 배열입니다.
 
 ### newOutput()
 
-> Add a view entity to use for the output.
-> The default name is 'output' + _outputs.count.
+> 출력에 사용할 뷰 엔티티를 추가합니다.
+> 기본 이름은 'output' + _outputs.count입니다.
 
 ```ts
 type newOutput = (name?: string) => void;
 ```
-- name —(Optional) The name of the view to be referenced additionally.
+- name : (선택적) 추가로 참조할 뷰 이름입니다.
 
 ### removeOutput()
 
-> Delete the output view.
+> 출력 뷰를 삭제합니다.
 
 ```ts
 type removeOutput = (name: string) => boolean;
 ```
-- name — The name of the view to be deleted.
+- name - 삭제할 뷰 이름입니다.
 
 ### getObject()
 
-> Obtain the current object as a guide type object.
-> (Circular references are replaced by $ref values.)
+> 현재 객체를 직렬화(guid 타입) 객체로 얻습니다.
+> (순환참조는 $ref 값으로 대체됩니다.)
 
 ```ts
 type getObject = (vOpt?: number, owned?: object | Array<object>) => object;
 ```
-- vOpt : Import option; default is 0.
-	- opt=0: Reference structure (_guid:Yes, $ref:Yes)
-	* opt=1: Redundant structure (_guid:Yes, $ref:Yes)
-	* opt=2 : Non-tidal structure (_guid: No, $ref: No)
-- aged : The parent objects that currently own the object. The default is an empty object.
-- return —Returns serialized objects.
+- vOpt :  가져오기 옵션입니다. 기본값은 0 입니다.
+	- opt=0 : 참조 구조(_guid:Yes, $ref:Yes)
+	* opt=1 : 중복 구조(_guid:Yes, $ref:Yes)
+	* opt=2 : 비참조 구조(_guid:No, $ref:No)
+- owned : 현재 객체를 소유하는 상위 객체들입니다. 기본값은 빈객체 입니다.
+- return : 직렬화된 객체를 반환합니다.
 
-
+#### 예제
 ```js
 a.getObject(2) == b.getObject(2)
 ```
 
 ### setObject()
 
-> Set the Guid type object to the current object.
-> (The object will be reset.)
+> 직렬화(guid 타입) 객체를 현재 객체에 설정합니다.
+> (객체는 초기화 됩니다.)
 
 ```ts
 type setObject = (oGuid: object, origin?: object) => void;
 ```
-- oGuid : Object of the guid type to serialize.
-- origin : This is the original object that sets the current object. The default is oGuid.
+- oGuid : 직렬화할 guid 타입의 객체입니다.
+- origin : 현재 객체를 설정하는 원본 객체입니다. 기본값은 oGuid 입니다.
 
 ### equal()
 
-> Compare the current object with the specified object.
+> 현재 객체와 지정된 객체가 동일한지 비교합니다.
 
 ```ts
 type equal = (target: object) => boolean;
 ```
-- return —Returns whether the two objects are identical.
+- return : 두 객체가 동일한지 여부를 반환합니다.
 
 ### getTypes()
 
-> Returns the creators of the current object and all the creators of the prototype chain to the array.
+> 현재 객체의 생성자와 프로토타입 체인의 모든 생성자를 배열로 반환합니다.
 
 ```ts
 type getTypes = () => Array<Function>;
 ```
-- return : Returns the array of generator functions.
+- return : 생성자 함수의 배열을 반환합니다.
 
+#### 예제
 ```js
 const types = obj.getTypes();
 console.log(types); // [Function: MetaObject]
@@ -429,33 +437,34 @@ console.log(types); // [Function: MetaObject]
 
 ### instanceOf()
 
-> Verify that the current object is an instance of the specified type (including _UNION)
+> 현재 객체가 지정된 타입의 인스턴스인지 확인합니다. (_UNION 포함)
 
 ```ts
 type instanceOf = (target: object | string) => boolean;
 ```
-- target : The type of object to be checked (object or string).
-- return —Returns whether this is an instance of the specified type.
+- target : 확인할 대상 타입 (객체 또는 문자열)입니다.
+- return : 지정된 타입의 인스턴스인지 여부를 반환합니다.
 
-
-## Key Events
+---
+## 주요 이벤트
 
 ### onExecute
 
-> Events that are called before the command is executed.
+> 명령 실행 전 호출되는 이벤트입니다.
 
 ```ts
 type onExecute = (cmd: BindCommand) => void;
 ```
-- cmd : Command object to be executed.
+- cmd : 실행할 명령 객체입니다.
 
 ### onExecuted
 
-> An event that is called after the command is executed.
+> 명령 실행 후 호출되는 이벤트입니다.
 
 ```ts
 type onExecuted = (cmd: BindCommand, result: object) => void;
 ```
-- cmd : Command object executed.
-- result : The result object of the command execution.
+- cmd : 실행한 명령 객체입니다.
+- result : 명령 실행 결과 객체입니다.
+
 

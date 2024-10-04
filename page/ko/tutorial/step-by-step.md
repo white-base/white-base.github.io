@@ -1,6 +1,6 @@
 ---
 lang: ko
-title: "Step-by-step process"
+title: "단계별 제작 과정"
 layout: single
 permalink: /ko/docs/step-by-step/
 date: 2024-10-01T1
@@ -12,13 +12,13 @@ sidebar:
 breadcrumbs: true
 ---
 
-It is an HTML production process that uses BindModel to process customer information registration, inquiry, and correction functions.
+BindModel 를 활용하여 고객 정보 등록, 조회, 수정 기능을 처리하는 HTML 제작 과정입니다.
 
-## Registering customer information
+## 고객정보 등록 하기
 
-Since it is a screen that is used by sharing columns in several commands, it was created using the service object injection method.
-### 1. Create membership HTML
+여러 command에서 컬럼을 공유해서 사용하는 화면이므로 서비스 객체 주입 방식을 사용하여 제작했습니다.
 
+### 1. 회원 등록 HTML  제작
 ```html
 <div>
 	name <input type="text" id="user_name"/>
@@ -33,9 +33,9 @@ Since it is a screen that is used by sharing columns in several commands, it was
 
 <button type="button" id="btn_create">등록</button>
 ```
-- This HTML includes an entry field and a register button to enter your username, gender, and contact information.
-### 2. Set Items and Commands
+- 이 HTML은 사용자 이름, 성별, 연락처를 입력할 수 있는 입력 필드와 등록 버튼을 포함합니다.
 
+### 2. 아이템 및 명령 설정
 ```js
 var bm = new BindModel({
 	items: {
@@ -73,25 +73,25 @@ var bm = new BindModel({
 });
 bm.url = '/user';
 ```
-- items define the input fields and their characteristics.
-	- user_name : Binds with element with ID 'user_name' and is required.
-	- gender : Use a filter to set and import radio buttons.
-	- tel: contains a validation that binds to an element with ID 'tel' and checks the phone number format.
-- command defines the interaction with the server.
-	- create—Registration-related command, including a callback function that alerts you upon completion.
-- Mapping defines the mapping between items and commands.
-	- Sets how the user_name, gender, and tel fields are mapped to the create command.
+- items는 입력 필드와 그 특성을 정의합니다.
+	- user_name :  ID 가 'user_name' 인 요소와 바인딩되며 필수 항목입니다.
+	- gender : 라디오 버튼을 설정 및 가져오는 필터를 사용합니다.
+	- tel: ID 가 'tel' 인 요소와 바인딩되며 전화번호 형식을 검사하는 유효성 검사를 포함합니다.
+- command는 서버와의 상호작용을 정의합니다.
+	- create: 등록 관련 command 이며, 완료 시 알림을 표시하는 콜백 함수를 포함합니다.
+- mapping은 아이템과  명령 간의 매핑을 정의합니다.
+	- user_name, gender, tel 필드가 create 명령에 어떻게 매핑되는지 설정합니다.
 
-### 3. Event registration
+### 3. 이벤트 등록
 
 ```js
 $('#btn_create').click(() => bm.command['create'].execute());
 ```
-- When the register button is clicked, run the create command.
+- 등록 버튼이 클릭되면 create 명령을 실행합니다.
 
-## Looking up customer information
+## 고객정보 조회 하기
 
-Example Server Data
+서버 데이터 예시
 ```json
 // Restful :/user/1
 {
@@ -104,16 +104,15 @@ Example Server Data
 	]
 }
 ```
-- Data in JSON format that you will receive when you query the server.
-### 1. Add html
+- 서버에서 조회할 때 받을 JSON 형식의 데이터입니다.
+### 1. html 추가
 
 ```html
 <input type="hidden" id="idx"/>
 ```
-- Add a hidden field to store the ID of the customer you want to look up.
+- 조회할 고객의 ID를 저장하기 위한 숨김 필드를 추가합니다.
 
 ### 2. items, command, mapping 추가
-
 ```js
 var bm = new BindModel({
 	items: {
@@ -134,11 +133,11 @@ var bm = new BindModel({
 	}
 });
 ```
--  Save the customer ID by adding the idx item to the items.
-- Define the lookup function by adding the read command to the command.
-- Mapping maps idx, user_name, gender, tel items to read commands.
+-  items에 idx 아이템을 추가하여 고객 ID를 저장합니다.
+- command에 read 명령을 추가하여 조회 기능을 정의합니다.
+- mapping에서 idx, user_name, gender, tel 아이템을 read 명령에 매핑합니다.
 
-### 3. Get idx from url and read it
+### 3. url 에서 idx 가져와서 읽기
 
 ```js
 
@@ -151,19 +150,18 @@ $(document).ready(function () {
 	}
 });
 ```
-- When the page loads, take the idx value from the URL and set it in the idx column, run the read command to query the data.
+- 페이지가 로드될 때 URL에서 idx 값을 가져와 idx 컬럼에 설정하고, read 명령을 실행하여 데이터를 조회합니다.
 
-## To modify customer information
+## 고객정보 수정 하기
 
-### 1. Add a modification button
+### 1. 수정 버튼 추가
 
 ```html
 <button type="button" id="btn_update">수정</button>
 ```
-- Add the Modify button.
+- 수정 버튼을 추가합니다.
 
-### 2. Add command and mapping
-
+### 2. command 및 mapping 추가
 ```js
 var bm = new BindModel({
 	command: {
@@ -180,20 +178,19 @@ var bm = new BindModel({
 	}
 });
 ```
--  Define modifications by adding the update command to the command.
--  In mapping, map the user_name, gender, and tel columns with the update command.
-### 3. Event registration
+-  command에 update 명령을 추가하여 수정 기능을 정의합니다.
+-  mapping에서 user_name, gender, tel 컬럼을 update 명령과 매핑합니다.
 
+### 3. 이벤트 등록
 ```js
 $('#btn_update').click(() => bm.command['update'].execute());
 ```
-- When the edit button is clicked, run the update command.
+- 수정 버튼이 클릭되면 update 명령을 실행합니다.
 
 
-## Full Source (Inquiry, Registration, Modification)
+## 전체 소스 (조회, 등록, 수정)
 
-### 1. Body area
-
+### 1. body  영역
 ```html
 <input type="hidden" id="idx"/>
 <div>
@@ -211,7 +208,7 @@ $('#btn_update').click(() => bm.command['update'].execute());
 <button type="button" id="btn_update">update</button>
 ```
 
-### 2. Script Area
+### 2. script 영역
 
 ```html
 <script>
@@ -294,4 +291,4 @@ $(document).ready(function () {
 </script>
 ```
 
-This code is a simple and intuitive example of using BindModel to establish binding between input fields and commands and interactions with servers. It contains all the elements needed to implement the ability to register, query, and modify customer information, and efficiently handles user input and data exchange between servers.
+이 코드는 BindModel 를 활용하여 간단하고 직관적으로 입력 필드와 명령 간의 바인딩 및 서버와의 상호작용을 설정하는 예시입니다. 고객 정보를 등록, 조회, 수정하는 기능을 구현하는 데 필요한 모든 요소를 포함하고 있으며, 사용자의 입력과 서버 간의 데이터 교환을 효율적으로 처리합니다.

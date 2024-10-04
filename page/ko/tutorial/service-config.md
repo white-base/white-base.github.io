@@ -1,9 +1,9 @@
 ---
 lang: ko
-title: "Configure Service objects"
+title: "서비스객체 구성"
 layout: single
 permalink: /ko/docs/service-config/
-date: 2024-10-01T1
+date: 2024-08-14T1
 toc: true
 toc_sticky: true
 sidebar:
@@ -12,11 +12,11 @@ sidebar:
 breadcrumbs: true
 ---
 
-Service objects make it easy to create 'BindModel' objects, and inheritance can separate common areas for increased reuse.
+서비스 객체를 사용하면 `BindModelAjax`객체를 쉽게 생성할 수 있으며, 상속으로 공통 영역을 분리하여 재사용성을 높일 수 있습니다.
 
-The 'BindModel' object can be accessed by the this.bindModel property in the callback function.
+콜백 함수에서 this.bindModel 속성으로 `BindModelAjax` 객체에 접근할 수 있습니다.
 
-Type: ServiceType
+타입 : ServiceType
 ```ts
 // items area
 type KeyType = 'none' | 'value' | 'text' | 'html' | 'prop' | 'attr' | 'css';
@@ -97,13 +97,13 @@ type ServiceType = {
 };
 ```
 
-# Service Object
+# 서비스 객체
 
-## Configuring the Default Area
+## 기본 영역 구성하기
 
-Configures the default callback function and server request information for the service object. 
+서비스객체의 기본 콜백함수와 서버요청 정보를 구성합니다. 
 
-Type: Default server request and default callback function
+타입 : 기본 서버요청 및 기본 콜백함수
 ```ts
 // Configuring Callback and Server Requests on Service Objects
 type ServiceType = {
@@ -119,76 +119,76 @@ type ServiceType = {
 	onExecuted?: (bindModel, bindCommand) => void,
 };
 ```
-- 'url' is the value of 'baseConfig.url'.
+- 'url' 은 `baseConfig.url` 값 입니다.
 
-Example: Basic
+예제 : 기본
 ```js
 var bm = new BindModel({
-	// Default Server Request
+	// 기본 서버 요청
 	baseConfig: { method: 'GET' },
 	url: '/user',
-	// Default callback function
+	// 기본 콜백함수
 	cbBaseBegin: function(cmd) { 
-		console.log ('default start callback); 
+		console.log('기본 시작 콜백'); 
 	},
 	cbBaseValid: function(view, cmd) {
-		console.log ('default validation callback);
+		console.log('기본 유효성 검사 콜백');
 		return true;
 	},
 	cbBaseBind: function(view, cmd, cfg) { 
-		console.log ('Basic Server Request Callback'); 
+		console.log('기본 서버 요청 콜백'); 
 	},
 	cbBaseResult: function(data, cmd, res) {
-		console.log ('Default Server Response Callback');
+		console.log('기본 서버 응답 콜백');
 		return data;
 	},
 	cbBaseOutput: function(vidw, cmd, res) => { 
-		console.log ('Default Response Output Callback'); 
+		console.log('기본 응답 출력 콜백'); 
 	},
 	cbBaseEnd: function(status, cmd, res) => { 
-		console.log ('Default Termination Callback'); 
+		console.log('기본 종료 콜백'); 
 	},	
 });
 ```
 
-Example: Basic Configuration by Method
+예제 : 메소드를 통한 기본 구성
 ```js
 var bm = new BindModel();
 
-// Default Server Settings
+// 기본 서버 설정
 bm.baseConfig = { method: 'GET', url: '/user' };
 bm.cbBaseBegin = function(cmd) { 
-	console.log ('default start callback); 
+	console.log('기본 시작 콜백'); 
 };
 
-// Default callback function
+// 기본 콜백함수
 bm.cbBaseValid: function(view, cmd) {
-	console.log ('default validation callback);
+	console.log('기본 유효성 검사 콜백');
 	return true;
 };
 bm.cbBaseBind: function(view, cmd, cfg) { 
-	console.log ('Basic Server Request Callback'); 
+	console.log('기본 서버 요청 콜백'); 
 };
 bm.cbBaseResult: function(data, cmd, res) {
-	console.log ('Default Server Response Callback');
+	console.log('기본 서버 응답 콜백');
 	return data;
 };
 bm.cbBaseOutput: function(vidw, cmd, res) => { 
-	console.log ('Default Response Output Callback'); 
+	console.log('기본 응답 출력 콜백'); 
 };
 bm.cbBaseEnd: function(status, cmd, res) => { 
-	console.log ('Default Termination Callback'); 
+	console.log('기본 종료 콜백'); 
 };
 ```
-- Same as the service object configured above.
+- 위의 구성한 서비스 객체와 동일합니다.
 
-The default configuration can be set by command, and 'command' has a higher priority than the default configuration.
+기본 구성은 commnad 별로 설정이 가능하며, 기본 구성 보다  'command' 의 우선순위가 높습니다.
 
-## Configuring a Table Area
+## 테이블 영역 구성하기
 
-Configures additional table information for service objects. 
+서비스객체의 추가 테이블 정보를 구성합니다. 
 
-Type: Tables
+타입 : tables
 ```ts
 // Configuring Tables in a Service Object
 type ServiceType = {
@@ -196,27 +196,26 @@ type ServiceType = {
 };
 ```
 
-The 'BindModel' object automatically generates and uses the 'MetaTable' named 'first'. Set the additional table to the 'tables' property.
-
+`BindModelAjax` 객체는 'first' 라는 이름의 `MetaTable`을 자동 생성하여 사용합니다. 추가 테이블을 'tables' 속성으로 설정합니다.
 
 ```js
 var bm = new BindModel({
     tables: ['second', 'third']
 });
 
-// Refer to the main table
+// 기본 테이블 참조
 // bm.first === bm._tables['first']  // true
 // bm.first === bm._tables[0]        // true
 
-// See Additional Table
+// 추가 테이블 참조
 // bm.second === bm._tables['second'] // true
 // bm.second === bm._tables[1]        // true
 // bm.third === bm._tables['third']   // true
 // bm.third === bm._tables[2]         // true
 ```
-- Use when you need an additional table.
+- 추가적인 테이블이 필요할 경우에 사용합니다.
 
-Example: Configuring a Table by Method
+예제 : 메소드를 통한 테이블 구성
 ```js
 var bm = new BindModel();
 
@@ -224,20 +223,19 @@ var bm = new BindModel();
 bm.addTable('second');
 bm.addTable('third');
 ```
-- Same as the service object configured above.
+- 위의 구성한 서비스 객체와 동일합니다.
 
+## 아이템 영역 구성하기
 
-## Configuring the Item Area
+서비스객체의 컬럼 원시값을 구성합니다.
 
-Configures the column raw value for the service object.
+### 컬럼의 원시값 설정
 
-### Setting Raw Values for Columns
+- items 각 요소는 컬럼의 원시값을 입니다. 
+- items 의 키값이 `string, number, boolean, null` 타입일 경우, 컬럼의 value에 설정됩니다. 
+- items 의 키값이 `object` 타입일 경우, 컬럼의  프로퍼티 값으로 사용됩니다.
 
-- items Each element has the raw value of the column. 
-- If the key value of items is of type 'string, number, boolean, null', it is set to the value of the column. 
-- If the key value of items is of the 'object' type, it is used as the property value of the column.
-
-Type: items
+타입 : items
 ```ts
 type KeyType = 'none' | 'value' | 'text' | 'html' | 'prop' | 'attr' | 'css';
 type SelectorType = { key: string, type: KeyType };
@@ -261,93 +259,94 @@ type ColumnType = {
 type Itemtype = {
 	[key: string]: string | number | boolean | ColumnType
 };
-// Configuring items in a service object
+// 서비스 객체에서 items 구성
 type ServiceType = {
 	items?: ItemType
 };
 ```
 
-### item naming rule
-- Column Name : The column is registered in the default table.
-- Table name.Column name: The column is registered in the target table.
-### items property description
-- 'string, number, boolean, null ': The raw value is set to the value of the column.
-- selector : Selector to use when importing or setting the value of a column from DOM.
-- setter : A function to use when setting an external value.
-- getter : A function to use when importing values from outside.
-- required : Sets whether the column value is required or not.
-- setFilter : A filter function to use when setting the value.
-- getFilter —Filter function to use to import value.
-- constructs —Set the constraints of the value with a regular expression or user function, used for validation.
+### item 네이밍 규칙
+- 컬럼명 : 기본테이블에 컬럼을 등록됩니다.
+- 테이블명.컬럼명 : 대상 테이블에 컬럼을 등록됩니다.
+
+### items 속성 설명
+- `string, number, boolean, null `: 원시값으로 컬럼의 value 에 설정됩니다.
+- selector : 컬럼의 value 를 DOM 에서 가져오거나 설정할 때 사용할 선택자입니다.
+- setter : 외부에 value 을 설정할 때 사용할 함수입니다.
+- getter : 외부에서 value 을 가져올 때 사용할 함수입니다.
+- required : 컬럼 value 의 필수 여부를 설정합니다.
+- setFilter : value 를 설정할 때 사용할 필터 함수입니다.
+- getFilter : value 를 가져올 때 사용할 필터 함수입니다.
+- constraints : 정규식 또는 사용자 함수로 value 의 제약조건을 설정하며, 유효성 검사에 사용됩니다.
 
 [[54. HTML Column Class-B|Refer to HTML Column]]
 
 
-Example: items
+예제 : items
 ```js
 var bm = new BindModel({
-	// Create additional tables
+	// 추가 테이블 생성
 	tables: 'second',
 	
-	// Create an item
+	// 아이템 생성
 	items: {
 		aa: 'Cat',
 		'second.bb': 10,
 		'second.cc': true,
 		dd: {
 			selector: { key: '#U_ID', type: 'value' },  // 컬럼의 selector 설정
-			setter: (val) => {/*Outside setting area*/}, // Setter for column
-			getter: () => { return 'external value'; }, // set getter for column
+			setter: (val) => {/*외부에 설정 영역*/},        // 컬럼의 setter 설정
+			getter: () => { return '외부값'; },           // 컬럼의 getter 설정
 		},
 		ee: {
-			required: true, // required setting of column
-			setFilter: (val) => {/*Outside setting area*/}, // SetFilter on column
-			getFilter: () => { return 'external value'; }, // set getFilter for column
+			required: true,                             // 컬럼의 required 설정
+			setFilter: (val) => {/*외부에 설정영역*/},      // 컬럼의 setFilter 설정
+			getFilter: () => { return '외부값'; },        // 컬럼의 getFilter 설정
 		},
 		ff: {
-			constructs: {reg: /abc/, msg: 'Failed to match!' } // Set Constraints for Column
+			constraints: { reg: /abc/, msg: '매칭되지 실패!' } // 컬럼의 제약조건 설정
 		}
 	}
 });
 ```
-- The item aa' is registered as a column in the default table, and 'Cat' is set in the value.
-- The item 'bb' registers as a column in the second table, and sets value to 10.
-- The cc' item registers as a column in the second table and sets true to the value.
+- aa' 아이템은 기본테이블에 컬럼으로 등록하고, value 에 'Cat' 을 설정합니다.
+- bb' 아이템은 second 테이블에 컬럼으로 등록하고, value 에 10 을 설정합니다.
+- cc' 아이템은 second 테이블에 컬럼으로 등록하고, value 에 true 을 설정합니다.
 
-Example: Configuring an Item Using the Method
+예제 : 메소드를 통한 아이템 구성
 ```js
 var bm = new BindModel();
 
-// Create additional tables
+// 추가 테이블 생성
 bm.addTable('second');
 
-// Create an item
+// 아이템 생성
 bm.items.add('aa', 'Cat');
 bm.items.add('second.bb', 10);
 bm.items.add('second.cc', true);
 bm.items.add('dd', {
 	selector: { key: '#U_ID', type: 'value' },
-	setter: function(val) {/*external setting area*/},
+	setter: function(val) {/*외부에 설정 영역*/},
 	getter: function() { return '외부값'; }, 
 });
 bm.items.add('ee', {
 	required: true,
-	setFilter: function(val) {/*external setting*/},
+	setFilter: function(val) {/*외부에 설정영역*/},
 	getFilter: function() { return '외부값'; },
 });
 bm.items.add('ff', {
-	constructs: {reg: /abc/, msg: 'Failed to match!' }
+	constraints: { reg: /abc/, msg: '매칭되지 실패!' }
 });
 ```
-- Same as the service object configured above.
+- 위의 구성한 서비스 객체와 동일합니다.
 
-Items can also help manage data when registering the same column in multiple tables.
+또한 items 은 여러 테이블에 동일한 컬럼을 등록할 때 유용하게 데이터를 관리할 수 있습니다.
 
-## Configuring Command Areas
+## 명령 영역 구성하기
 
-Configures command information for a service object.
+서비스객체의 command 정보를 구성합니다.
 
-Type: command
+타입 : command
 ```ts
 type CmdValueType = {
 	outputOption?: 0 | 1 | 2 | 3,  // 별칭 : outOpt
@@ -366,84 +365,84 @@ type CmdValueType = {
 type CommandType = {
 	[key: string]: CmdValueType
 };
-// Configuring a command in a service object
+// 서비스 객체에서 command 구성
 type ServiceType = {
 	command?: CommandType,
 };
 ```
-- For 'CmdValueType.url', see the value 'CmdValueType.config.url'.
-- 'CommandType' key is the name of the 'command' to be added.
+- `CmdValueType.url` 은 `CmdValueType.config.url` 값을 참조합니다.
+- `CommandType` key 는 추가할 'command' 의 이름 입니다.
 
-### Command Type Description
--  outputOption —Specifies how the view is output; the default is 0. 
--  config : Same as the setting object of axios.
--  url : 'config.url' value, setting the URL path to request via axios.
-- views —Name of the output view (MetaView) to be added.
-- cbBegin : This is the callback function before the start.
-- cbValid : Validation callback function.
-- cbBind : This is the server request callback function.
-- cbResult —The server response callback function.
-- cbOutput —Answer output callback function.
-- cbEnd —Callback function before termination.
+### 명령 타입 설명
+-  outputOption : 뷰 출력 방식을 지정합니다. 기본값은 0입니다. 
+-  config : axios의 설정 객체와 동일합니다.
+-  url : `config.url`값이며, axios을 통해 요청할 URL 경로를 설정합니다.
+- views : 추가할 출력 뷰(MetaView) 이름 입니다.
+- cbBegin : 시작 전 콜백함수 입니다.
+- cbValid : 유효성 검사 콜백함수 입니다.
+- cbBind : 서버 요청 콜백함수 입니다.
+- cbResult : 서버 응답 콜백함수 입니다.
+- cbOutput : 응답 출력 콜백함수 입니다.
+- cbEnd : 종료 전 콜백함수 입니다.
 
 [24. Bind Command Composition - C#Callback (Attribute)]
-Example: command
+예제 : command
 ```js
 var bm = new BindModel({
 	command: {
 		create: {},
 		read: {
-			outputOption: 3, // Set data to column value (specified column)
-			config: {method: 'GET' }, // GET request setting
-			cbEnd: function() { alarm('Normal Processed') ; } // Callback function after processing is completed
+			outputOption: 3,  // 데이터를 컬럼값에 설정하기 (지정한 컬럼)
+			config: { method: 'GET' },  // GET 요청 설정
+			cbEnd: function() { alert('정상처리되었습니다.'); } // 처리 완료 후 콜백 함수
 		},
 		update: {
-			views: ['two'], // adding 'two' views
-			url: '/user' // URL path to request
+			views: ['two'],  // 'two' 뷰를 추가
+			url: '/user'     // 요청할 URL 경로
 		}
 	}
 });
 ```
-- I created "create" 
-	- Set the default output option = 0.
-- We created "read"
-	- Set output option = 3
-	- Set the config server request and
-	- Sets the cbEnd callback function.
-- Create 'update' and
-	- Set the default output option = 0 and
-	- I'll add "two" to the output view
-	- Set the server request url.
+- 'create'  를 생성하고 
+	- 기본값 outputOption = 0 을 설정합니다.
+- 'read' 를 생성하고
+	- outputOption = 3 을 설정하고
+	- config 서버 요청을 설정하고
+	- cbEnd 콜백함수를 설정합니다.
+- 'update' 를 생성하고
+	- 기본값 outputOption = 0 설정하고
+	- 출력뷰 'two'을 추가하고
+	- 서버요청 url 을 설정합니다.
 
-Example: Configuring Commands by Method
+예제 : 메소드를 통한 명령 구성
 ```js
 var bm = new BindModel();
-// command generation
+
+// 명령 생성
 bm.addCommand('create');
 bm.addCommand('read');
 bm.addCommand('update');
 
-// Set the read command
+// read 명령 설정
 bm.commmand['read'].outputOption = 3;
 bm.commmand['read'].config = { method: 'GET' };
 bm.commmand['read'].cbEnd = { 
-	alert('Normal Processed');
+	alert('정상처리되었습니다.');
 };
 
-// update command setting
+// update 명령 설정
 bm.commmand['update'].newOutput('two');
 bm.commmand['update'].url = '/user';
 ```
-- Same as the service object configured above.
+- 위의 구성한 서비스 객체와 동일합니다.
 
+## 매핑 영역 구성하기
 
-## Configuring Mapping Areas
+서비스객체에서 items 과 'command' 의 매핑을 구성합니다.
 
-Configure the mapping of items and 'command' in the service object.
-
-Type: Mapping
+타입 : mapping
 ```ts
-typeColumnName = string; // 'item name' | 'column name' | 'table name.column name';
+type ColumnName = string;            // '아이템명' | '컬럼명' | '테이블명.컬럼명';
 type CommandName = '$all' | string;  // string = '명령 이름'
 type ViewName = 'valid' | 'bind' | 'output' | '$all' | string; // 추가 뷰 이름
 type MappingType = {
@@ -451,48 +450,48 @@ type MappingType = {
 		[key: CommandName]: ViewName | ViewName[]
 	}
 };
-// Configuring Mapping on a Service Object
+// 서비스 객체에서 mapping 구성
 type ServiceType = {
 	mapping?: MappingType
 };
 ```
 
-### Mapping Rules
-- Column Name 
-	- 'Column Name' : The column in the base table is selected.
-	- ''Table name.Column name' : A column for the specified table is selected. (Create when none exists) #REVIEW
-- Command Name 
-	- ' 'command name' : The specified command is selected.
-	- '$all' : Full command is selected.
-- View Name (ViewName)
-	- 'valid', 'bind', 'output' : Map to the selected MetaView (multiple is specified as array)
-	- '$all' : Map to the entire MetaView (including added output)
+### 매핑 규칙
+- 컬럼명(ColumnName) 
+	- `'컬럼명'` : 기본테이블의 컬럼이 선택됩니다.
+	- `'테이블명.컬럼명'` : 지정한 테이블의 컬럼이 선택됩니다. (없을시 생성) #REVIEW
+- 명령명(CommandName) 
+	- `'명령명'` : 지정한 command 가 선택됩니다.
+	- `'$all'` : 전체 command 가 선택됩니다.
+- 뷰명(ViewName)
+	- `'valid', 'bind', 'output'` : 선택된 MetaView 에 매핑됩니다. (복수는 배열로 지정)
+	- '`$all'` : 전체 MetaView 에 매핑됩니다.  (추가된 output 도 포함됨)
 	
 [00. Column mapping]
 
-Example: Mapping
+예제 : mapping
 ```js
 var bm = new BindModel();
 bm.setService({
-	// Table Area
+	// 테이블 영역
 	tables: ['second'],
-	// Item Area
+	// 아이템 영역
 	items: {
 		aa: '',
 		bb: '',
 		cc: '',
 		dd: ''
 	},
-	// command area
+	// 명령 영역
 	command: {
 		one: {},
 		two: {},
 	},
-	// Mapping area
+	// 매핑 영역
 	mapping: {
-		aa: { $all: ['valid']}, // Register 'aa' in the 'valid' view of all commands
-		bb: {one: ['bind']}, // Register 'bbb' in 'bind' view of 'one' command
-		'second.cc ': {two: ['output'] } // Register 'cc' in 'output' view of 'two' command
+		aa: { $all: ['valid'] }, // 모든 명령의 'valid' 뷰에 'aa' 등록
+		bb: { one: ['bind'] },   // 'one' 명령의 'bind' 뷰에 'bb' 등록
+		'second.cc': { two: ['output'] }  // 'two' 명령의 'output' 뷰에 'cc' 등록
 	}
 });
 
@@ -506,69 +505,69 @@ bm.setService({
 // bm.cmd['two'].bind.columns.count == 0
 // bm.cmd['two'].output.columns.count  == 1 ('cc')
 ```
-- Items 'aa' are registered in the default table and mapped to the valid (MetaVeiw) of all commnads.
-- Items 'bbb' are registered in the default table and mapped to the bind (MetaVeiw) of the 'one' command.
-- The 'cc' item is registered in the 'second' table and mapped to the output (MetaVeiw) of the 'two' command.
+- 'aa' 아이템은 기본 테이블에 등록 되고, 모든 commnad 의 valid(MetaVeiw)에 매핑 됩니다.
+- 'bb' 아이템은 기본 테이블에 등록 되고, 'one' commnad 의 bind(MetaVeiw)에 매핑 됩니다.
+- 'cc' 아이템은 'second' 테이블에 등록 되고, 'two' commnad 의 output(MetaVeiw)에 매핑 됩니다.
 
-Type: setMapping()
+타입 : setMapping()
 ```ts
 type setMapping(
 	mapping: PropertyCollection | object, 
 	bTable?: MetaTable | string
 ) => void;
 ```
-- mapping : The collection to be mapped.
-- bTable : Default table to be mapped, default is \_baseTable.
+- mapping : 매핑할 컬렉션입니다.
+- bTable : 매핑할 기본테이블 입니다. 기본값은 \_baseTable 입니다.
 
-Example: Configuring Mapping by Method
+예제 : 메소드를 통한 매핑 구성
 ```js
 var bm = new BindModel();
 
-// Create additional tables
+// 추가 테이블 생성
 bm.addTable('second');
 
-// Create an item
+// 아이템 생성
 bm.items.add('aa', '');
 bm.items.add('bb', '');
 bm.items.add('cc', '');
 bm.items.add('dd', '');
 
-// command generation
+// 명령 생성
 bm.addCommand('one');
 bm.addCommand('two');
 
-// Item mapping
+// 아이템 매핑
 bm.setMapping({
-	aa: { $all: ['valid']}, // Register 'aa' in the 'valid' view of all commands
-	bb: {one: ['bind']}, // Register 'bbb' in 'bind' view of 'one' command
-	'second.cc ': {two: ['output'] } // Register 'cc' in 'output' view of 'two' command
-})
+	aa: { $all: ['valid'] }, // 모든 명령의 'valid' 뷰에 'aa' 등록
+	bb: { one: ['bind'] },   // 'one' 명령의 'bind' 뷰에 'bb' 등록
+	'second.cc': { two: ['output'] }  // 'two' 명령의 'output' 뷰에 'cc' 등록
+});
 ```
-- Same as the service object configured above.
+- 위의 구성한 서비스 객체와 동일합니다.
 
-You can efficiently map the columns required for a specific view of each command, which helps to maintain consistency in data processing and improve management convenience.
+각 명령의 특정 뷰에 필요한 컬럼들을 효율적으로 매핑할 수 있으며, 이를 통해 데이터 처리의 일관성을 유지하고 관리의 편의성을 높일 수 있습니다.
 
-## Configuring a Function Area
+## 함수 영역 구성하기
 
-Configures the user function of the service object.
+서비스객체의 사용자함수를 구성합니다.
 
-Type : fn
+타입 : fn
 ```ts
 type fnType = {
 	[key: string]: Function;
 };
-// Configuring fn in a service object
+// 서비스 객체에서 fn 구성
 type ServiceType = {
 	fn?: fnType
 };
 ```
-- The key is the user function name.
+- key 는 사용자함수명입니다.
 
-Example: fn
+예제 : fn
 ```js
 var bm = new BindModel({
 	cbBaseBegin: function(cmd) {
-		Access the parameter at cmd._model.fn.ecCreate(); //cmd
+		Access the parameter at cmd._model.fn.ecCreate(); // cmd 에서 파라메터로 접근
 		this.bindModel.fn.sum(1, 1); // this.bindModel로 접근
 	},
 	command: {
@@ -586,49 +585,47 @@ var bm = new BindModel({
 	}
 });
 
-// Register for an event
+// 이벤트 등록
 $('#btn_create').click(function() {
 	bm.fn.execCreate();
 });
-
 ```
-- You can access the BindModel object with the 'parameter' or 'this.bindModel' properties in the callback function.
+- 콜백함수에서 `파라메터` 또는 `this.bindModel` 속성으로 BindModelAjax 객체에 접근할 수 있습니다.
 
-Example: Configuring a Method as a Function
+예제 : 메소드를 함수 구성
 ```js
 var bm = new BindModel();
 
-// Configuring Functions
+// 함수 구성
 bm.fn.add('sum', function(a, b) {return a + b});
 bm.fn.add('execCreate', function() {
 	this.bindModel.cmd.read.execute(); // this.bindModel 로 접근
 });
 
-// Common callback configuration
+// 공통 콜백 구성
 bm.cbBaseBegin = function(cmd) {
-	cmd._model.fn.ecCreate(); // Access to the cmd parameter
+	cmd._model.fn.execCreate();  // cmd 파라메터로의 접근
 	this.bindModel.fn.sum(1, 1); // this.bindModel 로 접근
 };
 
-// Configuring Commands
+// 명령 구성
 bm.addCommand('create');
 bm.command['create'].cbEnd = function() {
 	this.bindModel.fn.sum(1, 2);  // this.bindModel 로 접근
 }
 
-// Register for an event
+// 이벤트 등록
 $('#btn_create').click(function() {
-	bm.fn.execCreate(); // Access functions from outside
+	bm.fn.execCreate();  // 외부에서 함수 접근
 });
 ```
-- Same as the service object configured above.
+- 위의 구성한 서비스 객체와 동일합니다.
 
-Each area can increase the degree of engagement and increase reusability and maintenance.
+각각 영역은 결합도를 높이고, 재사용성과 유지보수성을 높일 수 있습니다.ty and maintenance.
 
+## 전처리 영역 구성하기
 
-## Configuring the Preprocessing Area
-
-Configures preprocessing information for service objects, primarily used to automate service objects.
+서비스객체의 전처리 정보를 구성합니다. 주로 서비스객체를 자동화 할 때 사용합니다.
 
 타입 : init(), preRegister, preCheck, preReady
 ```ts
@@ -639,26 +636,26 @@ type preCheck = (bindModel) => boolean;
 type preReady = (bindModel) => void; 
 ```
 
-### Preprocessing Call Flow
+### 전처리 호출 흐름
 
-1. The init() mesodle calls are preRegister, preCheck, and preReady sequentially.
-2. If you return false from preCheck, preReady is called cbFail without calling.
-3. If you return true from preCheck, a preReady call is made.
+1. init() 메소들 호출하면 preRegister, preCheck, preReady 순차적으로 호출됩니다.
+2. preCheck 에서 false 을 리턴하면 preReady 는 호출하지 않고 cbFail 을 호출됩니다.
+3. preCheck 에서 true 을 리턴하면 preReady 호출됩니다.
 
-Preprocessing is used for interaction between service objects and screen pages or selector validation.
+전처리는 서비스객체와 화면 페이지와의 상호작용 또는 selector 유효성 검사에 활용됩니다.
 
-Example: Pre-processing
+예제 : 전처리
 ```js
 var bm = new BindModel({
-	preRegister: function(bindModel) { 
-		// Pre-processing: Before the inspection
+preRegister: function(bindModel) { 
+		// 전처리 : 검사전
 	},
 	preCheck: function(bindModel) {
-		// Pre-processing: Inspection
+		// 전처리 : 검사
 		if (bm.checkSelector().length === 0) return true;
 	},
 	preReady: function(bindModel) { 
-		// Pre-processing: Ready
+		// 전처리 : 준비 완료
 		bindModel.command['test'].execute();
 	},
 });
@@ -667,50 +664,50 @@ $(document).ready(function () {
 	bm.init();
 });
 ```
-- When the page is ready, call the init() method to inspect the DOM and run the 'test' command.
+- 페이지가 준비되면 init() 메소드를 호출해서 DOM 을 검사하고, 'test' command 를 실행합니다.
 
-Example: Pre-processing a Method
+예제 : 메소드를 전처리 구성
 ```js
 var bm = new BindModel();
 // BindModel Settings...
 
 bm.preRegister = function(bindModel) { 
-	// Pre-processing: Before the inspection
+	// 전처리 : 검사전
 };
 bm.preCheck = function(bindModel) { 
-	// Pre-processing: Inspection
+	// 전처리 : 검사
 	if (bm.checkSelector().length === 0) return true;
 };
 bm.preReady = function(bindModel) { 
-	// Pre-processing: Ready
+	// 전처리 : 준비 완료
 	bindModel.command['test'].execute();
 };
 
 $(document).ready(function () {
 	bm.init();
 });
-
 ```
-- Same as the service object configured above.
+- 위의 구성한 서비스 객체와 동일합니다.
 
-Pre-processing areas can be utilized if automation is required.
+전처리 영역은 자동화가 필요할 경우 활용할 수 있습니다.
 
-# function
 
-## To inject service objects
+# 기능
 
-When creating a 'BindModel' object, you can either pass parameters or call the setService() method to inject service objects. 
+## 서비스 객체 주입하기
 
-Type: setservice()
+`BindModelAjax` 객체를 생성할 때 파라미터 전달하거나, setService() 메소드를 호출하여 서비스 객체를 주입할 수 있습니다. 
+
+타입 : setservice()
 ```ts
 type setService = (service: IService, isTypeCheck: boolean = false) => void;
 ```
--  service —The service object to be injected.
-- isTypeCheck : Sets whether to perform a type check; the default is false.
+-  service : 주입할 서비스 객체입니다.
+- isTypeCheck : 타입 검사를 할지 여부를 설정합니다. 기본값은 false 입니다.
 
-As a setService() method, it separates service objects to enhance readability and maintenance of code.
+setService() 메소드로 사용은 서비스객체 분리하여 코드의 가독성과 유지보수성을 높여줍니다.
 
-Example: Injection via Creator
+예제 : 생성자를 통한 주입
 ```js
 var bm1 = new BindModel({
 	items: {
@@ -739,10 +736,9 @@ var bm1 = new BindModel({
     },
 });
 ```
-
-Example: Inject with setService() Method
+예제 : setService() 메소드로 주입
 ```js
-// items, fn configuration
+// items, fn 구성
 var svcItems = {
 	items: {
         aa: 'Cat',
@@ -754,7 +750,7 @@ var svcItems = {
     }
 };
 
-// Other configurations
+// 기타 구성
 var svcCommon = {
     baseConfig: { method: 'GET' },
     url: '/user',
@@ -772,26 +768,26 @@ var svcCommon = {
     },
 };
 
-barbm = new BindModel(); // Injection by Parameters
+barbm = new BindModel(); // 파라메터를 통한 주입
 
 bm2.setService(svcItems);
 bm2.setService(svcCommon);
 ```
-- Same as the service object configured above.
-- In the first setService() method call, set items, fn to service.
-- The second setService() method call sets up services such as command, mapping, and so on.
+- 위의 구성한 서비스 객체와 동일합니다.
+- 첫번째 setService() 메소드 호출에서는 items, fn 을 서비스를 설정합니다.
+- 두번째 setService() 메소드 호출에서는 command, mapping 등 서비스를 설정합니다.
 
-Duplicate settings retain the last-minute value, and are added for event values.
+중복된 설정은 마직막 값을 유지되며, 이벤트 값의 경우는 추가됩니다.
 
-Areas 'items', 'fn' have low dependence on other areas.
-Service objects allow you to manage common settings and increase reusability.
+'items', 'fn' 영역 다른 영역에 대한 의존성이 낮습니다.
+서비스 객체를 통해 공통 설정을 관리하고, 재사용성을 높일 수 있습니다. 
 
-## Defining a service class
+## 서비스 클래스로 정의하기
 
-### Create a service object through inheritance
+### 상속을 통한 서비스객체 생성
 
-You can create a service in a class to increase the reuse of the common part of the code.
-Service classes can be used in various structures.
+서비스를 클래스로 제작하여 공통 부분을 코드의 재사용성을 높일 수 있습니다.
+서비스 클래스를 다양한 구조로 활용할 수 있습니다.
 
 common-svc.js
 ```js
@@ -804,7 +800,7 @@ class CommonService() {
 	};
 }
 ```
-- Common areas were created as common service classes.
+- 공통으로 사용되는 영역을 공통서비스 클래스로 작성하였습니다.
 
 member-svc.js
 ```js
@@ -839,7 +835,7 @@ class MemberService(suffix) extends CommonService {
 	}
 };
 ```
-- The suffix parameter is a prefix for preventing conflicts in the selector name.
+- suffix 파라메터는 selector 이름의 충돌을 방지를 접두사입니다.
 
 member.html
 ```html
@@ -859,7 +855,7 @@ member.html
 
 	var meb = new _L.BindModel(new MemberService());
 	
-	meb.url = 'http://SEVER_URL'; // Set the request path.
+	meb.url = 'http://SEVER_URL'; // 요청경로를 설정합니다.
 	meb.preReady = function(bindModel) {
 		$('#btn_Create').click(bindModel.command.execute());
 	};
@@ -870,9 +866,9 @@ member.html
 
 </script>
 ```
-- When the page is ready, the init() method is called to validate the selector in preReady.
-- When you click the 'Add' button, run command.create.execute() to bind the server request result to the screen.
+- 페이지를 준비가 되면 init() 메소드 호출되어 preReady 에서  selector 유효성 검사를 합니다.
+- '추가' 버튼 클릭시 command.create.execute() 실행하여, 서버요청 결과를 화면에 바인딩합니다.
 
-Easy to manage common parts such as paging processing on the screen.
+화면의 paging 처리 같은 공통 부분을 관리하기에 용이합니다.
 
 

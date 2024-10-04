@@ -59,10 +59,10 @@
 <loc>http://localhost:4000/ko/docs/callback-lifecycle/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/en/categories/</loc>
+<loc>http://localhost:4000/page/en/tutorial/category-archive/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/en/categories/</loc>
+<loc>http://localhost:4000/page/ko/tutorial/category-archive/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/ko/docs/core/</loc>

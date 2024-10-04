@@ -1,6 +1,6 @@
 ---
 lang: ko
-title: "Configure Command"
+title: "BindCommand 구성"
 layout: single
 permalink: /ko/docs/bind-commnad-config/
 date: 2024-10-01T1
@@ -11,54 +11,55 @@ sidebar:
 
 breadcrumbs: true
 ---
-'Bindcommand' is a bundle of associated 'MetaView' and works as an execute() method.
 
-### Key Features
+`BindCommand` 는 연관된 `MetaView` 의 묶음으로 execute() 메소드로 작동합니다.
 
-- Flow control: Flow control can be performed with a step-by-step callback function.
-- Add column: Add 'HTML Column' object (column reference value)
-- Response Management : Binds the server response to 'MetaView'.
-- Validation : Validates with column constraint settings.
-### Key Properties
+### 주요 기능
 
-- 'outputOption' : This is a method of calling output (MetaView) depending on the option.
-- 'url' : The path 'axios.url'.
-- 'config' : 'axios' config object.
-- 'valid' : This is a validation 'MetaView'.
-- 'bind' : This is the 'MetaView' request from the server.
-- 'output' : This is the server's response 'MetaView'. 
-- '\_outputs' : A collection that controls 'MetaView' associated with the output.
-- '\_Model' : Point to 'BindModel' object (owner)
+- 흐름제어 : 단계별 콜백함수로 흐름 제어 할 수 있습니다.
+- 컬럼 추가 : `HTMLColumn` 객체의 추가합니다.(컬럼 참조값)
+- 응답 관리 : 서버 응답을 `MetaView` 로 바인딩 합니다.
+- 유효성 검사 : 컬럼 제약조건 설정으로 유효성 검사를 합니다.
+### 주요 속성
 
-### Callback (Properties)
+- 'outputOption' : 옵션에 따라 output(MetaView) 불러오는 방식입니다.
+- 'url' : `axios.url` 경로 입니다.
+- 'config' : `axios` config 객체 입니다.
+- 'valid' : 유효성 검사하는 `MetaView` 입니다.
+- 'bind' : 서버에 요청하는 `MetaView` 입니다.
+- 'output' : 서버의 응답받는 `MetaView` 입니다. 
+- '\_outputs' : 출력과 관련된 `MetaView` 를 제어하는 컬렉션입니다.
+- '\_model' : `BindModel` 객체를 가르킵니다 (소유자)
 
-- 'cbBegin' : This is the callback function before the start.
-- 'cbValid' : Validation callback function.
-- 'cbBind' : This is the server request callback function.
-- 'cbResult' : This is the server response callback function.
-- 'cbOutput' : Output callback function.
-- 'cbEnd' : This is the callback function before termination.
+### 콜백(속성)
 
-### Events
+- 'cbBegin' : 시작 전 콜백함수 입니다.
+- 'cbValid' : 유효성 검사 콜백함수 입니다.
+- 'cbBind' : 서버 요청 콜백함수 입니다.
+- 'cbResult' : 서버 응답 콜백함수 입니다.
+- 'cbOutput' : 출력 콜백함수 입니다.
+- 'cbEnd' : 종료 전 콜백함수 입니다.
 
-- 'onExecute' : Invoke for the first time when executing execute().
-- 'onExecuted' : Last call when executing execute().
+### 이벤트
+
+- `onExecute` :   execute() 실행시 처음으로 호출합니다.
+- `onExecuted` : execute() 실행시 마지막으로 호출합니다.
 - 
-### Key Methods
+### 주요 메소드
 
-- execute(): Execute the 'Bindcommand' object.
-- addColumn(): Add 'HTMLColumn' object.
-- addColumnValue(): Add 'HTMLColumn' object and set 'value' value.
-- setColumn(): Register the specified column as a reference in 'MetaView'.
-- release() : Unreferences to the specified MetaView.
-- newOutput(): Add the response output 'MetaView' (\_outputs)
-- removeOptput(): Remove the output 'MetaView' (\_outputs)
+- execute() : `BindCommand` 객체를 실행합니다.
+- addColumn() : `HTMLColumn` 객체를 추가합니다.
+- addColumnValue() : `HTMLColumn` 객체를 추가하고, 'value' 값을 설정합니다.
+- setColumn() : 지정한 컬럼을 `MetaView` 에 참조로 등록합니다.
+- release() : 지정한 MetaView 에 참조를 해제합니다.
+- newOutput() : 응답 출력 `MetaView` 을 추가합니다. (\_outputs)
+- removeOptput() : 출력 `MetaView` 를 제거합니다. (\_outputs)
 
-## Setting up a per-command server request
+## 명령별 서버 요청 설정하기
 
-### Request path by command
+### 명령별 요청 경로
 
-'url' is the url path you request from the server. If there is no value, it will be replaced by 'baseUrl'.
+'url' 은 서버에 요청하는 url 경로 입니다. 값이 없으면 'baseUrl' 으로 대체됩니다.
 
 ```js
 var bm = new BindModel();
@@ -69,26 +70,26 @@ bm.addCommand('cmdB');
 bb.command['cmdA'].url = '/user/1';
 bb.command['cmdB'].url = '/list';
 ```
-- command 'cmdA' and 'cmdB' have different paths.
+- command 'cmdA', 'cmdB'는 다른 경로를 가집니다.
 
-#### Set dynamic url
+#### 동적 url 설정하기
 
-Sometimes it is necessary to dynamically change the request path (url) depending on a specific command. It can be easily set up through the callback function of the BindModel object.
+때로는 특정 작업(command)에 따라 요청 경로(url)를 동적으로 변경해야 할 때가 있습니다. BindModelAjax 객체의 콜백 함수를 통해서 쉽게 설정할 수 있습니다.
+
  ```js
  var idx = 1;
  bb.command['cmdA'].cbBegin = function(cmd) {
 	 cmd.url = `/user/${idx}`;
  };
 ```
-### Request configuration (axios)
+### 요청 환경 설정(axios)
 
-Set the config of the axios for http communication.
+http 통신을 위한 axios 의 config 를 설정합니다.
 #TODO
 
+## 명령별 이벤트 설정하기
 
-## Setting up events by command
-
-Command-by-command event setting is a feature that allows you to perform various tasks by calling specific events when you execute the execute() method.
+명령별 이벤트 설정은 execute() 메서드를 실행할 때 특정 이벤트를 호출하여 다양한 작업을 수행할 수 있도록 하는 기능입니다.
 
 타입 : onExecute, onExecuted
 ```ts
@@ -96,10 +97,10 @@ Command-by-command event setting is a feature that allows you to perform various
 type onExecute = (model: BindModel, cmd: BindCommand) => void; 
 type onExecuted = (model: BindModel, cmd: BindCommand) => void; 
 ```
-- onExecute : Called the first time the execute() method is executed.
-- onExecuted —Last called after the execute() method is executed.
+- onExecute : 해당 execute() 메서드가 처음 실행될 때 호출됩니다.
+- onExecuted :  해당 execute() 메서드가 실행된 후 마지막으로 호출됩니다.
 
-These event types take the BindModel and Bindcommand objects as factors, allowing you to perform a variety of tasks.
+이 이벤트 타입들은 BindModel과 BindCommand 객체를 인자로 받아 다양한 작업을 수행할 수 있게 합니다.
 
 ```js
 var bm = new BindModel();
@@ -129,34 +130,34 @@ bm.command['read'].execute();
 // Call onExecuted in model
 ```
 
-Setting global and command-specific events allows you to process a variety of tasks in sequence when the execute() method is executed, which is useful for defining the initialization or subsequent actions required when certain tasks are executed.
+전역 이벤트와 명령별 이벤트를 설정하면 execute() 메서드가 실행될 때 다양한 작업을 순차적으로 처리할 수 있습니다. 이는 특정 작업이 실행될 때 필요한 초기화 작업이나 후속 작업을 정의하는 데 유용합니다.
 
+## 명령별 흐름 제어하기
 
-## To control flow by command
+execute() 메서드를 실행할 때 순차적으로 콜백 함수가 호출되어 흐름을 제어할 수 있습니다. 
 
-When executing the execute() method, callback functions are called sequentially to control the flow. 
 [[41. Callback Lifecycle-B|Refer to: Callback Lifecycle]
 
-#### Callback function's call order
-1. cbBegin : URL and config information settings
-2. cbValid : Validation
-3. cbBind : Call before server request
-4. Performing a server request
-5. cbResult : Call after server response
-6. cbOutput : Response processed with \_outputs collection
-7. cbEnd : Call after completion of the entire process
+#### 콜백 함수의 호출 순서
+1. cbBegin : URL 및 config 정보 설정
+2. cbValid : 유효성 검사
+3. cbBind : 서버 요청 전에 호출
+4. 서버 요청 수행
+5. cbResult : 서버 응답 후 호출
+6. cbOutput : \_outputs 컬렉션으로 응답 처리
+7. cbEnd : 모든 과정이 완료된 후 호출
 
-### 1. Callback at start
+### 1. 시작시 콜백
 
-The first callback to be called upon execution().
+execute() 호출시 처음으로 호출되는 콜백입니다.
 
-Type: cbBegin
+타입: cbBegin
 ```ts
 type cbBegin = (cmd: BindCommand) => void;
 ```
 
-The general application plan is
-- Utilized for setting up information in url and config.
+일반적인 활용방안은
+- url 및 config 의 정보 설정에 활용됩니다.
 
 ```js
 var bm = new BindModel();
@@ -167,18 +168,20 @@ bm.command['list'].cbBegin = (command) => { 
     command.url = '/member/1'; 
 };
 ```
-### 2. Validation callback
 
-Callback called before validation for 'valid(MetaView)' when executing execute(). 
-If the return value is false, a cbFail callback is called and execution is terminated.
-Type: cbValid
+### 2. 유효성 검사 콜백
+
+execute() 실행 시 `valid(MetaView)`에 대한 유효성 검사 전에 호출되는 콜백입니다. 
+리턴값이 false 이면 cbFail 콜백이 호출되고 실행이 종료됩니다.
+
+타입: cbValid
 ```ts
 type cbValid = (valid: MetaView, cmd: BindCommand) => boolean;
 ```
 
-The general application plan is
-- Used for inspection before requesting a server.
-- It is used to check the processing results from the user.
+일반적인 활용방안은
+- 서버 요청전 검사에 활용됩니다.
+- 사용자에게 처리결과를 확인하는 용도로 활용됩니다.
 
 ```js
 var bm = new BindModel();
@@ -193,30 +196,31 @@ bm.command['list'].cbValid = function() {
 };
 ```
 
-### 3. Server Request Callback
+### 3. 서버 요청 콜백
 
-Callback called before sending the 'bind(MetaView)' column value when executing execute().
+execute() 실행 시 `bind(MetaView)` 컬럼 값을 전송하기 전에 호출되는 콜백입니다.
 
-Type: cbBind
+타입 : cbBind
 ```ts
 type cbBind = (view: MetaView, cmd: BindCommand, config: object) => void;
 ```
 
-The general application plan is
-- Used to set the transport type. (encttype)
-- Utilized for integrated login-related settings.
-- Used for password encryption.
+일반적인 활용방안은
+- 전송타입의 설정에 활용됩니다. (enctype)
+- 통합 로그인 관련 설정에 활용됩니다.
+- 비밀번호 암호화에 활용됩니다.
 
-### 4. Server Response Callback
 
-Callback called after receiving a response from the server when executing execute().
-Type: cbResult
+### 4. 서버 응답 콜백
+
+execute() 실행 시 서버에서 응답을 받은 후에 호출되는 콜백입니다.
+타입 : cbResult
 ```ts
 type cbResult = (data: object, cmd: BindCommand, res: object) => object;
 ```
 
-The general application plan is
-- It is used to customize the responded data into a schema in the form of 'MetaView'.
+일반적인 활용방안은
+- 응답받은 data 를 `MetaView` 형식의 스키마로 커스텀 하는 용도활용됩니다.
 
 ```js
 // data = { aa: 1, bb: 2 }
@@ -226,15 +230,16 @@ bm.command['list'].cbResult = function(data) {
 	};
 };
 ```
-- Return value: '{aa: 1, bb:2}'
-### 5. Output callback
+- 리턴값 : `{ rows: {aa: 1, bb: 2 }} `
 
-Callback called after the response is read into the '\_outputs' collection.
+### 5. 출력 콜백
 
-Depending on the 'Bindcommand' output option, the way data is imported into the '\_outputs' collection is different.
+응답을 '\_outputs' 컬렉션으로 읽어들인 후에 호출되는 콜백입니다.
+
+`BindCommand` 출력 옵션에 따라서 데이터를 '\_outputs' 컬렉션에 가져오는 방식이 달라집니다.
 [24. Bind Command Configuration - B# Type of Output Option (output) | Reference: Type of Output Option]
 
-Type: cbOutput
+타입: cbOutput
 ```ts
 type cbOutput = (
 	views: MetaViewColleciton, 
@@ -243,8 +248,8 @@ type cbOutput = (
 ) => void;
 ```
 
-The general application plan is
-- It is utilized for screen (html) binding using the 'output(MetaView)' responded.
+일반적인 활용방안은
+- 응답받은 `output(MetaView)`을 사용하여 화면(html) 바인딩에 활용됩니다.
 
 ```json
 {
@@ -266,21 +271,21 @@ bm.command['list'].cbOutput = function(views) {
 // 0  Neo  M
 // 1  Jane  W
 ```
-'views[0]' is the same as 'output' of 'Bindcommand'.
+- `views[0]` 은 `BindCommand` 의 'output' 과 동일합니다.
 
-### 6. Callback at the end of the day
+### 6. 종료시 콜백
 
-The last callback to be called when execute().
+execute() 실행시 마지막으로 호출되는 콜백입니다.
 
-Type: cbEnd
+타입 : cbEnd
 ```ts
 type cbEnd = (status: number, cmd: BindCommand, res: object) => void; 
 ```
 
-The general application plan is
-- Use it to deliver success messages.
-- Utilizes for path redirection.
-- Utilizes the *execute()* chain connection of other commands.
+일반적인 활용방안은
+- 성공 메세지 전달에 활용합니다.
+- 경로 리다이렉트에 활용합니다.
+- 다른 명령의 *execute()* 체인 연결에 활용합니다.
 
 ```js
 bm.command['list'].cbEnd = function(views) {
@@ -288,25 +293,24 @@ bm.command['list'].cbEnd = function(views) {
 }
 ```
 
-Each callback function is used to coordinate the behavior of commands in certain situations, or to pre-process and post-process data. This provides detailed control over the execution flow of Bindcommand.
+각 콜백 함수는 특정 상황에서 명령의 동작을 조정하거나, 데이터를 전처리 및 후처리하는 데 사용됩니다. 이를 통해 BindCommand의 실행 흐름을 세부적으로 제어할 수 있습니다.
 
+## 출력 옵션 설정하기
 
-## Setting Output Options
+`BindCommandAjax` 에 제공되는 `output(MetaView)`외에 추가 `MetaView` 를 지정할 수 있습니다.
 
-Additional 'MetaView' can be specified in addition to the 'MetaView' provided in 'Bindcommand'.
-
-타입 : outputOption
+타입: outputOption
 ```ts
 type outputOption = { option: number, index: number }`; 
 ```
-- The initial value of the object type is 'outputOption = {option: 0, index: 0}.
-- The 'option' attribute is a method of fetching data from 'output(MetaView)' depending on the value.
-- The 'index' property specifies the location of the rows index when setting the value of the column. (Option: Used if 3)
-- 'outOpt' is an alias for 'outputOptions'.
+- 객체타입 초기값은 `outputOption = {option: 0, index: 0}` 입니다.
+- 'option' 속성은 값에 따라 `output(MetaView)`에서 데이터를 불러오는 방식입니다.
+- 'index' 속성은 컬럼의 값을 설정할 때 rows 인덱스 위치를 지정합니다. (option: 3일 경우 사용)
+- 'outOpt' 는 'outputOption' 의 별칭입니다.
 
-### Configuration via Creator
+### 생성자를 통한 설정
 
-You can set the output option parameter by passing it when you create an object.
+객체를 생성할 때 outputOption 파라미터를 전달하여 설정할 수 있습니다.
 
 ```js
 var bm = new BindModel();
@@ -314,12 +318,13 @@ var bm = new BindModel();
 var bc1 = new BindCommand(bm, 1);
 var bc2 = new BindCommand(bm, { option: 1, index: 1 });
 ```
-- The value of 'bc1.outputOption' is '{option:1, index: 0}.
-- The value of 'bc2.outputOption' is '{option:1, index:1}'.
+- 'bc1.outputOption' 값은 `{option:1, index: 0}` 입니다.
+- 'bc2.outputOption' 값은 `{option:1, index: 1}` 입니다.
 
-### setting in addcommand()
 
-The addcommand() method of the 'BindModel' object can deliver 'outputOptions' as parameters when created.
+### addCommand() 에서 설정
+
+`BindModelAjax` 객체의 addCommand() 메소드를 통해 생성 시 파라미터로 'outputOption'을 전달할 수 있습니다.
 
 ```js
 var bm = new BindModel();
@@ -327,25 +332,26 @@ var bm = new BindModel();
 bm.addCommand('read', 2);
 bm.addCommand('view', { option: 2, index: 1 });
 ```
-- `bm.command['read'].outputOption` value `{option:2, index: 0}`
-- `bm.command['view'].outputOption` vaule `{option:2, index: 1}` 
+- `bm.command['read'].outputOption` 값은 `{option:2, index: 0}` 입니다.
+- `bm.command['view'].outputOption` 값은 `{option:2, index: 1}` 입니다.
 
-### Set to Property
+### 프로퍼티로 설정
 
-It can be set by changing the 'outputOption' property of the 'Bindcommand' object.
+`BindCommandAjax` 객체의 'outputOption' 속성을 변경하여 설정할 수 있습니다.
 
 ```js
 bm.command['read'].outputOption = 3;
 bm.command['view'].outputOption = { option: 3, index: 1 };
 ```
-- `bm.command['read'].outputOption` value `{option:3, index: 0}`
-- `bm.command['view'].outputOption` value `{option:3, index: 1}`
-## Setting Validation Targets (valid)
+- `bm.command['read'].outputOption` 값은 `{option:3, index: 0}` 입니다.
+- `bm.command['view'].outputOption` 값은 `{option:3, index: 1}` 입니다.
 
-'valid(MetaView)' must be configured for validation.
-First, add the inspection object to the 'valid.column' collection and set the 'required' and 'constraits' properties.
+## 유효성 검사 대상 설정하기 (valid)
 
-Type: constructs (HTML Column property)
+유효성 검사하기 위해서는 `valid(MetaView)`을 구성해야 합니다.
+먼저 검사 대상은 `valid.columns` 컬렉션에 추가하고 'required', 'constraints' 속성을 설정합니다.
+
+타입 : constraints (HTMLColumn 속성)
 ```ts
 type RegExpType = {reg: RegExp, msg: string, return: boolean = true};
 type FuncType = (value: any)=>boolean;
@@ -354,23 +360,24 @@ type ConstrainstType = ContiditionType[] | ContiditionType;
 
 const constraints: ConstrainstType[] | ConstrainstType;
 ```
-- required : indicates whether required; if true, the value 'value' is 'blank, null' will fail.
-- constructs : Inspects for constraints if the value is not blank or null.
-	• reg : regular expression to be matched.
-	• msg : If return is false depending on whether it matches or not, it is a failure message.
-		• If return is true, this is an error message when matching fails.
-		• If return is false, it is an error message when matching is successful.
-	• return : This is the return result for reg matching. The default is true.
+- required : 필수 여부를 나타내며, true일 경우 'value' 값이 `공백, null`이면 실패합니다.
+- constraints : value 값이 공백이나 null이 아니면 제약 조건을 검사합니다.
+	• reg : 매칭되어야 할 정규식입니다.
+	• msg : 매칭 여부에 따라 return이 false이면 실패 메시지입니다.
+		• return이 true이면 매칭 실패 시 오류 메시지입니다.
+		• return이 false이면 매칭 성공 시 오류 메시지입니다.
+	• return : reg 매칭 시 리턴 결과입니다. 기본값은 true입니다.
 
-#### Constraints by frequency of use
+#### 사용빈도별 제약조건
 
-| **FREQUIRED** | **required** | **constraits** | **Explanation**|
+| **빈도** | **required** | **constraints** | **설명**                      |
 | ------ | ------------ | --------------- | --------------------------- |
-| 50% || || Select value
-| 30% | true | | required value
-| 15% | | | {...} | Select value, value constrained |
-| 5% | True | {...} | Required value, value has constraints |
- (Shopping mall table: based on 20ea)
+| 50%    |              |                 | 선택값입니다.                     |
+| 30%    | true         |                 | 필수값입니다.                     |
+| 15%    |              | {...}           | 선택값이며, value 값이 제약조건이 있습니다. |
+| 5%     | true         | {...}           | 필수값이며, value 값에 제약조건이 있습니다. |
+
+ (쇼핑몰 table: 20ea 기준)
 
 ```js
 var bm = new BindModel();
@@ -399,14 +406,14 @@ bm.columns['email'].constraints = {
 
 bm.cmd['test'].execute();
 ```
-- user_name : Mandatory condition. Failed to enter blank space. 'cbFail' will be called.
-- passwd : Required condition, successful only if it matches the regular expression condition.
-- user_id : prerequisite, successful in the first functional condition, and successful only when non-matching in the second regular expression condition.
-- email : Selection condition; successful if blank; successful if you enter a value must be matched with the regular expression.
+- user_name : 필수 조건입니다. 공백 입력 시 실패합니다. 'cbFail' 이 호출됩니다.
+- passwd : 필수 조건이며, 정규식 조건에 매칭되어야 성공합니다.
+- user_id : 필수 조건이며, 첫 번째 함수 조건에서 성공하고, 두 번째 정규식 조건에서는 비매칭되어야 성공합니다.
+- email : 선택 조건입니다. 공백일 경우 성공하며, 값을 입력 시 정규식과 매칭되어야 성공합니다.
 
-## To add a column
+## 컬럼 추가하기
 
-Adding a column adds the column to the default table '\_baseTable' and registers the reference to the 'MetaView' specified in the bind command. Methods of adding a column include addColumn() and addColumnValue().
+컬럼을 추가하면 기본 테이블인 '\_baseTable'에 컬럼이 추가되고, 바인드 명령에 지정한 `MetaView` 에 참조가 등록됩니다. 컬럼을 추가하는 메소드로는 addColumn() 과 addColumnValue() 가 있습니다.
 
 타입 : addColumn(), addColumnValue()
 ```ts
@@ -423,12 +430,12 @@ type addColumnValue = (
 	bTable?: string | MetaTable
 ) => BindCommand;
 ```
-- If you use the '$all' indicator in the views parameter, it is added to all 'MetaView (valid, bind, output).
-- The bTable parameter specifies the table to which the column is added, and the default is '\_baseTable'.
+- views 파라메터에 '$all' 지시자를 사용하면, 모든 `MetaView(valid, bind, output)`에 추가됩니다.
+- bTable 파라미터는 컬럼을 추가할 테이블을 지정하며, 기본값은 '\_baseTable'입니다.
 
-### Adding and mapping columns
+### 컬럼 추가 및 매핑
 
-Add a column to the base table and register a reference to the specified 'MetaView'. The addColumn() method adds an empty column, and the addColumnValue() method sets the 'value' value after adding the column.
+기본 테이블에 컬럼을 추가하고, 지정한 `MetaView`에 참조를 등록합니다. addColumn() 메소드는 빈 컬럼을 추가하고, addColumnValue() 메소드는 컬럼 추가 후 'value' 값을 설정합니다.
 
 ```js
 var bm = new BindModel();
@@ -446,16 +453,16 @@ bm.command['test'].addColumn('dd');
 // bm.command['test'].bind.columns.count   == 3 ('bb', 'cc', 'dd')
 // bm.command['test'].output.columns.count == 3 ('bb', 'cc', 'dd')
 ```
-- Invoking the addColumn() method adds an empty column.
-- Calling the addColumnValue() method sets the 'value' value after adding the column.
-- The 'aa' column registers a reference to the specified 'MetaView (valid).
-- The 'bb' column registers a reference to the specified 'MetaView (bind, output).
-- The 'cc' column registers a reference to the entire 'MetaView (valid, bind, output).
-- If you omit the parameter when adding the 'dd' column, register the reference in the entire 'MetaView'.
+- addColumn() 메소드를 호출하면 빈 컬럼이 추가됩니다.
+- addColumnValue() 메소드를 호출하면 컬럼 추가 후 'value' 값이 설정합니다.
+- 'aa' 컬럼은  지정한 `MetaView(valid)` 에 참조를 등록합니다.
+- 'bb' 컬럼은  지정한 `MetaView(bind, output)` 에 참조를 등록합니다.
+- 'cc' 컬럼은  전체 `MetaView(valid, bind, output)` 에 참조를 등록합니다.
+- 'dd' 컬럼 추가시 파라메터를 생략하면 전체 `MetaView` 에 참조를 등록합니다.
 
-### Adding and mapping columns to an extension table
+### 확장 테이블에 컬럼 추가 및 매핑
 
-Add a column to the specified 'MetaTable' and register a reference to the specified 'MetaView'.
+지정한 `MetaTable` 에 컬럼을 추가하고 지정한 `MetaView` 에 참조를 등록합니다.
 
 ```js
 var bm = new BindModel();
@@ -473,18 +480,18 @@ bm.command['test'].addColumn('bb', '$all', 'second');
 // bm.command['test'].bind.columns.count   == 1 ('bb')
 // bm.command['test'].output.columns.count == 1 ('bb')
 ```
-- The 'aa' column is added to the 'MetaTable(second)' and registers a reference to the specified 'MetaView(valid).
-- The 'bb' column is added to 'MetaTable(second)' and the reference is registered in the entire 'MetaView'.
+- 'aa' 컬럼은` MetaTable(second)` 에 추가하고  지정한 `MetaView(valid)` 에 참조를 등록합니다.
+- 'bb' 컬럼은 `MetaTable(second)` 에 추가하고  전체 `MetaView` 에참조를 등록합니다.
 
-You can use the above methods to add tables and columns in a variety of ways, and map each column to the appropriate 'MetaView', which is useful for efficiently handling data validation, binding, and output.
+위의 메소드를 활용하여 다양한 방식으로 테이블과 컬럼을 추가하고, 각 컬럼을 적절한 `MetaView`에 매핑할 수 있습니다. 이는 데이터의 유효성 검사, 바인딩, 출력 등 다양한 요구사항을 효율적으로 처리하는 데 유용합니다.
 
-## Setting Up an Existing Column
+## 기존 컬럼 설정하기
 
-You can register or release an already registered column as a reference to 'MetaView', which allows you to dynamically manage the column to meet various requirements such as validation, binding, and output of data.
+이미 등록된 컬럼을 `MetaView`에 참조로 등록하거나 해제할 수 있습니다. 이를 통해 데이터의 유효성 검사, 바인딩, 출력 등 다양한 요구사항에 맞춰 컬럼을 동적으로 관리할 수 있습니다.
 
-#### Key Features Summary
--  Column Settings: You can set a specific table's column to the desired MetaView to process data validation, binding, and output.
-- Uncolumn: You can dynamically manage column references by releasing the set column from the desired MetaView.
+#### 주요 기능 요약
+-  컬럼 설정: 특정 테이블의 컬럼을 원하는 MetaView에 설정하여 데이터 유효성 검사, 바인딩, 출력 등의 처리를 할 수 있습니다.
+- 컬럼 해제 : 설정된 컬럼을 원하는 MetaView에서 해제하여 동적으로 컬럼 참조를 관리할 수 있습니다.
 
 타입 : setColumn(), release()
 ```ts
@@ -505,10 +512,9 @@ type release = (
 	views?: ViewType | ViewType[]
 ) => void;
 ```
+### 컬럼 설정 및 해제
 
-### Setting up and releasing columns
-
-When setting up columns, you can specify columns for a specific table using the 'Table Name + . + Column Name' notation.
+컬럼을 설정할 때는 `테이블명 + . + 컬럼명` 표기법을 사용하여 특정 테이블의 컬럼을 지정할 수 있습니다.
 
 ```js
 var bm = new BindModel();
@@ -548,28 +554,30 @@ bm.command['test'].release('dd', '$all');
 // bm.command['test'].bind.columns.count == 0
 // bm.command['test'].output.columns.count == 0
 ```
-- Add the 'aa' column and register the reference to the specified 'MetaView (valid).
-- Add a 'bb' column and register a reference to the specified 'MetaView(bind).
-- Add 'cc' column 'MetaTable(second)' and register the reference to the specified 'MetaView(bind).
-- Add 'dd' column 'MetaTable(second)' and register a reference to the entire 'MetaView'.
+- 'aa' 컬럼을 추가하고 지정한 `MetaView(valid)` 에 참조를 등록합니다.
+- 'bb' 컬럼을 추가하고 지정한 `MetaView(bind)` 에 참조를 등록합니다.
+- 'cc' 컬럼을 `MetaTable(second)` 추가하고 지정한 `MetaView(bind)`에 참조를 등록합니다.
+- 'dd' 컬럼을 `MetaTable(second)` 추가하고 전체 `MetaView`에 참조를 등록합니다.
 
-The above methods allow you to dynamically set up or release existing columns in MetaView, providing flexibility for complex data processing requirements.
+위의 메소드를 사용하면 기존 컬럼을 동적으로 MetaView에 설정하거나 해제할 수 있어, 복잡한 데이터 처리 요구사항에 유연하게 대응할 수 있습니다.
 
-## Type of output option (output)
+## 출력옵션의 종류 (output)
 
-If response data is multiple records, import the data in the order of the '\_outputs' collection. To import multiple records, you must add a collection of '\_outputs' as many records as possible. 
-Records greater than '\_outputs' collections are excluded. (option > 0)
+응답 데이터가 복수 레코드일 경우, '\_outputs' 컬렉션의 순서대로 데이터를 가져옵니다. 복수의 레코드를 가져오려면 레코드 개수만큼 '\_outputs' 컬렉션을 추가해야 합니다. 
+'\_outputs '컬렉션의 개수보다 많은 레코드는 제외됩니다. (option > 0)
 
-| Options | Description |
+| 옵션          | 설명                                                              |
 | ----------- | --------------------------------------------------------------- |
 | 0 (default) | output bind 안함                                                  |
-| 1 | Gets the row of all columns
-| 2 | Gets the row of existing columns |
-| 3 | Gets the row of existing columns and sets the row of index locations to column value |
-### Ignore output: option = 0
+| 1           | 모든 column 의 row 를 가져옵니다.                                        |
+| 2           | 존재하는 column 의 row 를 가져옵니다.                                      |
+| 3           | 존재하는 column 의 row 를 가져오고, index 위치의 row 를 column value 에 설정합니다. |
 
-Does not import data to 'output(MetaView)'. It is mainly used to modify data, such as create, update, delete, and is suitable when response data is not needed. 
-This option is mainly used when performing data change operations, and increases efficiency by minimizing data returns.
+### 출력 무시하기 : option = 0
+
+`output(MetaView)`에 데이터를 가져오지 않습니다. 주로 create, update, delete와 같은 데이터 수정 작업에 사용되며, 응답 데이터가 필요 없는 경우에 적합합니다. 
+이 옵션은 주로 데이터 변경 작업을 수행할 때 사용되며, 데이터 반환을 최소화하여 효율성을 높입니다.
+
 
 ```js
 var bm = new BindModel();
@@ -585,10 +593,9 @@ bm.cmd['create'].execute();
 // bm.cmd['create'].output.rows.count == 0
 ```
 
+### 모든 데이터 가져오기 : option = 1 
 
-### Import all data: option = 1 
-
-Option value 1 is a way to load all response data into 'output(MetaView)', which is useful for simply outputting a column of all data received from a server or for checking the data structure. 
+옵션 값 1은 모든 응답 데이터를 `output(MetaView)`에 불러오는 방식입니다. 이 옵션은 서버로부터 수신한 전체 데이터의 컬럼을 단순하게 출력하거나, 데이터 구조를 확인할 때 유용합니다. 
 
 ```js
 {
@@ -616,13 +623,13 @@ bm.cmd['list'].execute();
 // bm.cmd['list'].output.rows[2]['bb'] == 21
 // bm.cmd['list'].output.rows[3]['cc'] == 31
 ```
-- Even if the column is not predefined, it is dynamically generated based on response data.
+- 컬럼이 미리 정의되지 않더라도 응답 데이터에 기반하여 동적으로 생성됩니다.
 
-This option is useful for checking the full structure of data received from the server, or for loading basic data for display and subsequent processing operations.
+이 옵션은 서버로부터 수신한 데이터의 전체 구조를 확인하거나, 디스플레이 및 후속 처리 작업을 위한 기본 데이터 로딩에 유용합니다.
 
-### Import only data from the specified column: option = 2 
+### 지정한 컬럼의 데이터만 가져오기 : option = 2 
 
-From the response data, only columns existing in 'output(MetaView)' are imported.
+응답 데이터에서 `ouput(MetaView)` 에 존재하는 컬럼만 불러옵니다.
 
 ```js
 {
@@ -648,9 +655,9 @@ bm.cmd['list'].execute();
 // bm.cmd['list'].output.rows[2]['bb'] == 21
 ```
 
-### Set data to column value (specified column): option = 3
+### 데이터를 컬럼값에 설정하기 (지정한 컬럼) : option = 3
 
-From the response data, only the column that exists in 'output(MetaView)' is imported, and the specified data is set to the value of the column 'value'.
+응답 데이터에서 `ouput(MetaView)` 에 존재하는 컬럼만 불러오고, 지정한 데이터를 컬럼 'value' 값으로 설정합니다.
 
 ```json
 {
@@ -670,9 +677,9 @@ bm.cmd['read'].execute();
 // bm.columns['bb'].value == 20
 ```
 
-#### Single Indexing (option: 3)
+#### 단일 인덱스 지정 (option : 3)
 
-Sets the specific 'rows' value of the response data to the column 'value'.
+응답 데이터의 특정 '행' 값을 '값' 열로 설정합니다.
 
 ```json
 {
@@ -695,11 +702,11 @@ bm.cmd['test'].execute();
 // bm.columns['aa'].value == 11
 // bm.columns['bb'].value == 21
 ```
-- The value of the second (index = 1) 'rows' is set to the value of 'value'.
+- 2번째(index = 1) 'rows' 의 값이 'value' 값으로 설정되었습니다.
 
-#### Specifying composite index (option: 3)
+#### 복합 인덱스 지정 (option : 3)
 
-Sets a specific 'rows' value for multiple response data to the column 'value'.
+복수의 응답 데이터의 특정 'rows' 값을 컬럼 'value' 값으로 설정합니다.
 
 ```json
 [
@@ -736,91 +743,5 @@ bm.cmd['test'].execute();
 // bm.cmd['test'].output.rows.count == 2
 // bm.cmd['test'].two.rows.count == 3
 ```
-- The value of index = 0 in the first response record was set to the value of the column ('aa', 'bb').
-- The value of index = 1 in the second response record was set to the value of column ('dd').
-```json
-{
-	"rows": { "aa": 10, "bb", 20, "cc": 30 },
-}
-```
-
-```js
-var bm = new BindModel();
-bm.addCommand('read', 3);
-bm.cmd['read'].addColumnValue('aa', 0);
-bm.cmd['read'].addColumnValue('bb', 0);
-bm.cmd['read'].execute();
-
-// bm.columns.count == 2
-// bm.columns['aa'].value == 10
-// bm.columns['bb'].value == 20
-```
-
-#### Single Indexing (option: 3)
-
-Sets the specific 'rows' value of the response data to the column 'value'.
-
-```json
-{
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
-}
-```
-
-```js
-var bm = new BindModel();
-bm.addCommand('test', 3);
-bc.outputOption.index = 1;   // index set
-bm.cmd['test'].addColumnValue('aa', 0);
-bm.cmd['test'].addColumnValue('bb', 0);
-bm.cmd['test'].execute();
-
-// bm.columns.count == 2
-// bm.columns['aa'].value == 11
-// bm.columns['bb'].value == 21
-```
-- The value of the second (index = 1) 'rows' is set to the value of 'value'.
-
-#### Specifying composite index (option: 3)
-
-Sets a specific 'rows' value for multiple response data to the column 'value'.
-
-```json
-[
-	{
-		"rows": [
-			{ "aa": 10, "bb", 20, "cc": 30 },
-			{ "aa": 11, "bb", 21, "cc": 31 },
-		]
-	},
-	{
-		"rows": [
-			{ "dd": 40, "ee", 50 },
-			{ "dd": 41, "ee", 51 },
-			{ "dd": 42, "ee", 52 },
-		]
-	},
-]
-```
-
-```js
-var bm = new BindModel();
-bm.addCommand('test', 3);
-bc.outputOption.index = [0, 1];   // index set
-bm.cmd['test'].newOutput('two');
-bm.cmd['test'].addColumnValue('aa', 0);
-bm.cmd['test'].addColumnValue('bb', 0);
-bm.cmd['test'].addColumnValue('dd', 0);
-bm.cmd['test'].execute();
-
-// bm.columns.count == 3
-// bm.columns['aa'].value == 10
-// bm.columns['bb'].value == 20
-// bm.columns['dd'].value == 41
-// bm.cmd['test'].output.rows.count == 2
-// bm.cmd['test'].two.rows.count == 3
-```
-- The value of index = 0 in the first response record was set to the value of the column ('aa', 'bb').
-- The value of index = 1 in the second response record was set to the value of column ('dd').
+- 첫번째 응답 레코드의 index = 0 의 값이 컬럼 ('aa', 'bb') 값으로 설정되었습니다.
+- 두번째 응답 레코드의 index = 1 의 값이 컬럼('dd') 값으로 설정되었습니다. 
