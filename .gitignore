@@ -8,4 +8,4 @@ _site/
 .jekyll-metadata
 .jekyll
 Gemfile
-Gemfile.lock
+Gemfile.lock_site
