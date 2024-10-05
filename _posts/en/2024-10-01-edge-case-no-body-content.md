@@ -11,6 +11,8 @@ tags:
 
 layout: archive
 author_profile: true 
+show_date: true
+
 ---
 
 We'd love to hear from you! Your feedback is incredibly valuable as we work to make this project better. Whether you spot an issue, have suggestions for improvement, or just want to share your experience, feel free to reach out!

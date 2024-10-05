@@ -8,6 +8,8 @@ date: 2011-06-23T1
 # toc_sticky: true
 sidebar:
   nav: "exam"
+
+# enable_copy_code_button: true
 ---
 ## 설명
 - "알림"의 예로 관리자 및 사용자 페이지를 들 수 있습니다.

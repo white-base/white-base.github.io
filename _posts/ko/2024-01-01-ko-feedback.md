@@ -10,7 +10,8 @@ tags:
 
 layout: archive
 author_profile: true
-
+show_date: true
+comments: true
 ---
 
 여러분의 의견을 듣고 싶습니다! 이 프로젝트를 개선하기 위해 노력하는 동안 여러분의 피드백은 매우 귀중합니다. 문제를 발견했거나 개선할 사항이 있거나 경험을 공유하고 싶으시다면 언제든지 연락해 주세요!
