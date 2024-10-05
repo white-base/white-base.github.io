@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
 BindModel 객체는 기본적으로 ‘first’라는 이름의 MetaTable을 자동 생성하여 사용합니다. 필요에 따라 다른 MetaTable을 추가할 수 있으며, 이는 컬럼명이 같지만 속성이 다르거나 특별한 경우에 유용합니다.
@@ -19,7 +19,7 @@ BindModel 객체는 기본적으로 ‘first’라는 이름의 MetaTable을 자
 
 ### addTable() 메소드로 추가
 
-addTable() 메소드를 통해 \_tables 컬렉션에 MetaTable을 추가할 수 있습니다. 이 메소드를 사용하면, BindModelAjax 객체에서 테이블에 접근하기 위한 참조 키를 자동으로 만듭니다.
+addTable() 메소드를 통해 \_tables 컬렉션에 MetaTable을 추가할 수 있습니다. 이 메소드를 사용하면, BindModel 객체에서 테이블에 접근하기 위한 참조 키를 자동으로 만듭니다.
 
 ```js
 var bm = new BindModel();
@@ -65,7 +65,7 @@ bm.addColumnValue('aa', 10);
 ```
 - `columns` 속성은 `_baseTable`의 columns 을 참조합니다. (columns === \_tabeTable.columns)
 
-이와 같이 BindModelAjax 객체에서 MetaTable을 추가하고 활용할 수 있습니다.
+이와 같이 BindModel 객체에서 MetaTable을 추가하고 활용할 수 있습니다.
 
 # 여러 메소드에서 추가한 테이블 지정
 
@@ -91,7 +91,7 @@ bm.addCommand('list', 3, bm.second);
 - read 명령의 기본 테이블은 'second'로 지정됩니다.
 - list 명령의 기본 테이블은 'second'로 지정됩니다.
 
-### addColumn() : 컬럼 추가 (BindModelAjax)
+### addColumn() : 컬럼 추가 (BindModel)
 
 컬럼 추가 시 테이블을 지정할 수 있습니다.
 

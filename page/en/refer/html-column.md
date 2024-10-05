@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 HTML Column is the key to binding
 If you directly control the internal implementation method without using a special indicator, you can apply it to various conditions when you get used to it.

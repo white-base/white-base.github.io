@@ -9,8 +9,9 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
+
 BindModel의 핵심은 MetaTable과 MetaView의 조합으로 이루어져 있습니다. 이 두 가지 요소는 BindModel의 기능을 구성하는 중요한 기반이며, 실 프로젝트에서 중복을 최소화하고 다양한 사례를 수용할 수 있도록 설계되었습니다.
 
 ## MetaTable 클래스
@@ -299,4 +300,4 @@ cmd1.output.columns.add('bb');
 - MetaTable 에 직접 컬럼을 추가하면, 해당 컬럼은 독립적으로 추가됩니다. MetaView와는 달리 다른 뷰에서 참조하지 않습니다.
 - BindModel을 생성하면, 기본적으로 first라는 이름의 MetaTable이 자동으로 생성됩니다. 각 BindCommand 객체는 자동으로 valid, bind, output이라는 이름의 MetaView를 포함합니다.
 
-BindModelAjax에서 execute() 메소드를 실행하면, MetaTable과 MetaView의 구조에 따라 컬럼과 데이터가 설정됩니다. 이 과정을 통해 다양한 사용자 요구사항에 맞게 커스터마이징할 수 있습니다.
+BindModel에서 execute() 메소드를 실행하면, MetaTable과 MetaView의 구조에 따라 컬럼과 데이터가 설정됩니다. 이 과정을 통해 다양한 사용자 요구사항에 맞게 커스터마이징할 수 있습니다.

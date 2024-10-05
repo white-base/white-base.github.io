@@ -9,10 +9,10 @@ toc_sticky: true
 sidebar:
   nav: "docs"
   
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
-BindModel은 프레임워크이면서 라이브러리의 특징을 가집니다. 최신 유행하는 UI 컴포넌트 기반이 아닌 명령과 엔티티를 사용하여 더 높은 생산성을 제공합니다. BindModelAjax 클래스를 통해 클라이언트-서버 간의 통신을 손쉽게 구현할 수 있습니다.
+BindModel은 프레임워크이면서 라이브러리의 특징을 가집니다. 최신 유행하는 UI 컴포넌트 기반이 아닌 명령과 엔티티를 사용하여 더 높은 생산성을 제공합니다. BindModel 클래스를 통해 클라이언트-서버 간의 통신을 손쉽게 구현할 수 있습니다.
 
 
 ## 엔티티 관리

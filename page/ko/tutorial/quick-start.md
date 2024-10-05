@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 ## BindModel 이란?
 
@@ -51,11 +51,11 @@ npm install logic-bind-model
 
 ## 사용
 
-BindModelAjax 는 프레임워크의 핵심 객체입니다.
+BindModel 는 프레임워크의 핵심 객체입니다.
 
 ### 서버 환경 (node.js)
 
-Node.js 환경에서는 require 또는 import 문을 통해 BindModelAjax 을 사용할 수 있습니다.
+Node.js 환경에서는 require 또는 import 문을 통해 BindModel 을 사용할 수 있습니다.
 
 예제 : CommonJS 에서 사용
 ```js
@@ -87,15 +87,15 @@ const bm = new BindModel();
 
 ## 패키징
 
-BindModelAjax는 axios 와 jQuery 모듈에 의존하여 서버와의 비동기 통신 및 DOM 조작을 수행합니다. 이러한 의존성을 반영하여 다양한 배포 패키지를 제공합니다.
+BindModel는 axios 와 jQuery 모듈에 의존하여 서버와의 비동기 통신 및 DOM 조작을 수행합니다. 이러한 의존성을 반영하여 다양한 배포 패키지를 제공합니다.
 
 ### bind-model.pack.js,  bind-model.pack.min.js
 
-이 패키지는 BindModelAjax와 함께 axios와 jQuery 라이브러리를 포함하고 있습니다. 이 패키지는 외부에서 별도로 axios나 jQuery를 설치하지 않아도, bind-model.pack.js 하나만으로 모든 기능을 사용할 수 있습니다. 
+이 패키지는 BindModel와 함께 axios와 jQuery 라이브러리를 포함하고 있습니다. 이 패키지는 외부에서 별도로 axios나 jQuery를 설치하지 않아도, bind-model.pack.js 하나만으로 모든 기능을 사용할 수 있습니다. 
 
 ### bind-model.js,  bind-model.min.js
 
-이 패키지는 BindModelAjax 만을 포함하고 있으며, axios와 jQuery는 포함되지 않습니다. 이 패키지를 사용할 경우, 외부에서 axios와 jQuery를 이미 포함하고 있거나, 별도로 관리하고 있을 때 유용합니다.
+이 패키지는 BindModel 만을 포함하고 있으며, axios와 jQuery는 포함되지 않습니다. 이 패키지를 사용할 경우, 외부에서 axios와 jQuery를 이미 포함하고 있거나, 별도로 관리하고 있을 때 유용합니다.
 
 {% capture notice-text %}
 * bindmodel.min.js

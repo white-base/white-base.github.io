@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 멀티뷰는 서버에서 수신한 데이터가 2개 이상의 자료일 경우에 사용됩니다. BindCommand 객체는 기본적으로 output 속성의 MetaView를 포함하며, 이는 `_outputs['output1']`의 참조 속성입니다.
 

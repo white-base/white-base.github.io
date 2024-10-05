@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
 # 주요 구조
@@ -137,7 +137,7 @@ type _type = Function;
 > 현재 객체의 깊은 복사본을 생성하여 반환합니다.
 
 ```ts
-type clone = () => MetaTable;
+type clone = () => MetaTable;
 ```
 - return : 현재 객체의 복제본입니다.
 

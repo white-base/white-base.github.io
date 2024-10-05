@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
 CRUDL은 전통적인 데이터 처리 기능인 Create, Read, Update, Delete에 List를 추가한 개념입니다. 이는 데이터베이스와 상호작용을 단순화하고 효율적으로 관리하는 데 유용합니다. BindModel은 데이터베이스와의 상호작용을 위한 유용한 도구로, CRUDL 관점의 설계를 지향합니다.

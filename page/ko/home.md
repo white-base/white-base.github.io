@@ -8,7 +8,7 @@ header:
   overlay_image: /assets/images/title1600.png
   actions:
     - label: "<i class='fas fa-download'></i> Install now"
-      url: "/docs/quick-start/#설치"
+      url: "/ko/docs/quick-start/#설치"
 excerpt: >
   BindModel은 웹 및 Node.js 환경에서 작동하는 프론트엔드 프레임워크입니다.<br />
   <small><a href="https://www.npmjs.com/package/logic-bind-model">Latest release v1.0.27</a></small>
@@ -17,28 +17,28 @@ feature_row:
     alt: "mix React, Vue"
     title: "mix React, Vue"
     excerpt: "다양한 프레임워크와 유연하게 결합되는 BindModel을 활용하여 React 및 Vue로 쉽게 확장되는 BindModel 구현 코드."
-    url: "/exam/notice/"
+    url: "/ko/exam/notice/"
     btn_class: "btn--primary"
     btn_label: "Sample more"  
   - image_path: /assets/images/wrenches-5971179_1280.jpg  
     alt: "Simplicity Productivity"
     title: "Simplicity Productivity"
     excerpt: "BindModel은 특정 문법과 지표를 최소화하고 불필요한 구성 요소를 제거하여 코드의 직관적인 특성을 높입니다. 프로젝트의 빈도를 기반으로 설계되어 사용자에게 단순성과 높은 생산성을 제공합니다."
-    url: "/docs/feature/#simplicity-and-productivity"
+    url: "/ko/docs/feature/#simplicity-and-productivity"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/web-design-3411373_1280.webp
     alt: "generalization of entities"
     title: "generalization of entities"
     excerpt: "BindModel은 모든 데이터를 엔터티로 관리하여 체계적인 데이터 처리를 제공하며(MetaTable, MetaView) 일관되고 효율적인 데이터 관리를 가능하게 합니다."
-    url: "/docs/core/"
+    url: "/ko/docs/core/"
     btn_class: "btn--primary" 
     btn_label: "Learn more"
   - image_path: /assets/images/mm-free-feature.png
     alt: "MVC Patterns"
     title: "MVC Patterns"
     excerpt: "BindModel은 MVC 패턴의 컨트롤러 역할을 하며 View와 완전히 분리되어 있어 화면 교체 및 관리가 매우 쉽습니다."
-    url: "/docs/crudl-example/"
+    url: "/ko/docs/crudl-example/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/mm-responsive-feature.png
@@ -53,7 +53,7 @@ feature_row:
     alt: "Development Environment"
     title: "Development Environment"
     excerpt: "브라우저 지원 및 노드 지원<br/>지원 약속 및 d.ts 유형 정보 제공<br/>바닐라 자바스크립트는 ES5 버전 호환성을 지원합니다."
-    url: "/docs/quick-start/"
+    url: "/ko/docs/quick-start/"
     btn_class: "btn--primary"
     btn_label: "Learn more"  
        

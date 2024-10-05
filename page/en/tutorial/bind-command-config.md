@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 'Bindcommand' is a bundle of associated 'MetaView' and works as an execute() method.
 

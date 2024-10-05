@@ -77,9 +77,9 @@ docs:
   - title: Reference
     children:
       - title: "BindModel Class"
-        url: /en/docs/api-bind-model-ajax/
+        url: /en/docs/api-bind-model/
       - title: "BindCommand Class"
-        url: /en/docs/api-bind-command-ajax/
+        url: /en/docs/api-bind-command/
       - title: "HTMLColumn Class"
         url: /en/docs/api-html-column/
       - title: "MetaTable Class"

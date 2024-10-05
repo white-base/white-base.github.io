@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
 `BindCommand` 는 연관된 `MetaView` 의 묶음으로 execute() 메소드로 작동합니다.
@@ -74,7 +74,7 @@ bb.command['cmdB'].url = '/list';
 
 #### 동적 url 설정하기
 
-때로는 특정 작업(command)에 따라 요청 경로(url)를 동적으로 변경해야 할 때가 있습니다. BindModelAjax 객체의 콜백 함수를 통해서 쉽게 설정할 수 있습니다.
+때로는 특정 작업(command)에 따라 요청 경로(url)를 동적으로 변경해야 할 때가 있습니다. BindModel 객체의 콜백 함수를 통해서 쉽게 설정할 수 있습니다.
 
  ```js
  var idx = 1;
@@ -297,7 +297,7 @@ bm.command['list'].cbEnd = function(views) {
 
 ## 출력 옵션 설정하기
 
-`BindCommandAjax` 에 제공되는 `output(MetaView)`외에 추가 `MetaView` 를 지정할 수 있습니다.
+`BindCommand` 에 제공되는 `output(MetaView)`외에 추가 `MetaView` 를 지정할 수 있습니다.
 
 타입: outputOption
 ```ts
@@ -324,7 +324,7 @@ var bc2 = new BindCommand(bm, { option: 1, index: 1 });
 
 ### addCommand() 에서 설정
 
-`BindModelAjax` 객체의 addCommand() 메소드를 통해 생성 시 파라미터로 'outputOption'을 전달할 수 있습니다.
+`BindModel` 객체의 addCommand() 메소드를 통해 생성 시 파라미터로 'outputOption'을 전달할 수 있습니다.
 
 ```js
 var bm = new BindModel();
@@ -337,7 +337,7 @@ bm.addCommand('view', { option: 2, index: 1 });
 
 ### 프로퍼티로 설정
 
-`BindCommandAjax` 객체의 'outputOption' 속성을 변경하여 설정할 수 있습니다.
+`BindCommand` 객체의 'outputOption' 속성을 변경하여 설정할 수 있습니다.
 
 ```js
 bm.command['read'].outputOption = 3;

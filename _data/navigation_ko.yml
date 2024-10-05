@@ -77,9 +77,9 @@ docs:
   - title: Reference
     children:
       - title: "BindModel 클래스"
-        url: /ko/docs/api-bind-model-ajax/
+        url: /ko/docs/api-bind-model/
       - title: "BindCommand 클래스"
-        url: /ko/docs/api-bind-command-ajax/
+        url: /ko/docs/api-bind-command/
       - title: "HTMLColumn 클래스"
         url: /ko/docs/api-html-column/
       - title: "MetaTable 클래스"

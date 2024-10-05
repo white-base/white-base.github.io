@@ -2,14 +2,14 @@
 lang: en
 title: "BindModel Class"
 layout: single
-permalink: /en/docs/api-bind-model-ajax/
+permalink: /en/docs/api-bind-model/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 # the main structure
 ## Property Relationships

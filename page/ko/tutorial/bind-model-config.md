@@ -9,9 +9,9 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
-`BindModelAjax`는 프레임워크의 핵심 클래스이며, 주요 기능으로 명령 추가, 컬럼 추가, 테이블 추가, 서비스 객체 주입 등을 지원합니다.
+`BindModel`는 프레임워크의 핵심 클래스이며, 주요 기능으로 명령 추가, 컬럼 추가, 테이블 추가, 서비스 객체 주입 등을 지원합니다.
 
 ### 주요 기능
 
@@ -57,7 +57,7 @@ breadcrumbs: true
 - setMapping() : `HTMLColumn` 을 `BindCommand` 의 `MetaView` 객체에 매핑합니다.
 - init() : 'preRegister', 'preCheck', 'preRedy' 콜백함수를 순차적으로 실행합니다.
 
-`BindModelAjax` 는 다목적 프레임워크로, 다양한 명령과 테이블, 컬럼을 유연하게 추가하고 관리할 수 있는 기능을 제공합니다. 이 문서를 통해 이 클래스의 주요 기능과 콜백을 숙지하여 효과적으로 사용할 수 있습니다.
+`BindModel` 는 다목적 프레임워크로, 다양한 명령과 테이블, 컬럼을 유연하게 추가하고 관리할 수 있는 기능을 제공합니다. 이 문서를 통해 이 클래스의 주요 기능과 콜백을 숙지하여 효과적으로 사용할 수 있습니다.
 
 
 ## 서버 요청 설정하기
@@ -74,7 +74,7 @@ bm.url  = '/user';
 
 #### 동적 url 설정하기
 
-특정 작업(command)에 따라 요청 경로를 동적으로 변경해야 할 경우, BindModelAjax 객체의 콜백 함수를 활용하여 URL을 쉽게 설정할 수 있습니다.
+특정 작업(command)에 따라 요청 경로를 동적으로 변경해야 할 경우, BindModel 객체의 콜백 함수를 활용하여 URL을 쉽게 설정할 수 있습니다.
 
  ```js
  var idx = 1;
@@ -487,7 +487,7 @@ type addTable (tableName: string) => MetaTable;
 - 'command' 의 `MetaView` 의 참조 테이블로 지정할 때 활용합니다.
 
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 // step A
 bm.addTable('second');
 bm.addTable('three');

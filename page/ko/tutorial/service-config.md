@@ -9,12 +9,12 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
-서비스 객체를 사용하면 `BindModelAjax`객체를 쉽게 생성할 수 있으며, 상속으로 공통 영역을 분리하여 재사용성을 높일 수 있습니다.
+서비스 객체를 사용하면 `BindModel`객체를 쉽게 생성할 수 있으며, 상속으로 공통 영역을 분리하여 재사용성을 높일 수 있습니다.
 
-콜백 함수에서 this.bindModel 속성으로 `BindModelAjax` 객체에 접근할 수 있습니다.
+콜백 함수에서 this.bindModel 속성으로 `BindModel` 객체에 접근할 수 있습니다.
 
 타입 : ServiceType
 ```ts
@@ -196,7 +196,7 @@ type ServiceType = {
 };
 ```
 
-`BindModelAjax` 객체는 'first' 라는 이름의 `MetaTable`을 자동 생성하여 사용합니다. 추가 테이블을 'tables' 속성으로 설정합니다.
+`BindModel` 객체는 'first' 라는 이름의 `MetaTable`을 자동 생성하여 사용합니다. 추가 테이블을 'tables' 속성으로 설정합니다.
 
 ```js
 var bm = new BindModel({
@@ -590,7 +590,7 @@ $('#btn_create').click(function() {
 	bm.fn.execCreate();
 });
 ```
-- 콜백함수에서 `파라메터` 또는 `this.bindModel` 속성으로 BindModelAjax 객체에 접근할 수 있습니다.
+- 콜백함수에서 `파라메터` 또는 `this.bindModel` 속성으로 BindModel 객체에 접근할 수 있습니다.
 
 예제 : 메소드를 함수 구성
 ```js
@@ -696,7 +696,7 @@ $(document).ready(function () {
 
 ## 서비스 객체 주입하기
 
-`BindModelAjax` 객체를 생성할 때 파라미터 전달하거나, setService() 메소드를 호출하여 서비스 객체를 주입할 수 있습니다. 
+`BindModel` 객체를 생성할 때 파라미터 전달하거나, setService() 메소드를 호출하여 서비스 객체를 주입할 수 있습니다. 
 
 타입 : setservice()
 ```ts

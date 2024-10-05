@@ -9,7 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 'BindModel' is the core class of the framework, and its main functions include adding commands, adding columns, adding tables, and injecting service objects.
 

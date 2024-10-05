@@ -2,14 +2,14 @@
 lang: ko
 title: "BindCommand 클래스"
 layout: single
-permalink: /ko/docs/api-bind-command-ajax/
+permalink: /ko/docs/api-bind-command/
 date: 2011-06-23T1
 toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
 
@@ -27,7 +27,7 @@ Class diagram
 
 ## 상속 관계
 
-BindCommandAjax 을 상속하여 확장하거나 BindCommand 을 상속하여 재정의하여 사용자화 할 수 있습니다.
+BindCommand 을 상속하여 확장하거나 BindCommand 을 상속하여 재정의하여 사용자화 할 수 있습니다.
 
 Class diagram
 ![image-center](/assets/images/cmd-diagram-2024-08-16-004352.png){: .align-center}
@@ -142,7 +142,7 @@ bind(MetaView) 는 서버에 전송하는 컬럼 목록입니다.
 bind.columns 컬렉션의 컬럼명과 컬럼값은 서버로 전송(요청)합니다.
 #### 예제 : 내부 작동 구조
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 bm.url = '/user'
 bm.addCommand('test');
 bm.cmd['test'].addColumnValue('user_name', '홍길동');
@@ -300,7 +300,7 @@ type execute = () => Promise<void>;
 
 #### 예제
 ```js
-var bm = new BindModelAjax();
+var bm = new BindModel();
 
 bm.addCommand('test1');
 bm.addCommand('test2');

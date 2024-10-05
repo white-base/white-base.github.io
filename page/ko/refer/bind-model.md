@@ -1,15 +1,15 @@
 ---
 lang: ko
-title: "BindModel Class"
+title: "BindModel 클래스"
 layout: single
-permalink: /ko/docs/api-bind-model-ajax/
+permalink: /ko/docs/api-bind-model/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true
 sidebar:
   nav: "docs"
 
-breadcrumbs: true
+# breadcrumbs: true
 ---
 
 # 주요 구조
@@ -24,7 +24,7 @@ ajax 통신은 내부적으로 `axios` 모듈을 이용하고 있습니다.
 
 ## 상속 관계
 
-BindModelAjax 을 상속하여 확장하거나 BindModel 을 상속하여 재정의하여 사용자화 할 수 있습니다.
+BindModel 을 상속하여 확장하거나 BindModel 을 상속하여 재정의하여 사용자화 할 수 있습니다.
 
 클래스 다이어그램
 ![image-center](/assets/images/bind-diagram-2024-08-16-002302.png){: .align-center}
