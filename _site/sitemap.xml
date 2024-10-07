@@ -89,10 +89,10 @@
 <loc>http://localhost:4000/en/docs/feature/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/ko</loc>
+<loc>http://localhost:4000/ko/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/en</loc>
+<loc>http://localhost:4000/en/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/ko/docs/api-html-column/</loc>

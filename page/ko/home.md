@@ -1,7 +1,7 @@
 ---
 lang: ko
 layout: splash
-permalink: /ko
+permalink: /ko/
 hidden: true
 header:
   overlay_color: "#5e616c"
