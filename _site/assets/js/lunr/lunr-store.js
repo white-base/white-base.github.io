@@ -1,16 +1,4 @@
 var store = [{
-        "title": "Edge Case: Nested and Mixed Lists",
-        "excerpt":"Nested and mixed lists are an interesting beast. It’s a corner case to make sure that      Lists within lists do not break the ordered list numbering order   Your list styles go deep enough.   Ordered – Unordered – Ordered      ordered item   ordered item            unordered       unordered                 ordered item       ordered item           ordered item   ordered item   Ordered – Unordered – Unordered      ordered item   ordered item            unordered       unordered                 unordered item       unordered item           ordered item   ordered item   Unordered – Ordered – Unordered      unordered item   unordered item            ordered       ordered                    unordered item           unordered item                           unordered item   unordered item   Unordered – Unordered – Ordered      unordered item   unordered item            unordered       unordered                    ordered item           ordered item                           unordered item   unordered item   Task Lists      Finish my changes   Push my commits to GitHub   Open a pull request            Follow discussions       Push new commits          ","categories": ["Edge","View"],
-        "tags": ["content","css","edge case","lists","markup"],
-        "url": "/edge/view/edge-case-nested-and-mixed-lists/",
-        "teaser": null
-      },{
-        "title": "Edge Case: Many Tags",
-        "excerpt":"This post has many tags.  ","categories": ["en","Edge Case"],
-        "tags": ["8BIT","alignment","Articles","captions","categories","chat","comments","content","css","dowork","edge case","embeds","excerpt","Fail","featured image","FTW","Fun","gallery","html","image","Jekyll","layout","link","Love","markup","Mothership","Must Read","Nailed It","Pictures","Post Formats","quote","standard","Success","Swagger","Tags","template","title","twitter","Unseen","video","YouTube","U:R:COOL","C#"],
-        "url": "/en/edge%20case/edge-case-many-tags/",
-        "teaser": null
-      },{
         "title": "피드백 및 제안",
         "excerpt":"여러분의 의견을 듣고 싶습니다! 이 프로젝트를 개선하기 위해 노력하는 동안 여러분의 피드백은 매우 귀중합니다. 문제를 발견했거나 개선할 사항이 있거나 경험을 공유하고 싶으시다면 언제든지 연락해 주세요!           💡 약간 이상한 점을 발견하거나 개선할 방법을 생각하시나요?  저희는 지속적으로 성장하고 개선하고 있으며, 여러분의 의견은 더 빠르게 도달하는 데 도움이 됩니다! bindmodel@gmail.com 😊로 연락주세요            🚀 “무언가 고장 났어요!”  문제나 오류가 발생하면 주저하지 말고 알려주세요! 피드백은 우리의 생명줄이며 문제를 해결하는 데 도움이 될 수 있습니다. bindmodel@gmail.com 😎로 메시지를 보내주세요            😊 경험은 어땠나요?  첫인상은 중요하며, 상황이 어떻게 진행되었는지 알고 싶습니다. 모든 생각, 피드백 또는 제안은 따뜻하게 환영합니다. 이메일(bindmodel@gmail.com 🙏)      ","categories": ["ko","post"],
         "tags": ["categories","edge case"],
