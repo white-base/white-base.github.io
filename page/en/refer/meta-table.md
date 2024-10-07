@@ -2,7 +2,7 @@
 lang: en
 title: "MetaTable Class"
 layout: single
-permalink: /en/docs/api-meta-table/
+permalink: /docs/api-meta-table/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

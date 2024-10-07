@@ -2,7 +2,7 @@
 lang: en
 title: "Synchronization"
 layout: single
-permalink: /en/docs/synchronization/
+permalink: /docs/synchronization/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

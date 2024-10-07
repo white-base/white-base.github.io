@@ -2,7 +2,7 @@
 lang: en
 title: "notice React Mix compare"
 layout: fullwidth
-permalink: /en/exam/notice-compare-react/
+permalink: /exam/notice-compare-react/
 date: 2024-08-14T1
 # toc: true
 # toc_sticky: true

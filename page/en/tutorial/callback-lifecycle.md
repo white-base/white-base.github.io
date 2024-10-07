@@ -2,7 +2,7 @@
 lang: en
 title: "Callback Lifecycle"
 layout: single
-permalink: /en/docs/callback-lifecycle/
+permalink: /docs/callback-lifecycle/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

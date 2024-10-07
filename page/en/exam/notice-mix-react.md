@@ -2,7 +2,7 @@
 lang: en
 title: "notice React Mix"
 layout: fullwidth
-permalink: /en/exam/notice-mix-react/
+permalink: /exam/notice-mix-react/
 date: 2024-08-14T1
 # toc: true
 # toc_sticky: true

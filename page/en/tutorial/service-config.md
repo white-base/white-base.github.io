@@ -2,7 +2,7 @@
 lang: en
 title: "Configure Service objects"
 layout: single
-permalink: /en/docs/service-config/
+permalink: /docs/service-config/
 date: 2024-10-01T1
 toc: true
 toc_sticky: true

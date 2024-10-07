@@ -2,7 +2,7 @@
 lang: en
 title: "Multi-View(output)"
 layout: single
-permalink: /en/docs/multi-view/
+permalink: /docs/multi-view/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

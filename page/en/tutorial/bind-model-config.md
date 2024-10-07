@@ -2,7 +2,7 @@
 lang: en
 title: "Configure BindModel"
 layout: single
-permalink: /en/docs/bind-model-config/
+permalink: /docs/bind-model-config/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

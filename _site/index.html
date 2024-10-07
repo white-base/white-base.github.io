@@ -1,9 +1,565 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="refresh" content="0; url=/en/" />
-  <link rel="canonical" href="/en/" />
-</head>
-<body>
-</body>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-US" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Bind Model - Bind Model</title>
+<meta name="description" content="BindModel is a front-end framework that operates in web and Node.js environments. Latest release v1.0.27">
+
+
+  <meta name="author" content="Logic">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Bind Model">
+<meta property="og:title" content="Bind Model">
+<meta property="og:url" content="http://localhost:4000/">
+
+
+  <meta property="og:description" content="BindModel is a front-end framework that operates in web and Node.js environments. Latest release v1.0.27">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/title1600.png">
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/">
+
+
+
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+    "name": "Logic",
+    "url": "http://localhost:4000/"
+}
+</script>
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Bind Model Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  window.enable_copy_code_button = true;
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2QNYC9DD4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q2QNYC9DD4');
+</script>
+  </head>
+
+  <body class="layout--splash" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        
+        
+        
+
+        
+        
+        <a class="site-title" href="/">
+          Bind Model
+          <span class="site-subtitle">BindModel is a front-end framework</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/docs/quick-start/"
+                
+                
+              >Quick-Start Guide</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/exam/notice/"
+                
+                
+              >Example</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/year-archive/"
+                
+                
+              >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/docs/api/"
+                
+                
+              >API</a>
+            </li><!-- 트위터 메뉴 -->
+          <!-- <li><a href="https://twitter.com/bindModel" target="_blank">
+            <i class="fab fa-twitter"></i> Twitter
+          </a></li> -->
+          
+          <!-- <ul> -->
+            
+            
+            <!-- <li><a href="/en">English</a></li>
+            <li><a href="/ko">Korean</a></li> -->
+
+            <!-- 현재 페이지 언어 기반 메뉴 출력 ''splash, /en  -->
+    <!-- 
+    <li><a href="/ko/">한국어</a></li>
+   -->
+
+          <!-- </ul> -->
+        </ul>
+
+        <!-- 언어 선택 드롭다운 -->
+        <style>
+/* _sass/main.scss 또는 main.css */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+<div class="dropdown">
+    <button class="dropbtn">Language</button>
+    <div class="dropdown-content">
+      <a href="/">English</a>
+      <a href="/ko/">한국어</a>
+    </div>
+</div>
+        <!-- splash, , en, -->
+         
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style="background-color: #5e616c; background-image: url('/assets/images/title1600.png');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Bind Model
+
+        
+      </h1>
+      
+        <p class="page__lead">BindModel is a front-end framework that operates in web and Node.js environments.<br /> <small><a href="https://www.npmjs.com/package/logic-bind-model">Latest release v1.0.27</a></small>
+</p>
+      
+      
+
+
+      
+        <p>
+        
+          <a href="/docs/quick-start/#installation" class="btn btn--light-outline btn--large"><i class='fas fa-download'></i> Install now</a>
+        
+        </p>
+      
+    </div>
+  
+  
+</div>
+
+
+
+<div id="main" role="main">
+  <article class="splash" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <meta itemprop="description" content="BindModel is a front-end framework that operates in web and Node.js environments. Latest release v1.0.27">
+    
+    
+
+    <section class="page__content" itemprop="text">
+      
+<div class="feature__wrapper">
+
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/ezgif-3-f344f043ae.gif" alt="mix React, Vue" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">mix React, Vue</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>BindModel implementation code that scales easily to React and Vue, utilizing BindModel that combines flexibly with a variety of frameworks.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/exam/notice/" class="btn btn--primary">Sample more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/wrenches-5971179_1280.jpg" alt="Simplicity Productivity" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Simplicity Productivity</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>BindModel increases the intuitive nature of code by minimizing certain grammar and indicators and eliminating unnecessary components. Designed based on frequency in the project, it delivers simplicity and high productivity to users.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/docs/feature/#simplicity-and-productivity" class="btn btn--primary">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/web-design-3411373_1280.webp" alt="generalization of entities" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">generalization of entities</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>BindModel provides structured data processing by managing all data as an entity (MetaTable, MetaView), enabling consistent and efficient data management.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/docs/core/" class="btn btn--primary">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/mm-free-feature.png" alt="MVC Patterns" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">MVC Patterns</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>BindModel acts as a controller of MVC patterns and is completely separate from View, making it very easy to replace and manage the screen.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/docs/crudl-example/" class="btn btn--primary">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/mm-responsive-feature.png" alt="Stability and Productivity" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Stability and Productivity</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>Jest Test Unin 1600EA <br /> jest –coverage stmts, Branch, Lines 99%</p>
+
+            </div>
+          
+
+          
+            <p><a href="https://github.com/white-base/bind-model" class="btn btn--primary">github more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/mm-customizable-feature.png" alt="Development Environment" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Development Environment</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>Browser support and node support<br />Promise support and provide d.ts type information<br />Vanilla JavaScript supports ES5 backward compatibility</p>
+
+            </div>
+          
+
+          
+            <p><a href="/docs/quick-start/" class="btn btn--primary">Learn more</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+<!-- 
+![image-left](/assets/images/image-alignment-150x150.jpg){: .align-left} The rest of this paragraph is filler for the sake of seeing the text wrap around the 150×150 image, which is **left aligned**. There should be plenty of room above, below, and to the right of the image. Just look at him there --- Hey guy! Way to rock that left side. I don't care what the right aligned image says, you look great. Don't let anyone else tell you differently. -->
+
+<h2 id="feedback--suggestions">Feedback &amp; Suggestions</h2>
+
+<p>We’d love to hear from you! Your feedback is incredibly valuable as we work to make this project better. Whether you spot an issue, have suggestions for improvement, or just want to share your experience, feel free to reach out!</p>
+
+<ol>
+  <li>
+    <p>💡 <strong>Notice something off or think of a way to improve?</strong><br />
+We’re constantly growing and improving, and your input helps us get there faster! Drop us a line at <strong>bindmodel@gmail.com</strong> 😊</p>
+  </li>
+  <li>
+    <p>🚀 <strong>“Something’s broken!”</strong><br />
+If you run into any issues or errors, don’t hesitate to let us know! Your feedback is our lifeline and can help us fix things pronto. Send us a message at <strong>bindmodel@gmail.com</strong> 😎</p>
+  </li>
+  <li>
+    <p>😊 <strong>How was your experience?</strong><br />
+First impressions are important, and we’re eager to know how things went for you. Any thoughts, feedback, or suggestions are warmly welcomed. Email us at <strong>bindmodel@gmail.com</strong> 🙏</p>
+  </li>
+</ol>
+
+    </section>
+  </article>
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 <a href="http://localhost:4000">Bind Model</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+  </body>
 </html>

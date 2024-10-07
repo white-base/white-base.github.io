@@ -2,7 +2,7 @@
 lang: en
 title: "Implement notice in BindModel"
 layout: fullwidth
-permalink: /en/exam/notice-bindmodel/
+permalink: /exam/notice-bindmodel/
 date: 2024-08-14T1
 # toc: true
 # toc_sticky: true

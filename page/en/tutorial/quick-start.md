@@ -2,7 +2,7 @@
 lang: en
 title: "Start"
 layout: single
-permalink: /en/docs/quick-start/
+permalink: /docs/quick-start/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

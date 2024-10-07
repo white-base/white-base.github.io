@@ -2,7 +2,7 @@
 lang: en
 title: "Step-by-step process"
 layout: single
-permalink: /en/docs/step-by-step/
+permalink: /docs/step-by-step/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

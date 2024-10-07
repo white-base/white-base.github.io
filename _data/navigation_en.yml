@@ -1,18 +1,18 @@
 # main links
-
+base: ''
 main:
   - title: "Quick-Start Guide"
-    url: /en/docs/quick-start/
+    url: /docs/quick-start/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
   #   url: /year-archive/
   - title: "Example"
-    url:  /en/exam/notice/
+    url:  /exam/notice/
   - title: "Posts"
-    url: /en/year-archive/
+    url: /year-archive/
   - title: "API"
-    url: /en/docs/api/   
+    url: /docs/api/   
   # - title: "Sitemap"
   #   url: /sitemap/
 
@@ -20,17 +20,17 @@ exam:
   - title: notice Example
     children:
       - title: "start"
-        url: /en/exam/notice/
+        url: /exam/notice/
       - title: "BindModel"
-        url: /en/exam/notice-bindmodel/
+        url: /exam/notice-bindmodel/
       - title: "React with Mix"
-        url: /en/exam/notice-mix-react/
+        url: /exam/notice-mix-react/
       - title: "Vue with Mix"
-        url: /en/exam/notice-mix-vue/
+        url: /exam/notice-mix-vue/
       - title: "React Mix compare"
-        url: /en/exam/notice-compare-react/
+        url: /exam/notice-compare-react/
       - title: "Vue Mix compare"
-        url: /en/exam/notice-compare-vue/
+        url: /exam/notice-compare-vue/
   # - title: ETC
   #   children:
   #     - title: "React Mix compare"
@@ -40,51 +40,51 @@ docs:
   - title: Getting Started
     children:
       - title: "Get Started"
-        url: /en/docs/quick-start/
+        url: /docs/quick-start/
       - title: "Main Features"
-        url: /en/docs/feature/
+        url: /docs/feature/
       - title: "Basic usage"
-        url: /en/docs/basic/
+        url: /docs/basic/
 
   - title: Essentials
     children:
       - title: "Core concept"
-        url: /en/docs/core/
+        url: /docs/core/
       - title: "Configure BindModel"
-        url: /en/docs/bind-model-config/
+        url: /docs/bind-model-config/
       - title: "Configure Command"
-        url: /en/docs/bind-commnad-config/
+        url: /docs/bind-commnad-config/
       - title: "Configure Service objects"
-        url: /en/docs/service-config/
+        url: /docs/service-config/
       - title: "How to create objects"
-        url: /en/docs/create-method/
+        url: /docs/create-method/
       - title: "Step-by-step process"
-        url: /en/docs/step-by-step/
+        url: /docs/step-by-step/
 
   - title: advanced
     children:
       - title: "Callback Lifecycle"
-        url: /en/docs/callback-lifecycle/
+        url: /docs/callback-lifecycle/
       - title: "Multi-Table"
-        url: /en/docs/multi-table/        
+        url: /docs/multi-table/        
       - title: "Multi-View"
-        url: /en/docs/multi-view/
+        url: /docs/multi-view/
       - title: "Synchronization"
-        url: /en/docs/synchronization/
+        url: /docs/synchronization/
       - title: "CRUD + L Example"
-        url: /en/docs/crudl-example/
+        url: /docs/crudl-example/
 
   - title: Reference
     children:
       - title: "BindModel Class"
-        url: /en/docs/api-bind-model/
+        url: /docs/api-bind-model/
       - title: "BindCommand Class"
-        url: /en/docs/api-bind-command/
+        url: /docs/api-bind-command/
       - title: "HTMLColumn Class"
-        url: /en/docs/api-html-column/
+        url: /docs/api-html-column/
       - title: "MetaTable Class"
-        url: /en/docs/api-meta-table/
+        url: /docs/api-meta-table/
       - title: "MetaView Class"
-        url: /en/docs/api-meta-view/
+        url: /docs/api-meta-view/
       - title: "PropertyCollection Class"
-        url: /en/docs/api-property-collection/
+        url: /docs/api-property-collection/

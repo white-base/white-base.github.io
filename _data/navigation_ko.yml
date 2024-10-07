@@ -1,5 +1,6 @@
 # main links
 
+base: 'ko'
 main:
   - title: "빠른 가이드"
     url: /ko/docs/quick-start/

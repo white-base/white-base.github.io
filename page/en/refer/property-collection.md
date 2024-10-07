@@ -2,7 +2,7 @@
 lang: en
 title: "PropertyCollection Class"
 layout: single
-permalink: /en/docs/api-property-collection/
+permalink: /docs/api-property-collection/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

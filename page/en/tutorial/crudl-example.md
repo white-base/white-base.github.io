@@ -2,7 +2,7 @@
 lang: en
 title: "CRUD + List Example"
 layout: single
-permalink: /en/docs/crudl-example/
+permalink: /docs/crudl-example/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

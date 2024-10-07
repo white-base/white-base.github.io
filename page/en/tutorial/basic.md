@@ -2,7 +2,7 @@
 lang: en
 title: "Basic usage"
 layout: single
-permalink: /en/docs/basic/
+permalink: /docs/basic/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

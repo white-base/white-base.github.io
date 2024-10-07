@@ -2,7 +2,7 @@
 lang: en
 title: "Configure Command"
 layout: single
-permalink: /en/docs/bind-commnad-config/
+permalink: /docs/bind-commnad-config/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

@@ -1,14 +1,14 @@
 ---
 lang: en
 layout: splash
-permalink: /en/
+permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
   overlay_image: /assets/images/title1600.png
   actions:
     - label: "<i class='fas fa-download'></i> Install now"
-      url: "/en/docs/quick-start/#installation"
+      url: "/docs/quick-start/#installation"
 excerpt: >
   BindModel is a front-end framework that operates in web and Node.js environments.<br />
   <small><a href="https://www.npmjs.com/package/logic-bind-model">Latest release v1.0.27</a></small>
@@ -17,28 +17,28 @@ feature_row:
     alt: "mix React, Vue"
     title: "mix React, Vue"
     excerpt: "BindModel implementation code that scales easily to React and Vue, utilizing BindModel that combines flexibly with a variety of frameworks."
-    url: "/en/exam/notice/"
+    url: "/exam/notice/"
     btn_class: "btn--primary"
     btn_label: "Sample more"  
   - image_path: /assets/images/wrenches-5971179_1280.jpg  
     alt: "Simplicity Productivity"
     title: "Simplicity Productivity"
     excerpt: "BindModel increases the intuitive nature of code by minimizing certain grammar and indicators and eliminating unnecessary components. Designed based on frequency in the project, it delivers simplicity and high productivity to users."
-    url: "/en/docs/feature/#simplicity-and-productivity"
+    url: "/docs/feature/#simplicity-and-productivity"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/web-design-3411373_1280.webp
     alt: "generalization of entities"
     title: "generalization of entities"
     excerpt: "BindModel provides structured data processing by managing all data as an entity (MetaTable, MetaView), enabling consistent and efficient data management."
-    url: "/en/docs/core/"
+    url: "/docs/core/"
     btn_class: "btn--primary" 
     btn_label: "Learn more"
   - image_path: /assets/images/mm-free-feature.png
     alt: "MVC Patterns"
     title: "MVC Patterns"
     excerpt: "BindModel acts as a controller of MVC patterns and is completely separate from View, making it very easy to replace and manage the screen."
-    url: "/en/docs/crudl-example/"
+    url: "/docs/crudl-example/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/mm-responsive-feature.png
@@ -53,7 +53,7 @@ feature_row:
     alt: "Development Environment"
     title: "Development Environment"
     excerpt: "Browser support and node support<br/>Promise support and provide d.ts type information<br/>Vanilla JavaScript supports ES5 backward compatibility"
-    url: "/en/docs/quick-start/"
+    url: "/docs/quick-start/"
     btn_class: "btn--primary"
     btn_label: "Learn more"  
        

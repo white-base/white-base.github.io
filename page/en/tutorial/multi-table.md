@@ -2,7 +2,7 @@
 lang: en
 title: "Multi-Table"
 layout: single
-permalink: /en/docs/multi-table/
+permalink: /docs/multi-table/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

@@ -2,7 +2,7 @@
 lang: en
 title: "Core concept"
 layout: single
-permalink: /en/docs/core/
+permalink: /docs/core/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

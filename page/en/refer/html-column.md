@@ -2,7 +2,7 @@
 lang: en
 title: "HTMLColum Class"
 layout: single
-permalink: /en/docs/api-html-column/
+permalink: /docs/api-html-column/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

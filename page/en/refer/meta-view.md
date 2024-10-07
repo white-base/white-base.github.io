@@ -2,7 +2,7 @@
 lang: en
 title: "MetaView Class"
 layout: single
-permalink: /en/docs/api-meta-view/
+permalink: /docs/api-meta-view/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

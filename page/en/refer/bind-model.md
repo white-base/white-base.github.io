@@ -2,7 +2,7 @@
 lang: en
 title: "BindModel Class"
 layout: single
-permalink: /en/docs/api-bind-model/
+permalink: /docs/api-bind-model/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

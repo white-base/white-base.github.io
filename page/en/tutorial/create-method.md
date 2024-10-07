@@ -2,7 +2,7 @@
 lang: en
 title: "How to create objects"
 layout: single
-permalink: /en/docs/create-method/
+permalink: /docs/create-method/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

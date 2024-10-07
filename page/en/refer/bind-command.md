@@ -2,7 +2,7 @@
 lang: en
 title: "BindCommand Class"
 layout: single
-permalink: /en/docs/api-bind-command/
+permalink: /docs/api-bind-command/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

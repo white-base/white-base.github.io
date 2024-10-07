@@ -2,7 +2,7 @@
 lang: en
 title: "Main Features"
 layout: single
-permalink: /en/docs/feature/
+permalink: /docs/feature/
 date: 2024-08-14T1
 toc: true
 toc_sticky: true

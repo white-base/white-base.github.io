@@ -2,7 +2,7 @@
 lang: en
 title: "notice Vue Mix compare"
 layout: fullwidth
-permalink: /en/exam/notice-compare-vue/
+permalink: /exam/notice-compare-vue/
 date: 2024-08-14T1
 # toc: true
 # toc_sticky: true

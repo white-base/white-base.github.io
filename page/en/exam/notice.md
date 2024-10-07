@@ -2,7 +2,7 @@
 lang: en
 title: "Notice example"
 layout: fullwidth
-permalink: /en/exam/notice/
+permalink: /exam/notice/
 date: 2011-06-23T1
 # toc: true
 # toc_sticky: true
