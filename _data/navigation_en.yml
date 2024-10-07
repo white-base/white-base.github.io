@@ -12,7 +12,7 @@ main:
   - title: "Posts"
     url: /year-archive/
   - title: "API"
-    url: /docs/api/   
+    url: /en/docs/api/   
   # - title: "Sitemap"
   #   url: /sitemap/
 
