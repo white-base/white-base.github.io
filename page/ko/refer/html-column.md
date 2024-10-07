@@ -9,6 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
+last_modified_at: 2024-10-01
 # breadcrumbs: true
 ---
 HTMLColumn 은 바인딩의 핵심입니다

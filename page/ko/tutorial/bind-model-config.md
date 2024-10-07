@@ -9,6 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
+last_modified_at: 2024-10-01
 # breadcrumbs: true
 ---
 `BindModel`는 프레임워크의 핵심 클래스이며, 주요 기능으로 명령 추가, 컬럼 추가, 테이블 추가, 서비스 객체 주입 등을 지원합니다.

@@ -56,7 +56,8 @@ feature_row:
     url: "/ko/docs/quick-start/"
     btn_class: "btn--primary"
     btn_label: "Learn more"  
-       
+
+last_modified_at: 2024-10-01
 ---
 
 {% include feature_row %}

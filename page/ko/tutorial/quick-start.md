@@ -9,6 +9,7 @@ toc_sticky: true
 sidebar:
   nav: "docs"
 
+last_modified_at: 2024-10-01
 # breadcrumbs: true
 ---
 ## BindModel 이란?
