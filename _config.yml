@@ -15,7 +15,9 @@ theme                    :  #"minimal-mistakes-jekyll"
 minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # 추가 설정
+
 date_format              : "%Y-%m-%d"  # 날짜 형식
+
 
 # Site Settings
 locale                   : "en-US"
