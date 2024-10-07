@@ -1,13 +1,11 @@
 ---
 lang: ko
-title: "피드백 및 제안"
+title: "피드백 및 제안22"
 categories:
   - ko
-  - back
 tags:
   - categories
   - edge case
-  - edge view
 
 layout: single
 author_profile: true

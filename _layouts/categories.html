@@ -4,16 +4,4 @@ layout: archive
 
 {{ content }}
 
-{% assign postList = site.categories %}
-
-dd{{site.categories.size}}dd
-vv{{site.categories[0].last[0].title}}vv
-cc{{page.lang}}cc
-
-ff{{site.categories}}ff
-
-gg{{page.post_url}}gg
-hh{{site.collections[2]}}hh
-
-
 {% include posts-taxonomy.html taxonomies=site.categories %}

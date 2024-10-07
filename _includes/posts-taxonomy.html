@@ -1,14 +1,39 @@
+{% assign current_lang = page.lang | default: "en" %}
+
 {% assign items_max = 0 %}
+{% assign filtered_taxonomies = "" | split: "" %}
+
 {% for item in include.taxonomies %}
-  {% if item[1].size > items_max %}
-    {% assign items_max = item[1].size %}
+  {% assign item_posts = item[1] %}
+  {% assign lang_posts_count = 0 %}
+
+  {% for post in item_posts %}
+    {% if post.lang == current_lang %}
+      {% assign lang_posts_count = lang_posts_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if lang_posts_count > 0 %}
+    {% assign filtered_taxonomies = filtered_taxonomies | push: item %}
+    {% if item_posts.size > items_max %}
+      {% assign items_max = item_posts.size %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 
 <ul class="taxonomy__index">
   {% for i in (1..items_max) reversed %}
-    {% for item in include.taxonomies %}
-      {% if item[1].size == i %}
+    {% for item in filtered_taxonomies %}
+      {% assign item_posts = item[1] %}
+      {% assign lang_posts_count = 0 %}
+
+      {% for post in item_posts %}
+        {% if post.lang == current_lang %}
+          {% assign lang_posts_count = lang_posts_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% if lang_posts_count == i %}
         <li>
           <a href="#{{ item[0] | slugify }}">
             <strong>{{ item[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
@@ -21,13 +46,24 @@
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 {% for i in (1..items_max) reversed %}
-  {% for taxonomy in include.taxonomies %}
-    {% if taxonomy[1].size == i %}
+  {% for taxonomy in filtered_taxonomies %}
+    {% assign taxonomy_posts = taxonomy[1] %}
+    {% assign lang_posts_count = 0 %}
+
+    {% for post in taxonomy_posts %}
+      {% if post.lang == current_lang %}
+        {% assign lang_posts_count = lang_posts_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if lang_posts_count > 0 and taxonomy_posts.size == i %}
       <section id="{{ taxonomy[0] | slugify }}" class="taxonomy__section">
         <h2 class="archive__subtitle">{{ taxonomy[0] }}</h2>
         <div class="entries-{{ entries_layout }}">
-          {% for post in taxonomy.last %}
-            {% include archive-single.html type=entries_layout %}
+          {% for post in taxonomy_posts %}
+            {% if post.lang == current_lang %}
+              {% include archive-single.html type=entries_layout %}
+            {% endif %}
           {% endfor %}
         </div>
         <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
