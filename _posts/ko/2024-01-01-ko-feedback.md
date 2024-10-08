@@ -2,12 +2,9 @@
 lang: ko
 title: "피드백 및 제안"
 categories:
-  - ko
-  - back
+  - post
 tags:
-  - categories
-  - edge case
-  - edge view
+  - notice
 
 layout: single
 author_profile: true

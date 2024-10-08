@@ -2,11 +2,9 @@
 lang: en
 title: "Feedback & Suggestions"
 categories:
-  - en
+  - post
 tags:
-  - content
-  - edge case
-  - layout
+  - notice
 
 layout: single
 author_profile: true 
