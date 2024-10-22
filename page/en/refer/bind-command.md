@@ -148,11 +148,11 @@ bm.cmd['test'].execute();
 
 ///// Send to internal
 var axiosConfig = {
-	url: '/user',
-	data: {
-		user_name: 'Neo',
-		passwd: '1234'
-	}
+    url: '/user',
+    data: {
+        user_name: 'Neo',
+        passwd: '1234'
+    }
 }
 ```
 
@@ -209,9 +209,9 @@ type cbValid = (valid: MetaView, command: BindCommand) => boolean;
 
 ```ts
 type cbBaseBind = (
-	bind: MetaView, 
-	command: BindCommand, 
-	config: object
+    bind: MetaView, 
+    command: BindCommand, 
+    config: object
 ) => void;
 ```
 - bind : object 'MetaView' to bind.
@@ -225,9 +225,9 @@ type cbBaseBind = (
 
 ```ts
 type cbResult = (
-	data: object, 
-	command: BindCommand, 
-	response: object
+    data: object, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - data : Bind result data object.
@@ -241,9 +241,9 @@ type cbResult = (
 
 ```ts
 type cbOutput = (
-	outputs: MetaViewCollection, 
-	command: BindCommand, 
-	response: object
+    outputs: MetaViewCollection, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - outputs : Metabiew collection.
@@ -256,9 +256,9 @@ type cbOutput = (
 
 ```ts
 type cbBaseEnd = (
-	status: object, 
-	command: BindCommand, 
-	response: object
+    status: object, 
+    command: BindCommand, 
+    response: object
 ) => void;
 ```
 - status : The object containing status information.
@@ -310,9 +310,9 @@ bm.cmd['test2'].execute();
 
 ```ts
 type addColumn = (
-	column: string | MetaColumn, 
-	views: string | string[], 
-	bTable: string | MetaTable
+    column: string | MetaColumn, 
+    views: string | string[], 
+    bTable: string | MetaTable
 ) => void;
 ```
 - column : column object to be registered; it could be a string or 'MetaColumn' object.
@@ -324,10 +324,10 @@ type addColumn = (
 
 ```ts
 type addColumnValue = (
-	name: string, 
-	value: any, 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    name: string, 
+    value: any, 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => void;
 ```
 - name : The name of the column.

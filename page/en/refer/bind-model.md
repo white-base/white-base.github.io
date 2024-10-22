@@ -82,6 +82,7 @@ Class diagram
 
 
 ## Events
+
 | Item | Description |
 | ---------- | ---------------------- |
 | OnExecute | expecte() pre-execution event
@@ -218,9 +219,9 @@ type cbBaseValid = (valid: MetaView, command: BindCommand) => boolean;
 
 ```ts
 type cbBaseBind = (
-	bind: MetaView, 
-	command: BindCommand, 
-	config: object
+    bind: MetaView, 
+    command: BindCommand, 
+    config: object
 ) => void;
 ```
 - bind : object 'MetaView' to bind.
@@ -233,9 +234,9 @@ type cbBaseBind = (
 
 ```ts
 type cbBaseResult = (
-	data: object, 
-	command: BindCommand, 
-	response: object
+    data: object, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - data : Bind result data object.
@@ -249,9 +250,9 @@ type cbBaseResult = (
 
 ```ts
 type cbBaseOutput = (
-	outputs: MetaViewCollection, 
-	command: BindCommand, 
-	response: object
+    outputs: MetaViewCollection, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - outputs : Metabiew collection.
@@ -265,9 +266,9 @@ type cbBaseOutput = (
 
 ```ts
 type cbBaseEnd = (
-	status: object, 
-	command: BindCommand, 
-	response: object
+    status: object, 
+    command: BindCommand, 
+    response: object
 ) => void;
 ```
 - status : The object containing status information.
@@ -355,9 +356,9 @@ type getSelector = (collection: PropertyCollection) => object[];
 
 ```ts
 type addCommand = (
-	name: string, 
-	option: number, 
-	baseTable: MetaTable
+    name: string, 
+    option: number, 
+    baseTable: MetaTable
 ) => BindCommand;
 ```
 - name : The name of the command.
@@ -400,10 +401,10 @@ type addTable = (name: string) => MetaTable;
 
 ```ts
 type addColumn = (
-	column: MetaColumn, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    column: MetaColumn, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => void;
 ```
 - column: column object to be registered. It could be a string or 'MetaColumn' object.
@@ -417,11 +418,11 @@ type addColumn = (
 
 ```ts
 type addColumnValue = (
-	name: string, 
-	value: any, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    name: string, 
+    value: any, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => void;
 ```
 - name : The name of the column.
@@ -436,8 +437,8 @@ type addColumnValue = (
 
 ```ts
 type setMapping = (
-	mapping: PropertyCollection | object, 
-	baseTable?: string | MetaTable
+    mapping: PropertyCollection | object, 
+    baseTable?: string | MetaTable
 ) => void;
 ```
 - mapping —Object or collection to map to MetaColumn

@@ -21,23 +21,23 @@ Service objects can be managed separately to increase productivity. Define the i
 
 ```js
 var bm = new BindModel({
-	items: {
-		aa: 10,
-		bb: 20,
-		cc: 30,
-		dd: 40
-	},
-	command: {
-		create: {},
-		read: {
-			outputOption: 3
-		}
-	},
-	mapping: {
-		aa: { create: 'valid'},
-		bb: { read: ['bind', 'output']},
-		cc: { $all: 'output'}
-	}
+    items: {
+        aa: 10,
+        bb: 20,
+        cc: 30,
+        dd: 40
+    },
+    command: {
+        create: {},
+        read: {
+            outputOption: 3
+        }
+    },
+    mapping: {
+        aa: { create: 'valid'},
+        bb: { read: ['bind', 'output']},
+        cc: { $all: 'output'}
+    }
 });
 
 // Check it out
@@ -70,9 +70,9 @@ bm.items.add('dd', 40);
 
 // mapping
 bm.setMapping({
-	aa: { create: 'valid' },
-	bb: { read: 'bind' },
-	cc: { $all: ['output'] }   // $all = all command
+    aa: { create: 'valid' },
+    bb: { read: 'bind' },
+    cc: { $all: ['output'] }   // $all = all command
 });
 
 // Check it out

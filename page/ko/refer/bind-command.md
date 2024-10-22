@@ -53,7 +53,7 @@ Class diagram
 | cbValid      | execute() valid 검사 전 콜백 입니다.<br>`callback(validView, bindComamnd)`                                                                                         |
 | cbBind       | execute() bind  전 콜백 입니다.<br>`callback(validView, bindComamnd, config)`                                                                                    |
 | cbResult     | execute() 회신  콜백 입니다.<br>`callback(data, bindComamnd, response)`                                                                                           |
-| cbOutput     | execute() output View 매칭 후  콜백 입니다.<br>`callback(views, bindComamnd, response)`                                                                           |
+| cbOutput     | execute() output View 매칭 후  콜백 입니다.<br>`callback(views, bindComamnd, response)`                                                                           |
 | cbEnd        | execute() 종료 콜백 입니다.<br>`callback(status, bindComamnd, response)`                                                                                          |
 | _guid        | 객체의 고유 식별자 (GUID). 객체를 고유하게 식별합니다.                                                                                                                         |
 | _type        | 객체의 생성자 함수. 객체가 생성될 때 사용된 함수입니다.                                                                                                                           |
@@ -152,11 +152,11 @@ bm.cmd['test'].execute();
 
 ///// 내부적오로 전송
 var axiosConfig = {
-	url: '/user',
-	data: {
-		user_name: '홍길동',
-		passwd: '1234'
-	}
+    url: '/user',
+    data: {
+        user_name: '홍길동',
+        passwd: '1234'
+    }
 }
 ```
 
@@ -180,7 +180,7 @@ type output = MetaView;
 type outputOption = object;
 ```
 
-### outOpt
+### outOpt
 
 > outputOption 의 별칭입니다.
 
@@ -214,9 +214,9 @@ type cbValid = (valid: MetaView, command: BindCommand) => boolean;
 
 ```ts
 type cbBaseBind = (
-	bind: MetaView, 
-	command: BindCommand, 
-	config: object
+    bind: MetaView, 
+    command: BindCommand, 
+    config: object
 ) => void;
 ```
 - bind : 바인드할 `MetaView` 객체입니다.
@@ -230,9 +230,9 @@ type cbBaseBind = (
 
 ```ts
 type cbResult = (
-	data: object, 
-	command: BindCommand, 
-	response: object
+    data: object, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - data : 바인드 결과 데이터 객체입니다.
@@ -246,9 +246,9 @@ type cbResult = (
 
 ```ts
 type cbOutput = (
-	outputs: MetaViewCollection, 
-	command: BindCommand, 
-	response: object
+    outputs: MetaViewCollection, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - outputs : 메타 뷰 컬렉션입니다.
@@ -261,9 +261,9 @@ type cbOutput = (
 
 ```ts
 type cbBaseEnd = (
-	status: object, 
-	command: BindCommand, 
-	response: object
+    status: object, 
+    command: BindCommand, 
+    response: object
 ) => void;
 ```
 - status : 상태 정보를 담은 객체입니다.
@@ -317,9 +317,9 @@ bm.cmd['test2'].execute();
 
 ```ts
 type addColumn = (
-	column: string | MetaColumn, 
-	views: string | string[], 
-	bTable: string | MetaTable
+    column: string | MetaColumn, 
+    views: string | string[], 
+    bTable: string | MetaTable
 ) => void;
 ```
 - column : 등록할 컬럼 객체입니다. 문자열 또는 `MetaColumn` 객체일 수 있습니다.
@@ -331,10 +331,10 @@ type addColumn = (
 
 ```ts
 type addColumnValue = (
-	name: string, 
-	value: any, 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    name: string, 
+    value: any, 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => void;
 ```
 - name : 컬럼 이름입니다.

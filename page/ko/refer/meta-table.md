@@ -148,8 +148,8 @@ type clone = () => MetaTable;
 
 ```ts
 type copy = (
-	filter: (row, idx, entity) => boolean | string[], arguments<string>, 
-	cols?: string[] | arguments<string>
+    filter: (row, idx, entity) => boolean | string[], arguments<string>, 
+    cols?: string[] | arguments<string>
 ) => MetaTable;
 ```
 - filter :   
@@ -164,8 +164,8 @@ var table = new MetaTable('t1');
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	(row, idx, entity) => { return (idx % 2) > 0; },
-	['aa', 'bb']
+    (row, idx, entity) => { return (idx % 2) > 0; },
+    ['aa', 'bb']
 );
 ```
 - temp 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
@@ -177,7 +177,7 @@ var table = new MetaTable('t1');
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	['aa', 'bb']
+    ['aa', 'bb']
 );
 ```
 - temp 에는 'aa', 'bb' 컬럼의 전체 로우가 복사됩니다.
@@ -277,8 +277,8 @@ type merge = (target: BaseEntity, option: number, matchType?: boolean) => void;
 
 ```ts
 type select = (
-	filter: (row, idx, entity) => boolean | string[], | arguments<string>,
-	cols?: string[] | arguments<string>
+    filter: (row, idx, entity) => boolean | string[], | arguments<string>,
+    cols?: string[] | arguments<string>
 ) => MetaView;
 ```
 - filter :   
@@ -293,8 +293,8 @@ var table = new MetaTable('t1');
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	(row, idx, entity) => { return (idx % 2) > 0; },
-	['aa', 'bb']
+    (row, idx, entity) => { return (idx % 2) > 0; },
+    ['aa', 'bb']
 );
 ```
 - temp 뷰 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
@@ -306,7 +306,7 @@ var table = new MetaTable('t1');
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	['aa', 'bb']
+    ['aa', 'bb']
 );
 ```
 - temp 뷰 에는 'aa', 'bb' 컬럼의 전체 로우가 복사됩니다.
@@ -345,15 +345,15 @@ type read = (obj: object, option: number) => void;
 
 ```js
 var schema1 = { 
-	table: { 
-		columns: {}, 
-		rows: {} 
-	}
+    table: { 
+        columns: {}, 
+        rows: {} 
+    }
 };
 
 var schema1 = { 
-	columns: {...}, 
-	rows: {} 
+    columns: {...}, 
+    rows: {} 
 };
 ```
 

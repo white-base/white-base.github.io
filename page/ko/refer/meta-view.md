@@ -148,7 +148,7 @@ type _type: Function;
 > 현재 객체의 깊은 복사본을 생성하여 반환합니다.
 
 ```ts
-type clone() => MetaTable;
+type clone() => MetaTable;
 ```
 - return : 현재 객체의 복제본입니다.
 
@@ -158,34 +158,39 @@ type clone() => MetaTable;
 
 ```ts
 type copy = (
-	filter: (row, idx, entity) => boolean | string[], arguments<string>, 
-	cols?: string[] | arguments<string>
+    filter: (row, idx, entity) => boolean | string[], arguments<string>, 
+    cols?: string[] | arguments<string>
 ) => MetaView;
 ```
 - filter :   
 	- Function  타입이면 컬럼을 선택하는 콜백함수를 입니다.
 	-  string[]   타입이면 복사할 컬럼명입니다.
 -   cols : 복사할 컬럼명입니다. filter 가 Function 타입일 때만 유효합니다.
+
 #### 예제 : filter, cols 을 사용하는 경우
+
 ```js
+
 var table = new MetaTable('t1');
 
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	(row, idx, entity) => { return (idx % 2) > 0; },
-	['aa', 'bb']
+    (row, idx, entity) => { return (idx % 2) > 0; },
+    ['aa', 'bb']
 );
 ```
 - temp 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
+
 #### 예제 : cols 만 사용하는 경우
+
 ```js
 var table = new MetaTable('t1');
 
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	['aa', 'bb']
+    ['aa', 'bb']
 );
 ```
 - temp 에는 'aa', 'bb' 컬럼의 전체 로우가 복사됩니다.
@@ -258,34 +263,38 @@ type merge = (target: BaseEntity, option: number, matchType?: boolean) => void;
 
 ```ts
 type select = (
-	filter: (row, idx, entity) => boolean | string[], | arguments<string>,
-	cols?: string[] | arguments<string>
+    filter: (row, idx, entity) => boolean | string[], | arguments<string>,
+    cols?: string[] | arguments<string>
 ) => MetaView;
 ```
 - filter :   
 	- Function  타입이면 컬럼을 선택하는 콜백함수를 입니다.
 	-  string[]   타입이면 복사할 컬럼명입니다.
 -   cols : 복사할 컬럼명입니다. filter 가 Function 타입일 때만 유효합니다.
+
 #### 예제 : filter, cols 을 사용하는 경우
+
 ```js
 var table = new MetaTable('t1');
 
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	(row, idx, entity) => { return (idx % 2) > 0; },
-	['aa', 'bb']
+    (row, idx, entity) => { return (idx % 2) > 0; },
+    ['aa', 'bb']
 );
 ```
 - temp 뷰 에는 'aa', 'bb' 컬럼의 로우 인덱스가 홀수인 경우만 복사됩니다.
+
 #### 예제 : cols 만 사용하는 경우
+
 ```js
 var table = new MetaTable('t1');
 
 // ... 컬럼 추가, aa, bb, cc, ee 및 rows 추가 
 
 var temp = table.copy(
-	['aa', 'bb']
+    ['aa', 'bb']
 );
 ```
 - temp 뷰 에는 'aa', 'bb' 컬럼의 전체 로우가 복사됩니다.
@@ -323,15 +332,15 @@ type read = (obj: object, option: number) => void;
 
 ```js
 var schema1 = { 
-	table: { 
-		columns: {}, 
-		rows: {} 
-	}
+    table: { 
+        columns: {}, 
+        rows: {} 
+    }
 };
 
 var schema1 = { 
-	columns: {...}, 
-	rows: {} 
+    columns: {...}, 
+    rows: {} 
 };
 ```
 

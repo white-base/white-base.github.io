@@ -83,7 +83,7 @@ bb.command['cmdB'].url = '/list';
  ```js
  var idx = 1;
  bb.command['cmdA'].cbBegin = function(cmd) {
-	 cmd.url = `/user/${idx}`;
+    cmd.url = `/user/${idx}`;
  };
 ```
 ### 요청 환경 설정(axios)
@@ -112,17 +112,17 @@ var bm = new BindModel();
 bm.addCommand('read');
 // Global Event Settings
 bm.onExecute = function() { 
-    console.log('model 에서 onExecute 호출');
+    console.log('model 에서 onExecute 호출');
 };
 bm.onExecuted = function() { 
-    console.log('model 에서 onExecuted 호출');
+    console.log('model 에서 onExecuted 호출');
 };
 // Command Event Settings
 bm.command['read'].onExecute = function() { 
-    console.log('command 에서 onExecute 호출');
+    console.log('command 에서 onExecute 호출');
 };
 bm.command['read'].onExecuted = function() { 
-    console.log('command 에서 onExecuted 호출');
+    console.log('command 에서 onExecuted 호출');
 };
 // Execute
 bm.command['read'].execute();
@@ -169,7 +169,7 @@ var bm = new BindModel();
 bm.addCommand('list');
 // Callback Settings
 bm.command['list'].cbBegin = (command) => { 
-    command.url = '/member/1'; 
+    command.url = '/member/1'; 
 };
 ```
 
@@ -193,10 +193,10 @@ var bm = new BindModel();
 bm.addCommand('list');
 // Callback Settings
 bm.command['list'].cbValid = function(view) { 
-	return view.colums.count <= 0 
+    return view.colums.count <= 0 
 };
 bm.command['list'].cbValid = function() {
-	return confirm ('Do you want to delete?')
+    return confirm ('Do you want to delete?')
 };
 ```
 
@@ -229,9 +229,9 @@ type cbResult = (data: object, cmd: BindCommand, res: object) => object;
 ```js
 // data = { aa: 1, bb: 2 }
 bm.command['list'].cbResult = function(data) {
-	return = {
-		rows: data
-	};
+    return = {
+        rows: data
+    };
 };
 ```
 - 리턴값 : `{ rows: {aa: 1, bb: 2 }} `
@@ -246,9 +246,9 @@ bm.command['list'].cbResult = function(data) {
 타입: cbOutput
 ```ts
 type cbOutput = (
-	views: MetaViewColleciton, 
-	cmd: BindCommand, 
-	res: object
+    views: MetaViewColleciton, 
+    cmd: BindCommand, 
+    res: object
 ) => void;
 ```
 
@@ -257,19 +257,19 @@ type cbOutput = (
 
 ```json
 {
-	"rows": [
-		{ "u_name": "Neo", "gender", "M" },
-		{ "u_name": "Jane", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Neo", "gender", "M" },
+        { "u_name": "Jane", "gender", "W" },
+    ]
 }
 ```
 
 ```js
 bm.command['list'].cbOutput = function(views) {
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(1, row['u_name'], row['gender']);
-	}
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(1, row['u_name'], row['gender']);
+    }
 };
 // Output results:
 // 0  Neo  M
@@ -293,7 +293,7 @@ type cbEnd = (status: number, cmd: BindCommand, res: object) => void;
 
 ```js
 bm.command['list'].cbEnd = function(views) {
-	alert('Normal processed')
+    alert('Normal processed')
 }
 ```
 
@@ -398,14 +398,14 @@ bm.columns['passwd'].required = true;
 bm.columns['user_id'].required = true;
 
 bm.columns['passwd'].constraints = {
-	regex: /.{6}/, msg: "Please enter at least 6 characters."
+    regex: /.{6}/, msg: "Please enter at least 6 characters."
 };
 bm.columns['user_id'].constraints = [
-	(val)=>{ reutrn val.length > 8 }, 
-	{regex: /\D{8}/, msg: "Please type in English", return: false}
+    (val)=>{ reutrn val.length > 8 }, 
+    {regex: /\D{8}/, msg: "Please type in English", return: false}
 ];
 bm.columns['email'].constraints = {
-	regex: /.{6}/, msg: "Please enter at least 6 characters."
+    regex: /.{6}/, msg: "Please enter at least 6 characters."
 };
 
 bm.cmd['test'].execute();
@@ -422,16 +422,16 @@ bm.cmd['test'].execute();
 타입 : addColumn(), addColumnValue()
 ```ts
 type addColumn = (
-	colName: string, 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 
 type addColumnValue = (
-	colName: string, 
-	value: any, 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    value: any, 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 ```
 - views 파라메터에 '$all' 지시자를 사용하면, 모든 `MetaView(valid, bind, output)`에 추가됩니다.
@@ -506,14 +506,14 @@ type ColumnDotType : FullColumnType | ColumnType;
 type ViewType : 'valid' | 'bind' | 'output' | '$all' | string;
 
 type setColumn = (
-	colName: ColumnDotType, 
-	views: ViewType | ViewType[], 
-	bTable?: string | MetaTable
+    colName: ColumnDotType, 
+    views: ViewType | ViewType[], 
+    bTable?: string | MetaTable
 ) => void;
 
 type release = (
-	colName: string, 
-	views?: ViewType | ViewType[]
+    colName: string, 
+    views?: ViewType | ViewType[]
 ) => void;
 ```
 ### 컬럼 설정 및 해제
@@ -603,10 +603,10 @@ bm.cmd['create'].execute();
 
 ```js
 {
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
+    "rows": [
+        { "aa": 10, "bb", 20, "cc": 30 },
+        { "aa": 11, "bb", 21, "cc": 31 },
+    ]
 }
 ```
 
@@ -637,10 +637,10 @@ bm.cmd['list'].execute();
 
 ```js
 {
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
+    "rows": [
+        { "aa": 10, "bb", 20, "cc": 30 },
+        { "aa": 11, "bb", 21, "cc": 31 },
+    ]
 }
 ```
 
@@ -665,7 +665,7 @@ bm.cmd['list'].execute();
 
 ```json
 {
-	"rows": { "aa": 10, "bb", 20, "cc": 30 },
+    "rows": { "aa": 10, "bb": 20, "cc": 30 },
 }
 ```
 
@@ -687,10 +687,10 @@ bm.cmd['read'].execute();
 
 ```json
 {
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
+    "rows": [
+        { "aa": 10, "bb": 20, "cc": 30 },
+        { "aa": 11, "bb": 21, "cc": 31 },
+    ]
 }
 ```
 
@@ -714,19 +714,19 @@ bm.cmd['test'].execute();
 
 ```json
 [
-	{
-		"rows": [
-			{ "aa": 10, "bb", 20, "cc": 30 },
-			{ "aa": 11, "bb", 21, "cc": 31 },
-		]
-	},
-	{
-		"rows": [
-			{ "dd": 40, "ee", 50 },
-			{ "dd": 41, "ee", 51 },
-			{ "dd": 42, "ee", 52 },
-		]
-	},
+    {
+        "rows": [
+            { "aa": 10, "bb": 20, "cc": 30 },
+            { "aa": 11, "bb": 21, "cc": 31 },
+        ]
+    },
+    {
+        "rows": [
+            { "dd": 40, "ee": 50 },
+            { "dd": 41, "ee": 51 },
+            { "dd": 42, "ee": 52 },
+        ]
+    },
 ]
 ```
 

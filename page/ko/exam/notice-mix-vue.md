@@ -34,26 +34,26 @@ vue-mix/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Notice Admin Page</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Notice Admin Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div id="app" class="container mt-3">
-  <h2>Notice Admin Page</h2>
-  <h5>Key Features: List inquiry/modification/deletion</h5>
-  <p>Data is transmitted when modified or deleted from the test page, but it is not actually processed.</p>
+    <h2>Notice Admin Page</h2>
+    <h5>Key Features: List inquiry/modification/deletion</h5>
+    <p>Data is transmitted when modified or deleted from the test page, but it is not actually processed.</p>
 
-  <notice-list :bind-model="bindModel" 
-               @select-notice="selectNotice">
-  </notice-list>
-  <notice-form v-if="selectedNotice" 
-               :status-options="statusOptions" 
-               :bind-model="bindModel" 
-               @deselect-notice="deselectNotice"
-               >
-  </notice-form>
+    <notice-list :bind-model="bindModel" 
+                @select-notice="selectNotice">
+    </notice-list>
+    <notice-form v-if="selectedNotice" 
+                :status-options="statusOptions" 
+                :bind-model="bindModel" 
+                @deselect-notice="deselectNotice"
+                >
+    </notice-form>
 </div>
 
 <script src="https://unpkg.com/vue@3.3.4/dist/vue.global.prod.js"></script>
@@ -77,30 +77,30 @@ const bm = new _L.BindModel(new NoticeAdminService());
 bm.url =' /notice/data/list.json';
 
 const app = createApp({
-  data() {
-    return {
-      notices: [],
-      selectedNotice: null,
-      statusOptions: {
-        'D': 'Standby',
-        'A': 'Activation',
-        'H': 'Hidden'
-      },
-      bindModel: bm,
-    };
-  },
-  methods: {
-    selectNotice(idx) {
-      this.selectedNotice = idx;
+    data() {
+        return {
+        notices: [],
+        selectedNotice: null,
+        statusOptions: {
+            'D': 'Standby',
+            'A': 'Activation',
+            'H': 'Hidden'
+        },
+        bindModel: bm,
+        };
     },
-    deselectNotice() {
-      this.selectedNotice = null;
+    methods: {
+        selectNotice(idx) {
+            this.selectedNotice = idx;
+        },
+        deselectNotice() {
+            this.selectedNotice = null;
+        },
     },
-  },
-  components: {
-    'notice-list': NoticeList,
-    'notice-form': NoticeForm
-  }
+    components: {
+        'notice-list': NoticeList,
+        'notice-form': NoticeForm
+    }
 });
 
 app.mount('#app');
@@ -167,9 +167,9 @@ export {
 export default {
     props: ['statusOptions', 'bindModel'],
     data() {
-      return {
-        formData: { ...this.notice }
-      };
+        return {
+            formData: { ...this.notice }
+        };
     },
     emits: ['deselect-notice'],
     template: `
@@ -208,32 +208,31 @@ export default {
       </div>
     `,
     async created() {
-      var _this = this;
+        var _this = this;
 
-      this.bindModel.cmd['update'].cbEnd = function(status, cmd, res) {
-        if (res) {
-          alert('The post has been modified.');
-          _this.$emit('deselect-notice');
-        }
-      };
-      this.bindModel.cmd['delete'].cbEnd = function(status, cmd, res) {
-        if (res) {
-          alert('The post has been deleted.');
-          _this.$emit('deselect-notice');
-        }
-      };
+        this.bindModel.cmd['update'].cbEnd = function(status, cmd, res) {
+            if (res) {
+            alert('The post has been modified.');
+            _this.$emit('deselect-notice');
+            }
+        };
+        this.bindModel.cmd['delete'].cbEnd = function(status, cmd, res) {
+            if (res) {
+            alert('The post has been deleted.');
+            _this.$emit('deselect-notice');
+            }
+        };
     },
     methods: {
-      updateClick() {
-        for (var prop in this.formData) {
-          this.bindModel.columns[prop].value = this.formData[prop];
+        updateClick() {
+            for (var prop in this.formData) {
+            this.bindModel.columns[prop].value = this.formData[prop];
+            }
+            this.bindModel.cmd['update'].execute();
+        },
+        deleteClick() {
+            this.bindModel.cmd['delete'].execute();
         }
-        this.bindModel.cmd['update'].execute();
-      },
-      deleteClick() {
-        this.bindModel.cmd['delete'].execute();
-      }
-
     }
   };
 ```
@@ -267,14 +266,14 @@ export default {
       </table>
     `,
     async created() {     
-      await this.bindModel.cmd['list'].execute();
+        await this.bindModel.cmd['list'].execute();
     },
     methods: {
-      async readClick(idx) {
-        this.bindModel.cmd['read'].outputOption.index = Number(idx);
-        await this.bindModel.cmd['read'].execute();
-        this.$emit('select-notice', idx);
-      }
+        async readClick(idx) {
+            this.bindModel.cmd['read'].outputOption.index = Number(idx);
+            await this.bindModel.cmd['read'].execute();
+            this.$emit('select-notice', idx);
+        }
     }
   };
 ```

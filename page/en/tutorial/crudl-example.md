@@ -109,10 +109,10 @@ List refers to the task of querying multiple records in a database, and the REST
 
 ```json
 {
-	"rows": [
-		{ "u_name": "Hong Gildong", "gender", "M" },
-		{ "u_name": "Sungchunhyang", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Hong Gildong", "gender", "M" },
+        { "u_name": "Sungchunhyang", "gender", "W" },
+    ]
 }
 ```
 
@@ -126,12 +126,12 @@ bm.addColumn('user_name', 'list', 'output');
 bm.addColumn('gender', 'list', 'output');
 // Output callback settings
 bm.command['list'].cbOutput = function(views){
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(i, row['user_name'], row['gender']);
-		// 0 Hong Gil-dong M
-		// 1. Sung Chunhyang W
-	}
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(i, row['user_name'], row['gender']);
+        // 0 Hong Gil-dong M
+        // 1. Sung Chunhyang W
+    }
 }
 // Execute
 bm.command['list'].execute();
@@ -152,10 +152,10 @@ The following example includes the complete examples of Create, Read, Update, De
 Server data
 ```json
 {
-	"rows": [
-		{ "u_name": "Neo", "gender", "M" },
-		{ "u_name": "Seri", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Neo", "gender": "M" },
+        { "u_name": "Seri", "gender": "W" },
+    ]
 }
 ```
 
@@ -203,12 +203,12 @@ bm.command['list'].seColumn('gender', 'output');
 
 bm.command['list'].url = '/user/list';
 bm.command['list'].cbOutput = function(views){
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(i, row['user_name'], row['gender']);
-		// 0 Hong Gil-dong M
-		// 1. Sung Chunhyang W
-	}
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(i, row['user_name'], row['gender']);
+        // 0 Hong Gil-dong M
+        // 1. Sung Chunhyang W
+    }
 };
 
 // Execute
@@ -222,53 +222,53 @@ bm.command['list'].execute();
 Example: Service Object Injection Method
 ```js
 var bm = new BindModel({
-	url: '/user',
-	items: {
-		user_name: '',
-		tel: '',
-		idx: '',
-		gender: '',
-	},
-	command: {
-		create: {},
-		read: {
-			outputOption: 3,
-			url: '/user/1'
-		},
-		update: {},
-		delete: {},
-		list: {
-			outputOption: 2,
-			url: '/user/list',
-			cbOutput = function(views){
-				for(var i = 0; i < views[0].rows.count; i++) {
-					var row = views['first'].rows[i];
-					console.log(i, row['user_name'], row['gender']);
-					// 0 Hong Gil-dong M
-					// 1. Sung Chunhyang W
-				}
-			}
-		},
-	},
-	mapping: {
-		user_name: { 
-			create: ['valid', 'bind'], 
-			list: 'output' 
-		},
-		tel: { 
-			create: 'bind', 
-			read: 'bind', 
-			update: 'bind'
-		},
-		idx: { 
-			read: ['valid', 'bind'], 
-			update: ['valid', 'bind'], 
-			delete: ['valid', 'bind'] },
-		},
-		gender: { 
-			list: 'output' 
-		}
-	}
+    url: '/user',
+    items: {
+        user_name: '',
+        tel: '',
+        idx: '',
+        gender: '',
+    },
+    command: {
+        create: {},
+        read: {
+            outputOption: 3,
+            url: '/user/1'
+        },
+        update: {},
+        delete: {},
+        list: {
+            outputOption: 2,
+            url: '/user/list',
+            cbOutput = function(views){
+                for(var i = 0; i < views[0].rows.count; i++) {
+                    var row = views['first'].rows[i];
+                    console.log(i, row['user_name'], row['gender']);
+                    // 0 Hong Gil-dong M
+                    // 1. Sung Chunhyang W
+                }
+            }
+        },
+    },
+    mapping: {
+        user_name: { 
+            create: ['valid', 'bind'], 
+            list: 'output' 
+        },
+        tel: { 
+            create: 'bind', 
+            read: 'bind', 
+            update: 'bind'
+        },
+        idx: { 
+            read: ['valid', 'bind'], 
+            update: ['valid', 'bind'], 
+            delete: ['valid', 'bind'] },
+        },
+        gender: { 
+            list: 'output' 
+        }
+    }
 });
 
 // Execute

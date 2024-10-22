@@ -252,7 +252,7 @@ type onAdd = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onAdd = function(idx, elem, _this) {
-	console.log(`Before adding elements: index ${idx}, element ${elem}`);
+    console.log(`Before adding elements: index ${idx}, element ${elem}`);
 };
 ```
 
@@ -269,7 +269,7 @@ type onAdded = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onAdded = function(idx, elem, _this) {
-	console.log ('After adding elements: index ${idx}, element ${elem}');
+    console.log ('After adding elements: index ${idx}, element ${elem}');
 };
 ```
 
@@ -286,7 +286,7 @@ type onRemove = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onRemove = function(idx, elem, _this) {
-	console.log(`Before element deletion: index ${idx}, element ${elem}`);
+    console.log(`Before element deletion: index ${idx}, element ${elem}`);
 };
 ```
 
@@ -303,7 +303,7 @@ type onRemoved = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onRemoved = function(idx, elem, _this) {
-	console.log(`After element deletion: index ${idx}, element ${elem}`);
+    console.log(`After element deletion: index ${idx}, element ${elem}`);
 };
 ```
 
@@ -318,7 +318,7 @@ type onClear = (_this: object) => {};
 
 ```js
 myCollection.onClear = function(_this) {
-	console.log ('Before collection initialization);
+    console.log ('Before collection initialization);
 };
 ```
 ### onCleared
@@ -332,7 +332,7 @@ type onCleared = (_this: object)=> {};
 
 ```js
 myCollection.onCleared = function(_this) {
-	console.log ('After collection initialization');
+    console.log ('After collection initialization');
 };
 ```
 
@@ -349,7 +349,7 @@ type onChanging = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onChanging = function(idx, elem, _this) {
-	console.log(`Before element change: index ${idx}, element ${elem}`);
+    console.log(`Before element change: index ${idx}, element ${elem}`);
 };
 ```
 
@@ -366,6 +366,6 @@ type onChanged = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onChanged = function(idx, elem, _this) {
-	console.log ('After element change: index ${idx}, element ${elem}');
+    console.log ('After element change: index ${idx}, element ${elem}');
 };
 ```

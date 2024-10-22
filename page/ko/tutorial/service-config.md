@@ -26,36 +26,36 @@ type RegExpType = { reg: RegExp, msg: string, return?: boolean };
 type FuncType = (value: any) => boolean;
 type ConstraintType = RegExpType | FuncType;
 type ColumnType = {
-	selector?: SelectorType,
-	getter?: () => any,
-	setter?: (val: any) => any,
-	getFilter?: () => any,
-	setFilter?: (val; any) => any,
-	default?: stirng | number | boolean | null,
-	value?: any,
-	alias?: string,
-	caption?: string,
-	constraints?: ConstraintType[] | ConstraintType,
-	required?: boolean | false,
-	columnName?: string
+    selector?: SelectorType,
+    getter?: () => any,
+    setter?: (val: any) => any,
+    getFilter?: () => any,
+    setFilter?: (val; any) => any,
+    default?: stirng | number | boolean | null,
+    value?: any,
+    alias?: string,
+    caption?: string,
+    constraints?: ConstraintType[] | ConstraintType,
+    required?: boolean | false,
+    columnName?: string
 };
 type Itemtype = {
 	[key: string]: string | number | boolean | ColumnType
 };
 // command area
 type CmdValueType = {
-	outputOption?: 0 | 1 | 2 | 3,  // alias : outOpt
-	config?: see axiosConfig, // axios type
-	url?: string,
-	views?: string[],
-	cbBegin?: (cmd: BindCommand) => void,
-	cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
-	cbResult?: (data: object, cmd: BindCommand, res: object) => object,
-	cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
+    outputOption?: 0 | 1 | 2 | 3,  // alias : outOpt
+    config?: see axiosConfig, // axios type
+    url?: string,
+    views?: string[],
+    cbBegin?: (cmd: BindCommand) => void,
+    cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
+    cbResult?: (data: object, cmd: BindCommand, res: object) => object,
+    cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
 };
 type CommandType = {
 	[key: string]: CmdValueType
@@ -65,9 +65,9 @@ typeColumnName = string; // 'item name' | 'column name' | 'table name.column nam
 type CommandName = '$all' | string;  // string = 'command name'
 type ViewName = 'valid' | 'bind' | 'output' | '$all' | string; // add view name
 type MappingType = {
-	[key: ColumnName]: {
-		[key: CommandName]: ViewName | ViewName[]
-	}
+    [key: ColumnName]: {
+        [key: CommandName]: ViewName | ViewName[]
+    }
 };
 // fn area
 type fnType = {
@@ -76,25 +76,24 @@ type fnType = {
 // -------------------------
 // service area
 type ServiceType = {
-	tables?: string | string[],
-	baseConfig?: axiosConfig,  // // axios type
-	url?: string,
-	cbBaseBegin?: (cmd: BindCommand) => void;
-	cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
-	cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
-	cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
-	items?: Itemtype,
-	command?: CommandType,
-	mapping?: MappingType,
-	fn?: fnType,
-	preRegister?: (bindModel) => void',
-	preCheck?: (bindModel) => boolean',
-	preReady?: (bindModel) => void,
-
+    tables?: string | string[],
+    baseConfig?: axiosConfig,  // // axios type
+    url?: string,
+    cbBaseBegin?: (cmd: BindCommand) => void;
+    cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
+    cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
+    cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
+    items?: Itemtype,
+    command?: CommandType,
+    mapping?: MappingType,
+    fn?: fnType,
+    preRegister?: (bindModel) => void',
+    preCheck?: (bindModel) => boolean',
+    preReady?: (bindModel) => void,
 };
 ```
 
@@ -108,16 +107,16 @@ type ServiceType = {
 ```ts
 // Configuring Callback and Server Requests on Service Objects
 type ServiceType = {
-	baseConfig?: axiosConfig,  // axios 타입 참조
-	url?: string,
-	cbBaseBegin?: (cmd: BindCommand) => void;
-	cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
-	cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
-	cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
+    baseConfig?: axiosConfig,  // axios 타입 참조
+    url?: string,
+    cbBaseBegin?: (cmd: BindCommand) => void;
+    cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
+    cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
+    cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
 };
 ```
 - 'url' 은 `baseConfig.url` 값 입니다.
@@ -125,30 +124,30 @@ type ServiceType = {
 예제 : 기본
 ```js
 var bm = new BindModel({
-	// 기본 서버 요청
-	baseConfig: { method: 'GET' },
-	url: '/user',
-	// 기본 콜백함수
-	cbBaseBegin: function(cmd) { 
-		console.log('기본 시작 콜백'); 
-	},
-	cbBaseValid: function(view, cmd) {
-		console.log('기본 유효성 검사 콜백');
-		return true;
-	},
-	cbBaseBind: function(view, cmd, cfg) { 
-		console.log('기본 서버 요청 콜백'); 
-	},
-	cbBaseResult: function(data, cmd, res) {
-		console.log('기본 서버 응답 콜백');
-		return data;
-	},
-	cbBaseOutput: function(vidw, cmd, res) => { 
-		console.log('기본 응답 출력 콜백'); 
-	},
-	cbBaseEnd: function(status, cmd, res) => { 
-		console.log('기본 종료 콜백'); 
-	},	
+    // 기본 서버 요청
+    baseConfig: { method: 'GET' },
+    url: '/user',
+    // 기본 콜백함수
+    cbBaseBegin: function(cmd) { 
+        console.log('기본 시작 콜백'); 
+    },
+    cbBaseValid: function(view, cmd) {
+        console.log('기본 유효성 검사 콜백');
+        return true;
+    },
+    cbBaseBind: function(view, cmd, cfg) { 
+        console.log('기본 서버 요청 콜백'); 
+    },
+    cbBaseResult: function(data, cmd, res) {
+        console.log('기본 서버 응답 콜백');
+        return data;
+    },
+    cbBaseOutput: function(vidw, cmd, res) => { 
+        console.log('기본 응답 출력 콜백'); 
+    },
+    cbBaseEnd: function(status, cmd, res) => { 
+        console.log('기본 종료 콜백'); 
+    },	
 });
 ```
 
@@ -159,26 +158,26 @@ var bm = new BindModel();
 // 기본 서버 설정
 bm.baseConfig = { method: 'GET', url: '/user' };
 bm.cbBaseBegin = function(cmd) { 
-	console.log('기본 시작 콜백'); 
+    console.log('기본 시작 콜백'); 
 };
 
 // 기본 콜백함수
 bm.cbBaseValid: function(view, cmd) {
-	console.log('기본 유효성 검사 콜백');
-	return true;
+    console.log('기본 유효성 검사 콜백');
+    return true;
 };
 bm.cbBaseBind: function(view, cmd, cfg) { 
-	console.log('기본 서버 요청 콜백'); 
+    console.log('기본 서버 요청 콜백'); 
 };
 bm.cbBaseResult: function(data, cmd, res) {
-	console.log('기본 서버 응답 콜백');
-	return data;
+    console.log('기본 서버 응답 콜백');
+    return data;
 };
 bm.cbBaseOutput: function(vidw, cmd, res) => { 
-	console.log('기본 응답 출력 콜백'); 
+    console.log('기본 응답 출력 콜백'); 
 };
 bm.cbBaseEnd: function(status, cmd, res) => { 
-	console.log('기본 종료 콜백'); 
+    console.log('기본 종료 콜백'); 
 };
 ```
 - 위의 구성한 서비스 객체와 동일합니다.
@@ -193,7 +192,7 @@ bm.cbBaseEnd: function(status, cmd, res) => {
 ```ts
 // Configuring Tables in a Service Object
 type ServiceType = {
-	tables?: string | string[],
+    tables?: string | string[],
 };
 ```
 
@@ -244,25 +243,25 @@ type RegExpType = {reg: RegExp, msg: string, return?: boolean = true};
 type FuncType = (value: any) => boolean;
 type ConstraintType = RegExpType | FuncType;
 type ColumnType = {
-	selector?: SelectorType,
-	getter?: () => any,
-	setter?: (val: any) => any,
-	getFilter?: () => any,
-	setFilter?: (val: any) => any,
-	default?: stirng | number | boolean | null,
-	value?: any,
-	alias?: string,
-	caption?: string,
-	constraints?: ConstraintType[] | ConstraintType,
-	required?: boolean | false,
-	columnName?: string
+    selector?: SelectorType,
+    getter?: () => any,
+    setter?: (val: any) => any,
+    getFilter?: () => any,
+    setFilter?: (val: any) => any,
+    default?: stirng | number | boolean | null,
+    value?: any,
+    alias?: string,
+    caption?: string,
+    constraints?: ConstraintType[] | ConstraintType,
+    required?: boolean | false,
+    columnName?: string
 };
 type Itemtype = {
-	[key: string]: string | number | boolean | ColumnType
+    [key: string]: string | number | boolean | ColumnType
 };
 // 서비스 객체에서 items 구성
 type ServiceType = {
-	items?: ItemType
+    items?: ItemType
 };
 ```
 
@@ -286,28 +285,28 @@ type ServiceType = {
 예제 : items
 ```js
 var bm = new BindModel({
-	// 추가 테이블 생성
-	tables: 'second',
-	
-	// 아이템 생성
-	items: {
-		aa: 'Cat',
-		'second.bb': 10,
-		'second.cc': true,
-		dd: {
-			selector: { key: '#U_ID', type: 'value' },  // 컬럼의 selector 설정
-			setter: (val) => {/*외부에 설정 영역*/},        // 컬럼의 setter 설정
-			getter: () => { return '외부값'; },           // 컬럼의 getter 설정
-		},
-		ee: {
-			required: true,                             // 컬럼의 required 설정
-			setFilter: (val) => {/*외부에 설정영역*/},      // 컬럼의 setFilter 설정
-			getFilter: () => { return '외부값'; },        // 컬럼의 getFilter 설정
-		},
-		ff: {
-			constraints: { reg: /abc/, msg: '매칭되지 실패!' } // 컬럼의 제약조건 설정
-		}
-	}
+    // 추가 테이블 생성
+    tables: 'second',
+
+    // 아이템 생성
+    items: {
+        aa: 'Cat',
+        'second.bb': 10,
+        'second.cc': true,
+        dd: {
+            selector: { key: '#U_ID', type: 'value' },  // 컬럼의 selector 설정
+            setter: (val) => {/*외부에 설정 영역*/},        // 컬럼의 setter 설정
+            getter: () => { return '외부값'; },           // 컬럼의 getter 설정
+        },
+        ee: {
+            required: true,                             // 컬럼의 required 설정
+            setFilter: (val) => {/*외부에 설정영역*/},      // 컬럼의 setFilter 설정
+            getFilter: () => { return '외부값'; },        // 컬럼의 getFilter 설정
+        },
+        ff: {
+            constraints: { reg: /abc/, msg: '매칭되지 실패!' } // 컬럼의 제약조건 설정
+        }
+    }
 });
 ```
 - aa' 아이템은 기본테이블에 컬럼으로 등록하고, value 에 'Cat' 을 설정합니다.
@@ -326,17 +325,17 @@ bm.items.add('aa', 'Cat');
 bm.items.add('second.bb', 10);
 bm.items.add('second.cc', true);
 bm.items.add('dd', {
-	selector: { key: '#U_ID', type: 'value' },
-	setter: function(val) {/*외부에 설정 영역*/},
-	getter: function() { return '외부값'; }, 
+    selector: { key: '#U_ID', type: 'value' },
+    setter: function(val) {/*외부에 설정 영역*/},
+    getter: function() { return '외부값'; }, 
 });
 bm.items.add('ee', {
-	required: true,
-	setFilter: function(val) {/*외부에 설정영역*/},
-	getFilter: function() { return '외부값'; },
+    required: true,
+    setFilter: function(val) {/*외부에 설정영역*/},
+    getFilter: function() { return '외부값'; },
 });
 bm.items.add('ff', {
-	constraints: { reg: /abc/, msg: '매칭되지 실패!' }
+    constraints: { reg: /abc/, msg: '매칭되지 실패!' }
 });
 ```
 - 위의 구성한 서비스 객체와 동일합니다.
@@ -350,25 +349,25 @@ bm.items.add('ff', {
 타입 : command
 ```ts
 type CmdValueType = {
-	outputOption?: 0 | 1 | 2 | 3,  // 별칭 : outOpt
-	config?: see axiosConfig, // axios type
-	url?: string,
-	views?: string[],
-	cbBegin?: (cmd: BindCommand) => void,
-	cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
-	cbResult?: (data: object, cmd: BindCommand, res: object) => object,
-	cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
+    outputOption?: 0 | 1 | 2 | 3,  // 별칭 : outOpt
+    config?: see axiosConfig, // axios type
+    url?: string,
+    views?: string[],
+    cbBegin?: (cmd: BindCommand) => void,
+    cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
+    cbResult?: (data: object, cmd: BindCommand, res: object) => object,
+    cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
 };
 type CommandType = {
-	[key: string]: CmdValueType
+    [key: string]: CmdValueType
 };
 // 서비스 객체에서 command 구성
 type ServiceType = {
-	command?: CommandType,
+    command?: CommandType,
 };
 ```
 - `CmdValueType.url` 은 `CmdValueType.config.url` 값을 참조합니다.
@@ -390,18 +389,18 @@ type ServiceType = {
 예제 : command
 ```js
 var bm = new BindModel({
-	command: {
-		create: {},
-		read: {
-			outputOption: 3,  // 데이터를 컬럼값에 설정하기 (지정한 컬럼)
-			config: { method: 'GET' },  // GET 요청 설정
-			cbEnd: function() { alert('정상처리되었습니다.'); } // 처리 완료 후 콜백 함수
-		},
-		update: {
-			views: ['two'],  // 'two' 뷰를 추가
-			url: '/user'     // 요청할 URL 경로
-		}
-	}
+    command: {
+        create: {},
+        read: {
+            outputOption: 3,  // 데이터를 컬럼값에 설정하기 (지정한 컬럼)
+            config: { method: 'GET' },  // GET 요청 설정
+            cbEnd: function() { alert('정상처리되었습니다.'); } // 처리 완료 후 콜백 함수
+        },
+        update: {
+            views: ['two'],  // 'two' 뷰를 추가
+            url: '/user'     // 요청할 URL 경로
+        }
+    }
 });
 ```
 - 'create'  를 생성하고 
@@ -447,9 +446,9 @@ type ColumnName = string;            // '아이템명' | '컬럼명' | '테이�
 type CommandName = '$all' | string;  // string = '명령 이름'
 type ViewName = 'valid' | 'bind' | 'output' | '$all' | string; // 추가 뷰 이름
 type MappingType = {
-	[key: ColumnName]: {
-		[key: CommandName]: ViewName | ViewName[]
-	}
+    [key: ColumnName]: {
+        [key: CommandName]: ViewName | ViewName[]
+    }
 };
 // 서비스 객체에서 mapping 구성
 type ServiceType = {
@@ -474,26 +473,26 @@ type ServiceType = {
 ```js
 var bm = new BindModel();
 bm.setService({
-	// 테이블 영역
-	tables: ['second'],
-	// 아이템 영역
-	items: {
-		aa: '',
-		bb: '',
-		cc: '',
-		dd: ''
-	},
-	// 명령 영역
-	command: {
-		one: {},
-		two: {},
-	},
-	// 매핑 영역
-	mapping: {
-		aa: { $all: ['valid'] }, // 모든 명령의 'valid' 뷰에 'aa' 등록
-		bb: { one: ['bind'] },   // 'one' 명령의 'bind' 뷰에 'bb' 등록
-		'second.cc': { two: ['output'] }  // 'two' 명령의 'output' 뷰에 'cc' 등록
-	}
+    // 테이블 영역
+    tables: ['second'],
+    // 아이템 영역
+    items: {
+        aa: '',
+        bb: '',
+        cc: '',
+        dd: ''
+    },
+    // 명령 영역
+    command: {
+        one: {},
+        two: {},
+    },
+    // 매핑 영역
+    mapping: {
+        aa: { $all: ['valid'] }, // 모든 명령의 'valid' 뷰에 'aa' 등록
+        bb: { one: ['bind'] },   // 'one' 명령의 'bind' 뷰에 'bb' 등록
+        'second.cc': { two: ['output'] }  // 'two' 명령의 'output' 뷰에 'cc' 등록
+    }
 });
 
 // bm.items.count == 4 ('aa','bb','cc','dd')
@@ -539,9 +538,9 @@ bm.addCommand('two');
 
 // 아이템 매핑
 bm.setMapping({
-	aa: { $all: ['valid'] }, // 모든 명령의 'valid' 뷰에 'aa' 등록
-	bb: { one: ['bind'] },   // 'one' 명령의 'bind' 뷰에 'bb' 등록
-	'second.cc': { two: ['output'] }  // 'two' 명령의 'output' 뷰에 'cc' 등록
+    aa: { $all: ['valid'] }, // 모든 명령의 'valid' 뷰에 'aa' 등록
+    bb: { one: ['bind'] },   // 'one' 명령의 'bind' 뷰에 'bb' 등록
+    'second.cc': { two: ['output'] }  // 'two' 명령의 'output' 뷰에 'cc' 등록
 });
 ```
 - 위의 구성한 서비스 객체와 동일합니다.
@@ -555,11 +554,11 @@ bm.setMapping({
 타입 : fn
 ```ts
 type fnType = {
-	[key: string]: Function;
+    [key: string]: Function;
 };
 // 서비스 객체에서 fn 구성
 type ServiceType = {
-	fn?: fnType
+    fn?: fnType
 };
 ```
 - key 는 사용자함수명입니다.
@@ -567,28 +566,28 @@ type ServiceType = {
 예제 : fn
 ```js
 var bm = new BindModel({
-	cbBaseBegin: function(cmd) {
-		Access the parameter at cmd._model.fn.ecCreate(); // cmd 에서 파라메터로 접근
-		this.bindModel.fn.sum(1, 1); // this.bindModel로 접근
-	},
-	command: {
-		create: {
-			cbEnd: function() {
-				this.bindModel.fn.sum(1, 2);
-			}
-		},
-	},
-	fn: {
-		sum: function(a, b) {return a + b},
-		execCreate: function() {
-			this.bindModel.cmd.read.execute();
-		}
-	}
+    cbBaseBegin: function(cmd) {
+        Access the parameter at cmd._model.fn.ecCreate(); // cmd 에서 파라메터로 접근
+        this.bindModel.fn.sum(1, 1); // this.bindModel로 접근
+    },
+    command: {
+        create: {
+            cbEnd: function() {
+                this.bindModel.fn.sum(1, 2);
+            }
+        },
+    },
+    fn: {
+        sum: function(a, b) {return a + b},
+        execCreate: function() {
+            this.bindModel.cmd.read.execute();
+        }
+    }
 });
 
 // 이벤트 등록
 $('#btn_create').click(function() {
-	bm.fn.execCreate();
+    bm.fn.execCreate();
 });
 ```
 - 콜백함수에서 `파라메터` 또는 `this.bindModel` 속성으로 BindModel 객체에 접근할 수 있습니다.
@@ -600,24 +599,24 @@ var bm = new BindModel();
 // 함수 구성
 bm.fn.add('sum', function(a, b) {return a + b});
 bm.fn.add('execCreate', function() {
-	this.bindModel.cmd.read.execute(); // this.bindModel 로 접근
+    this.bindModel.cmd.read.execute(); // this.bindModel 로 접근
 });
 
 // 공통 콜백 구성
 bm.cbBaseBegin = function(cmd) {
-	cmd._model.fn.execCreate();  // cmd 파라메터로의 접근
-	this.bindModel.fn.sum(1, 1); // this.bindModel 로 접근
+    cmd._model.fn.execCreate();  // cmd 파라메터로의 접근
+    this.bindModel.fn.sum(1, 1); // this.bindModel 로 접근
 };
 
 // 명령 구성
 bm.addCommand('create');
 bm.command['create'].cbEnd = function() {
-	this.bindModel.fn.sum(1, 2);  // this.bindModel 로 접근
+    this.bindModel.fn.sum(1, 2);  // this.bindModel 로 접근
 }
 
 // 이벤트 등록
 $('#btn_create').click(function() {
-	bm.fn.execCreate();  // 외부에서 함수 접근
+    bm.fn.execCreate();  // 외부에서 함수 접근
 });
 ```
 - 위의 구성한 서비스 객체와 동일합니다.
@@ -649,16 +648,16 @@ type preReady = (bindModel) => void;
 ```js
 var bm = new BindModel({
 preRegister: function(bindModel) { 
-		// 전처리 : 검사전
-	},
-	preCheck: function(bindModel) {
-		// 전처리 : 검사
-		if (bm.checkSelector().length === 0) return true;
-	},
-	preReady: function(bindModel) { 
-		// 전처리 : 준비 완료
-		bindModel.command['test'].execute();
-	},
+        // 전처리 : 검사전
+    },
+    preCheck: function(bindModel) {
+        // 전처리 : 검사
+        if (bm.checkSelector().length === 0) return true;
+    },
+    preReady: function(bindModel) { 
+        // 전처리 : 준비 완료
+        bindModel.command['test'].execute();
+    },
 });
 
 $(document).ready(function () {
@@ -673,19 +672,19 @@ var bm = new BindModel();
 // BindModel Settings...
 
 bm.preRegister = function(bindModel) { 
-	// 전처리 : 검사전
+    // 전처리 : 검사전
 };
 bm.preCheck = function(bindModel) { 
-	// 전처리 : 검사
-	if (bm.checkSelector().length === 0) return true;
+    // 전처리 : 검사
+    if (bm.checkSelector().length === 0) return true;
 };
 bm.preReady = function(bindModel) { 
-	// 전처리 : 준비 완료
-	bindModel.command['test'].execute();
+    // 전처리 : 준비 완료
+    bindModel.command['test'].execute();
 };
 
 $(document).ready(function () {
-	bm.init();
+    bm.init();
 });
 ```
 - 위의 구성한 서비스 객체와 동일합니다.
@@ -711,61 +710,61 @@ setService() 메소드로 사용은 서비스객체 분리하여 코드의 가�
 예제 : 생성자를 통한 주입
 ```js
 var bm1 = new BindModel({
-	items: {
-        aa: 'Cat',
-        bb: 10,
-        cc: true,
-    },
-    fn: {
-        sum: function(a, b) { return a + b; },
-    },
-    url: '/user',
-    command: {
-        read: {
-            outputOption: 3,
-            cbEnd: function() { console.log('Normal Processed'); }
-        },
-        update: {
-            views: ['two'],
-            url: '/user'
-        }
-    },
-    mapping: {
-        aa: { $all: ['valid'] },
-        bb: { read: ['bind'], update: 'output' },
-        cc: { update: ['output'] }
-    },
+    items: {
+            aa: 'Cat',
+            bb: 10,
+            cc: true,
+        },
+        fn: {
+            sum: function(a, b) { return a + b; },
+        },
+        url: '/user',
+        command: {
+            read: {
+                outputOption: 3,
+                cbEnd: function() { console.log('Normal Processed'); }
+            },
+            update: {
+                views: ['two'],
+                url: '/user'
+            }
+        },
+        mapping: {
+            aa: { $all: ['valid'] },
+            bb: { read: ['bind'], update: 'output' },
+            cc: { update: ['output'] }
+    },
 });
 ```
 예제 : setService() 메소드로 주입
 ```js
 // items, fn 구성
 var svcItems = {
-	items: {
-        aa: 'Cat',
-        bb: 10,
-        cc: true,
-    },
-    fn: {
-        sum: function(a, b) { return a + b; },
-    }
+    items: {
+        aa: 'Cat',
+        bb: 10,
+        cc: true,
+    },
+    fn: {
+        sum: function(a, b) { return a + b; },
+    }
 };
 
 // 기타 구성
 var svcCommon = {
-    baseConfig: { method: 'GET' },
+    baseConfig: { method: 'GET' },
     url: '/user',
     command: {
-        read: {
-            outputOption: 3,
-            config: { method: 'GET' },
-            cbEnd: function() { console.log('Normal Processed'); }
-        },
+        read: {
+            outputOption: 3,
+            config: { method: 'GET' },
+            cbEnd: function() { console.log('Normal Processed'); }
+        },
     },
     mapping: {
-        aa: { $all: ['valid'] },
-        bb: { read: ['bind'], update: 'output' },
-        cc: { update: ['output'] }
+        aa: { $all: ['valid'] },
+        bb: { read: ['bind'], update: 'output' },
+        cc: { update: ['output'] }
     },
 };
 
@@ -793,12 +792,12 @@ bm2.setService(svcCommon);
 common-svc.js
 ```js
 class CommonService() {
-	cbFail = function(msg) {
-		console.warn ("user failure handling:+ msg");
-	};
-	cbError = function(msg) {
-		console.error ("User error handling")
-	};
+    cbFail = function(msg) {
+        console.warn ("user failure handling:+ msg");
+    };
+    cbError = function(msg) {
+        console.error ("User error handling")
+    };
 }
 ```
 - 공통으로 사용되는 영역을 공통서비스 클래스로 작성하였습니다.
@@ -806,34 +805,34 @@ class CommonService() {
 member-svc.js
 ```js
 class MemberService(suffix) extends CommonService {
-	items = {
-		idx: -1,
-		user_no: { selector: { key: '#user_no'+ suffix, type: 'value' } },
-		u_name: { selector: { key: '#u_name'+ suffix, type: 'value' } },
-	};
-	command = {
-		create: 0,
-		read: {
-			outputOption: 3,
-			cbEnd: () => { alert('Normal Processed'); }
-		}
-	};
-	mapping = {
-		idx: { 
-			read: ['valid', 'bind'] 
-		},
-		u_name: { 
-			create: ['valid', 'bind'],
-			read: ['output']
-		},
-		user_no: { 
-			create: ['bind'],
-			read:: ['output'],
-		}
-	};
-	preCheck = function(bindModel) { 
-		if (bm.checkSelector().length === 0) return true;
-	}
+    items = {
+        idx: -1,
+        user_no: { selector: { key: '#user_no'+ suffix, type: 'value' } },
+        u_name: { selector: { key: '#u_name'+ suffix, type: 'value' } },
+    };
+    command = {
+        create: 0,
+        read: {
+            outputOption: 3,
+            cbEnd: () => { alert('Normal Processed'); }
+        }
+    };
+    mapping = {
+        idx: { 
+            read: ['valid', 'bind'] 
+        },
+        u_name: { 
+            create: ['valid', 'bind'],
+            read: ['output']
+        },
+        user_no: { 
+            create: ['bind'],
+            read:: ['output'],
+        }
+    };
+    preCheck = function(bindModel) { 
+        if (bm.checkSelector().length === 0) return true;
+    }
 };
 ```
 - suffix 파라메터는 selector 이름의 충돌을 방지를 접두사입니다.
@@ -842,10 +841,10 @@ member.html
 ```html
 
 <div>
-	Class number <h2 id="user_no"></h2>
+    Class number <h2 id="user_no"></h2>
 </div>
 <div>
-	이름 <input id="u_name" type="text"/>
+    이름 <input id="u_name" type="text"/>
 </div>
 <button id="btn_Create" type="button">추가</button>
 
@@ -854,16 +853,16 @@ member.html
 <script src="member-svc"></script>
 <script>
 
-	var meb = new _L.BindModel(new MemberService());
-	
-	meb.url = 'http://SEVER_URL'; // 요청경로를 설정합니다.
-	meb.preReady = function(bindModel) {
-		$('#btn_Create').click(bindModel.command.execute());
-	};
-	
-	$(document).ready(function () {
-		meb.init();
-	});
+    var meb = new _L.BindModel(new MemberService());
+
+    meb.url = 'http://SEVER_URL'; // 요청경로를 설정합니다.
+    meb.preReady = function(bindModel) {
+        $('#btn_Create').click(bindModel.command.execute());
+    };
+
+    $(document).ready(function () {
+        meb.init();
+    });
 
 </script>
 ```

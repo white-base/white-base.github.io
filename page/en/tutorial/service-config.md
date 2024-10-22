@@ -26,36 +26,36 @@ type RegExpType = { reg: RegExp, msg: string, return?: boolean };
 type FuncType = (value: any) => boolean;
 type ConstraintType = RegExpType | FuncType;
 type ColumnType = {
-	selector?: SelectorType,
-	getter?: () => any,
-	setter?: (val: any) => any,
-	getFilter?: () => any,
-	setFilter?: (val; any) => any,
-	default?: stirng | number | boolean | null,
-	value?: any,
-	alias?: string,
-	caption?: string,
-	constraints?: ConstraintType[] | ConstraintType,
-	required?: boolean | false,
-	columnName?: string
+    selector?: SelectorType,
+    getter?: () => any,
+    setter?: (val: any) => any,
+    getFilter?: () => any,
+    setFilter?: (val; any) => any,
+    default?: stirng | number | boolean | null,
+    value?: any,
+    alias?: string,
+    caption?: string,
+    constraints?: ConstraintType[] | ConstraintType,
+    required?: boolean | false,
+    columnName?: string
 };
 type Itemtype = {
 	[key: string]: string | number | boolean | ColumnType
 };
 // command area
 type CmdValueType = {
-	outputOption?: 0 | 1 | 2 | 3,  // alias : outOpt
-	config?: see axiosConfig, // axios type
-	url?: string,
-	views?: string[],
-	cbBegin?: (cmd: BindCommand) => void,
-	cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
-	cbResult?: (data: object, cmd: BindCommand, res: object) => object,
-	cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
+    outputOption?: 0 | 1 | 2 | 3,  // alias : outOpt
+    config?: see axiosConfig, // axios type
+    url?: string,
+    views?: string[],
+    cbBegin?: (cmd: BindCommand) => void,
+    cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
+    cbResult?: (data: object, cmd: BindCommand, res: object) => object,
+    cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
 };
 type CommandType = {
 	[key: string]: CmdValueType
@@ -65,36 +65,35 @@ typeColumnName = string; // 'item name' | 'column name' | 'table name.column nam
 type CommandName = '$all' | string;  // string = 'command name'
 type ViewName = 'valid' | 'bind' | 'output' | '$all' | string; // add view name
 type MappingType = {
-	[key: ColumnName]: {
-		[key: CommandName]: ViewName | ViewName[]
-	}
+    [key: ColumnName]: {
+        [key: CommandName]: ViewName | ViewName[]
+    }
 };
 // fn area
 type fnType = {
-	[key: string]: Function
+    [key: string]: Function
 };
 // -------------------------
 // service area
 type ServiceType = {
-	tables?: string | string[],
-	baseConfig?: axiosConfig,  // // axios type
-	url?: string,
-	cbBaseBegin?: (cmd: BindCommand) => void;
-	cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
-	cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
-	cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
-	items?: Itemtype,
-	command?: CommandType,
-	mapping?: MappingType,
-	fn?: fnType,
-	preRegister?: (bindModel) => void',
-	preCheck?: (bindModel) => boolean',
-	preReady?: (bindModel) => void,
-
+    tables?: string | string[],
+    baseConfig?: axiosConfig,  // // axios type
+    url?: string,
+    cbBaseBegin?: (cmd: BindCommand) => void;
+    cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
+    cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
+    cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
+    items?: Itemtype,
+    command?: CommandType,
+    mapping?: MappingType,
+    fn?: fnType,
+    preRegister?: (bindModel) => void',
+    preCheck?: (bindModel) => boolean',
+    preReady?: (bindModel) => void,
 };
 ```
 
@@ -108,16 +107,16 @@ Type: Default server request and default callback function
 ```ts
 // Configuring Callback and Server Requests on Service Objects
 type ServiceType = {
-	baseConfig?: axiosConfig,  // axios 타입 참조
-	url?: string,
-	cbBaseBegin?: (cmd: BindCommand) => void;
-	cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
-	cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
-	cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
+    baseConfig?: axiosConfig,  // axios 타입 참조
+    url?: string,
+    cbBaseBegin?: (cmd: BindCommand) => void;
+    cbBaseValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBaseBind?: (view: MetaView, cmd: BindCommand, cfg) => void,
+    cbBaseResult?: (data: object, cmd: BindCommand, res) => object,
+    cbBaseOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbBaseEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
 };
 ```
 - 'url' is the value of 'baseConfig.url'.
@@ -125,30 +124,30 @@ type ServiceType = {
 Example: Basic
 ```js
 var bm = new BindModel({
-	// Default Server Request
-	baseConfig: { method: 'GET' },
-	url: '/user',
-	// Default callback function
-	cbBaseBegin: function(cmd) { 
-		console.log ('default start callback); 
-	},
-	cbBaseValid: function(view, cmd) {
-		console.log ('default validation callback);
-		return true;
-	},
-	cbBaseBind: function(view, cmd, cfg) { 
-		console.log ('Basic Server Request Callback'); 
-	},
-	cbBaseResult: function(data, cmd, res) {
-		console.log ('Default Server Response Callback');
-		return data;
-	},
-	cbBaseOutput: function(vidw, cmd, res) => { 
-		console.log ('Default Response Output Callback'); 
-	},
-	cbBaseEnd: function(status, cmd, res) => { 
-		console.log ('Default Termination Callback'); 
-	},	
+    // Default Server Request
+    baseConfig: { method: 'GET' },
+    url: '/user',
+    // Default callback function
+    cbBaseBegin: function(cmd) { 
+        console.log('default start callback'); 
+    },
+    cbBaseValid: function(view, cmd) {
+        console.log('default validation callback');
+        return true;
+    },
+    cbBaseBind: function(view, cmd, cfg) { 
+        console.log('Basic Server Request Callback'); 
+    },
+    cbBaseResult: function(data, cmd, res) {
+        console.log('Default Server Response Callback');
+        return data;
+    },
+    cbBaseOutput: function(vidw, cmd, res) => { 
+        console.log('Default Response Output Callback'); 
+    },
+    cbBaseEnd: function(status, cmd, res) => { 
+        console.log('Default Termination Callback'); 
+    },	
 });
 ```
 
@@ -159,26 +158,26 @@ var bm = new BindModel();
 // Default Server Settings
 bm.baseConfig = { method: 'GET', url: '/user' };
 bm.cbBaseBegin = function(cmd) { 
-	console.log ('default start callback); 
+    console.log('default start callback); 
 };
 
 // Default callback function
 bm.cbBaseValid: function(view, cmd) {
-	console.log ('default validation callback);
-	return true;
+    console.log('default validation callback');
+    return true;
 };
 bm.cbBaseBind: function(view, cmd, cfg) { 
-	console.log ('Basic Server Request Callback'); 
+    console.log('Basic Server Request Callback'); 
 };
 bm.cbBaseResult: function(data, cmd, res) {
-	console.log ('Default Server Response Callback');
-	return data;
+    console.log('Default Server Response Callback');
+    return data;
 };
 bm.cbBaseOutput: function(vidw, cmd, res) => { 
-	console.log ('Default Response Output Callback'); 
+    console.log('Default Response Output Callback'); 
 };
 bm.cbBaseEnd: function(status, cmd, res) => { 
-	console.log ('Default Termination Callback'); 
+    console.log('Default Termination Callback'); 
 };
 ```
 - Same as the service object configured above.
@@ -193,7 +192,7 @@ Type: Tables
 ```ts
 // Configuring Tables in a Service Object
 type ServiceType = {
-	tables?: string | string[],
+    tables?: string | string[],
 };
 ```
 
@@ -246,25 +245,25 @@ type RegExpType = {reg: RegExp, msg: string, return?: boolean = true};
 type FuncType = (value: any) => boolean;
 type ConstraintType = RegExpType | FuncType;
 type ColumnType = {
-	selector?: SelectorType,
-	getter?: () => any,
-	setter?: (val: any) => any,
-	getFilter?: () => any,
-	setFilter?: (val: any) => any,
-	default?: stirng | number | boolean | null,
-	value?: any,
-	alias?: string,
-	caption?: string,
-	constraints?: ConstraintType[] | ConstraintType,
-	required?: boolean | false,
-	columnName?: string
+    selector?: SelectorType,
+    getter?: () => any,
+    setter?: (val: any) => any,
+    getFilter?: () => any,
+    setFilter?: (val: any) => any,
+    default?: stirng | number | boolean | null,
+    value?: any,
+    alias?: string,
+    caption?: string,
+    constraints?: ConstraintType[] | ConstraintType,
+    required?: boolean | false,
+    columnName?: string
 };
 type Itemtype = {
-	[key: string]: string | number | boolean | ColumnType
+    [key: string]: string | number | boolean | ColumnType
 };
 // Configuring items in a service object
 type ServiceType = {
-	items?: ItemType
+    items?: ItemType
 };
 ```
 
@@ -287,28 +286,28 @@ type ServiceType = {
 Example: items
 ```js
 var bm = new BindModel({
-	// Create additional tables
-	tables: 'second',
-	
-	// Create an item
-	items: {
-		aa: 'Cat',
-		'second.bb': 10,
-		'second.cc': true,
-		dd: {
-			selector: { key: '#U_ID', type: 'value' },  // 컬럼의 selector 설정
-			setter: (val) => {/*Outside setting area*/}, // Setter for column
-			getter: () => { return 'external value'; }, // set getter for column
-		},
-		ee: {
-			required: true, // required setting of column
-			setFilter: (val) => {/*Outside setting area*/}, // SetFilter on column
-			getFilter: () => { return 'external value'; }, // set getFilter for column
-		},
-		ff: {
-			constructs: {reg: /abc/, msg: 'Failed to match!' } // Set Constraints for Column
-		}
-	}
+    // Create additional tables
+    tables: 'second',
+
+    // Create an item
+    items: {
+        aa: 'Cat',
+        'second.bb': 10,
+        'second.cc': true,
+        dd: {
+            selector: { key: '#U_ID', type: 'value' },  // 컬럼의 selector 설정
+            setter: (val) => {/*Outside setting area*/}, // Setter for column
+            getter: () => { return 'external value'; }, // set getter for column
+        },
+        ee: {
+            required: true, // required setting of column
+            setFilter: (val) => {/*Outside setting area*/}, // SetFilter on column
+            getFilter: () => { return 'external value'; }, // set getFilter for column
+        },
+        ff: {
+            constructs: {reg: /abc/, msg: 'Failed to match!' } // Set Constraints for Column
+        }
+    }
 });
 ```
 - The item aa' is registered as a column in the default table, and 'Cat' is set in the value.
@@ -327,17 +326,17 @@ bm.items.add('aa', 'Cat');
 bm.items.add('second.bb', 10);
 bm.items.add('second.cc', true);
 bm.items.add('dd', {
-	selector: { key: '#U_ID', type: 'value' },
-	setter: function(val) {/*external setting area*/},
-	getter: function() { return '외부값'; }, 
+    selector: { key: '#U_ID', type: 'value' },
+    setter: function(val) {/*external setting area*/},
+    getter: function() { return '외부값'; }, 
 });
 bm.items.add('ee', {
-	required: true,
-	setFilter: function(val) {/*external setting*/},
-	getFilter: function() { return '외부값'; },
+    required: true,
+    setFilter: function(val) {/*external setting*/},
+    getFilter: function() { return '외부값'; },
 });
 bm.items.add('ff', {
-	constructs: {reg: /abc/, msg: 'Failed to match!' }
+    constructs: {reg: /abc/, msg: 'Failed to match!' }
 });
 ```
 - Same as the service object configured above.
@@ -351,25 +350,25 @@ Configures command information for a service object.
 Type: command
 ```ts
 type CmdValueType = {
-	outputOption?: 0 | 1 | 2 | 3,  // 별칭 : outOpt
-	config?: see axiosConfig, // axios type
-	url?: string,
-	views?: string[],
-	cbBegin?: (cmd: BindCommand) => void,
-	cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
-	cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
-	cbResult?: (data: object, cmd: BindCommand, res: object) => object,
-	cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
-	cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
-	onExecute?: (bindModel, bindCommand) => void,
-	onExecuted?: (bindModel, bindCommand) => void,
+    outputOption?: 0 | 1 | 2 | 3,  // 별칭 : outOpt
+    config?: see axiosConfig, // axios type
+    url?: string,
+    views?: string[],
+    cbBegin?: (cmd: BindCommand) => void,
+    cbValid?: (view: MetaView, cmd: BindCommand) => boolean,
+    cbBind?: (view: MetaView, cmd: BindCommand, cfg: object) => void,
+    cbResult?: (data: object, cmd: BindCommand, res: object) => object,
+    cbOutput?: (views: MetaViewCollection, cmd: BindCommand, res: object) => void,
+    cbEnd?: (status: number, cmd: BindCommand, res: object) => void,
+    onExecute?: (bindModel, bindCommand) => void,
+    onExecuted?: (bindModel, bindCommand) => void,
 };
 type CommandType = {
-	[key: string]: CmdValueType
+    [key: string]: CmdValueType
 };
 // Configuring a command in a service object
 type ServiceType = {
-	command?: CommandType,
+    command?: CommandType,
 };
 ```
 - For 'CmdValueType.url', see the value 'CmdValueType.config.url'.
@@ -391,18 +390,18 @@ type ServiceType = {
 Example: command
 ```js
 var bm = new BindModel({
-	command: {
-		create: {},
-		read: {
-			outputOption: 3, // Set data to column value (specified column)
-			config: {method: 'GET' }, // GET request setting
-			cbEnd: function() { alarm('Normal Processed') ; } // Callback function after processing is completed
-		},
-		update: {
-			views: ['two'], // adding 'two' views
-			url: '/user' // URL path to request
-		}
-	}
+    command: {
+        create: {},
+        read: {
+            outputOption: 3, // Set data to column value (specified column)
+            config: {method: 'GET' }, // GET request setting
+            cbEnd: function() { alarm('Normal Processed') ; } // Callback function after processing is completed
+        },
+        update: {
+            views: ['two'], // adding 'two' views
+            url: '/user' // URL path to request
+        }
+    }
 });
 ```
 - I created "create" 
@@ -428,7 +427,7 @@ bm.addCommand('update');
 bm.commmand['read'].outputOption = 3;
 bm.commmand['read'].config = { method: 'GET' };
 bm.commmand['read'].cbEnd = { 
-	alert('Normal Processed');
+    alert('Normal Processed');
 };
 
 // update command setting
@@ -448,13 +447,13 @@ typeColumnName = string; // 'item name' | 'column name' | 'table name.column nam
 type CommandName = '$all' | string;  // string = '명령 이름'
 type ViewName = 'valid' | 'bind' | 'output' | '$all' | string; // 추가 뷰 이름
 type MappingType = {
-	[key: ColumnName]: {
-		[key: CommandName]: ViewName | ViewName[]
-	}
+    [key: ColumnName]: {
+        [key: CommandName]: ViewName | ViewName[]
+    }
 };
 // Configuring Mapping on a Service Object
 type ServiceType = {
-	mapping?: MappingType
+    mapping?: MappingType
 };
 ```
 
@@ -475,26 +474,26 @@ Example: Mapping
 ```js
 var bm = new BindModel();
 bm.setService({
-	// Table Area
-	tables: ['second'],
-	// Item Area
-	items: {
-		aa: '',
-		bb: '',
-		cc: '',
-		dd: ''
-	},
-	// command area
-	command: {
-		one: {},
-		two: {},
-	},
-	// Mapping area
-	mapping: {
-		aa: { $all: ['valid']}, // Register 'aa' in the 'valid' view of all commands
-		bb: {one: ['bind']}, // Register 'bbb' in 'bind' view of 'one' command
-		'second.cc ': {two: ['output'] } // Register 'cc' in 'output' view of 'two' command
-	}
+    // Table Area
+    tables: ['second'],
+    // Item Area
+    items: {
+        aa: '',
+        bb: '',
+        cc: '',
+        dd: ''
+    },
+    // command area
+    command: {
+        one: {},
+        two: {},
+    },
+    // Mapping area
+    mapping: {
+        aa: { $all: ['valid']}, // Register 'aa' in the 'valid' view of all commands
+        bb: {one: ['bind']}, // Register 'bbb' in 'bind' view of 'one' command
+        'second.cc ': {two: ['output'] } // Register 'cc' in 'output' view of 'two' command
+    }
 });
 
 // bm.items.count == 4 ('aa','bb','cc','dd')
@@ -514,8 +513,8 @@ bm.setService({
 Type: setMapping()
 ```ts
 type setMapping(
-	mapping: PropertyCollection | object, 
-	bTable?: MetaTable | string
+    mapping: PropertyCollection | object, 
+    bTable?: MetaTable | string
 ) => void;
 ```
 - mapping : The collection to be mapped.
@@ -540,9 +539,9 @@ bm.addCommand('two');
 
 // Item mapping
 bm.setMapping({
-	aa: { $all: ['valid']}, // Register 'aa' in the 'valid' view of all commands
-	bb: {one: ['bind']}, // Register 'bbb' in 'bind' view of 'one' command
-	'second.cc ': {two: ['output'] } // Register 'cc' in 'output' view of 'two' command
+    aa: { $all: ['valid']}, // Register 'aa' in the 'valid' view of all commands
+    bb: {one: ['bind']}, // Register 'bbb' in 'bind' view of 'one' command
+    'second.cc ': {two: ['output'] } // Register 'cc' in 'output' view of 'two' command
 })
 ```
 - Same as the service object configured above.
@@ -556,11 +555,11 @@ Configures the user function of the service object.
 Type : fn
 ```ts
 type fnType = {
-	[key: string]: Function;
+    [key: string]: Function;
 };
 // Configuring fn in a service object
 type ServiceType = {
-	fn?: fnType
+    fn?: fnType 
 };
 ```
 - The key is the user function name.
@@ -568,28 +567,28 @@ type ServiceType = {
 Example: fn
 ```js
 var bm = new BindModel({
-	cbBaseBegin: function(cmd) {
-		Access the parameter at cmd._model.fn.ecCreate(); //cmd
-		this.bindModel.fn.sum(1, 1); // this.bindModel로 접근
-	},
-	command: {
-		create: {
-			cbEnd: function() {
-				this.bindModel.fn.sum(1, 2);
-			}
-		},
-	},
-	fn: {
-		sum: function(a, b) {return a + b},
-		execCreate: function() {
-			this.bindModel.cmd.read.execute();
-		}
-	}
+    cbBaseBegin: function(cmd) {
+        Access the parameter at cmd._model.fn.ecCreate(); //cmd
+        this.bindModel.fn.sum(1, 1); // this.bindModel로 접근
+    },
+    command: {
+        create: {
+            cbEnd: function() {
+                this.bindModel.fn.sum(1, 2);
+            }
+        },
+    },
+    fn: {
+        sum: function(a, b) {return a + b},
+        execCreate: function() {
+            this.bindModel.cmd.read.execute();
+        }
+    }
 });
 
 // Register for an event
 $('#btn_create').click(function() {
-	bm.fn.execCreate();
+    bm.fn.execCreate();
 });
 
 ```
@@ -602,24 +601,24 @@ var bm = new BindModel();
 // Configuring Functions
 bm.fn.add('sum', function(a, b) {return a + b});
 bm.fn.add('execCreate', function() {
-	this.bindModel.cmd.read.execute(); // this.bindModel 로 접근
+    this.bindModel.cmd.read.execute(); // this.bindModel access
 });
 
 // Common callback configuration
 bm.cbBaseBegin = function(cmd) {
-	cmd._model.fn.ecCreate(); // Access to the cmd parameter
-	this.bindModel.fn.sum(1, 1); // this.bindModel 로 접근
+    cmd._model.fn.ecCreate(); // Access to the cmd parameter
+    this.bindModel.fn.sum(1, 1); // this.bindModel  access
 };
 
 // Configuring Commands
 bm.addCommand('create');
 bm.command['create'].cbEnd = function() {
-	this.bindModel.fn.sum(1, 2);  // this.bindModel 로 접근
+    this.bindModel.fn.sum(1, 2);  // this.bindModel access
 }
 
 // Register for an event
 $('#btn_create').click(function() {
-	bm.fn.execCreate(); // Access functions from outside
+    bm.fn.execCreate(); // Access functions from outside
 });
 ```
 - Same as the service object configured above.
@@ -651,17 +650,17 @@ Preprocessing is used for interaction between service objects and screen pages o
 Example: Pre-processing
 ```js
 var bm = new BindModel({
-	preRegister: function(bindModel) { 
-		// Pre-processing: Before the inspection
-	},
-	preCheck: function(bindModel) {
-		// Pre-processing: Inspection
-		if (bm.checkSelector().length === 0) return true;
-	},
-	preReady: function(bindModel) { 
-		// Pre-processing: Ready
-		bindModel.command['test'].execute();
-	},
+    preRegister: function(bindModel) { 
+        // Pre-processing: Before the inspection
+    },
+    preCheck: function(bindModel) {
+        // Pre-processing: Inspection
+        if (bm.checkSelector().length === 0) return true;
+    },
+    preReady: function(bindModel) { 
+        // Pre-processing: Ready
+        bindModel.command['test'].execute();
+    },
 });
 
 $(document).ready(function () {
@@ -676,19 +675,19 @@ var bm = new BindModel();
 // BindModel Settings...
 
 bm.preRegister = function(bindModel) { 
-	// Pre-processing: Before the inspection
+    // Pre-processing: Before the inspection
 };
 bm.preCheck = function(bindModel) { 
-	// Pre-processing: Inspection
-	if (bm.checkSelector().length === 0) return true;
+    // Pre-processing: Inspection
+    if (bm.checkSelector().length === 0) return true;
 };
 bm.preReady = function(bindModel) { 
-	// Pre-processing: Ready
-	bindModel.command['test'].execute();
+    // Pre-processing: Ready
+    bindModel.command['test'].execute();
 };
 
 $(document).ready(function () {
-	bm.init();
+    bm.init();
 });
 
 ```
@@ -714,30 +713,30 @@ As a setService() method, it separates service objects to enhance readability an
 Example: Injection via Creator
 ```js
 var bm1 = new BindModel({
-	items: {
-        aa: 'Cat',
-        bb: 10,
-        cc: true,
-    },
-    fn: {
-        sum: function(a, b) { return a + b; },
-    },
-    url: '/user',
-    command: {
-        read: {
-            outputOption: 3,
-            cbEnd: function() { console.log('Normal Processed'); }
-        },
-        update: {
-            views: ['two'],
-            url: '/user'
-        }
-    },
-    mapping: {
-        aa: { $all: ['valid'] },
-        bb: { read: ['bind'], update: 'output' },
-        cc: { update: ['output'] }
-    },
+    items: {
+            aa: 'Cat',
+            bb: 10,
+            cc: true,
+        },
+        fn: {
+            sum: function(a, b) { return a + b; },
+        },
+    url: '/user',
+    command: {
+        read: {
+            outputOption: 3,
+            cbEnd: function() { console.log('Normal Processed'); }
+        },
+        update: {
+            views: ['two'],
+            url: '/user'
+        }
+
+    mapping: {
+        aa: { $all: ['valid'] },
+        bb: { read: ['bind'], update: 'output' },
+        cc: { update: ['output'] }
+    },
 });
 ```
 
@@ -745,32 +744,32 @@ Example: Inject with setService() Method
 ```js
 // items, fn configuration
 var svcItems = {
-	items: {
-        aa: 'Cat',
-        bb: 10,
-        cc: true,
-    },
-    fn: {
-        sum: function(a, b) { return a + b; },
-    }
+    items: {
+        aa: 'Cat',
+        bb: 10,
+        cc: true,
+    },
+    fn: {
+        sum: function(a, b) { return a + b; },
+    }
 };
 
 // Other configurations
 var svcCommon = {
-    baseConfig: { method: 'GET' },
-    url: '/user',
-    command: {
-        read: {
-            outputOption: 3,
-            config: { method: 'GET' },
-            cbEnd: function() { console.log('Normal Processed'); }
-        },
-    },
-    mapping: {
-        aa: { $all: ['valid'] },
-        bb: { read: ['bind'], update: 'output' },
-        cc: { update: ['output'] }
-    },
+    baseConfig: { method: 'GET' },
+    url: '/user',
+    command: {
+        read: {
+            outputOption: 3,
+            config: { method: 'GET' },
+            cbEnd: function() { console.log('Normal Processed'); }
+        },
+    },
+    mapping: {
+        aa: { $all: ['valid'] },
+        bb: { read: ['bind'], update: 'output' },
+        cc: { update: ['output'] }
+    },
 };
 
 barbm = new BindModel(); // Injection by Parameters
@@ -797,12 +796,12 @@ Service classes can be used in various structures.
 common-svc.js
 ```js
 class CommonService() {
-	cbFail = function(msg) {
-		console.warn ("user failure handling:+ msg");
-	};
-	cbError = function(msg) {
-		console.error ("User error handling")
-	};
+    cbFail = function(msg) {
+        console.warn ("user failure handling:+ msg");
+    };
+    cbError = function(msg) {
+        console.error ("User error handling")
+    };
 }
 ```
 - Common areas were created as common service classes.
@@ -810,34 +809,34 @@ class CommonService() {
 member-svc.js
 ```js
 class MemberService(suffix) extends CommonService {
-	items = {
-		idx: -1,
-		user_no: { selector: { key: '#user_no'+ suffix, type: 'value' } },
-		u_name: { selector: { key: '#u_name'+ suffix, type: 'value' } },
-	};
-	command = {
-		create: 0,
-		read: {
-			outputOption: 3,
-			cbEnd: () => { alert('Normal Processed'); }
-		}
-	};
-	mapping = {
-		idx: { 
-			read: ['valid', 'bind'] 
-		},
-		u_name: { 
-			create: ['valid', 'bind'],
-			read: ['output']
-		},
-		user_no: { 
-			create: ['bind'],
-			read:: ['output'],
-		}
-	};
-	preCheck = function(bindModel) { 
-		if (bm.checkSelector().length === 0) return true;
-	}
+    items = {
+        idx: -1,
+        user_no: { selector: { key: '#user_no'+ suffix, type: 'value' } },
+        u_name: { selector: { key: '#u_name'+ suffix, type: 'value' } },
+    };
+    command = {
+        create: 0,
+        read: {
+            outputOption: 3,
+            cbEnd: () => { alert('Normal Processed'); }
+        }
+    };
+    mapping = {
+        idx: { 
+            read: ['valid', 'bind'] 
+        },
+        u_name: { 
+            create: ['valid', 'bind'],
+            read: ['output']
+        },
+        user_no: { 
+            create: ['bind'],
+            read:: ['output'],
+        }
+    };
+    preCheck = function(bindModel) { 
+        if (bm.checkSelector().length === 0) return true;
+    }
 };
 ```
 - The suffix parameter is a prefix for preventing conflicts in the selector name.
@@ -846,10 +845,10 @@ member.html
 ```html
 
 <div>
-	Class number <h2 id="user_no"></h2>
+    Class number <h2 id="user_no"></h2>
 </div>
 <div>
-	이름 <input id="u_name" type="text"/>
+    이름 <input id="u_name" type="text"/>
 </div>
 <button id="btn_Create" type="button">추가</button>
 
@@ -858,16 +857,16 @@ member.html
 <script src="member-svc"></script>
 <script>
 
-	var meb = new _L.BindModel(new MemberService());
-	
-	meb.url = 'http://SEVER_URL'; // Set the request path.
-	meb.preReady = function(bindModel) {
-		$('#btn_Create').click(bindModel.command.execute());
-	};
-	
-	$(document).ready(function () {
-		meb.init();
-	});
+    var meb = new _L.BindModel(new MemberService());
+
+    meb.url = 'http://SEVER_URL'; // Set the request path.
+    meb.preReady = function(bindModel) {
+        $('#btn_Create').click(bindModel.command.execute());
+    };
+
+    $(document).ready(function () {
+        meb.init();
+    });
 
 </script>
 ```

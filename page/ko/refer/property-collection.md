@@ -261,7 +261,7 @@ type onAdd = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onAdd = function(idx, elem, _this) {
-	console.log(`요소 추가 전: 인덱스 ${idx}, 요소 ${elem}`);
+    console.log(`요소 추가 전: 인덱스 ${idx}, 요소 ${elem}`);
 };
 ```
 
@@ -279,7 +279,7 @@ type onAdded = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onAdded = function(idx, elem, _this) {
-	console.log(`요소 추가 후: 인덱스 ${idx}, 요소 ${elem}`);
+    console.log(`요소 추가 후: 인덱스 ${idx}, 요소 ${elem}`);
 };
 ```
 
@@ -296,7 +296,7 @@ type onRemove = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onRemove = function(idx, elem, _this) {
-	console.log(`요소 삭제 전: 인덱스 ${idx}, 요소 ${elem}`);
+    console.log(`요소 삭제 전: 인덱스 ${idx}, 요소 ${elem}`);
 };
 ```
 
@@ -314,7 +314,7 @@ type onRemoved = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onRemoved = function(idx, elem, _this) {
-	console.log(`요소 삭제 후: 인덱스 ${idx}, 요소 ${elem}`);
+    console.log(`요소 삭제 후: 인덱스 ${idx}, 요소 ${elem}`);
 };
 ```
 
@@ -330,7 +330,7 @@ type onClear = (_this: object) => {};
 
 ```js
 myCollection.onClear = function(_this) {
-	console.log('컬렉션 초기화 전');
+    console.log('컬렉션 초기화 전');
 };
 ```
 
@@ -346,7 +346,7 @@ type onCleared = (_this: object)=> {};
 
 ```js
 myCollection.onCleared = function(_this) {
-	console.log('컬렉션 초기화 후');
+    console.log('컬렉션 초기화 후');
 };
 ```
 
@@ -364,7 +364,7 @@ type onChanging = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onChanging = function(idx, elem, _this) {
-	console.log(`요소 변경 전: 인덱스 ${idx}, 요소 ${elem}`);
+    console.log(`요소 변경 전: 인덱스 ${idx}, 요소 ${elem}`);
 };
 ```
 
@@ -382,6 +382,6 @@ type onChanged = (idx: number, elem: any, _this: object) => void;
 
 ```js
 myCollection.onChanged = function(idx, elem, _this) {
-	console.log(`요소 변경 후: 인덱스 ${idx}, 요소 ${elem}`);
+    console.log(`요소 변경 후: 인덱스 ${idx}, 요소 ${elem}`);
 };
 ```

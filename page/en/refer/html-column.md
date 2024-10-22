@@ -285,10 +285,10 @@ type clone = (entity: BaseEntity) => this;
 
 ```ts
 type addConstraint = (
-	regex: RegExp, 
-	msg: string, 
-	code?: string, 
-	condition?: boolean
+    regex: RegExp, 
+    msg: string, 
+    code?: string, 
+    condition?: boolean
 ) => void;
 ```
 - regex : Regular expression to apply.
@@ -385,7 +385,7 @@ type onChanged = (newVal: ValueType, oldVal: ValueType, _this: this) => void;
 
 ```js
 column.onChanged = function(newVal, oldVal, _this) {
-	console.log('Value changed');
+    console.log('Value changed');
 };
 ```
 
@@ -528,13 +528,13 @@ Mainly used to control multiple html elements.
 var c1 = new HTMLColumn('c1');
 
 c1.selector = { 
-	key: 'input[name=gender][type=radio]',  type: 'value' 
+    key: 'input[name=gender][type=radio]',  type: 'value' 
 };
 c1.getFilter = function(){
-	 return $('input[name=gender]:checked').val();
+    return $('input[name=gender]:checked').val();
 };
 c1.setFilter = function(newVal){
-	$('input[name=gender][value='+ newVal + ']').prop('checked', true);
+    $('input[name=gender][value='+ newVal + ']').prop('checked', true);
 };
 
 c1.value; // ''
@@ -546,45 +546,45 @@ c2.value; // 'female'
 
 ```js
 var bm = new BindModel({
-	// If using selector only
-	area_page:     { selector: { key: '#area-page',   type: 'html' } },
-	txt_sumCnt:    { selector: { key: '#sumCnt',      type: 'text' } },
-	
-	// If you used setter/getter
-	page_count: { /* See page object outside */
-		getter: ()=> page.page_count,
-	    setter: (val)=> page.page_count = val;
-	},
-	
-	// If selector & setter/getter is used
-	page_size: {
-	  selector: { key: 'select[name=m-page_size]',     type: 'value' },
-	  getter: ()=>{ return page.page_size; },
-	  setter: (val)=>{ page.page_size = val; }
-	},
-	
-	// If you used selector['none'] & setFilter/getFilter
-	active_yn: { 
-		selector: { key: 'input[name=m-active_yn][type=radio]',  type: 'none' },
-	    setFilter: (val)=>{ 
-		    $('input[name=active_yn][value='+ val + ']').prop('checked', true);
-		},
-	    getFilter: (val)=>{ 
-		    return $('input[name=active_yn]:checked').val();
-		}
-	  },
-	
-	// If selector & setfilter is used (for comma application), one-way
-	point: {
+    // If using selector only
+    area_page:     { selector: { key: '#area-page',   type: 'html' } },
+    txt_sumCnt:    { selector: { key: '#sumCnt',      type: 'text' } },
+
+    // If you used setter/getter
+    page_count: { /* See page object outside */
+        getter: ()=> page.page_count,
+        setter: (val)=> page.page_count = val;
+    },
+
+    // If selector & setter/getter is used
+    page_size: {
+        selector: { key: 'select[name=m-page_size]',     type: 'value' },
+        getter: ()=>{ return page.page_size; },
+        setter: (val)=>{ page.page_size = val; }
+    },
+
+    // If you used selector['none'] & setFilter/getFilter
+    active_yn: { 
+        selector: { key: 'input[name=m-active_yn][type=radio]',  type: 'none' },
+        setFilter: (val)=>{ 
+            $('input[name=active_yn][value='+ val + ']').prop('checked', true);
+        },
+        getFilter: (val)=>{ 
+            return $('input[name=active_yn]:checked').val();
+        }
+        },
+
+    // If selector & setfilter is used (for comma application), one-way
+    point: {
     selector: { key: '#point_view',         type: 'text' },
     setFilter: function(val) { return numberWithCommas(val); }
     default: 0, // Set initial value
-	},
-	
-	// When using selector & getFilter (when converting code values), one-way
-	point: {
-		selector: { key: '#codeValue',           type: 'value' },
-	    getFilter: function(val) { return val == '' ? 'CODE1' : 'CODE2'; }
-	},
+    },
+
+    // When using selector & getFilter (when converting code values), one-way
+    point: {
+        selector: { key: '#codeValue',           type: 'value' },
+        getFilter: function(val) { return val == '' ? 'CODE1' : 'CODE2'; }
+    },
 });
 ```

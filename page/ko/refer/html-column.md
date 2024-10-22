@@ -288,10 +288,10 @@ type clone = (entity: BaseEntity) => this;
 
 ```ts
 type addConstraint = (
-	regex: RegExp, 
-	msg: string, 
-	code?: string, 
-	condition?: boolean
+    regex: RegExp, 
+    msg: string, 
+    code?: string, 
+    condition?: boolean
 ) => void;
 ```
 - regex : 적용할 정규 표현식입니다.
@@ -388,7 +388,7 @@ type onChanged = (newVal: ValueType, oldVal: ValueType, _this: this) => void;
 #### 예제
 ```js
 column.onChanged = function(newVal, oldVal, _this) {
-	console.log('Value changed');
+    console.log('Value changed');
 };
 ```
 
@@ -543,13 +543,13 @@ setter/getter와의 차이점은 내부에 사용되는값과 html 표현이 다
 var c1 = new HTMLColumn('c1');
 
 c1.selector = { 
-	key: 'input[name=gender][type=radio]',  type: 'value' 
+    key: 'input[name=gender][type=radio]',  type: 'value' 
 };
 c1.getFilter = function(){
-	 return $('input[name=gender]:checked').val();
+    return $('input[name=gender]:checked').val();
 };
 c1.setFilter = function(newVal){
-	$('input[name=gender][value='+ newVal + ']').prop('checked', true);
+    $('input[name=gender][value='+ newVal + ']').prop('checked', true);
 };
 
 c1.value; // ''
@@ -560,45 +560,45 @@ c2.value; // 'female'
 
 ```js
 var bm = new BindModel({
-	// selector 만 사용하는 경우
-	area_page:     { selector: { key: '#area-page',   type: 'html' } },
-	txt_sumCnt:    { selector: { key: '#sumCnt',      type: 'text' } },
-	
-	// setter/getter 를 사용한 경우
-	page_count: { /* See page object outside */
-		getter: ()=> page.page_count,
-	    setter: (val)=> page.page_count = val;
-	},
-	
-	// selector & setter/getter 를 사용한 경우
-	page_size: {
-	  selector: { key: 'select[name=m-page_size]',     type: 'value' },
-	  getter: ()=>{ return page.page_size; },
-	  setter: (val)=>{ page.page_size = val; }
-	},
-	
-	// selecter['none'] & setFilter/getFilter 를 사용한 경우
-	active_yn: { 
-		selector: { key: 'input[name=m-active_yn][type=radio]',  type: 'none' },
-	    setFilter: (val)=>{ 
-		    $('input[name=active_yn][value='+ val + ']').prop('checked', true);
-		},
-	    getFilter: (val)=>{ 
-		    return $('input[name=active_yn]:checked').val();
-		}
-	  },
-	
-	// selector & setFilter 를 사용한 경우 (콤마 적용시), 단방향
-	point: {
+    // selector 만 사용하는 경우
+    area_page:     { selector: { key: '#area-page',   type: 'html' } },
+    txt_sumCnt:    { selector: { key: '#sumCnt',      type: 'text' } },
+
+    // setter/getter 를 사용한 경우
+    page_count: { /* See page object outside */
+        getter: ()=> page.page_count,
+        setter: (val)=> page.page_count = val;
+    },
+
+    // selector & setter/getter 를 사용한 경우
+    page_size: {
+        selector: { key: 'select[name=m-page_size]',     type: 'value' },
+        getter: ()=>{ return page.page_size; },
+        setter: (val)=>{ page.page_size = val; }
+    },
+
+    // selecter['none'] & setFilter/getFilter 를 사용한 경우
+    active_yn: { 
+        selector: { key: 'input[name=m-active_yn][type=radio]',  type: 'none' },
+        setFilter: (val)=>{ 
+            $('input[name=active_yn][value='+ val + ']').prop('checked', true);
+        },
+        getFilter: (val)=>{ 
+            return $('input[name=active_yn]:checked').val();
+        }
+        },
+
+    // selector & setFilter 를 사용한 경우 (콤마 적용시), 단방향
+    point: {
     selector: { key: '#point_view',         type: 'text' },
     setFilter: function(val) { return numberWithCommas(val); }
     default: 0, // Set initial value
-	},
-	
-	// selector & getFilter 를 사용한 경우 (코드값 변환시), 단방향
-	point: {
-		selector: { key: '#codeValue',           type: 'value' },
-	    getFilter: function(val) { return val == '' ? 'CODE1' : 'CODE2'; }
-	},
+    },
+
+    // selector & getFilter 를 사용한 경우 (코드값 변환시), 단방향
+    point: {
+        selector: { key: '#codeValue',           type: 'value' },
+        getFilter: function(val) { return val == '' ? 'CODE1' : 'CODE2'; }
+    },
 });
 ```

@@ -140,8 +140,8 @@ type clone = () => MetaTable;
 
 ```ts
 type copy = (
-	filter: (row, idx, entity) => boolean | string[], arguments<string>, 
-	cols?: string[] | arguments<string>
+    filter: (row, idx, entity) => boolean | string[], arguments<string>, 
+    cols?: string[] | arguments<string>
 ) => MetaTable;
 ```
 - filter :   
@@ -156,8 +156,8 @@ var table = new MetaTable('t1');
 // ... Add columns, aa, bb, cc, e, and rows 
 
 var temp = table.copy(
-	(row, idx, entity) => { return (idx % 2) > 0; },
-	['aa', 'bb']
+    (row, idx, entity) => { return (idx % 2) > 0; },
+    ['aa', 'bb']
 );
 ```
 - Temp is copied only if the row indexes of the columns 'aa' and 'bbb' are odd.
@@ -169,7 +169,7 @@ var table = new MetaTable('t1');
 // ... Add columns, aa, bb, cc, e, and rows 
 
 var temp = table.copy(
-	['aa', 'bb']
+    ['aa', 'bb']
 );
 ```
 - Temp copies the entire row of columns 'aa' and 'bbb'.
@@ -268,8 +268,8 @@ type merge = (target: BaseEntity, option: number, matchType?: boolean) => void;
 
 ```ts
 type select = (
-	filter: (row, idx, entity) => boolean | string[], | arguments<string>,
-	cols?: string[] | arguments<string>
+    filter: (row, idx, entity) => boolean | string[], | arguments<string>,
+    cols?: string[] | arguments<string>
 ) => MetaView;
 ```
 - filter :   
@@ -283,8 +283,8 @@ var table = new MetaTable('t1');
 
 // ... Add columns, aa, bb, cc, e, and rows
 var temp = table.copy(
-	(row, idx, entity) => { return (idx % 2) > 0; },
-	['aa', 'bb']
+    (row, idx, entity) => { return (idx % 2) > 0; },
+    ['aa', 'bb']
 );
 ```
 - The temp view is copied only if the row indexes of the columns 'aa', 'bbb' are odd.
@@ -296,7 +296,7 @@ var table = new MetaTable('t1');
 // ... Add columns, aa, bb, cc, e, and rows 
 
 var temp = table.copy(
-	['aa', 'bb']
+    ['aa', 'bb']
 );
 ```
 - The temp view copies the entire row of columns 'aa' and 'bbb'.
@@ -335,15 +335,15 @@ type read = (obj: object, option: number) => void;
 
 ```js
 var schema1 = { 
-	table: { 
-		columns: {}, 
-		rows: {} 
-	}
+    table: { 
+        columns: {}, 
+        rows: {} 
+    }
 };
 
 var schema1 = { 
-	columns: {...}, 
-	rows: {} 
+    columns: {...}, 
+    rows: {} 
 };
 ```
 ### readSchema()

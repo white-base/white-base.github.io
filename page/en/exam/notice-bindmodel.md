@@ -22,8 +22,8 @@ vue-mix/
 ├── service/
 │   ├── base-notice-svc.js
 │   ├── notice-admin-svc.js 
-│   └--notice-front-svc.js : ** User Page **
-├-- front.html : ** User Page **
+│   └── notice-front-svc.js : ** User Page **
+├── front.html : ** User Page **
 └── admin.html
 ```
 
@@ -122,20 +122,20 @@ You must add permission settings to the Administrators page during a physical im
 <script src="service/base-notice-svc.js"></script>
 <script src="service/notice-admin-svc.js"></script>
 <script>
-	// ##################################################
-	var bm = new _L.BindModel(new NoticeAdminService());
+    // ##################################################
+    var bm = new _L.BindModel(new NoticeAdminService());
 
     bm.url = '/notice/data/list.json';  // base url
-	// button event
+    // button event
     $('#btn_Update').click(()=> bm.cmd['update'].execute());
-	$('#btn_Delete').click(()=> bm.cmd['delete'].execute());
-	$('#btn_List').click(()=> bm.cmd['list'].execute());
+    $('#btn_Delete').click(()=> bm.cmd['delete'].execute());
+    $('#btn_List').click(()=> bm.cmd['list'].execute());
 
-	$(document).ready(function () {
+    $(document).ready(function () {
         bm.init();
         bm.cmd['list'].execute();
-  });
-  // ##################################################
+    });
+    // ##################################################
 </script>
 </body>
 </html>
@@ -212,19 +212,18 @@ This is the user page of the announcement.
 <script src="service/base-notice-svc.js"></script>
 <script src="service/notice-front-svc.js"></script>
 <script>
-
     // ##################################################
-	var bm = new _L.BindModel(new NoticeFrontService());
+    var bm = new _L.BindModel(new NoticeFrontService());
 
     bm.url = '/notice/data/list.json';  // base url
 
-	$('#btn_List').click(()=> bm.cmd['list'].execute());
+    $('#btn_List').click(()=> bm.cmd['list'].execute());
 
-	$(document).ready(function () {
+    $(document).ready(function () {
         bm.init();
         bm.cmd['list'].execute();
     });
-  // ##################################################
+    // ##################################################
 </script>
 </body>
 </html>

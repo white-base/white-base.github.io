@@ -137,8 +137,8 @@ bm.items.add('aa', '');
 bm.items.add('bb', '');
 
 bm.setMapping({
-	aa: { read: ['valid'] },
-	bb: { read: ['bind'] },
+    aa: { read: ['valid'] },
+    bb: { read: ['bind'] },
 }, 'second');
 
 // bm.second.columns.count == 2
@@ -152,20 +152,20 @@ You can use it in combination with the table name in the items, mapping area.
 
 ```js
 var bm1 = new BindModel({
-	tables: ['second', 'three'],
-	items: {
-        'aa': '',
-        'second.bb': '',
-        'cc': '',
-    },
-    command: {
-        read: {}
-	},
-    mapping: {
-        'aa': { read: ['valid'] },
-        'bb': { read: ['bind'] },
-        'three.cc': { read: ['output'] }
-    },
+    tables: ['second', 'three'],
+    items: {
+            'aa': '',
+            'second.bb': '',
+            'cc': '',
+        },
+        command: {
+            read: {}
+    },
+    mapping: {
+        'aa': { read: ['valid'] },
+        'bb': { read: ['bind'] },
+        'three.cc': { read: ['output'] }
+    },
 });
 ```
 - Items 'aa' are registered in the default table (first) and mapped to the target command.

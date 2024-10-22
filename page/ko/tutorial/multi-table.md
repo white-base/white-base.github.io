@@ -137,8 +137,8 @@ bm.items.add('aa', '');
 bm.items.add('bb', '');
 
 bm.setMapping({
-	aa: { read: ['valid'] },
-	bb: { read: ['bind'] },
+    aa: { read: ['valid'] },
+    bb: { read: ['bind'] },
 }, 'second');
 
 // bm.second.columns.count == 2
@@ -152,20 +152,20 @@ items, mapping 영역에서 테이블명과 조합해서 사용할 수 있습니
 
 ```js
 var bm1 = new BindModel({
-	tables: ['second', 'three'],
-	items: {
-        'aa': '',
-        'second.bb': '',
-        'cc': '',
-    },
-    command: {
-        read: {}
-	},
-    mapping: {
-        'aa': { read: ['valid'] },
-        'bb': { read: ['bind'] },
-        'three.cc': { read: ['output'] }
-    },
+    tables: ['second', 'three'],
+    items: {
+            'aa': '',
+            'second.bb': '',
+            'cc': '',
+        },
+        command: {
+            read: {}
+    },
+    mapping: {
+        'aa': { read: ['valid'] },
+        'bb': { read: ['bind'] },
+        'three.cc': { read: ['output'] }
+    },
 });
 ```
 - 'aa' 아이템은 기본 테이블(first)에 등록되고 대상 command 에 매핑됩니다.

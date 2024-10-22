@@ -83,7 +83,7 @@ bm.url  = '/user';
  ```js
  var idx = 1;
  bm.cbBegin = function(cmd) {
-	cmd._model.url = `/user/${idx}`;
+    cmd._model.url = `/user/${idx}`;
  };
 ```
 - `cmd._model`은 BindCommand가 포함된 BindModel을 참조합니다.
@@ -122,10 +122,10 @@ var bm = new BindModel();
 bm.addCommand('read');
 // Global Event Settings
 bm.onExecute = () => { 
-	console.log('model 에서 onExecute 호출')
+    console.log('model 에서 onExecute 호출')
 };
 bm.onExecuted = () => { 
-	console.log('model 에서 onExecuted 호출')
+    console.log('model 에서 onExecuted 호출')
 };
 // Execute
 bm.command['read'].execute();
@@ -152,7 +152,7 @@ cbError 발생 시점은
 var bm = new BindModel();
 
 bm.cbError = function(msg, status, res) { 
-	console.error('Err: '+ msg); 
+    console.error('Err: '+ msg); 
 };
 ```
 - 'cbError' 의 기본값을 객체생성시 제공됩니다.
@@ -173,7 +173,7 @@ type cbFail = (msg: string, valid: MetaView) => void;
 var bm = new BindModel();
 
 bm.cbFail = function(msg, valid) { 
-	console.warn ('Failed. Err:'+ msg); 
+    console.warn ('Failed. Err:'+ msg); 
 };
 ```
 - 'cbFail' 의 기본값을 객체생성시 제공됩니다.
@@ -201,7 +201,7 @@ type cbBaseBegin = (cmd: BindCommand) => void;
 var bm = new BindModel();
 
 bm.cbBaseBegin = function(cmd) {
-	cmd.url = '/member/1';
+    cmd.url = '/member/1';
 };
 ```
 ### 2. 기본 유효성 검사 콜백
@@ -221,10 +221,10 @@ type cbBaseValid = (valid: MetaView, cmd: BindCommand) => boolean;
 var bm = new BindModel();
 
 bm.cbBaseValid = function(view, cmd) { 
-	return view.colums.count <= 0;
+    return view.colums.count <= 0;
 };
 bm.cbBaseValid = function(view, cmd) {
-	return confirm ('Do you want to delete?');
+    return confirm ('Do you want to delete?');
 };
 ```
 ### 3. 기본 서버 요청 콜백
@@ -261,9 +261,9 @@ type cbBaseResult = (data: object, cmd: BindCommand, res: object) => object;
 var bm = new BindModel();
 // data = { aa: 1, bb: 2 }
 bm.cbBaseResult = function(data) {
-	return {
-		rows: data
-	};
+    return {
+        rows: data
+    };
 };
 ```
 - 리턴값 : `{ rows: {aa: 1, bb: 2 }} `
@@ -286,10 +286,10 @@ type cbBaseOutput = (views: MetaViewColleciton, cmd: BindCommand, res: object) =
 
 ```json
 {
-	"rows": [
-		{ "u_name": "Hong Gildong", "gender", "M" },
-		{ "u_name": "Sungchunhyang", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Hong Gildong", "gender", "M" },
+        { "u_name": "Sungchunhyang", "gender", "W" },
+    ]
 }
 ```
 
@@ -297,11 +297,11 @@ type cbBaseOutput = (views: MetaViewColleciton, cmd: BindCommand, res: object) =
 var bm = new BindModel();
 
 bm.cbBaseOutput = function(views) {
-	// views[0] instanceof MetaView
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(i, row['u_name'], row['gender']);
-	}
+    // views[0] instanceof MetaView
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(i, row['u_name'], row['gender']);
+    }
 }
 // 0 Hong Gil-dong M
 // 1. Sung Chunhyang W
@@ -329,7 +329,7 @@ type cbBaseEnd = (status: number, cmd: BindCommand, res: object) => void;
 var bm = new BindModel();
 
 bm.cbBaseEnd = function(views) {
-	alert('Normal Processed');
+    alert('Normal Processed');
 };
 ```
 
@@ -381,18 +381,18 @@ bm.addCommand('edit', 3, bm.second);
 타입 : addColumn(), addColumnValue()
 ```ts
 type addColumn = (
-	colName: string, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 
 type addColumnValue = (
-	colName: string, 
-	value: any, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    value: any, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 ```
 - cmds, views을 생략하면 기본테이블에 컬럼이 추가됩니다.
@@ -538,17 +538,17 @@ bm.command['cmd1'].addColumn('bb');
 타입 : items.add()
 ```ts
 type ColumnType = {
-	selector: SelectorType,
-	getter: ()=>any,
-	setter: (val)=>any,
-	getFilter: ()=>any,
-	setFilter: (val)=>any,
-	default: stirng | number | boolean | null, // 기본값
-	value: any,
-	alias: string,
-	caption: string,
-	constraints: ConstrainstType,  // 제약조건
-	required: boolean | false, // required
+    selector: SelectorType,
+    getter: ()=>any,
+    setter: (val)=>any,
+    getFilter: ()=>any,
+    setFilter: (val)=>any,
+    default: stirng | number | boolean | null, // 기본값
+    value: any,
+    alias: string,
+    caption: string,
+    constraints: ConstrainstType,  // 제약조건
+    required: boolean | false, // required
 };
 type ValueType = string | number | boolean | ColumnType;
 
@@ -623,7 +623,7 @@ type KeyType = 'none' | 'value' | 'text' | 'html' | 'prop' | 'attr' | 'css';
 type SelectorType = { key: string, type: KeyType };
 
 type getSelector = (
-	collection?: PropertyCollection = this.items
+    collection?: PropertyCollection = this.items
 ) => SelectorType[];
 ```
 - 'collection' 파라메터의 기본값은 this.items 컬렉션입니다.

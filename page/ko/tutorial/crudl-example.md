@@ -106,10 +106,10 @@ List는 데이터베이스에서 여러 레코드를 조회하는 작업을 의�
 
 ```json
 {
-	"rows": [
-		{ "u_name": "Hong Gildong", "gender", "M" },
-		{ "u_name": "Sungchunhyang", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Hong Gildong", "gender", "M" },
+        { "u_name": "Sungchunhyang", "gender", "W" },
+    ]
 }
 ```
 
@@ -123,12 +123,12 @@ bm.addColumn('user_name', 'list', 'output');
 bm.addColumn('gender', 'list', 'output');
 // 출력 콜백 설정
 bm.command['list'].cbOutput = function(views){
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(i, row['user_name'], row['gender']);
-		// 0 Hong Gil-dong M
-		// 1. Sung Chunhyang W
-	}
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(i, row['user_name'], row['gender']);
+        // 0 Hong Gil-dong M
+        // 1. Sung Chunhyang W
+    }
 }
 // Execute
 bm.command['list'].execute();
@@ -149,10 +149,10 @@ bm.command['list'].execute();
 서버 데이터
 ```json
 {
-	"rows": [
-		{ "u_name": "Neo", "gender", "M" },
-		{ "u_name": "Seri", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Neo", "gender": "M" },
+        { "u_name": "Seri", "gender": "W" },
+    ]
 }
 ```
 컬럼을 command 에서 공유되어서 컬럼을 등록 후 설정하는 방식을 선택했습니다.
@@ -199,12 +199,12 @@ bm.command['list'].seColumn('gender', 'output');
 
 bm.command['list'].url = '/user/list';
 bm.command['list'].cbOutput = function(views){
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(i, row['user_name'], row['gender']);
-		// 0 Hong Gil-dong M
-		// 1. Sung Chunhyang W
-	}
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(i, row['user_name'], row['gender']);
+        // 0 Hong Gil-dong M
+        // 1. Sung Chunhyang W
+    }
 };
 
 // Execute
@@ -218,53 +218,53 @@ bm.command['list'].execute();
 예제 : 서비스객체 주입 방식
 ```js
 var bm = new BindModel({
-	url: '/user',
-	items: {
-		user_name: '',
-		tel: '',
-		idx: '',
-		gender: '',
-	},
-	command: {
-		create: {},
-		read: {
-			outputOption: 3,
-			url: '/user/1'
-		},
-		update: {},
-		delete: {},
-		list: {
-			outputOption: 2,
-			url: '/user/list',
-			cbOutput = function(views){
-				for(var i = 0; i < views[0].rows.count; i++) {
-					var row = views['first'].rows[i];
-					console.log(i, row['user_name'], row['gender']);
-					// 0 Hong Gil-dong M
-					// 1. Sung Chunhyang W
-				}
-			}
-		},
-	},
-	mapping: {
-		user_name: { 
-			create: ['valid', 'bind'], 
-			list: 'output' 
-		},
-		tel: { 
-			create: 'bind', 
-			read: 'bind', 
-			update: 'bind'
-		},
-		idx: { 
-			read: ['valid', 'bind'], 
-			update: ['valid', 'bind'], 
-			delete: ['valid', 'bind'] },
-		},
-		gender: { 
-			list: 'output' 
-		}
-	}
+    url: '/user',
+    items: {
+        user_name: '',
+        tel: '',
+        idx: '',
+        gender: '',
+    },
+    command: {
+        create: {},
+        read: {
+            outputOption: 3,
+            url: '/user/1'
+        },
+        update: {},
+        delete: {},
+        list: {
+            outputOption: 2,
+            url: '/user/list',
+            cbOutput = function(views){
+                for(var i = 0; i < views[0].rows.count; i++) {
+                    var row = views['first'].rows[i];
+                    console.log(i, row['user_name'], row['gender']);
+                    // 0 Hong Gil-dong M
+                    // 1. Sung Chunhyang W
+                }
+            }
+        },
+    },
+    mapping: {
+        user_name: { 
+            create: ['valid', 'bind'], 
+            list: 'output' 
+        },
+        tel: { 
+            create: 'bind', 
+            read: 'bind', 
+            update: 'bind'
+        },
+        idx: { 
+            read: ['valid', 'bind'], 
+            update: ['valid', 'bind'], 
+            delete: ['valid', 'bind'] },
+        },
+        gender: { 
+            list: 'output' 
+        }
+    }
 });
 
 // Execute

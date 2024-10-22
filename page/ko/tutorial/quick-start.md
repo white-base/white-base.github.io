@@ -124,6 +124,7 @@ const bm = new BindModel();
 // step 1 
 var bm = new BindModel();
 bm.url = '/user/1';
+
 // step 2
 bm.addCommand('read', 3);
 // step 3

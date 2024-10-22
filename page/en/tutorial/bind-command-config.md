@@ -79,10 +79,10 @@ bb.command['cmdB'].url = '/list';
 
 Sometimes it is necessary to dynamically change the request path (url) depending on a specific command. It can be easily set up through the callback function of the BindModel object.
  ```js
- var idx = 1;
- bb.command['cmdA'].cbBegin = function(cmd) {
-	 cmd.url = `/user/${idx}`;
- };
+var idx = 1;
+bb.command['cmdA'].cbBegin = function(cmd) {
+    cmd.url = `/user/${idx}`;
+};
 ```
 ### Request configuration (axios)
 
@@ -111,17 +111,17 @@ var bm = new BindModel();
 bm.addCommand('read');
 // Global Event Settings
 bm.onExecute = function() { 
-    console.log('model 에서 onExecute 호출');
+    console.log('model 에서 onExecute 호출');
 };
 bm.onExecuted = function() { 
-    console.log('model 에서 onExecuted 호출');
+    console.log('model 에서 onExecuted 호출');
 };
 // Command Event Settings
 bm.command['read'].onExecute = function() { 
-    console.log('command 에서 onExecute 호출');
+    console.log('command 에서 onExecute 호출');
 };
 bm.command['read'].onExecuted = function() { 
-    console.log('command 에서 onExecuted 호출');
+    console.log('command 에서 onExecuted 호출');
 };
 // Execute
 bm.command['read'].execute();
@@ -168,7 +168,7 @@ var bm = new BindModel();
 bm.addCommand('list');
 // Callback Settings
 bm.command['list'].cbBegin = (command) => { 
-    command.url = '/member/1'; 
+    command.url = '/member/1'; 
 };
 ```
 ### 2. Validation callback
@@ -190,10 +190,10 @@ var bm = new BindModel();
 bm.addCommand('list');
 // Callback Settings
 bm.command['list'].cbValid = function(view) { 
-	return view.colums.count <= 0 
+    return view.colums.count <= 0 
 };
 bm.command['list'].cbValid = function() {
-	return confirm ('Do you want to delete?')
+    return confirm ('Do you want to delete?')
 };
 ```
 
@@ -225,9 +225,9 @@ The general application plan is
 ```js
 // data = { aa: 1, bb: 2 }
 bm.command['list'].cbResult = function(data) {
-	return = {
-		rows: data
-	};
+    return = {
+        rows: data
+    };
 };
 ```
 - Return value: '{aa: 1, bb:2}'
@@ -241,9 +241,9 @@ Depending on the 'Bindcommand' output option, the way data is imported into the 
 Type: cbOutput
 ```ts
 type cbOutput = (
-	views: MetaViewColleciton, 
-	cmd: BindCommand, 
-	res: object
+    views: MetaViewColleciton, 
+    cmd: BindCommand, 
+    res: object
 ) => void;
 ```
 
@@ -252,19 +252,19 @@ The general application plan is
 
 ```json
 {
-	"rows": [
-		{ "u_name": "Neo", "gender", "M" },
-		{ "u_name": "Jane", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Neo", "gender", "M" },
+        { "u_name": "Jane", "gender", "W" },
+    ]
 }
 ```
 
 ```js
 bm.command['list'].cbOutput = function(views) {
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(1, row['u_name'], row['gender']);
-	}
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(1, row['u_name'], row['gender']);
+    }
 };
 // Output results:
 // 0  Neo  M
@@ -288,7 +288,7 @@ The general application plan is
 
 ```js
 bm.command['list'].cbEnd = function(views) {
-	alert('Normal processed')
+    alert('Normal processed')
 }
 ```
 
@@ -375,7 +375,9 @@ const constraints: ConstrainstType[] | ConstrainstType;
 | 30% | true | | required value
 | 15% | | | {...} | Select value, value constrained |
 | 5% | True | {...} | Required value, value has constraints |
+
  (Shopping mall table: based on 20ea)
+
 
 ```js
 var bm = new BindModel();
@@ -392,14 +394,14 @@ bm.columns['passwd'].required = true;
 bm.columns['user_id'].required = true;
 
 bm.columns['passwd'].constraints = {
-	regex: /.{6}/, msg: "Please enter at least 6 characters."
+    regex: /.{6}/, msg: "Please enter at least 6 characters."
 };
 bm.columns['user_id'].constraints = [
-	(val)=>{ reutrn val.length > 8 }, 
-	{regex: /\D{8}/, msg: "Please type in English", return: false}
+    (val)=>{ reutrn val.length > 8 }, 
+    {regex: /\D{8}/, msg: "Please type in English", return: false}
 ];
 bm.columns['email'].constraints = {
-	regex: /.{6}/, msg: "Please enter at least 6 characters."
+    regex: /.{6}/, msg: "Please enter at least 6 characters."
 };
 
 bm.cmd['test'].execute();
@@ -416,16 +418,16 @@ Adding a column adds the column to the default table '\_baseTable' and registers
 타입 : addColumn(), addColumnValue()
 ```ts
 type addColumn = (
-	colName: string, 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 
 type addColumnValue = (
-	colName: string, 
-	value: any, 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    value: any, 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 ```
 - If you use the '$all' indicator in the views parameter, it is added to all 'MetaView (valid, bind, output).
@@ -500,14 +502,14 @@ type ColumnDotType : FullColumnType | ColumnType;
 type ViewType : 'valid' | 'bind' | 'output' | '$all' | string;
 
 type setColumn = (
-	colName: ColumnDotType, 
-	views: ViewType | ViewType[], 
-	bTable?: string | MetaTable
+    colName: ColumnDotType, 
+    views: ViewType | ViewType[], 
+    bTable?: string | MetaTable
 ) => void;
 
 type release = (
-	colName: string, 
-	views?: ViewType | ViewType[]
+    colName: string, 
+    views?: ViewType | ViewType[]
 ) => void;
 ```
 
@@ -567,10 +569,12 @@ Records greater than '\_outputs' collections are excluded. (option > 0)
 
 | Options | Description |
 | ----------- | --------------------------------------------------------------- |
-| 0 (default) | output bind 안함                                                  |
+| 0 (default) | output bind not |
 | 1 | Gets the row of all columns
 | 2 | Gets the row of existing columns |
 | 3 | Gets the row of existing columns and sets the row of index locations to column value |
+
+
 ### Ignore output: option = 0
 
 Does not import data to 'output(MetaView)'. It is mainly used to modify data, such as create, update, delete, and is suitable when response data is not needed. 
@@ -590,17 +594,16 @@ bm.cmd['create'].execute();
 // bm.cmd['create'].output.rows.count == 0
 ```
 
-
 ### Import all data: option = 1 
 
 Option value 1 is a way to load all response data into 'output(MetaView)', which is useful for simply outputting a column of all data received from a server or for checking the data structure. 
 
 ```js
 {
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
+    "rows": [
+        { "aa": 10, "bb", 20, "cc": 30 },
+        { "aa": 11, "bb", 21, "cc": 31 },
+    ]
 }
 ```
 
@@ -631,10 +634,10 @@ From the response data, only columns existing in 'output(MetaView)' are imported
 
 ```js
 {
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
+    "rows": [
+        { "aa": 10, "bb", 20, "cc": 30 },
+        { "aa": 11, "bb", 21, "cc": 31 },
+    ]
 }
 ```
 
@@ -659,7 +662,7 @@ From the response data, only the column that exists in 'output(MetaView)' is imp
 
 ```json
 {
-	"rows": { "aa": 10, "bb", 20, "cc": 30 },
+    "rows": { "aa": 10, "bb": 20, "cc": 30 },
 }
 ```
 
@@ -681,10 +684,10 @@ Sets the specific 'rows' value of the response data to the column 'value'.
 
 ```json
 {
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
+    "rows": [
+        { "aa": 10, "bb": 20, "cc": 30 },
+        { "aa": 11, "bb": 21, "cc": 31 },
+    ]
 }
 ```
 
@@ -708,19 +711,19 @@ Sets a specific 'rows' value for multiple response data to the column 'value'.
 
 ```json
 [
-	{
-		"rows": [
-			{ "aa": 10, "bb", 20, "cc": 30 },
-			{ "aa": 11, "bb", 21, "cc": 31 },
-		]
-	},
-	{
-		"rows": [
-			{ "dd": 40, "ee", 50 },
-			{ "dd": 41, "ee", 51 },
-			{ "dd": 42, "ee", 52 },
-		]
-	},
+    {
+        "rows": [
+            { "aa": 10, "bb": 20, "cc": 30 },
+            { "aa": 11, "bb": 21, "cc": 31 },
+        ]
+    },
+    {
+        "rows": [
+            { "dd": 40, "ee": 50 },
+            { "dd": 41, "ee": 51 },
+            { "dd": 42, "ee": 52 },
+        ]
+    },
 ]
 ```
 
@@ -743,9 +746,10 @@ bm.cmd['test'].execute();
 ```
 - The value of index = 0 in the first response record was set to the value of the column ('aa', 'bb').
 - The value of index = 1 in the second response record was set to the value of column ('dd').
+
 ```json
 {
-	"rows": { "aa": 10, "bb", 20, "cc": 30 },
+    "rows": { "aa": 10, "bb": 20, "cc": 30 },
 }
 ```
 
@@ -767,10 +771,10 @@ Sets the specific 'rows' value of the response data to the column 'value'.
 
 ```json
 {
-	"rows": [
-		{ "aa": 10, "bb", 20, "cc": 30 },
-		{ "aa": 11, "bb", 21, "cc": 31 },
-	]
+    "rows": [
+        { "aa": 10, "bb": 20, "cc": 30 },
+        { "aa": 11, "bb": 21, "cc": 31 },
+    ]
 }
 ```
 
@@ -794,19 +798,19 @@ Sets a specific 'rows' value for multiple response data to the column 'value'.
 
 ```json
 [
-	{
-		"rows": [
-			{ "aa": 10, "bb", 20, "cc": 30 },
-			{ "aa": 11, "bb", 21, "cc": 31 },
-		]
-	},
-	{
-		"rows": [
-			{ "dd": 40, "ee", 50 },
-			{ "dd": 41, "ee", 51 },
-			{ "dd": 42, "ee", 52 },
-		]
-	},
+    {
+        "rows": [
+            { "aa": 10, "bb": 20, "cc": 30 },
+            { "aa": 11, "bb": 21, "cc": 31 },
+        ]
+    },
+    {
+        "rows": [
+            { "dd": 40, "ee": 50 },
+            { "dd": 41, "ee": 51 },
+            { "dd": 42, "ee": 52 },
+        ]
+    },
 ]
 ```
 

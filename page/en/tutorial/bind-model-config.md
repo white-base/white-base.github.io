@@ -82,7 +82,7 @@ If you need to dynamically change the request path according to a specific comma
  ```js
  var idx = 1;
  bm.cbBegin = function(cmd) {
-	cmd._model.url = `/user/${idx}`;
+    cmd._model.url = `/user/${idx}`;
  };
 ```
 - 'cmd._model' refers to the BindModel with Bindcommand.
@@ -120,10 +120,10 @@ var bm = new BindModel();
 bm.addCommand('read');
 // Global Event Settings
 bm.onExecute = () => { 
-	console.log('model 에서 onExecute 호출')
+    console.log('model 에서 onExecute 호출')
 };
 bm.onExecuted = () => { 
-	console.log('model 에서 onExecuted 호출')
+    console.log('model 에서 onExecuted 호출')
 };
 // Execute
 bm.command['read'].execute();
@@ -150,7 +150,7 @@ The cbError occurrence time is
 var bm = new BindModel();
 
 bm.cbError = function(msg, status, res) { 
-	console.error('Err: '+ msg); 
+    console.error('Err: '+ msg); 
 };
 ```
 - The default value of 'cbError' is provided at the time of object creation.
@@ -170,7 +170,7 @@ When "cbFail" occurred, the execute() method was executed
 var bm = new BindModel();
 
 bm.cbFail = function(msg, valid) { 
-	console.warn ('Failed. Err:'+ msg); 
+    console.warn ('Failed. Err:'+ msg); 
 };
 ```
 - The default value of 'cbFail' is provided at the time of object creation.
@@ -198,7 +198,7 @@ type cbBaseBegin = (cmd: BindCommand) => void;
 var bm = new BindModel();
 
 bm.cbBaseBegin = function(cmd) {
-	cmd.url = '/member/1';
+    cmd.url = '/member/1';
 };
 ```
 ### 2. Basic Validation Callback
@@ -219,10 +219,10 @@ The general application plan is
 var bm = new BindModel();
 
 bm.cbBaseValid = function(view, cmd) { 
-	return view.colums.count <= 0;
+    return view.colums.count <= 0;
 };
 bm.cbBaseValid = function(view, cmd) {
-	return confirm ('Do you want to delete?');
+    return confirm ('Do you want to delete?');
 };
 ```
 
@@ -257,9 +257,9 @@ The general application plan is
 var bm = new BindModel();
 // data = { aa: 1, bb: 2 }
 bm.cbBaseResult = function(data) {
-	return {
-		rows: data
-	};
+    return {
+        rows: data
+    };
 };
 ```
 - Return value: '{aa: 1, bb:2}'
@@ -282,10 +282,10 @@ The general application plan is
 
 ```json
 {
-	"rows": [
-		{ "u_name": "Hong Gildong", "gender", "M" },
-		{ "u_name": "Sungchunhyang", "gender", "W" },
-	]
+    "rows": [
+        { "u_name": "Hong Gildong", "gender", "M" },
+        { "u_name": "Sungchunhyang", "gender", "W" },
+    ]
 }
 ```
 
@@ -293,11 +293,11 @@ The general application plan is
 var bm = new BindModel();
 
 bm.cbBaseOutput = function(views) {
-	// views[0] instanceof MetaView
-	for(var i = 0; i < views[0].rows.count; i++) {
-		var row = views['first'].rows[i];
-		console.log(i, row['u_name'], row['gender']);
-	}
+    // views[0] instanceof MetaView
+    for(var i = 0; i < views[0].rows.count; i++) {
+        var row = views['first'].rows[i];
+        console.log(i, row['u_name'], row['gender']);
+    }
 }
 // 0 Hong Gil-dong M
 // 1. Sung Chunhyang W
@@ -323,7 +323,7 @@ The general application plan is
 var bm = new BindModel();
 
 bm.cbBaseEnd = function(views) {
-	alert('Normal Processed');
+    alert('Normal Processed');
 };
 ```
 
@@ -377,18 +377,18 @@ Add a column.
 타입 : addColumn(), addColumnValue()
 ```ts
 type addColumn = (
-	colName: string, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 
 type addColumnValue = (
-	colName: string, 
-	value: any, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    colName: string, 
+    value: any, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => BindCommand;
 ```
 - omitting cmds, views adds columns to the base table.
@@ -608,17 +608,17 @@ As a way to add items, you can add them from the items collection and from the s
 Type: items.add()
 ```ts
 type ColumnType = {
-	selector: SelectorType,
-	getter: ()=>any,
-	setter: (val)=>any,
-	getFilter: ()=>any,
-	setFilter: (val)=>any,
-	default: stirng | number | boolean | null, // 기본값
-	value: any,
-	alias: string,
-	caption: string,
-	constraints: ConstrainstType,  // 제약조건
-	required: boolean | false, // required
+    selector: SelectorType,
+    getter: ()=>any,
+    setter: (val)=>any,
+    getFilter: ()=>any,
+    setFilter: (val)=>any,
+    default: stirng | number | boolean | null, // 기본값
+    value: any,
+    alias: string,
+    caption: string,
+    constraints: ConstrainstType,  // 제약조건
+    required: boolean | false, // required
 };
 type ValueType = string | number | boolean | ColumnType;
 
@@ -648,8 +648,8 @@ bm._readItem();
 타입 : checkSelector()
 ```ts
 type checkSelector = (
-	collection?: PropertyCollection = this.items, 
-	isLog: boolean = false
+    collection?: PropertyCollection = this.items, 
+    isLog: boolean = false
 ) => string[];
 ```
 - The default value of the 'collection' parameter is the collection of 'this.items'.
@@ -692,7 +692,7 @@ type KeyType = 'none' | 'value' | 'text' | 'html' | 'prop' | 'attr' | 'css';
 type SelectorType = { key: string, type: KeyType };
 
 type getSelector = (
-	collection?: PropertyCollection = this.items
+    collection?: PropertyCollection = this.items
 ) => SelectorType[];
 ```
 - The default for the 'collection' parameter is this.items collection.

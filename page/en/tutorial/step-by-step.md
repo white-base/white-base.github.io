@@ -22,14 +22,14 @@ Since it is a screen that is used by sharing columns in several commands, it was
 
 ```html
 <div>
-	name <input type="text" id="user_name"/>
+    name <input type="text" id="user_name"/>
 </div>
 <div>
-	man<input type="radio" name="gender" value="male" />
-	woman<input type="radio" name="gender" value="female" />	
+    man<input type="radio" name="gender" value="male" />
+    woman<input type="radio" name="gender" value="female" />	
 </div>
 <div>
-	tel <input type="text" id="tel"/>
+    tel <input type="text" id="tel"/>
 </div>
 
 <button type="button" id="btn_create">등록</button>
@@ -39,38 +39,38 @@ Since it is a screen that is used by sharing columns in several commands, it was
 
 ```js
 var bm = new BindModel({
-	items: {
-		user_name: {
-			selector: { key: '#user_name', type: 'value' },
-			required: true
-		},
-		gender: {
-			setFilter: function(val) { 
-				$('input[name=gender][value='+ val + ']').prop('checked',true);
-			},
-			getFilter: function() { 
-				return $('input[name=gender]:checked').val() 
-			}
-		},
-		tel: {
-			selector: { key: '#tel', type: 'value' },
-			constraints: [
-				{ regex: /\d{3}-\d{3,4}-\d{4}/, msg: "Not in phone number format."}
-			]
-		}
-	},
-	command: {
-		create: {
-			cbEnd: function() {
-				alert( 'Registration processed successfully');
-			}
-		}
-	},
-	mapping: {
-		user_name: { create: ['valid', 'bind'] },
-		gender:    { create: ['bind'] },
-		tel:       { create: ['bind', 'bind'] }
-	}
+    items: {
+        user_name: {
+            selector: { key: '#user_name', type: 'value' },
+            required: true
+        },
+        gender: {
+            setFilter: function(val) { 
+                $('input[name=gender][value='+ val + ']').prop('checked',true);
+            },
+            getFilter: function() { 
+                return $('input[name=gender]:checked').val() 
+            }
+        },
+        tel: {
+            selector: { key: '#tel', type: 'value' },
+            constraints: [
+                { regex: /\d{3}-\d{3,4}-\d{4}/, msg: "Not in phone number format."}
+            ]
+        }
+    },
+    command: {
+        create: {
+            cbEnd: function() {
+                alert( 'Registration processed successfully');
+            }
+        }
+    },
+    mapping: {
+        user_name: { create: ['valid', 'bind'] },
+        gender:    { create: ['bind'] },
+        tel:       { create: ['bind', 'bind'] }
+    }
 });
 bm.url = '/user';
 ```
@@ -96,13 +96,13 @@ Example Server Data
 ```json
 // Restful :/user/1
 {
-	"rows": [
-		{
-			"user_name": "Hong Gildong",
-			"gender": "male",
-			"tel": "010-123-1234"
-		}
-	]
+    "rows": [
+        {
+            "user_name": "Hong Gildong",
+            "gender": "male",
+            "tel": "010-123-1234"
+        }
+    ]
 }
 ```
 - Data in JSON format that you will receive when you query the server.
@@ -117,22 +117,22 @@ Example Server Data
 
 ```js
 var bm = new BindModel({
-	items: {
-		idx: {
-			selector: { key: '#idx', type: 'value' },
-		}
-	},
-	command: {
-		read: {
-			outputOption: 3
-		}
-	},
-	mapping: {
-		idx:       { read: ['valid', 'bind'] },
-		user_name: { read: ['output'] },
-		gender:    { read: ['output'] },
-		tel:       { read: ['output'] }
-	}
+    items: {
+        idx: {
+            selector: { key: '#idx', type: 'value' },
+        }
+    },
+    command: {
+        read: {
+            outputOption: 3
+        }
+    },
+    mapping: {
+        idx:       { read: ['valid', 'bind'] },
+        user_name: { read: ['output'] },
+        gender:    { read: ['output'] },
+        tel:       { read: ['output'] }
+    }
 });
 ```
 -  Save the customer ID by adding the idx item to the items.
@@ -142,14 +142,12 @@ var bm = new BindModel({
 ### 3. Get idx from url and read it
 
 ```js
-
-
 $(document).ready(function () {
-	var idx = window.location.href.split('=')[1];
-	if (idx) {
-		$("#idx").val(idx);  // input hidden 설정
-		bm.command['read'].execute();
-	}
+    var idx = window.location.href.split('=')[1];
+    if (idx) {
+        $("#idx").val(idx);  // input hidden 설정
+        bm.command['read'].execute();
+    }
 });
 ```
 - When the page loads, take the idx value from the URL and set it in the idx column, run the read command to query the data.
@@ -167,18 +165,18 @@ $(document).ready(function () {
 
 ```js
 var bm = new BindModel({
-	command: {
-		update: {
-			cbEnd: function() {
-				alert('Corrected processed');
-			}
-		}
-	},
-	mapping: {
-		user_name: { update: ['valid', 'bind'] },
-		gender:    { update: ['bind'] },
-		tel:       { update: ['bind', 'bind'] }
-	}
+    command: {
+        update: {
+            cbEnd: function() {
+                alert('Corrected processed');
+            }
+        }
+    },
+    mapping: {
+        user_name: { update: ['valid', 'bind'] },
+        gender:    { update: ['bind'] },
+        tel:       { update: ['bind', 'bind'] }
+    }
 });
 ```
 -  Define modifications by adding the update command to the command.
@@ -198,14 +196,14 @@ $('#btn_update').click(() => bm.command['update'].execute());
 ```html
 <input type="hidden" id="idx"/>
 <div>
-	name <input type="text" id="user_name"/>
+    name <input type="text" id="user_name"/>
 </div>
 <div>
-	man<input type="radio" name="gender" value="male" />
-	woman<input type="radio" name="gender" value="female" />	
+    man<input type="radio" name="gender" value="male" />
+    woman<input type="radio" name="gender" value="female" />	
 </div>
 <div>
-	tel <input type="text" id="tel"/>
+    tel <input type="text" id="tel"/>
 </div>
 
 <button type="button" id="btn_create">create</button>
@@ -217,80 +215,80 @@ $('#btn_update').click(() => bm.command['update'].execute());
 ```html
 <script>
 var bm = new BindModel({
-	items: {
-		idx: {
-			selector: { key: '#idx', type: 'value' },
-		},
-		user_name: {
-			selector: { key: '#user_name', type: 'value' },
-			required: true
-		},
-		gender: {
-			setFilter: function(val) { 
-				$('input[name=gender][value='+ val + ']').prop('checked',true);
-			},
-			getFilter: function() { 
-				return $('input[name=gender]:checked').val() 
-			}
-		},
-		tel: {
-			selector: { key: '#tel', type: 'value' },
-			constraints: [
-				{ regex: /\d{3}-\d{3,4}-\d{4}/, msg: "Not in phone number format."}
-			]
-		}
-	},
-	command: {
-		create: {
-			cbEnd: function() {
-				alert( 'Registration processed successfully');
-			}
-		},
-		read: {
-			outputOption: 3
-		},
-		update: {
-			cbEnd: function() {
-				alert('Corrected processed');
-			}
-		}
-	},
-	mapping: {
-		idx:       {
-			read: ['valid', 'bind'] 
-		},
-		user_name: { 
-			create: ['valid', 'bind'],
-			update: ['valid', 'bind'],
-			read:   ['output'] 
-		},
-		gender: { 
-			create: ['bind'],
-			update: ['bind'],
-			read:   ['output']
-		},
-		tel: { 
-			create: ['valid', 'bind'],
-			update: ['valid', 'bind'],
-			read:   ['output']
-		}
-	}
+    items: {
+        idx: {
+            selector: { key: '#idx', type: 'value' },
+        },
+        user_name: {
+            selector: { key: '#user_name', type: 'value' },
+            required: true
+        },
+        gender: {
+            setFilter: function(val) { 
+                $('input[name=gender][value='+ val + ']').prop('checked',true);
+            },
+            getFilter: function() { 
+                return $('input[name=gender]:checked').val() 
+            }
+        },
+        tel: {
+            selector: { key: '#tel', type: 'value' },
+            constraints: [
+                { regex: /\d{3}-\d{3,4}-\d{4}/, msg: "Not in phone number format."}
+            ]
+        }
+    },
+    command: {
+        create: {
+            cbEnd: function() {
+                alert( 'Registration processed successfully');
+            }
+        },
+        read: {
+            outputOption: 3
+        },
+        update: {
+            cbEnd: function() {
+                alert('Corrected processed');
+            }
+        }
+    },
+    mapping: {
+        idx:       {
+            read: ['valid', 'bind'] 
+        },
+        user_name: { 
+            create: ['valid', 'bind'],
+            update: ['valid', 'bind'],
+            read:   ['output'] 
+        },
+        gender: { 
+            create: ['bind'],
+            update: ['bind'],
+            read:   ['output']
+        },
+        tel: { 
+            create: ['valid', 'bind'],
+            update: ['valid', 'bind'],
+            read:   ['output']
+        }
+    }
 });
 bm.url = '/user';
 
 $(document).ready(function () {
-	var idx = window.location.href.split('=')[1];  // page?idx=764998
-	// Register for an event
-	$('#btn_create').click(() => bm.command['create'].execute());
-	$('#btn_update').click(() => bm.command['update'].execute());
-	if (idx) {
-		$("#idx").val(idx);  // input hidden setting
-		bm.command['read'].execute();
-	}
-	
-	// bm.columns.user_name.value == 'Neo'
-	// bm.columns.gender.value == 'male'
-	// bm.columns.tel.value == '010-123-1234'
+    var idx = window.location.href.split('=')[1];  // page?idx=764998
+    // Register for an event
+    $('#btn_create').click(() => bm.command['create'].execute());
+    $('#btn_update').click(() => bm.command['update'].execute());
+    if (idx) {
+        $("#idx").val(idx);  // input hidden setting
+        bm.command['read'].execute();
+    }
+
+    // bm.columns.user_name.value == 'Neo'
+    // bm.columns.gender.value == 'male'
+    // bm.columns.tel.value == '010-123-1234'
 });
 </script>
 ```

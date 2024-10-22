@@ -161,7 +161,7 @@ When querying HTML Column's value value, one value is selected and returned acco
 Example: When setting getter
 ```js
 column.getter = function(sVal) {
-	return 'user value';
+    return 'user value';
 };
 
 // column.value == 'user value'
@@ -170,7 +170,7 @@ column.getter = function(sVal) {
 Example: When setting up getFilter
 ```js
 column.getFilter = function(sVal) {
-	return $('input[name=type_cd]:checked').val(); // Blue
+    return $('input[name=type_cd]:checked').val(); // Blue
 };
 
 // column.value == 'Blue'
@@ -180,7 +180,7 @@ Example: When setting up getFilter and selector
 ```js
 column.selector = { key: '#u_name', type: 'value' }; // Cat
 column.getFilter = function(sVal) {
-	return $('input[name=type_cd]:checked').val() +'-'+ sVal; // Blue
+    return $('input[name=type_cd]:checked').val() +'-'+ sVal; // Blue
 };
 
 // column.value == 'Blue-Cat'
@@ -192,8 +192,8 @@ Example: When setting up selector
 column.selector = { key: '#u_name', type: 'value' };
 ```
 
-#### Refer to
-getter and getFilter play similar roles, but there is a difference. getter is used to return a single set, and getFilter is responsible for setting or processing values for several HTML elements based on internal values (original values).
+**Note:** 'getter' and 'getFilter' play similar roles, but there is a difference. 'getter' is used to return a single set value, and 'getFilter' is responsible for setting or processing the values of several 'HTMLElements' based on the internal values (original values).
+{: .notice}
 
 ### Set value for column
 
@@ -212,7 +212,7 @@ Example: When setting only the setter
 var temp;
 
 column.setter = function(val) {
-	temp = val;
+    temp = val;
 };
 
 column.value = 'user value';
@@ -225,10 +225,10 @@ Example: Set up setter and setFilter
 var temp;
 
 column.setter = function(val) {
-	temp = val * 10;
+    temp = val * 10;
 };
 column.setFilter = function(val) {
-	$('input[name=active_yn][value='+ val + ']').prop('checked', true);
+    $('input[name=active_yn][value='+ val + ']').prop('checked', true);
 };
 
 column.value = 2;
@@ -241,7 +241,7 @@ column.value = 2;
 Example: When setting the setter and selector 
 ```js
 column.setter = function(val) {
-	return temp = val * 10;
+    return temp = val * 10;
 };
 column.selector = { key: '#u_name', type: 'value' }; // Cat
 
@@ -262,10 +262,9 @@ column.value = 2;
 // column.$value == 2
 ```
 
-#### Refer to
-setter and setFilter play similar roles, but there is a difference. setter is used to set a single value, and setFilter is responsible for setting or processing the values of several HTML elements based on the internal value (original value).
+**Note:** 'setter' and 'setFilter' play similar roles, but there is a difference. 'setter' is used to set a single value, and 'setFilter' is used to set or process the values of several 'HTMLElements' based on the internal value (original value).
 For example, when expressing a unit of currency, if the internal value is 1000, the screen outputs '1000'.
-
+{: .notice}
 
 ## Understanding the BindModel Structure
 
@@ -280,11 +279,11 @@ Here is the code that summarizes BindModel's internal entity structure (MetaTabl
 
 ```js
 function createCommand(baseTable) {
-	return {
-		valid: new MetaView('valid', baseTable),
-		bind: new MetaView('bind', baseTable),
-		output: new MetaView('output', baseTable)
-	};
+    return {
+        valid: new MetaView('valid', baseTable),
+        bind: new MetaView('bind', baseTable),
+        output: new MetaView('output', baseTable)
+    };
 }
 
 var table1 = new MetaTabe('first');

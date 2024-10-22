@@ -154,12 +154,12 @@ type fn = PropertyCollection;
 type command = PropertyCollection;
 ```
 
-### cmd
+### cmd
 
 > command 의 별칭입니다.
 
 ```ts
-type cmd = PropertyCollection;
+type cmd = PropertyCollection;
 ```
 
 ### columns
@@ -224,9 +224,9 @@ type cbBaseValid = (valid: MetaView, command: BindCommand) => boolean;
 
 ```ts
 type cbBaseBind = (
-	bind: MetaView, 
-	command: BindCommand, 
-	config: object
+    bind: MetaView, 
+    command: BindCommand, 
+    config: object
 ) => void;
 ```
 - bind : 바인드할 `MetaView` 객체입니다.
@@ -239,9 +239,9 @@ type cbBaseBind = (
 
 ```ts
 type cbBaseResult = (
-	data: object, 
-	command: BindCommand, 
-	response: object
+    data: object, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - data : 바인드 결과 데이터 객체입니다.
@@ -255,9 +255,9 @@ type cbBaseResult = (
 
 ```ts
 type cbBaseOutput = (
-	outputs: MetaViewCollection, 
-	command: BindCommand, 
-	response: object
+    outputs: MetaViewCollection, 
+    command: BindCommand, 
+    response: object
 ) => object;
 ```
 - outputs : 메타 뷰 컬렉션입니다.
@@ -271,9 +271,9 @@ type cbBaseOutput = (
 
 ```ts
 type cbBaseEnd = (
-	status: object, 
-	command: BindCommand, 
-	response: object
+    status: object, 
+    command: BindCommand, 
+    response: object
 ) => void;
 ```
 - status : 상태 정보를 담은 객체입니다.
@@ -363,9 +363,9 @@ type getSelector = (collection: PropertyCollection) => object[];
 
 ```ts
 type addCommand = (
-	name: string, 
-	option: number, 
-	baseTable: MetaTable
+    name: string, 
+    option: number, 
+    baseTable: MetaTable
 ) => BindCommand;
 ```
 - name : 명령 이름입니다.
@@ -408,10 +408,10 @@ type addTable = (name: string) => MetaTable;
 
 ```ts
 type addColumn = (
-	column: MetaColumn, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    column: MetaColumn, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => void;
 ```
 - column: 등록할 컬럼 객체입니다. 문자열 또는 `MetaColumn` 객체일 수 있습니다.
@@ -425,11 +425,11 @@ type addColumn = (
 
 ```ts
 type addColumnValue = (
-	name: string, 
-	value: any, 
-	cmds?: string | string[], 
-	views?: string | string[], 
-	bTable?: string | MetaTable
+    name: string, 
+    value: any, 
+    cmds?: string | string[], 
+    views?: string | string[], 
+    bTable?: string | MetaTable
 ) => void;
 ```
 - name : 컬럼 이름입니다.
@@ -444,8 +444,8 @@ type addColumnValue = (
 
 ```ts
 type setMapping = (
-	mapping: PropertyCollection | object, 
-	baseTable?: string | MetaTable
+    mapping: PropertyCollection | object, 
+    baseTable?: string | MetaTable
 ) => void;
 ```
 - mapping : MetaColumn에 매핑할 객체 또는 컬렉션

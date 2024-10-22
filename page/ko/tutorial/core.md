@@ -159,7 +159,7 @@ HTMLColumn의 value 값을 조회할 때, 설정된 우선순위에 따라 하�
 예제 : getter 설정 시
 ```js
 column.getter = function(sVal) {
-	return 'user value';
+    return 'user value';
 };
 
 // column.value == 'user value'
@@ -168,7 +168,7 @@ column.getter = function(sVal) {
 Example: When setting up getFilter
 ```js
 column.getFilter = function(sVal) {
-	return $('input[name=type_cd]:checked').val(); // Blue
+    return $('input[name=type_cd]:checked').val(); // Blue
 };
 
 // column.value == 'Blue'
@@ -177,7 +177,7 @@ column.getFilter = function(sVal) {
 ```js
 column.selector = { key: '#u_name', type: 'value' }; // Cat
 column.getFilter = function(sVal) {
-	return $('input[name=type_cd]:checked').val() +'-'+ sVal; // Blue
+    return $('input[name=type_cd]:checked').val() +'-'+ sVal; // Blue
 };
 
 // column.value == 'Blue-Cat'
@@ -189,8 +189,8 @@ column.getFilter = function(sVal) {
 column.selector = { key: '#u_name', type: 'value' };
 ```
 
-#### 참조
-getter 와 getFilter 는 비슷한 역할을 하지만, 차이점이 있습니다. getter 는 단일 설정값을 반환하는 데 사용되며, getFilter 는 내부 값(원시값)을 기반으로 여러 HTMLElement 의 값을 설정하거나 가공하는 역할을 합니다.
+**Note:** `getter` 와 `getFilter` 는 비슷한 역할을 하지만, 차이점이 있습니다. `getter` 는 단일 설정값을 반환하는 데 사용되며, `getFilter` 는 내부 값(원시값)을 기반으로 여러 `HTMLElement` 의 값을 설정하거나 가공하는 역할을 합니다.
+{: .notice}
 
 ### 컬럼의 value 값 설정
 
@@ -210,7 +210,7 @@ HTMLColumn의 value 값을 설정할 때, 설정된 순서에 따라 값을 저�
 var temp;
 
 column.setter = function(val) {
-	temp = val;
+    temp = val;
 };
 
 column.value = 'user value';
@@ -222,10 +222,10 @@ column.value = 'user value';
 var temp;
 
 column.setter = function(val) {
-	temp = val * 10;
+    temp = val * 10;
 };
 column.setFilter = function(val) {
-	$('input[name=active_yn][value='+ val + ']').prop('checked', true);
+    $('input[name=active_yn][value='+ val + ']').prop('checked', true);
 };
 
 column.value = 2;
@@ -238,7 +238,7 @@ column.value = 2;
 예제 : setter 와 selector 설정 시 
 ```js
 column.setter = function(val) {
-	return temp = val * 10;
+    return temp = val * 10;
 };
 column.selector = { key: '#u_name', type: 'value' }; // Cat
 
@@ -246,6 +246,8 @@ column.value = 2;
 // temp == 20
 // <input type="text" name="u_name" value="20"/>
 // column.$value == 20
+
+
 ```
 - setter 리턴값을 반환값으로 내부값에 저장됩니다.
 - selector 의 값은 내부값이 설정됩니다.
@@ -259,9 +261,9 @@ column.value = 2;
 // column.$value == 2
 ```
 
-#### 참조
-setter 와 setFilter 는 비슷한 역할을 하지만, 차이가 있습니다. setter는 단일 값을 설정하는 데 사용되고, setFilter는 내부 값(원시값)을 기반으로 여러 HTMLElement의 값을 설정하거나 가공하는 역할을 합니다.
+**Note:** `setter` 와 `setFilter` 는 비슷한 역할을 하지만, 차이가 있습니다. `setter`는 단일 값을 설정하는 데 사용되고, `setFilter`는 내부 값(원시값)을 기반으로 여러 `HTMLElement`의 값을 설정하거나 가공하는 역할을 합니다.
 예를 들어, 통화 단위를 표현할 때, 내부 값이 1000 이라면 화면에는 ‘1,000’으로 출력하는 식입니다.
+{: .notice}
 
 ## BindModel 구조의 이해
 
@@ -276,11 +278,11 @@ BindModel 은 하나의 MetaTable(이름: first)을 자동으로 생성하며, �
 
 ```js
 function createCommand(baseTable) {
-	return {
-		valid: new MetaView('valid', baseTable),
-		bind: new MetaView('bind', baseTable),
-		output: new MetaView('output', baseTable)
-	};
+    return {
+        valid: new MetaView('valid', baseTable),
+        bind: new MetaView('bind', baseTable),
+        output: new MetaView('output', baseTable)
+    };
 }
 
 var table1 = new MetaTabe('first');
