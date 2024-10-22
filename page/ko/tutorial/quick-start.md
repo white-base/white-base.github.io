@@ -81,7 +81,7 @@ const bm = new BindModel();
 ```html    
 <script src="https://unpkg.com/logic-bind-model/dist/bindmodel.pack.js"></script>
 <script>
-	const bm = new _L.BindModel();
+    onst bm = new _L.BindModel();
 </script>
 ```
 
@@ -96,10 +96,10 @@ const bm = new BindModel();
 서버 정보: /user/1
 ```json
 {
-  "rows": {
-    "user_no": "2020-1234",
-    "user_name": "홍길동"
-  }
+    "rows": {
+        "user_no": "2020-1234",
+        "user_name": "홍길동"
+    }
 }
 ```
 
@@ -109,10 +109,10 @@ const bm = new BindModel();
 
 ```html
 <div>
-  학번 : <h2 id="user_no"></h2>
+    학번 : <h2 id="user_no"></h2>
 </div>
 <div>
-  이름 : <input id="user_name" type="text"/>
+    이름 : <input id="user_name" type="text"/>
 </div>
 ```
 

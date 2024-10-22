@@ -845,12 +845,12 @@ member.html
 ```html
 
 <div>
-    Class number <h2 id="user_no"></h2>
+    number <h2 id="user_no"></h2>
 </div>
 <div>
-    이름 <input id="u_name" type="text"/>
+    name <input id="u_name" type="text"/>
 </div>
-<button id="btn_Create" type="button">추가</button>
+<button id="btn_Create" type="button">Add</button>
 
 <script src="BindModel.js"></script>
 <script src="common-svc"></script>

@@ -427,7 +427,7 @@ bm.addCommand('update');
 bm.commmand['read'].outputOption = 3;
 bm.commmand['read'].config = { method: 'GET' };
 bm.commmand['read'].cbEnd = { 
-	alert('정상처리되었습니다.');
+    alert('정상처리되었습니다.');
 };
 
 // update 명령 설정

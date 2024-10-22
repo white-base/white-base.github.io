@@ -82,7 +82,7 @@ Example: Using in HTML Environments
 ```html    
 <script src="https://unpkg.com/logic-bind-model/dist/bindmodel.pack.js"></script>
 <script>
-	const bm = new _L.BindModel();
+    const bm = new _L.BindModel();
 </script>
 ```
 
@@ -97,10 +97,10 @@ This area describes JSON data returned from the server.
 Server Information: /user/1
 ```json
 {
-  "rows": {
-    "user_no": "2020-1234",
-    "user_name": "Mike"
-  }
+    "rows": {
+        "user_no": "2020-1234",
+        "user_name": "Mike"
+    }
 }
 ```
 
@@ -110,10 +110,10 @@ The screen consists of two HTML elements that display the student's student numb
 
 ```html
 <div>
-  School number: <h2 id="user_no"></h2>
+    School number: <h2 id="user_no"></h2>
 </div>
 <div>
-  이름 : <input id="user_name" type="text"/>
+    이름 : <input id="user_name" type="text"/>
 </div>
 ```
 
