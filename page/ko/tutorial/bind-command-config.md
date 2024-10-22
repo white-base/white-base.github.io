@@ -13,6 +13,8 @@ last_modified_at: 2024-10-01
 # breadcrumbs: true
 ---
 
+## 요약 내용
+
 `BindCommand` 는 연관된 `MetaView` 의 묶음으로 execute() 메소드로 작동합니다.
 
 ### 주요 기능
@@ -55,6 +57,7 @@ last_modified_at: 2024-10-01
 - release() : 지정한 MetaView 에 참조를 해제합니다.
 - newOutput() : 응답 출력 `MetaView` 을 추가합니다. (\_outputs)
 - removeOptput() : 출력 `MetaView` 를 제거합니다. (\_outputs)
+
 
 ## 명령별 서버 요청 설정하기
 
@@ -139,7 +142,7 @@ execute() 메서드를 실행할 때 순차적으로 콜백 함수가 호출되�
 
 [[41. Callback Lifecycle-B|Refer to: Callback Lifecycle]
 
-#### 콜백 함수의 호출 순서
+### 콜백 함수의 호출 순서
 1. cbBegin : URL 및 config 정보 설정
 2. cbValid : 유효성 검사
 3. cbBind : 서버 요청 전에 호출
@@ -369,7 +372,7 @@ const constraints: ConstrainstType[] | ConstrainstType;
 		• return이 false이면 매칭 성공 시 오류 메시지입니다.
 	• return : reg 매칭 시 리턴 결과입니다. 기본값은 true입니다.
 
-#### 사용빈도별 제약조건
+### 사용빈도별 제약조건
 
 | **빈도** | **required** | **constraints** | **설명**                      |
 | ------ | ------------ | --------------- | --------------------------- |
@@ -490,7 +493,7 @@ bm.command['test'].addColumn('bb', '$all', 'second');
 
 이미 등록된 컬럼을 `MetaView`에 참조로 등록하거나 해제할 수 있습니다. 이를 통해 데이터의 유효성 검사, 바인딩, 출력 등 다양한 요구사항에 맞춰 컬럼을 동적으로 관리할 수 있습니다.
 
-#### 주요 기능 요약
+### 주요 기능 요약
 -  컬럼 설정: 특정 테이블의 컬럼을 원하는 MetaView에 설정하여 데이터 유효성 검사, 바인딩, 출력 등의 처리를 할 수 있습니다.
 - 컬럼 해제 : 설정된 컬럼을 원하는 MetaView에서 해제하여 동적으로 컬럼 참조를 관리할 수 있습니다.
 

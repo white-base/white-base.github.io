@@ -12,6 +12,9 @@ sidebar:
 last_modified_at: 2024-10-01
 # breadcrumbs: true
 ---
+
+## Summary Contents
+
 'BindModel' is the core class of the framework, and its main functions include adding commands, adding columns, adding tables, and injecting service objects.
 
 ### Key Features

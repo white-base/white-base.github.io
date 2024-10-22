@@ -12,6 +12,9 @@ sidebar:
 last_modified_at: 2024-10-01
 # breadcrumbs: true
 ---
+
+## 요약 내용
+
 `BindModel`는 프레임워크의 핵심 클래스이며, 주요 기능으로 명령 추가, 컬럼 추가, 테이블 추가, 서비스 객체 주입 등을 지원합니다.
 
 ### 주요 기능
@@ -131,6 +134,7 @@ bm.command['read'].execute();
 // Call onExecute from model
 // Call onExecuted in model
 ```
+
 ## 오류 및 실패 처리하기
 
 ### 오류 처리
@@ -176,7 +180,7 @@ bm.cbFail = function(msg, valid) {
 
 ## 흐름 제어하기 (hooking)
 
-execute() 실행시 순차적으로 콜백함수가 호출되어흐름을 제어할 수 있습니다. 
+execute() 실행시 순차적으로 콜백함수가 호출되어 흐름을 제어할 수 있습니다. 
 
 [[41. Callback Lifecycle-B|Refer to: Callback Lifecycle]
 

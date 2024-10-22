@@ -12,6 +12,9 @@ sidebar:
 last_modified_at: 2024-10-01
 # breadcrumbs: true
 ---
+
+## Summary Contents
+
 'Bindcommand' is a bundle of associated 'MetaView' and works as an execute() method.
 
 ### Key Features
@@ -138,7 +141,7 @@ Setting global and command-specific events allows you to process a variety of ta
 When executing the execute() method, callback functions are called sequentially to control the flow. 
 [[41. Callback Lifecycle-B|Refer to: Callback Lifecycle]
 
-#### Callback function's call order
+### Callback function's call order
 1. cbBegin : URL and config information settings
 2. cbValid : Validation
 3. cbBind : Call before server request
@@ -341,6 +344,7 @@ bm.command['view'].outputOption = { option: 3, index: 1 };
 ```
 - `bm.command['read'].outputOption` value `{option:3, index: 0}`
 - `bm.command['view'].outputOption` value `{option:3, index: 1}`
+
 ## Setting Validation Targets (valid)
 
 'valid(MetaView)' must be configured for validation.
@@ -363,7 +367,7 @@ const constraints: ConstrainstType[] | ConstrainstType;
 		• If return is false, it is an error message when matching is successful.
 	• return : This is the return result for reg matching. The default is true.
 
-#### Constraints by frequency of use
+### Constraints by frequency of use
 
 | **FREQUIRED** | **required** | **constraits** | **Explanation**|
 | ------ | ------------ | --------------- | --------------------------- |
@@ -483,7 +487,7 @@ You can use the above methods to add tables and columns in a variety of ways, an
 
 You can register or release an already registered column as a reference to 'MetaView', which allows you to dynamically manage the column to meet various requirements such as validation, binding, and output of data.
 
-#### Key Features Summary
+### Key Features Summary
 -  Column Settings: You can set a specific table's column to the desired MetaView to process data validation, binding, and output.
 - Uncolumn: You can dynamically manage column references by releasing the set column from the desired MetaView.
 
