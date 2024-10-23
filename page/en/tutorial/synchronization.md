@@ -20,7 +20,7 @@ Type: execute()
 type execute () => Promise<void>;
 ```
 
-## Example of synchronizing single-flawed fish
+## Example of Synchronizing Single Commands
 
 The following code executes a command called 'read_member' and displays a notification after that command is complete.
 ```js

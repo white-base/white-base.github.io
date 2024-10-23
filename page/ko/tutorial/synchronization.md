@@ -20,7 +20,7 @@ BindCommand 객체의 execute() 메소드는 Promise를 반환합니다. 따라�
 type execute () => Promise<void>;
 ```
 
-## 단일 명멸어 동기화 예제
+## 단일 명령어 동기화 예제
 
 다음 코드는 'read_member' 라는 명령을 실행하고, 해당 명령이 완료된 후에 알림을 표시합니다.
 
